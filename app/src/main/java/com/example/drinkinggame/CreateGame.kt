@@ -7,5 +7,9 @@ class CreateGame : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_game)
+        if (supportActionBar != null) {
+            supportActionBar!!.hide()
+        }
     }
+
 }
