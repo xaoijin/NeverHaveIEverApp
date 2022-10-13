@@ -10,5 +10,6 @@ class InitialScreen : AppCompatActivity() {
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
+
     }
 }
