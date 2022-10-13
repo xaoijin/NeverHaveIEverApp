@@ -1,9 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".AvatarIcons">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="135dp"
+            android:layout_height="110dp"
+            android:layout_weight="0"
+            app:srcCompat="@drawable/wineglass" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="135dp"
+            android:layout_height="110dp"
+            android:layout_weight="0"
+            app:srcCompat="@drawable/shotglass" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="135dp"
+            android:layout_height="110dp"
+            android:layout_weight="0"
+            app:srcCompat="@drawable/martini" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="135dp"
+            android:layout_height="110dp"
+            android:layout_weight="0"
+            app:srcCompat="@drawable/brandy" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="135dp"
+            android:layout_height="110dp"
+            android:layout_weight="0"
+            app:srcCompat="@drawable/hurricane" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="135dp"
+            android:layout_height="110dp"
+            android:layout_weight="0"
+            app:srcCompat="@drawable/beermug" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="334dp"
+        android:layout_weight="3"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="135dp"
+            android:layout_height="110dp"
+            android:layout_weight="0"
+            app:srcCompat="@drawable/coffee" />
+    </LinearLayout>
+
+
+</LinearLayout>
