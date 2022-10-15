@@ -12,7 +12,7 @@ class SplashScreen : AppCompatActivity() {
             supportActionBar!!.hide()
         }
         val someDelay = Thread{
-            Thread.sleep(5000)
+            Thread.sleep(3000)
             val intent  = Intent(this, InitialScreen::class.java)
             startActivity(intent)
             finish()
