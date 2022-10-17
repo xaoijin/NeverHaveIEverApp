@@ -74,7 +74,7 @@ class LoginScreen : AppCompatActivity() {
         val email = lEmail.text.toString()
         val psw = lPassword.text.toString()
         if (email.isEmpty() || psw.isEmpty()){
-            Toast.makeText(this, "Please Enter Text Email or Password", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Please Enter Email or Password", Toast.LENGTH_SHORT).show()
             return
         }
         Log.d("Main", "Email:" + email)
