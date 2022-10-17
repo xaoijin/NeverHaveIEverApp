@@ -81,17 +81,13 @@ class LoginScreen : AppCompatActivity() {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,psw)
             .addOnCompleteListener {
                 if (!it.isSuccessful) return@addOnCompleteListener
+                val intent = Intent(this, InitialScreen::class.java)
+                startActivity(intent)
                 Log.d("Main", "Successfully created user with uid: ${it.result?.user?.uid}")
-                Toast.makeText(this, "Account Successfully Created", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener {
                 Log.d("Main", "Failed to create user: ${it.message}")
-                Toast.makeText(this, "Email Address is already taken", Toast.LENGTH_SHORT).show()
+
             }
     }
-
-
-
-
-
 }

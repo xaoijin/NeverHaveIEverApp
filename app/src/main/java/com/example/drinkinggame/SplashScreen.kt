@@ -17,7 +17,7 @@ class SplashScreen : AppCompatActivity() {
             supportActionBar!!.hide()
         }
         val someDelay = Thread{
-            Thread.sleep(3000)
+            Thread.sleep(1800)
             if(auth.currentUser == null){
                 val intent = Intent(this, LoginScreen::class.java)
                 startActivity(intent)
