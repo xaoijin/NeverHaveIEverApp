@@ -32,7 +32,6 @@ class LoginScreen : AppCompatActivity() {
         animationDrawable.start()
 
 
-
         errorInfo = findViewById(R.id.ErrorInfo)
         lEmail = findViewById(R.id.emailInput)
         lPassword = findViewById(R.id.passwordInput)
