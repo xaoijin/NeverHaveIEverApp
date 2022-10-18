@@ -29,6 +29,17 @@ class InitialScreen : AppCompatActivity() {
         cQuestions = findViewById(R.id.cQuestionSet)
         bLogout = findViewById(R.id.log_out)
         userUID = findViewById(R.id.userUID)
+
+        fGame.setOnClickListener {
+            val intent = Intent(this, CreateGame::class.java)
+            startActivity(intent)
+        }
+
+        cQuestions.setOnClickListener {
+            val intent = Intent(this, QuestionSets::class.java)
+            startActivity(intent)
+        }
+
         bLogout.setOnClickListener { logout() }
 
     }
