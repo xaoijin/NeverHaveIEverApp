@@ -10,6 +10,8 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 
 class LoginScreen : AppCompatActivity() {
@@ -72,6 +74,7 @@ class LoginScreen : AppCompatActivity() {
     private fun registerAccount(){
         val email = lEmail.text.toString()
         val psw = lPassword.text.toString()
+        val db = Firebase.firestore
         if (email.isEmpty() || psw.isEmpty()){
             Toast.makeText(this, "Please Enter Email or Password", Toast.LENGTH_SHORT).show()
             return
@@ -80,6 +83,7 @@ class LoginScreen : AppCompatActivity() {
         Log.d("Main", "Password: $psw" )
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,psw)
             .addOnCompleteListener {
+                db.collection(email)
                 if (!it.isSuccessful) return@addOnCompleteListener
                 val intent = Intent(this, InitialScreen::class.java)
                 startActivity(intent)
