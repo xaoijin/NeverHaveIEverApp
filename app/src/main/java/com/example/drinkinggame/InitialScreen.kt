@@ -2,12 +2,14 @@ package com.example.drinkinggame
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.internal.InternalTokenProvider
 import com.google.firebase.ktx.Firebase
 import com.google.rpc.context.AttributeContext
@@ -29,13 +31,13 @@ class InitialScreen : AppCompatActivity() {
         cQuestions = findViewById(R.id.cQuestionSet)
         bLogout = findViewById(R.id.log_out)
         userUID = findViewById(R.id.userUID)
-
         fGame.setOnClickListener {
             val intent = Intent(this, CreateGame::class.java)
             startActivity(intent)
         }
 
         cQuestions.setOnClickListener {
+
             val intent = Intent(this, QuestionSets::class.java)
             startActivity(intent)
         }
@@ -50,8 +52,9 @@ class InitialScreen : AppCompatActivity() {
         updateUI(currentUser)
     }
     private fun updateUI(user: FirebaseUser?){
-        val currentUserUid = auth.currentUser?.uid
+        val currentUserUid = auth.currentUser?.uid.toString()
         userUID.text = currentUserUid
+
     }
     private fun logout(){
         Firebase.auth.signOut()

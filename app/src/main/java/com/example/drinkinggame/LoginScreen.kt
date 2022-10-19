@@ -13,7 +13,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-
 class LoginScreen : AppCompatActivity() {
     private lateinit var errorInfo: TextView
     private lateinit var lEmail: TextInputEditText
@@ -21,6 +20,7 @@ class LoginScreen : AppCompatActivity() {
     private lateinit var bLogin: Button
     private lateinit var bRegister: Button
     private lateinit var auth: FirebaseAuth
+    val db = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_screen)
@@ -33,7 +33,7 @@ class LoginScreen : AppCompatActivity() {
         animationDrawable.setExitFadeDuration(4500)
         animationDrawable.start()
 
-
+        auth = FirebaseAuth.getInstance()
         errorInfo = findViewById(R.id.ErrorInfo)
         lEmail = findViewById(R.id.emailInput)
         lPassword = findViewById(R.id.passwordInput)
@@ -74,17 +74,23 @@ class LoginScreen : AppCompatActivity() {
     private fun registerAccount(){
         val email = lEmail.text.toString()
         val psw = lPassword.text.toString()
-        val db = Firebase.firestore
+
         if (email.isEmpty() || psw.isEmpty()){
             Toast.makeText(this, "Please Enter Email or Password", Toast.LENGTH_SHORT).show()
             return
         }
-        Log.d("Main", "Email:" + email)
+        Log.d("Main", "Email:$email")
         Log.d("Main", "Password: $psw" )
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,psw)
             .addOnCompleteListener {
-                db.collection(email)
                 if (!it.isSuccessful) return@addOnCompleteListener
+
+                val userUID = hashMapOf(
+                    "AccountUID" to auth.currentUser!!.uid
+                )
+
+                db.collection("Account Data").document("Account UIDs")
+                    .set(userUID)
                 val intent = Intent(this, InitialScreen::class.java)
                 startActivity(intent)
                 Log.d("Main", "Successfully created user with uid: ${it.result?.user?.uid}")
