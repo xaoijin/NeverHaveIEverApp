@@ -18,14 +18,16 @@
 
         <activity
             android:name=".LoginScreen"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".SplashScreen"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,49 +40,56 @@
         </activity>
         <activity
             android:name=".SafeScreen"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".FailScreen"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".DrinkScreen"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".CameraMiniGame"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ActiveGame"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".CreateGame"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".EditQuestionSet"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
 
             <meta-data
                 android:name="android.app.lib_name"
@@ -88,7 +97,8 @@
         </activity>
         <activity
             android:name=".QuestionSets"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
 
             <meta-data
                 android:name="android.app.lib_name"
@@ -96,7 +106,8 @@
         </activity>
         <activity
             android:name=".AvatarIcons"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
 
             <meta-data
                 android:name="android.app.lib_name"
@@ -104,7 +115,8 @@
         </activity>
         <activity
             android:name=".InitialScreen"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

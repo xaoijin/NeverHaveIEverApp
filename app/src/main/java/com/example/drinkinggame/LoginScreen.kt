@@ -90,7 +90,7 @@ class LoginScreen : AppCompatActivity() {
                 )
 
                 db.collection("Account Data").document("Account UIDs")
-                    .set(userUID)
+                    .collection(auth.currentUser!!.uid)
                 val intent = Intent(this, InitialScreen::class.java)
                 startActivity(intent)
                 Log.d("Main", "Successfully created user with uid: ${it.result?.user?.uid}")
