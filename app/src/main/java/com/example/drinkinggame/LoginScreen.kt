@@ -20,7 +20,7 @@ class LoginScreen : AppCompatActivity() {
     private lateinit var bLogin: Button
     private lateinit var bRegister: Button
     private lateinit var auth: FirebaseAuth
-    val db = Firebase.firestore
+    private var db = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_screen)
@@ -53,6 +53,7 @@ class LoginScreen : AppCompatActivity() {
     private fun loginAccount(){
         val email = lEmail.text.toString()
         val psw = lPassword.text.toString()
+
         if (email.isEmpty() || psw.isEmpty()){
             Toast.makeText(this, "Please Enter Email or Password", Toast.LENGTH_SHORT).show()
             return
@@ -74,7 +75,6 @@ class LoginScreen : AppCompatActivity() {
     private fun registerAccount(){
         val email = lEmail.text.toString()
         val psw = lPassword.text.toString()
-
         if (email.isEmpty() || psw.isEmpty()){
             Toast.makeText(this, "Please Enter Email or Password", Toast.LENGTH_SHORT).show()
             return
@@ -83,14 +83,45 @@ class LoginScreen : AppCompatActivity() {
         Log.d("Main", "Password: $psw" )
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,psw)
             .addOnCompleteListener {
-                if (!it.isSuccessful) return@addOnCompleteListener
-
-                val userUID = hashMapOf(
-                    "AccountUID" to auth.currentUser!!.uid
+                val cleanQuestionSetNames = hashMapOf(
+                    "Question Set 1 Name" to "",
+                    "Question Set 2 Name" to "",
+                    "Question Set 3 Name" to ""
                 )
-
-                db.collection("Account Data").document("Account UIDs")
-                    .collection(auth.currentUser!!.uid)
+                val cleanQuestions = hashMapOf(
+                    "Question 1" to "",
+                    "Question 2" to "",
+                    "Question 3" to "",
+                    "Question 4" to "",
+                    "Question 5" to "",
+                    "Question 6" to "",
+                    "Question 7" to "",
+                    "Question 8" to "",
+                    "Question 9" to "",
+                    "Question 10" to "",
+                    "Question 11" to "",
+                    "Question 12" to "",
+                    "Question 13" to "",
+                    "Question 14" to "",
+                    "Question 15" to "",
+                    "Question 16" to "",
+                    "Question 17" to "",
+                    "Question 18" to "",
+                    "Question 19" to "",
+                    "Question 20" to ""
+                )
+                db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
+                    "Question Sets"
+                ).document("Set1").set(cleanQuestions)
+                db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
+                    "Question Sets"
+                ).document("Set2").set(cleanQuestions)
+                db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
+                    "Question Sets"
+                ).document("Set3").set(cleanQuestions)
+                db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
+                    "Question Set Name Edit"
+                ).document("Names").set(cleanQuestionSetNames)
                 val intent = Intent(this, InitialScreen::class.java)
                 startActivity(intent)
                 Log.d("Main", "Successfully created user with uid: ${it.result?.user?.uid}")
@@ -99,5 +130,6 @@ class LoginScreen : AppCompatActivity() {
                 Log.d("Main", "Failed to create user: ${it.message}")
 
             }
+
     }
 }

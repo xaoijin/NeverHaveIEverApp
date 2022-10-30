@@ -54,7 +54,6 @@ class InitialScreen : AppCompatActivity() {
     private fun updateUI(user: FirebaseUser?){
         val currentUserUid = auth.currentUser?.uid.toString()
         userUID.text = currentUserUid
-
     }
     private fun logout(){
         Firebase.auth.signOut()

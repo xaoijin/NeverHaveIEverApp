@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.drinkinggame.databinding.ActivityQuestionSetsBinding
+import com.google.firebase.auth.FirebaseUser
 
 
 var questionsetselected = 0
@@ -61,6 +62,7 @@ class QuestionSets : AppCompatActivity() {
             questionsetselected = 3
         }
     }
+
     private fun rename(){
         val input = EditText(this)
         input.hint = "Enter Here"
