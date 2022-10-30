@@ -1,12 +1,18 @@
 package com.example.drinkinggame
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import com.example.drinkinggame.databinding.ActivityQuestionSetsBinding
+
 
 var questionsetselected = 0
 var questionsetedit = 0
+var questionsetrename = 0
+
 class QuestionSets : AppCompatActivity() {
     private lateinit var binding: ActivityQuestionSetsBinding
 
@@ -14,7 +20,6 @@ class QuestionSets : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityQuestionSetsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setContentView(R.layout.activity_question_sets)
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
@@ -34,13 +39,16 @@ class QuestionSets : AppCompatActivity() {
             startActivity(intent)
         }
         binding.r1.setOnClickListener {
-
+            questionsetrename = 1
+            rename()
         }
         binding.r2.setOnClickListener {
-
+            questionsetrename = 2
+            rename()
         }
         binding.r3.setOnClickListener {
-
+            questionsetrename = 3
+            rename()
         }
 
         binding.s1.setOnClickListener {
@@ -52,5 +60,54 @@ class QuestionSets : AppCompatActivity() {
         binding.s3.setOnClickListener {
             questionsetselected = 3
         }
+    }
+    private fun rename(){
+        val input = EditText(this)
+        input.hint = "Enter Here"
+        val dialogBuilder = AlertDialog.Builder(this)
+        when (questionsetrename){
+            1 -> {
+                dialogBuilder.setMessage("What would you like to name this Question Set?")
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.Qs1.text = input.text.toString()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
+            }
+            2 -> {
+                dialogBuilder.setMessage("What would you like to name this Question Set?")
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.Qs2.text = input.text.toString()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
+            }
+            3 -> {
+                dialogBuilder.setMessage("What would you like to name this Question Set?")
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.Qs3.text = input.text.toString()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
+            }
+        }
+        val alert = dialogBuilder.create()
+        // show alert dialog
+        alert.show()
     }
 }
