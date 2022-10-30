@@ -2,17 +2,13 @@ package com.example.drinkinggame
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.internal.InternalTokenProvider
 import com.google.firebase.ktx.Firebase
-import com.google.rpc.context.AttributeContext
 
 class InitialScreen : AppCompatActivity() {
     private lateinit var fGame: Button
@@ -22,7 +18,7 @@ class InitialScreen : AppCompatActivity() {
     lateinit var userUID: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_initialscreen)
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".InitialScreen">
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/giffy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="matrix"
+        android:src="@drawable/mygif3" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="53dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome To AA"
+            android:textColor="@color/GhostWhite"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:translationZ="90dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="144dp" />
+
+        <Button
+            android:id="@+id/cFindGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Find Game"
+            android:layout_gravity="center"
+            android:theme="@style/Theme.AppCompat"
+            android:translationZ="90dp" />
+
+        <Button
+            android:id="@+id/cQuestionSet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Question Sets"
+            android:layout_gravity="center"
+            android:translationZ="90dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="280dp" />
+
+        <Button
+            android:id="@+id/log_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:text="Logout"
+            android:translationZ="90dp" />
+
+        <TextView
+            android:id="@+id/uidDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="Player UID: "
+            android:textColor="@color/GhostWhite"
+            android:translationZ="90dp" />
+
+        <TextView
+            android:id="@+id/userUID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="####"
+            android:textColor="@color/GhostWhite"
+            android:translationZ="90dp"
+
+            />
+    </LinearLayout>
+
+
+</FrameLayout>
