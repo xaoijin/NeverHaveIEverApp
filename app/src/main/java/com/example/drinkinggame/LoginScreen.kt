@@ -84,35 +84,57 @@ class LoginScreen : AppCompatActivity() {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,psw)
             .addOnCompleteListener {
                 val cleanQuestionSetNames = hashMapOf(
-                    "Question Set 1 Name" to "",
-                    "Question Set 2 Name" to "",
-                    "Question Set 3 Name" to ""
+                    "Question Set 1 Name" to "Question Set 1",
+                    "Question Set 2 Name" to "Question Set 2",
+                    "Question Set 3 Name" to "Question Set 3"
+                )
+                val defaultQuestions = hashMapOf(
+                    "Question 1" to "Never have I ever urinated in public.....",
+                    "Question 2" to "Never have I ever stolen anything.....",
+                    "Question 3" to "Never have I ever lost a bet.....",
+                    "Question 4" to "Never have I ever broken a bone.....",
+                    "Question 5" to "Never have I ever used a fake ID....",
+                    "Question 6" to "Never have I ever broken up with someone.....",
+                    "Question 7" to "Never have I ever had a one-night stand......",
+                    "Question 8" to "Never have I ever tried psychedelics......",
+                    "Question 9" to "Never have I ever stood up a date......",
+                    "Question 10" to "Never have I ever ghosted someone......",
+                    "Question 11" to "Never have I ever had to take a walk of shame......",
+                    "Question 12" to "Never have I ever snooped through someone’s stuff.....",
+                    "Question 13" to "Never have I ever dined and dashed.......",
+                    "Question 14" to "Never have I ever fought in public......",
+                    "Question 15" to "Never have I ever lied about not doing something I was suppose to do....",
+                    "Question 16" to "Never have I ever pretended to speak a foreign language I didn't know",
+                    "Question 17" to "Never have I ever gone on a blind date.....",
+                    "Question 18" to "Never have I ever made a prank phone call....",
+                    "Question 19" to "Never have I ever lied to get something cheaper than it was.....",
+                    "Question 20" to "Never have I ever talked my way out of getting in trouble....."
                 )
                 val cleanQuestions = hashMapOf(
-                    "Question 1" to "",
-                    "Question 2" to "",
-                    "Question 3" to "",
-                    "Question 4" to "",
-                    "Question 5" to "",
-                    "Question 6" to "",
-                    "Question 7" to "",
-                    "Question 8" to "",
-                    "Question 9" to "",
-                    "Question 10" to "",
-                    "Question 11" to "",
-                    "Question 12" to "",
-                    "Question 13" to "",
-                    "Question 14" to "",
-                    "Question 15" to "",
-                    "Question 16" to "",
-                    "Question 17" to "",
-                    "Question 18" to "",
-                    "Question 19" to "",
-                    "Question 20" to ""
+                    "Question 1" to "Never have I ever ",
+                    "Question 2" to "Never have I ever ",
+                    "Question 3" to "Never have I ever ",
+                    "Question 4" to "Never have I ever ",
+                    "Question 5" to "Never have I ever ",
+                    "Question 6" to "Never have I ever ",
+                    "Question 7" to "Never have I ever ",
+                    "Question 8" to "Never have I ever ",
+                    "Question 9" to "Never have I ever ",
+                    "Question 10" to "Never have I ever ",
+                    "Question 11" to "Never have I ever ",
+                    "Question 12" to "Never have I ever ",
+                    "Question 13" to "Never have I ever ",
+                    "Question 14" to "Never have I ever ",
+                    "Question 15" to "Never have I ever ",
+                    "Question 16" to "Never have I ever ",
+                    "Question 17" to "Never have I ever ",
+                    "Question 18" to "Never have I ever ",
+                    "Question 19" to "Never have I ever ",
+                    "Question 20" to "Never have I ever "
                 )
                 db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
                     "Question Sets"
-                ).document("Set1").set(cleanQuestions)
+                ).document("Set1").set(defaultQuestions)
                 db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
                     "Question Sets"
                 ).document("Set2").set(cleanQuestions)
