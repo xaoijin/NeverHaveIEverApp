@@ -63,14 +63,14 @@ class QuestionSets : AppCompatActivity() {
         binding.s2.setOnClickListener {
             clearSelect()
             questionsetselected = 2
-            binding.s1.text = "Selected"
-            binding.s1.backgroundTintList= ContextCompat.getColorStateList(applicationContext, R.color.DarkViolet)
+            binding.s2.text = "Selected"
+            binding.s2.backgroundTintList= ContextCompat.getColorStateList(applicationContext, R.color.DarkViolet)
         }
         binding.s3.setOnClickListener {
             clearSelect()
             questionsetselected = 3
-            binding.s1.text = "Selected"
-            binding.s1.backgroundTintList= ContextCompat.getColorStateList(applicationContext, R.color.DarkViolet)
+            binding.s3.text = "Selected"
+            binding.s3.backgroundTintList= ContextCompat.getColorStateList(applicationContext, R.color.DarkViolet)
         }
     }
     private fun clearSelect(){

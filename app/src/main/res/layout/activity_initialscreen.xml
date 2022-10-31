@@ -9,7 +9,7 @@
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/giffy"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:scaleType="matrix"
         android:src="@drawable/mygif3" />
 
@@ -18,9 +18,25 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="53dp" />
+        <TextView
+            android:id="@+id/uidDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="Player UID: "
+            android:textColor="@color/GhostWhite"
+            android:translationZ="90dp" />
+
+        <TextView
+            android:id="@+id/userUID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="####"
+            android:textColor="@color/GhostWhite"
+            android:translationZ="90dp"
+
+            />
 
         <TextView
             android:id="@+id/textView"
@@ -63,25 +79,6 @@
             android:text="Logout"
             android:translationZ="90dp" />
 
-        <TextView
-            android:id="@+id/uidDisplay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:text="Player UID: "
-            android:textColor="@color/GhostWhite"
-            android:translationZ="90dp" />
-
-        <TextView
-            android:id="@+id/userUID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:text="####"
-            android:textColor="@color/GhostWhite"
-            android:translationZ="90dp"
-
-            />
     </LinearLayout>
 
 
