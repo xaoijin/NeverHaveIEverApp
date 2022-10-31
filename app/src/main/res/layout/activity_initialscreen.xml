@@ -54,10 +54,6 @@
             android:layout_gravity="center"
             android:translationZ="90dp" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="280dp" />
-
         <Button
             android:id="@+id/log_out"
             android:layout_width="wrap_content"

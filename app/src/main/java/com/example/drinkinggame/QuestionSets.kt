@@ -6,6 +6,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat.setBackgroundTintList
 import com.example.drinkinggame.databinding.ActivityQuestionSetsBinding
 import com.google.firebase.auth.FirebaseUser
 
@@ -53,14 +55,37 @@ class QuestionSets : AppCompatActivity() {
         }
 
         binding.s1.setOnClickListener {
+            clearSelect()
             questionsetselected = 1
+            binding.s1.text = "Selected"
+            binding.s1.backgroundTintList= ContextCompat.getColorStateList(applicationContext, R.color.DarkViolet)
         }
         binding.s2.setOnClickListener {
+            clearSelect()
             questionsetselected = 2
+            binding.s1.text = "Selected"
+            binding.s1.backgroundTintList= ContextCompat.getColorStateList(applicationContext, R.color.DarkViolet)
         }
         binding.s3.setOnClickListener {
+            clearSelect()
             questionsetselected = 3
+            binding.s1.text = "Selected"
+            binding.s1.backgroundTintList= ContextCompat.getColorStateList(applicationContext, R.color.DarkViolet)
         }
+    }
+    private fun clearSelect(){
+        binding.s1.text = buildString {
+        append("Select")
+    }
+        binding.s2.text = buildString {
+        append("Select")
+    }
+        binding.s3.text = buildString {
+        append("Select")
+    }
+        binding.s1.backgroundTintList = ContextCompat.getColorStateList(applicationContext, R.color.MediumPurple)
+        binding.s2.backgroundTintList = ContextCompat.getColorStateList(applicationContext, R.color.MediumPurple)
+        binding.s3.backgroundTintList = ContextCompat.getColorStateList(applicationContext, R.color.MediumPurple)
     }
 
     private fun rename(){
