@@ -87,10 +87,9 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".EditQuestionSet"
-            android:exported="false"
+            android:name=".QuestionList"
+            android:exported="true"
             android:screenOrientation="portrait">
-
 
             <meta-data
                 android:name="android.app.lib_name"
