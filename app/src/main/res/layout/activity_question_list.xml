@@ -79,7 +79,6 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="5dp"
                     android:layout_weight="1"
-                    android:background="@null"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:text="Example 1"
