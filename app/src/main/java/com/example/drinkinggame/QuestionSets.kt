@@ -108,7 +108,7 @@ class QuestionSets : AppCompatActivity() {
         }
         //End of Buttons for Edit,Rename,Select
     }
-    private fun updateUI(){
+    private fun updateDatabase(){
         var qSetNamesref = db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
                 "Question Set Name Edit"
         ).document("Names")
@@ -145,7 +145,7 @@ class QuestionSets : AppCompatActivity() {
                     // positive button text and action
                     .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
                         binding.Qs1.text = input.text.toString()
-                        updateUI()
+                        updateDatabase()
                     })
                     // negative button text and action
                     .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
@@ -160,7 +160,7 @@ class QuestionSets : AppCompatActivity() {
                     // positive button text and action
                     .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
                         binding.Qs2.text = input.text.toString()
-                        updateUI()
+                        updateDatabase()
                     })
                     // negative button text and action
                     .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
@@ -175,7 +175,7 @@ class QuestionSets : AppCompatActivity() {
                     // positive button text and action
                     .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
                         binding.Qs3.text = input.text.toString()
-                        updateUI()
+                        updateDatabase()
                     })
                     // negative button text and action
                     .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
