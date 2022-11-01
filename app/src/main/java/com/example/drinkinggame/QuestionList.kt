@@ -1,12 +1,17 @@
 package com.example.drinkinggame
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.EditText
 import com.example.drinkinggame.databinding.ActivityQuestionListBinding
-import com.example.drinkinggame.databinding.ActivityQuestionSetsBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+
+var questionToEdit = 0
 
 class QuestionList : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -19,7 +24,573 @@ class QuestionList : AppCompatActivity() {
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
-        binding.e1.setOnClickListener {  }
+        Log.d("Main", "in Question list")
+        updateSaved()
+        binding.e1.setOnClickListener {
+            questionToEdit = 1
+            editQuestion()
+        }
+        binding.e2.setOnClickListener {
+            questionToEdit = 2
+            editQuestion()
+        }
+        binding.e3.setOnClickListener {
+            questionToEdit = 3
+            editQuestion()
+        }
+        binding.e4.setOnClickListener {
+            questionToEdit = 4
+            editQuestion()
+        }
+        binding.e5.setOnClickListener {
+            questionToEdit = 5
+            editQuestion()
+        }
+        binding.e6.setOnClickListener {
+            questionToEdit = 6
+            editQuestion()
+        }
+        binding.e7.setOnClickListener {
+            questionToEdit = 7
+            editQuestion()
+        }
+        binding.e8.setOnClickListener {
+            questionToEdit = 8
+            editQuestion()
+        }
+        binding.e9.setOnClickListener {
+            questionToEdit = 9
+            editQuestion()
+        }
+        binding.e10.setOnClickListener {
+            questionToEdit = 10
+            editQuestion()
+        }
+        binding.e11.setOnClickListener {
+            questionToEdit = 11
+            editQuestion()
+        }
+        binding.e12.setOnClickListener {
+            questionToEdit = 12
+            editQuestion()
+        }
+        binding.e13.setOnClickListener {
+            questionToEdit = 13
+            editQuestion()
+        }
+        binding.e14.setOnClickListener {
+            questionToEdit = 14
+            editQuestion()
+        }
+        binding.e15.setOnClickListener {
+            questionToEdit = 15
+            editQuestion()
+        }
+        binding.e16.setOnClickListener {
+            questionToEdit = 16
+            editQuestion()
+        }
+        binding.e17.setOnClickListener {
+            questionToEdit = 17
+            editQuestion()
+        }
+        binding.e18.setOnClickListener {
+            questionToEdit = 18
+            editQuestion()
+        }
+        binding.e19.setOnClickListener {
+            questionToEdit = 19
+            editQuestion()
+        }
+        binding.e20.setOnClickListener {
+            questionToEdit = 20
+            editQuestion()
+        }
+    }
+    private fun updateSaved(){
+        auth = FirebaseAuth.getInstance()
+        val qSetNamesref = db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
+                "Question Sets"
+        )
+        when (questionsetedit) {
+            1 -> {
+                qSetNamesref.document("Set1").addSnapshotListener{ snapshot, e ->
+                    if (e != null) {
+                        Log.w("Main", "Listen failed.", e)
+                        return@addSnapshotListener
+                    }
 
+                    if (snapshot != null && snapshot.exists()) {
+                        Log.d("Main", "Current data: ${snapshot.data}")
+                        binding.tv1.text = snapshot.getString("Q1").toString()
+                        binding.tv2.text = snapshot.getString("Q2").toString()
+                        binding.tv3.text = snapshot.getString("Q3").toString()
+                        binding.tv4.text = snapshot.getString("Q4").toString()
+                        binding.tv5.text = snapshot.getString("Q5").toString()
+                        binding.tv6.text = snapshot.getString("Q6").toString()
+                        binding.tv7.text = snapshot.getString("Q7").toString()
+                        binding.tv8.text = snapshot.getString("Q8").toString()
+                        binding.tv9.text = snapshot.getString("Q9").toString()
+                        binding.tv10.text = snapshot.getString("Q10").toString()
+                        binding.tv11.text = snapshot.getString("Q11").toString()
+                        binding.tv12.text = snapshot.getString("Q12").toString()
+                        binding.tv13.text = snapshot.getString("Q13").toString()
+                        binding.tv14.text = snapshot.getString("Q14").toString()
+                        binding.tv15.text = snapshot.getString("Q15").toString()
+                        binding.tv16.text = snapshot.getString("Q16").toString()
+                        binding.tv17.text = snapshot.getString("Q17").toString()
+                        binding.tv18.text = snapshot.getString("Q18").toString()
+                        binding.tv19.text = snapshot.getString("Q19").toString()
+                        binding.tv20.text = snapshot.getString("Q20").toString()
+
+                    } else {
+                        Log.d("Main", "Current data: null")
+                    }
+                }
+            }
+            2 -> {
+                qSetNamesref.document("Set2").addSnapshotListener{ snapshot, e ->
+                    if (e != null) {
+                        Log.w("Main", "Listen failed.", e)
+                        return@addSnapshotListener
+                    }
+
+                    if (snapshot != null && snapshot.exists()) {
+                        Log.d("Main", "Current data: ${snapshot.data}")
+                        binding.tv1.text = snapshot.getString("Q1").toString()
+                        binding.tv2.text = snapshot.getString("Q2").toString()
+                        binding.tv3.text = snapshot.getString("Q3").toString()
+                        binding.tv4.text = snapshot.getString("Q4").toString()
+                        binding.tv5.text = snapshot.getString("Q5").toString()
+                        binding.tv6.text = snapshot.getString("Q6").toString()
+                        binding.tv7.text = snapshot.getString("Q7").toString()
+                        binding.tv8.text = snapshot.getString("Q8").toString()
+                        binding.tv9.text = snapshot.getString("Q9").toString()
+                        binding.tv10.text = snapshot.getString("Q10").toString()
+                        binding.tv11.text = snapshot.getString("Q11").toString()
+                        binding.tv12.text = snapshot.getString("Q12").toString()
+                        binding.tv13.text = snapshot.getString("Q13").toString()
+                        binding.tv14.text = snapshot.getString("Q14").toString()
+                        binding.tv15.text = snapshot.getString("Q15").toString()
+                        binding.tv16.text = snapshot.getString("Q16").toString()
+                        binding.tv17.text = snapshot.getString("Q17").toString()
+                        binding.tv18.text = snapshot.getString("Q18").toString()
+                        binding.tv19.text = snapshot.getString("Q19").toString()
+                        binding.tv20.text = snapshot.getString("Q20").toString()
+
+                    } else {
+                        Log.d("Main", "Current data: null")
+                    }
+                }
+            }
+            3 -> {
+                qSetNamesref.document("Set3").addSnapshotListener{ snapshot, e ->
+                    if (e != null) {
+                        Log.w("Main", "Listen failed.", e)
+                        return@addSnapshotListener
+                    }
+
+                    if (snapshot != null && snapshot.exists()) {
+                        Log.d("Main", "Current data: ${snapshot.data}")
+                        binding.tv1.text = snapshot.getString("Q1").toString()
+                        binding.tv2.text = snapshot.getString("Q2").toString()
+                        binding.tv3.text = snapshot.getString("Q3").toString()
+                        binding.tv4.text = snapshot.getString("Q4").toString()
+                        binding.tv5.text = snapshot.getString("Q5").toString()
+                        binding.tv6.text = snapshot.getString("Q6").toString()
+                        binding.tv7.text = snapshot.getString("Q7").toString()
+                        binding.tv8.text = snapshot.getString("Q8").toString()
+                        binding.tv9.text = snapshot.getString("Q9").toString()
+                        binding.tv10.text = snapshot.getString("Q10").toString()
+                        binding.tv11.text = snapshot.getString("Q11").toString()
+                        binding.tv12.text = snapshot.getString("Q12").toString()
+                        binding.tv13.text = snapshot.getString("Q13").toString()
+                        binding.tv14.text = snapshot.getString("Q14").toString()
+                        binding.tv15.text = snapshot.getString("Q15").toString()
+                        binding.tv16.text = snapshot.getString("Q16").toString()
+                        binding.tv17.text = snapshot.getString("Q17").toString()
+                        binding.tv18.text = snapshot.getString("Q18").toString()
+                        binding.tv19.text = snapshot.getString("Q19").toString()
+                        binding.tv20.text = snapshot.getString("Q20").toString()
+
+                    } else {
+                        Log.d("Main", "Current data: null")
+                    }
+                }
+            }
+        }
+    }
+    private fun updateQuestion(){
+        auth = FirebaseAuth.getInstance()
+        val qSetNamesref = db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
+                "Question Sets"
+        )
+        when (questionsetedit) {
+            1 -> {
+                val qRef = qSetNamesref.document("Set1")
+                qRef.update("Q1", binding.tv1.text.toString())
+                qRef.update("Q2", binding.tv2.text.toString())
+                qRef.update("Q3", binding.tv3.text.toString())
+                qRef.update("Q4", binding.tv4.text.toString())
+                qRef.update("Q5", binding.tv5.text.toString())
+                qRef.update("Q6", binding.tv6.text.toString())
+                qRef.update("Q7", binding.tv7.text.toString())
+                qRef.update("Q8", binding.tv8.text.toString())
+                qRef.update("Q9", binding.tv9.text.toString())
+                qRef.update("Q10", binding.tv10.text.toString())
+                qRef.update("Q11", binding.tv11.text.toString())
+                qRef.update("Q12", binding.tv12.text.toString())
+                qRef.update("Q13", binding.tv13.text.toString())
+                qRef.update("Q14", binding.tv14.text.toString())
+                qRef.update("Q15", binding.tv15.text.toString())
+                qRef.update("Q16", binding.tv16.text.toString())
+                qRef.update("Q17", binding.tv17.text.toString())
+                qRef.update("Q18", binding.tv18.text.toString())
+                qRef.update("Q19", binding.tv19.text.toString())
+                qRef.update("Q20", binding.tv20.text.toString())
+            }
+            2 -> {
+                val qRef = qSetNamesref.document("Set2")
+                qRef.update("Q1", binding.tv1.text.toString())
+                qRef.update("Q2", binding.tv2.text.toString())
+                qRef.update("Q3", binding.tv3.text.toString())
+                qRef.update("Q4", binding.tv4.text.toString())
+                qRef.update("Q5", binding.tv5.text.toString())
+                qRef.update("Q6", binding.tv6.text.toString())
+                qRef.update("Q7", binding.tv7.text.toString())
+                qRef.update("Q8", binding.tv8.text.toString())
+                qRef.update("Q9", binding.tv9.text.toString())
+                qRef.update("Q10", binding.tv10.text.toString())
+                qRef.update("Q11", binding.tv11.text.toString())
+                qRef.update("Q12", binding.tv12.text.toString())
+                qRef.update("Q13", binding.tv13.text.toString())
+                qRef.update("Q14", binding.tv14.text.toString())
+                qRef.update("Q15", binding.tv15.text.toString())
+                qRef.update("Q16", binding.tv16.text.toString())
+                qRef.update("Q17", binding.tv17.text.toString())
+                qRef.update("Q18", binding.tv18.text.toString())
+                qRef.update("Q19", binding.tv19.text.toString())
+                qRef.update("Q20", binding.tv20.text.toString())
+            }
+            3 -> {
+                val qRef = qSetNamesref.document("Set3")
+                qRef.update("Q1", binding.tv1.text.toString())
+                qRef.update("Q2", binding.tv2.text.toString())
+                qRef.update("Q3", binding.tv3.text.toString())
+                qRef.update("Q4", binding.tv4.text.toString())
+                qRef.update("Q5", binding.tv5.text.toString())
+                qRef.update("Q6", binding.tv6.text.toString())
+                qRef.update("Q7", binding.tv7.text.toString())
+                qRef.update("Q8", binding.tv8.text.toString())
+                qRef.update("Q9", binding.tv9.text.toString())
+                qRef.update("Q10", binding.tv10.text.toString())
+                qRef.update("Q11", binding.tv11.text.toString())
+                qRef.update("Q12", binding.tv12.text.toString())
+                qRef.update("Q13", binding.tv13.text.toString())
+                qRef.update("Q14", binding.tv14.text.toString())
+                qRef.update("Q15", binding.tv15.text.toString())
+                qRef.update("Q16", binding.tv16.text.toString())
+                qRef.update("Q17", binding.tv17.text.toString())
+                qRef.update("Q18", binding.tv18.text.toString())
+                qRef.update("Q19", binding.tv19.text.toString())
+                qRef.update("Q20", binding.tv20.text.toString())
+            }
+        }
+
+        Log.d("Main", "updateUI worked")
+    }
+    private fun editQuestion(){
+        auth = FirebaseAuth.getInstance()
+        val input = EditText(this)
+        input.hint = "something"
+
+        val dialogBuilder = AlertDialog.Builder(this)
+        when (questionToEdit){
+            1 -> {
+                dialogBuilder.setMessage("Enter your Question....")
+                        .setView(input)
+                        .setCancelable(false)
+                        // positive button text and action
+                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                            binding.tv1.text = input.text.toString()
+                            updateQuestion()
+                        })
+                        // negative button text and action
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                        })
+            }
+            2 -> {
+                dialogBuilder.setMessage("Enter your Question....")
+                        .setView(input)
+                        .setCancelable(false)
+                        // positive button text and action
+                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                            binding.tv2.text = input.text.toString()
+                            updateQuestion()
+                        })
+                        // negative button text and action
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                        })
+            }
+            3 -> {
+                dialogBuilder.setMessage("Enter your Question....")
+                        .setView(input)
+                        .setCancelable(false)
+                        // positive button text and action
+                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                            binding.tv3.text = input.text.toString()
+                            updateQuestion()
+                        })
+                        // negative button text and action
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                        })
+            }
+            4 -> {
+                dialogBuilder.setMessage("Enter your Question....")
+                        .setView(input)
+                        .setCancelable(false)
+                        // positive button text and action
+                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                            binding.tv4.text = input.text.toString()
+                            updateQuestion()
+                        })
+                        // negative button text and action
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                        })
+            }
+            5 -> {
+                dialogBuilder.setMessage("Enter your Question....")
+                        .setView(input)
+                        .setCancelable(false)
+                        // positive button text and action
+                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                            binding.tv5.text = input.text.toString()
+                            updateQuestion()
+                        })
+                        // negative button text and action
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                        })
+            }
+            6 -> {
+                dialogBuilder.setMessage("Enter your Question....")
+                        .setView(input)
+                        .setCancelable(false)
+                        // positive button text and action
+                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                            binding.tv6.text = input.text.toString()
+                            updateQuestion()
+                        })
+                        // negative button text and action
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                        })
+            }
+            7 -> {
+                dialogBuilder.setMessage("Enter your Question....")
+                        .setView(input)
+                        .setCancelable(false)
+                        // positive button text and action
+                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                            binding.tv7.text = input.text.toString()
+                            updateQuestion()
+                        })
+                        // negative button text and action
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                        })
+            }
+            8 -> {
+                dialogBuilder.setMessage("Enter your Question....")
+                        .setView(input)
+                        .setCancelable(false)
+                        // positive button text and action
+                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                            binding.tv8.text = input.text.toString()
+                            updateQuestion()
+                        })
+                        // negative button text and action
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                        })
+            }
+            9 -> {
+                dialogBuilder.setMessage("Enter your Question....")
+                        .setView(input)
+                        .setCancelable(false)
+                        // positive button text and action
+                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                            binding.tv9.text = input.text.toString()
+                            updateQuestion()
+                        })
+                        // negative button text and action
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                        })
+            }
+            10 -> {
+                dialogBuilder.setMessage("Enter your Question....")
+                        .setView(input)
+                        .setCancelable(false)
+                        // positive button text and action
+                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                            binding.tv10.text = input.text.toString()
+                            updateQuestion()
+                        })
+                        // negative button text and action
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                        })
+            }
+            11 -> {
+                dialogBuilder.setMessage("Enter your Question....")
+                        .setView(input)
+                        .setCancelable(false)
+                        // positive button text and action
+                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                            binding.tv11.text = input.text.toString()
+                            updateQuestion()
+                        })
+                        // negative button text and action
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                        })
+            }
+            12 -> {
+                dialogBuilder.setMessage("Enter your Question....")
+                        .setView(input)
+                        .setCancelable(false)
+                        // positive button text and action
+                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                            binding.tv12.text = input.text.toString()
+                            updateQuestion()
+                        })
+                        // negative button text and action
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                        })
+            }
+            13 -> {
+                dialogBuilder.setMessage("Enter your Question....")
+                        .setView(input)
+                        .setCancelable(false)
+                        // positive button text and action
+                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                            binding.tv13.text = input.text.toString()
+                            updateQuestion()
+                        })
+                        // negative button text and action
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                        })
+            }
+            14 -> {
+                dialogBuilder.setMessage("Enter your Question....")
+                        .setView(input)
+                        .setCancelable(false)
+                        // positive button text and action
+                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                            binding.tv14.text = input.text.toString()
+                            updateQuestion()
+                        })
+                        // negative button text and action
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                        })
+            }
+            15 -> {
+                dialogBuilder.setMessage("Enter your Question....")
+                        .setView(input)
+                        .setCancelable(false)
+                        // positive button text and action
+                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                            binding.tv15.text = input.text.toString()
+                            updateQuestion()
+                        })
+                        // negative button text and action
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                        })
+            }
+            16 -> {
+                dialogBuilder.setMessage("Enter your Question....")
+                        .setView(input)
+                        .setCancelable(false)
+                        // positive button text and action
+                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                            binding.tv16.text = input.text.toString()
+                            updateQuestion()
+                        })
+                        // negative button text and action
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                        })
+            }
+            17 -> {
+                dialogBuilder.setMessage("Enter your Question....")
+                        .setView(input)
+                        .setCancelable(false)
+                        // positive button text and action
+                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                            binding.tv17.text = input.text.toString()
+                            updateQuestion()
+                        })
+                        // negative button text and action
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                        })
+            }
+            18 -> {
+                dialogBuilder.setMessage("Enter your Question....")
+                        .setView(input)
+                        .setCancelable(false)
+                        // positive button text and action
+                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                            binding.tv18.text = input.text.toString()
+                            updateQuestion()
+                        })
+                        // negative button text and action
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                        })
+            }
+            19 -> {
+                dialogBuilder.setMessage("Enter your Question....")
+                        .setView(input)
+                        .setCancelable(false)
+                        // positive button text and action
+                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                            binding.tv19.text = input.text.toString()
+                            updateQuestion()
+                        })
+                        // negative button text and action
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                        })
+            }
+            20 -> {
+                dialogBuilder.setMessage("Enter your Question....")
+                        .setView(input)
+                        .setCancelable(false)
+                        // positive button text and action
+                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                            binding.tv20.text = input.text.toString()
+                            updateQuestion()
+                        })
+                        // negative button text and action
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                        })
+            }
+
+
+        }
+        val alert = dialogBuilder.create()
+        // show alert dialog
+        alert.show()
     }
 }
