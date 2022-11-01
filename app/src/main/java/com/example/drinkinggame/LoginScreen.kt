@@ -79,10 +79,14 @@ class LoginScreen : AppCompatActivity() {
             Toast.makeText(this, "Please Enter Email or Password", Toast.LENGTH_SHORT).show()
             return
         }
+        val emailPsw = hashMapOf(
+                "Email" to email,
+                "Password" to psw
+        )
         val cleanQuestionSetNames = hashMapOf(
-            "Question Set 1 Name" to "Question Set 1",
-            "Question Set 2 Name" to "Question Set 2",
-            "Question Set 3 Name" to "Question Set 3"
+            "QS1Name" to "Question Set 1",
+            "QS2Name" to "Question Set 2",
+            "QS3Name" to "Question Set 3"
         )
         val defaultQuestions = hashMapOf(
             "Question 1" to "Never have I ever urinated in public.....",
@@ -145,6 +149,7 @@ class LoginScreen : AppCompatActivity() {
                 db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
                     "Question Set Name Edit"
                 ).document("Names").set(cleanQuestionSetNames)
+                db.collection("Account Data").document(auth.currentUser?.uid.toString()).set(emailPsw)
                 val intent = Intent(this, InitialScreen::class.java)
                 startActivity(intent)
                 Log.d("Main", "Successfully created user with uid: ${it.result?.user?.uid}")
