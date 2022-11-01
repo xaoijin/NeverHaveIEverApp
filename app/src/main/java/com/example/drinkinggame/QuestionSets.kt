@@ -99,7 +99,7 @@ class QuestionSets : AppCompatActivity() {
         }
     }
     private fun updateSetName(){
-        var qSetNamesref = db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
+        val qSetNamesref = db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
                 "Question Set Name Edit"
         ).document("Names")
         qSetNamesref.update("QS1Name", binding.Qs1.text.toString())
