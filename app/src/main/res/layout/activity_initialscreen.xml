@@ -9,14 +9,15 @@
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/giffy"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="matrix"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
         android:src="@drawable/mygif3" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:theme="@style/ThemeOverlay.Material3">
 
         <TextView
             android:id="@+id/uidDisplay"
@@ -59,7 +60,7 @@
             android:layout_height="wrap_content"
             android:text="Find Game"
             android:layout_gravity="center"
-            android:theme="@style/Theme.AppCompat"
+
             android:translationZ="90dp" />
 
         <Button

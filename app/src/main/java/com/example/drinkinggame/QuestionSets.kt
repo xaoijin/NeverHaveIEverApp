@@ -7,9 +7,7 @@ import android.os.Bundle
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat.setBackgroundTintList
 import com.example.drinkinggame.databinding.ActivityQuestionSetsBinding
-import com.google.firebase.auth.FirebaseUser
 
 
 var questionsetselected = 0
@@ -28,17 +26,17 @@ class QuestionSets : AppCompatActivity() {
         }
         binding.e1.setOnClickListener {
             questionsetedit = 1
-            val intent = Intent(this, EditQuestionSet::class.java)
+            val intent = Intent(this, QuestionList::class.java)
             startActivity(intent)
         }
         binding.e2.setOnClickListener {
             questionsetedit = 2
-            val intent = Intent(this, EditQuestionSet::class.java)
+            val intent = Intent(this, QuestionList::class.java)
             startActivity(intent)
         }
         binding.e3.setOnClickListener {
             questionsetedit = 3
-            val intent = Intent(this, EditQuestionSet::class.java)
+            val intent = Intent(this, QuestionList::class.java)
             startActivity(intent)
         }
         binding.r1.setOnClickListener {
@@ -100,6 +98,7 @@ class QuestionSets : AppCompatActivity() {
                     // positive button text and action
                     .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
                         binding.Qs1.text = input.text.toString()
+
                     })
                     // negative button text and action
                     .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
