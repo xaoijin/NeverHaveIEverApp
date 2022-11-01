@@ -84,9 +84,9 @@ class LoginScreen : AppCompatActivity() {
             "Password" to psw
         )
         val cleanQuestionSetNames = hashMapOf(
-            "Question Set 1 Name" to "Question Set 1",
-            "Question Set 2 Name" to "Question Set 2",
-            "Question Set 3 Name" to "Question Set 3"
+            "QS1Name" to "Question Set 1",
+            "QS2Name" to "Question Set 2",
+            "QS3Name" to "Question Set 3"
         )
         val defaultQuestions = hashMapOf(
             "Question 1" to "Never have I ever urinated in public.....",
