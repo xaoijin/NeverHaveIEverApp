@@ -108,6 +108,7 @@ class QuestionSets : AppCompatActivity() {
         }
         //End of Buttons for Edit,Rename,Select
     }
+    // Sends the rename to the database
     private fun updateDatabase(){
         var qSetNamesref = db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
                 "Question Set Name Edit"
