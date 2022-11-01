@@ -21,9 +21,6 @@ var questionsetrename = 0
 class QuestionSets : AppCompatActivity() {
     private lateinit var binding: ActivityQuestionSetsBinding
     private lateinit var auth: FirebaseAuth
-    private lateinit var qsn1: String
-    private lateinit var qsn2: String
-    private lateinit var qsn3: String
     val db = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
