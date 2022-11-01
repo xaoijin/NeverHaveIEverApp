@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/vikingblue"
-    tools:context=".QuestionList">
+    tools:context=".EditQuestionSet">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +35,6 @@
                     android:layout_marginVertical="5dp"
                     android:ems="10"
                     android:inputType="text"
-                    android:minHeight="48dp"
                     android:text="Question 1"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp" />
@@ -81,13 +80,14 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:ems="10"
-                    android:inputType="textMultiLine"
+                    android:inputType="textPersonName"
                     android:text="Never have i ever urinated in public"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
+
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
