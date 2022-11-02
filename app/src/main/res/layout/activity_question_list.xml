@@ -155,7 +155,7 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textMultiLine"
                     android:text="Example 2"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
@@ -229,7 +229,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:background="@null"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textMultiLine"
                     android:text="Example 3"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
@@ -304,7 +304,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:background="@null"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textMultiLine"
                     android:text="Example 4"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
@@ -379,7 +379,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:background="@null"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textMultiLine"
                     android:text="Example 5"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
@@ -452,7 +452,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:background="@null"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textMultiLine"
                     android:text="Example 6"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
@@ -525,7 +525,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:background="@null"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textMultiLine"
                     android:text="Example 7"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
@@ -598,7 +598,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:background="@null"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textMultiLine"
                     android:text="Example 8"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
@@ -671,7 +671,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:background="@null"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textMultiLine"
                     android:text="Example 9"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
@@ -744,7 +744,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:background="@null"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textMultiLine"
                     android:text="Example 10"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
@@ -817,7 +817,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:background="@null"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textMultiLine"
                     android:text="Example 11"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
@@ -890,7 +890,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:background="@null"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textMultiLine"
                     android:text="Example 12"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
@@ -963,7 +963,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:background="@null"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textMultiLine"
                     android:text="Example 13"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
@@ -1036,7 +1036,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:background="@null"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textMultiLine"
                     android:text="Example 14"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
@@ -1109,7 +1109,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:background="@null"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textMultiLine"
                     android:text="Example 15"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
@@ -1182,7 +1182,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:background="@null"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textMultiLine"
                     android:text="Example 16"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
@@ -1255,7 +1255,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:background="@null"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textMultiLine"
                     android:text="Example 17"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
@@ -1328,7 +1328,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:background="@null"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textMultiLine"
                     android:text="Example 18"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
@@ -1401,7 +1401,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:background="@null"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textMultiLine"
                     android:text="Example 19"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
@@ -1474,7 +1474,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:background="@null"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textMultiLine"
                     android:text="Example 20"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />

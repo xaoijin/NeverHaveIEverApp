@@ -12,7 +12,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 var questionToEdit = 0
-
+var questionToClear = 0
 class QuestionList : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private var db = Firebase.firestore
@@ -25,7 +25,10 @@ class QuestionList : AppCompatActivity() {
             supportActionBar!!.hide()
         }
         Log.d("Main", "in Question list")
+        //Change Questions to saved questions
         updateSaved()
+
+        //Edit buttons
         binding.e1.setOnClickListener {
             questionToEdit = 1
             editQuestion()
@@ -106,6 +109,293 @@ class QuestionList : AppCompatActivity() {
             questionToEdit = 20
             editQuestion()
         }
+
+        //Clear Buttons
+        binding.c1.setOnClickListener {
+            questionToClear = 1
+            clearQuestion()
+        }
+        binding.c2.setOnClickListener {
+            questionToClear = 2
+            clearQuestion()
+        }
+        binding.c3.setOnClickListener {
+            questionToClear = 3
+            clearQuestion()
+        }
+        binding.c4.setOnClickListener {
+            questionToClear = 4
+            clearQuestion()
+        }
+        binding.c5.setOnClickListener {
+            questionToClear = 5
+            clearQuestion()
+        }
+        binding.c6.setOnClickListener {
+            questionToClear = 6
+            clearQuestion()
+        }
+        binding.c7.setOnClickListener {
+            questionToClear = 7
+            clearQuestion()
+        }
+        binding.c8.setOnClickListener {
+            questionToClear = 8
+            clearQuestion()
+        }
+        binding.c9.setOnClickListener {
+            questionToClear = 9
+            clearQuestion()
+        }
+        binding.c10.setOnClickListener {
+            questionToClear = 10
+            clearQuestion()
+        }
+        binding.c11.setOnClickListener {
+            questionToClear = 11
+            clearQuestion()
+        }
+        binding.c12.setOnClickListener {
+            questionToClear = 12
+            clearQuestion()
+        }
+        binding.c13.setOnClickListener {
+            questionToClear = 13
+            clearQuestion()
+        }
+        binding.c14.setOnClickListener {
+            questionToClear = 14
+            clearQuestion()
+        }
+        binding.c15.setOnClickListener {
+            questionToClear = 15
+            clearQuestion()
+        }
+        binding.c16.setOnClickListener {
+            questionToClear = 16
+            clearQuestion()
+        }
+        binding.c17.setOnClickListener {
+            questionToClear = 17
+            clearQuestion()
+        }
+        binding.c18.setOnClickListener {
+            questionToClear = 18
+            clearQuestion()
+        }
+        binding.c19.setOnClickListener {
+            questionToClear = 19
+            clearQuestion()
+        }
+        binding.c20.setOnClickListener {
+            questionToClear = 20
+            clearQuestion()
+        }
+
+    }
+    private fun clearQuestion(){
+        auth = FirebaseAuth.getInstance()
+        val qSetNamesref = db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
+            "Question Sets"
+        )
+        when (questionsetedit) {
+            1 -> {
+                val editSet1 = qSetNamesref.document("Set1")
+                when (questionToClear) {
+                    1 -> {
+                        editSet1.update("Q1", "")
+                    }
+                    2 -> {
+                        editSet1.update("Q2", "")
+                    }
+                    3 -> {
+                        editSet1.update("Q3", "")
+                    }
+                    4 -> {
+                        editSet1.update("Q4", "")
+                    }
+                    5 -> {
+                        editSet1.update("Q5", "")
+                    }
+                    6 -> {
+                        editSet1.update("Q6", "")
+                    }
+                    7 -> {
+                        editSet1.update("Q7", "")
+                    }
+                    8 -> {
+                        editSet1.update("Q8", "")
+                    }
+                    9 -> {
+                        editSet1.update("Q9", "")
+                    }
+                    10 -> {
+                        editSet1.update("Q10", "")
+                    }
+                    11 -> {
+                        editSet1.update("Q11", "")
+                    }
+                    12 -> {
+                        editSet1.update("Q12", "")
+                    }
+                    13 -> {
+                        editSet1.update("Q13", "")
+                    }
+                    14 -> {
+                        editSet1.update("Q14", "")
+                    }
+                    15 -> {
+                        editSet1.update("Q15", "")
+                    }
+                    16 -> {
+                        editSet1.update("Q16", "")
+                    }
+                    17 -> {
+                        editSet1.update("Q17", "")
+                    }
+                    18 -> {
+                        editSet1.update("Q18", "")
+                    }
+                    19 -> {
+                        editSet1.update("Q19", "")
+                    }
+                    20 -> {
+                        editSet1.update("Q20", "")
+                    }
+                }
+            }
+            2 -> {
+                val editSet2 = qSetNamesref.document("Set2")
+                when (questionToClear) {
+                    1 -> {
+                        editSet2.update("Q1", "")
+                    }
+                    2 -> {
+                        editSet2.update("Q2", "")
+                    }
+                    3 -> {
+                        editSet2.update("Q3", "")
+                    }
+                    4 -> {
+                        editSet2.update("Q4", "")
+                    }
+                    5 -> {
+                        editSet2.update("Q5", "")
+                    }
+                    6 -> {
+                        editSet2.update("Q6", "")
+                    }
+                    7 -> {
+                        editSet2.update("Q7", "")
+                    }
+                    8 -> {
+                        editSet2.update("Q8", "")
+                    }
+                    9 -> {
+                        editSet2.update("Q9", "")
+                    }
+                    10 -> {
+                        editSet2.update("Q10", "")
+                    }
+                    11 -> {
+                        editSet2.update("Q11", "")
+                    }
+                    12 -> {
+                        editSet2.update("Q12", "")
+                    }
+                    13 -> {
+                        editSet2.update("Q13", "")
+                    }
+                    14 -> {
+                        editSet2.update("Q14", "")
+                    }
+                    15 -> {
+                        editSet2.update("Q15", "")
+                    }
+                    16 -> {
+                        editSet2.update("Q16", "")
+                    }
+                    17 -> {
+                        editSet2.update("Q17", "")
+                    }
+                    18 -> {
+                        editSet2.update("Q18", "")
+                    }
+                    19 -> {
+                        editSet2.update("Q19", "")
+                    }
+                    20 -> {
+                        editSet2.update("Q20", "")
+                    }
+                }
+            }
+            3 -> {
+                val editSet3 = qSetNamesref.document("Set3")
+                when (questionToClear) {
+                    1 -> {
+                        editSet3.update("Q1", "")
+                    }
+                    2 -> {
+                        editSet3.update("Q2", "")
+                    }
+                    3 -> {
+                        editSet3.update("Q3", "")
+                    }
+                    4 -> {
+                        editSet3.update("Q4", "")
+                    }
+                    5 -> {
+                        editSet3.update("Q5", "")
+                    }
+                    6 -> {
+                        editSet3.update("Q6", "")
+                    }
+                    7 -> {
+                        editSet3.update("Q7", "")
+                    }
+                    8 -> {
+                        editSet3.update("Q8", "")
+                    }
+                    9 -> {
+                        editSet3.update("Q9", "")
+                    }
+                    10 -> {
+                        editSet3.update("Q10", "")
+                    }
+                    11 -> {
+                        editSet3.update("Q11", "")
+                    }
+                    12 -> {
+                        editSet3.update("Q12", "")
+                    }
+                    13 -> {
+                        editSet3.update("Q13", "")
+                    }
+                    14 -> {
+                        editSet3.update("Q14", "")
+                    }
+                    15 -> {
+                        editSet3.update("Q15", "")
+                    }
+                    16 -> {
+                        editSet3.update("Q16", "")
+                    }
+                    17 -> {
+                        editSet3.update("Q17", "")
+                    }
+                    18 -> {
+                        editSet3.update("Q18", "")
+                    }
+                    19 -> {
+                        editSet3.update("Q19", "")
+                    }
+                    20 -> {
+                        editSet3.update("Q20", "")
+                    }
+                }
+            }
+        }
+
     }
     private fun updateSaved(){
         auth = FirebaseAuth.getInstance()
@@ -302,7 +592,7 @@ class QuestionList : AppCompatActivity() {
     private fun editQuestion(){
         auth = FirebaseAuth.getInstance()
         val input = EditText(this)
-        input.hint = "something"
+        input.setText(getString(R.string.dialogpretext))
 
         val dialogBuilder = AlertDialog.Builder(this)
         when (questionToEdit){

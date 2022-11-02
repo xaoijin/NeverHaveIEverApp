@@ -51,8 +51,8 @@ class LoginScreen : AppCompatActivity() {
         }
     }
     private fun loginAccount(){
-        val email = lEmail.text.toString()
-        val psw = lPassword.text.toString()
+        val email = lEmail.text.toString().trim()
+        val psw = lPassword.text.toString().trim()
 
         if (email.isEmpty() || psw.isEmpty()){
             Toast.makeText(this, "Please Enter Email or Password", Toast.LENGTH_SHORT).show()
@@ -73,8 +73,8 @@ class LoginScreen : AppCompatActivity() {
             }
     }
     private fun registerAccount(){
-        val email = lEmail.text.toString()
-        val psw = lPassword.text.toString()
+        val email = lEmail.text.toString().trim()
+        val psw = lPassword.text.toString().trim()
         if (email.isEmpty() || psw.isEmpty()){
             Toast.makeText(this, "Please Enter Email or Password", Toast.LENGTH_SHORT).show()
             return
