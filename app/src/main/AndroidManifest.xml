@@ -90,8 +90,6 @@
             android:name=".QuestionList"
             android:exported="false"
             android:screenOrientation="portrait">
-
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -100,7 +98,6 @@
             android:name=".QuestionSets"
             android:exported="false"
             android:screenOrientation="portrait">
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -109,7 +106,6 @@
             android:name=".AvatarIcons"
             android:exported="false"
             android:screenOrientation="portrait">
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

@@ -52,16 +52,31 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="144dp" />
+            android:layout_height="73dp" />
+
+        <EditText
+            android:id="@+id/gameCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Enter Code Here"
+            android:textAlignment="center"
+            android:background = "@color/RosyBrown"/>
 
         <Button
             android:id="@+id/cFindGame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Find Game"
+            android:text="Join Game"
             android:layout_gravity="center"
 
             android:translationZ="90dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
 
         <Button
             android:id="@+id/cQuestionSet"
