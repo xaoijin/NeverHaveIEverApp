@@ -1481,13 +1481,7 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/done"
-            android:layout_width="235dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="70dp"
-            android:backgroundTint="@color/MediumPurple"
-            android:text="Save" />
+
 
     </LinearLayout>
 
