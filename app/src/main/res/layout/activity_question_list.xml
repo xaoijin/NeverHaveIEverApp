@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/vikingblue"
-    tools:context=".EditQuestionSet">
+    tools:context=".QuestionList">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,23 +24,246 @@
             app:cardUseCompatPadding="true">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="66dp">
+                android:layout_width="match_parent"
+                android:layout_height="69dp">
 
                 <TextView
                     android:id="@+id/Qs1"
                     android:layout_width="101dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginHorizontal="5dp"
                     android:layout_marginVertical="5dp"
                     android:ems="10"
                     android:inputType="text"
                     android:text="Question 1"
                     android:textColor="#FFFFFF"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <Button
                     android:id="@+id/e1"
+                    android:layout_width="85dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Edit"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/c1"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="0dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Clear"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="326dp"
+                android:layout_height="69dp"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="65dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Example 1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:cardBackgroundColor="#6B5298"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="11dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="66dp">
+
+                <TextView
+                    android:id="@+id/Qs2"
+                    android:layout_width="103dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="5dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Question 2"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/e2"
+                    android:layout_width="85dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Edit"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/c2"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="0dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Clear"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="326dp"
+                android:layout_height="69dp"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="65dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:id="@+id/tv2"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Example 2"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:cardBackgroundColor="#6B5298"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="11dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="66dp">
+
+                <TextView
+                    android:id="@+id/Qs3"
+                    android:layout_width="103dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="5dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Question 3"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/e3"
+                    android:layout_width="85dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Edit"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/c3"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="0dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Clear"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="326dp"
+                android:layout_height="69dp"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="65dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:id="@+id/tv3"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Example 3"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:cardBackgroundColor="#6B5298"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="11dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="66dp">
+
+                <TextView
+                    android:id="@+id/Qs4"
+                    android:layout_width="103dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="5dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Question 4"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/e4"
                     android:layout_width="85dp"
                     android:layout_height="50dp"
                     android:layout_marginHorizontal="3dp"
@@ -51,7 +274,7 @@
                     app:cornerRadius="15dp" />
 
                 <Button
-                    android:id="@+id/c1"
+                    android:id="@+id/c4"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:layout_marginHorizontal="10dp"
@@ -73,63 +296,20 @@
                 >
 
 
-                <EditText
-                    android:id="@+id/editTextTextPersonName4"
+                <TextView
+                    android:id="@+id/tv4"
                     android:layout_width="290dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"
                     android:background="@null"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Never have i ever urinated in public"
+                    android:text="Example 4"
                     android:textColor="#FFFFFF"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:cardBackgroundColor="#6B5298"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="11dp"
-            app:cardUseCompatPadding="true">
-
-            <TextView
-                android:id="@+id/Qs2"
-                android:layout_width="146dp"
-                android:layout_height="92dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="30dp"
-                android:ems="10"
-                android:inputType="text"
-                android:text="Question 2"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
-
-            <Button
-                android:id="@+id/e2"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="20dp"
-                android:backgroundTint="@color/MediumPurple"
-                android:text="Edit"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
-
-            <Button
-                android:id="@+id/c2"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="80dp"
-                android:backgroundTint="@color/MediumPurple"
-                android:text="Clear"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
 
         </androidx.cardview.widget.CardView>
 
@@ -141,42 +321,69 @@
             app:cardElevation="11dp"
             app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/Qs3"
-                android:layout_width="146dp"
-                android:layout_height="92dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="30dp"
-                android:ems="10"
-                android:inputType="text"
-                android:lines="2"
-                android:text="Question 3"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="66dp">
 
-            <Button
-                android:id="@+id/e3"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="20dp"
-                android:text="Edit"
-                android:backgroundTint="@color/MediumPurple"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <TextView
+                    android:id="@+id/Qs5"
+                    android:layout_width="103dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="5dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Question 5"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/c3"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="80dp"
-                android:backgroundTint="@color/MediumPurple"
-                android:text="Clear"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <Button
+                    android:id="@+id/e5"
+                    android:layout_width="85dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Edit"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/c5"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Clear"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="326dp"
+                android:layout_height="69dp"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="65dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
 
 
+                <TextView
+                    android:id="@+id/tv5"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Example 5"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -187,42 +394,69 @@
             app:cardElevation="11dp"
             app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/Qs4"
-                android:layout_width="146dp"
-                android:layout_height="92dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="30dp"
-                android:ems="10"
-                android:inputType="text"
-                android:lines="2"
-                android:text="Question 4"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="66dp">
 
-            <Button
-                android:id="@+id/e4"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="20dp"
-                android:text="Edit"
-                android:backgroundTint="@color/MediumPurple"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <TextView
+                    android:id="@+id/Qs6"
+                    android:layout_width="103dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="5dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Question 6"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/c4"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="80dp"
-                android:backgroundTint="@color/MediumPurple"
-                android:text="Clear"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <Button
+                    android:id="@+id/e6"
+                    android:layout_width="85dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Edit"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/c6"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Clear"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="326dp"
+                android:layout_height="69dp"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="65dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
 
 
+                <TextView
+                    android:id="@+id/tv6"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Example 6"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -233,40 +467,69 @@
             app:cardElevation="11dp"
             app:cardUseCompatPadding="true">
 
-        <TextView
-            android:id="@+id/Qs5"
-            android:layout_width="146dp"
-            android:layout_height="92dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="30dp"
-            android:ems="10"
-            android:inputType="text"
-            android:lines="2"
-            android:text="Question 5"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="66dp">
 
-        <Button
-            android:id="@+id/e5"
-            android:layout_width="121dp"
-            android:layout_height="55dp"
-            android:layout_marginHorizontal="180dp"
-            android:layout_marginVertical="20dp"
-            android:text="Edit"
-            android:backgroundTint="@color/MediumPurple"
-            android:textColor="#FFFFFF"
-            app:cornerRadius="15dp" />
+                <TextView
+                    android:id="@+id/Qs7"
+                    android:layout_width="103dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="5dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Question 7"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/c5"
-            android:layout_width="121dp"
-            android:layout_height="55dp"
-            android:layout_marginHorizontal="180dp"
-            android:layout_marginVertical="80dp"
-            android:backgroundTint="@color/MediumPurple"
-            android:text="Clear"
-            android:textColor="#FFFFFF"
-            app:cornerRadius="15dp" />
+                <Button
+                    android:id="@+id/e7"
+                    android:layout_width="85dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Edit"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/c7"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Clear"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="326dp"
+                android:layout_height="69dp"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="65dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:id="@+id/tv7"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Example 7"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -277,40 +540,69 @@
             app:cardElevation="11dp"
             app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/Qs6"
-                android:layout_width="146dp"
-                android:layout_height="92dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="30dp"
-                android:ems="10"
-                android:inputType="text"
-                android:lines="2"
-                android:text="Question 6"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="66dp">
 
-            <Button
-                android:id="@+id/e6"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="20dp"
-                android:text="Edit"
-                android:backgroundTint="@color/MediumPurple"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <TextView
+                    android:id="@+id/Qs8"
+                    android:layout_width="103dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="5dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Question 8"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/c6"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="80dp"
-                android:backgroundTint="@color/MediumPurple"
-                android:text="Clear"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <Button
+                    android:id="@+id/e8"
+                    android:layout_width="85dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Edit"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/c8"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Clear"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="326dp"
+                android:layout_height="69dp"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="65dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:id="@+id/tv8"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Example 8"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -321,40 +613,69 @@
             app:cardElevation="11dp"
             app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/Qs7"
-                android:layout_width="146dp"
-                android:layout_height="92dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="30dp"
-                android:ems="10"
-                android:inputType="text"
-                android:lines="2"
-                android:text="Question 7"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="66dp">
 
-            <Button
-                android:id="@+id/e7"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="20dp"
-                android:text="Edit"
-                android:backgroundTint="@color/MediumPurple"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <TextView
+                    android:id="@+id/Qs9"
+                    android:layout_width="103dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="5dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Question 9"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/c7"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="80dp"
-                android:backgroundTint="@color/MediumPurple"
-                android:text="Clear"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <Button
+                    android:id="@+id/e9"
+                    android:layout_width="85dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Edit"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/c9"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Clear"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="326dp"
+                android:layout_height="69dp"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="65dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:id="@+id/tv9"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Example 9"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -365,40 +686,69 @@
             app:cardElevation="11dp"
             app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/Qs8"
-                android:layout_width="146dp"
-                android:layout_height="92dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="30dp"
-                android:ems="10"
-                android:inputType="text"
-                android:lines="2"
-                android:text="Question 8"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="66dp">
 
-            <Button
-                android:id="@+id/e8"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="20dp"
-                android:text="Edit"
-                android:backgroundTint="@color/MediumPurple"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <TextView
+                    android:id="@+id/Qs10"
+                    android:layout_width="103dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="5dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Question 10"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/c8"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="80dp"
-                android:backgroundTint="@color/MediumPurple"
-                android:text="Clear"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <Button
+                    android:id="@+id/e10"
+                    android:layout_width="85dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Edit"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/c10"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Clear"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="326dp"
+                android:layout_height="69dp"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="65dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:id="@+id/tv10"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Example 10"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -409,40 +759,69 @@
             app:cardElevation="11dp"
             app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/Qs9"
-                android:layout_width="146dp"
-                android:layout_height="92dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="30dp"
-                android:ems="10"
-                android:inputType="text"
-                android:lines="2"
-                android:text="Question 9"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="66dp">
 
-            <Button
-                android:id="@+id/e9"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="20dp"
-                android:text="Edit"
-                android:backgroundTint="@color/MediumPurple"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <TextView
+                    android:id="@+id/Qs11"
+                    android:layout_width="103dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="5dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Question 11"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/c9"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="80dp"
-                android:backgroundTint="@color/MediumPurple"
-                android:text="Clear"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <Button
+                    android:id="@+id/e11"
+                    android:layout_width="85dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Edit"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/c11"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Clear"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="326dp"
+                android:layout_height="69dp"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="65dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:id="@+id/tv11"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Example 11"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -453,40 +832,69 @@
             app:cardElevation="11dp"
             app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/Qs10"
-                android:layout_width="146dp"
-                android:layout_height="92dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="30dp"
-                android:ems="10"
-                android:inputType="text"
-                android:lines="2"
-                android:text="Question 10"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="66dp">
 
-            <Button
-                android:id="@+id/e10"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="20dp"
-                android:text="Edit"
-                android:backgroundTint="@color/MediumPurple"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <TextView
+                    android:id="@+id/Qs12"
+                    android:layout_width="103dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="5dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Question 12"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/c10"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="80dp"
-                android:backgroundTint="@color/MediumPurple"
-                android:text="Clear"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <Button
+                    android:id="@+id/e12"
+                    android:layout_width="85dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Edit"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/c12"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Clear"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="326dp"
+                android:layout_height="69dp"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="65dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:id="@+id/tv12"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Example 12"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -497,40 +905,69 @@
             app:cardElevation="11dp"
             app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/Qs11"
-                android:layout_width="146dp"
-                android:layout_height="92dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="30dp"
-                android:ems="10"
-                android:inputType="text"
-                android:lines="2"
-                android:text="Question 11"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="66dp">
 
-            <Button
-                android:id="@+id/e11"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="20dp"
-                android:text="Edit"
-                android:backgroundTint="@color/MediumPurple"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <TextView
+                    android:id="@+id/Qs13"
+                    android:layout_width="103dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="5dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Question 13"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/c11"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="80dp"
-                android:backgroundTint="@color/MediumPurple"
-                android:text="Clear"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <Button
+                    android:id="@+id/e13"
+                    android:layout_width="85dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Edit"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/c13"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Clear"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="326dp"
+                android:layout_height="69dp"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="65dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:id="@+id/tv13"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Example 13"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -541,40 +978,69 @@
             app:cardElevation="11dp"
             app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/Qs12"
-                android:layout_width="146dp"
-                android:layout_height="92dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="30dp"
-                android:ems="10"
-                android:inputType="text"
-                android:lines="2"
-                android:text="Question 12"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="66dp">
 
-            <Button
-                android:id="@+id/e12"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="20dp"
-                android:text="Edit"
-                android:backgroundTint="@color/MediumPurple"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <TextView
+                    android:id="@+id/Qs14"
+                    android:layout_width="103dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="5dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Question 14"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/c12"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="80dp"
-                android:backgroundTint="@color/MediumPurple"
-                android:text="Clear"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <Button
+                    android:id="@+id/e14"
+                    android:layout_width="85dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Edit"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/c14"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Clear"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="326dp"
+                android:layout_height="69dp"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="65dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:id="@+id/tv14"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Example 14"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -585,40 +1051,69 @@
             app:cardElevation="11dp"
             app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/Qs13"
-                android:layout_width="146dp"
-                android:layout_height="92dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="30dp"
-                android:ems="10"
-                android:inputType="text"
-                android:lines="2"
-                android:text="Question 13"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="66dp">
 
-            <Button
-                android:id="@+id/e13"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="20dp"
-                android:text="Edit"
-                android:backgroundTint="@color/MediumPurple"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <TextView
+                    android:id="@+id/Qs15"
+                    android:layout_width="103dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="5dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Question 15"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/c13"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="80dp"
-                android:backgroundTint="@color/MediumPurple"
-                android:text="Clear"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <Button
+                    android:id="@+id/e15"
+                    android:layout_width="85dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Edit"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/c15"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Clear"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="326dp"
+                android:layout_height="69dp"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="65dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:id="@+id/tv15"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Example 15"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -629,40 +1124,69 @@
             app:cardElevation="11dp"
             app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/Qs14"
-                android:layout_width="146dp"
-                android:layout_height="92dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="30dp"
-                android:ems="10"
-                android:inputType="text"
-                android:lines="2"
-                android:text="Question 14"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="66dp">
 
-            <Button
-                android:id="@+id/e14"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="20dp"
-                android:text="Edit"
-                android:backgroundTint="@color/MediumPurple"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <TextView
+                    android:id="@+id/Qs16"
+                    android:layout_width="103dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="5dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Question 16"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/c14"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="80dp"
-                android:backgroundTint="@color/MediumPurple"
-                android:text="Clear"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <Button
+                    android:id="@+id/e16"
+                    android:layout_width="85dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Edit"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/c16"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Clear"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="326dp"
+                android:layout_height="69dp"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="65dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:id="@+id/tv16"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Example 16"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -673,40 +1197,69 @@
             app:cardElevation="11dp"
             app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/Qs15"
-                android:layout_width="146dp"
-                android:layout_height="92dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="30dp"
-                android:ems="10"
-                android:inputType="text"
-                android:lines="2"
-                android:text="Question 15"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="66dp">
 
-            <Button
-                android:id="@+id/e15"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="20dp"
-                android:text="Edit"
-                android:backgroundTint="@color/MediumPurple"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <TextView
+                    android:id="@+id/Qs17"
+                    android:layout_width="103dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="5dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Question 17"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/c15"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="80dp"
-                android:backgroundTint="@color/MediumPurple"
-                android:text="Clear"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <Button
+                    android:id="@+id/e17"
+                    android:layout_width="85dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Edit"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/c17"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Clear"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="326dp"
+                android:layout_height="69dp"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="65dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:id="@+id/tv17"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Example 17"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -717,40 +1270,69 @@
             app:cardElevation="11dp"
             app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/Qs16"
-                android:layout_width="146dp"
-                android:layout_height="92dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="30dp"
-                android:ems="10"
-                android:inputType="text"
-                android:lines="2"
-                android:text="Question 16"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="66dp">
 
-            <Button
-                android:id="@+id/e16"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="20dp"
-                android:text="Edit"
-                android:backgroundTint="@color/MediumPurple"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <TextView
+                    android:id="@+id/Qs18"
+                    android:layout_width="103dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="5dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Question 18"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/c16"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="80dp"
-                android:backgroundTint="@color/MediumPurple"
-                android:text="Clear"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <Button
+                    android:id="@+id/e18"
+                    android:layout_width="85dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Edit"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/c18"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Clear"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="326dp"
+                android:layout_height="69dp"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="65dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:id="@+id/tv18"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Example 18"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -761,40 +1343,69 @@
             app:cardElevation="11dp"
             app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/Qs17"
-                android:layout_width="146dp"
-                android:layout_height="92dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="30dp"
-                android:ems="10"
-                android:inputType="text"
-                android:lines="2"
-                android:text="Question 17"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="66dp">
 
-            <Button
-                android:id="@+id/e17"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="20dp"
-                android:text="Edit"
-                android:backgroundTint="@color/MediumPurple"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <TextView
+                    android:id="@+id/Qs19"
+                    android:layout_width="103dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="5dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Question 19"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/c17"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="80dp"
-                android:backgroundTint="@color/MediumPurple"
-                android:text="Clear"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <Button
+                    android:id="@+id/e19"
+                    android:layout_width="85dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Edit"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/c19"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Clear"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="326dp"
+                android:layout_height="69dp"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="65dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:id="@+id/tv19"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Example 19"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -805,135 +1416,72 @@
             app:cardElevation="11dp"
             app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/Qs18"
-                android:layout_width="146dp"
-                android:layout_height="92dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="30dp"
-                android:ems="10"
-                android:inputType="text"
-                android:lines="2"
-                android:text="Question 18"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="66dp">
 
-            <Button
-                android:id="@+id/e18"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="20dp"
-                android:text="Edit"
-                android:backgroundTint="@color/MediumPurple"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <TextView
+                    android:id="@+id/Qs20"
+                    android:layout_width="103dp"
+                    android:layout_height="34dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="5dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Question 20"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/c18"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="80dp"
-                android:backgroundTint="@color/MediumPurple"
-                android:text="Clear"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
+                <Button
+                    android:id="@+id/e20"
+                    android:layout_width="85dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Edit"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/c20"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/MediumPurple"
+                    android:text="Clear"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="326dp"
+                android:layout_height="69dp"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="65dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+
+                <TextView
+                    android:id="@+id/tv20"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Example 20"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:cardBackgroundColor="#6B5298"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="11dp"
-            app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/Qs19"
-                android:layout_width="146dp"
-                android:layout_height="92dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="30dp"
-                android:ems="10"
-                android:inputType="text"
-                android:lines="2"
-                android:text="Question 19"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
-
-            <Button
-                android:id="@+id/e19"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="20dp"
-                android:text="Edit"
-                android:backgroundTint="@color/MediumPurple"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
-
-            <Button
-                android:id="@+id/c19"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="80dp"
-                android:backgroundTint="@color/MediumPurple"
-                android:text="Clear"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:cardBackgroundColor="#6B5298"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="11dp"
-            app:cardUseCompatPadding="true">
-
-            <TextView
-                android:id="@+id/Qs20"
-                android:layout_width="146dp"
-                android:layout_height="92dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="30dp"
-                android:ems="10"
-                android:inputType="text"
-                android:lines="2"
-                android:text="Question 20"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
-
-            <Button
-                android:id="@+id/e20"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="20dp"
-                android:text="Edit"
-                android:backgroundTint="@color/MediumPurple"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
-
-            <Button
-                android:id="@+id/c20"
-                android:layout_width="121dp"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="180dp"
-                android:layout_marginVertical="80dp"
-                android:backgroundTint="@color/MediumPurple"
-                android:text="Clear"
-                android:textColor="#FFFFFF"
-                app:cornerRadius="15dp" />
-        </androidx.cardview.widget.CardView>
-
-        <Button
-            android:id="@+id/done"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Done" />
 
     </LinearLayout>
 

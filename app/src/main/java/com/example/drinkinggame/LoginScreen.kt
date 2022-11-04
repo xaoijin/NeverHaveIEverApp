@@ -80,8 +80,8 @@ class LoginScreen : AppCompatActivity() {
             return
         }
         val emailPsw = hashMapOf(
-                "Email" to email,
-                "Password" to psw
+            "Email" to email,
+            "Password" to psw
         )
         val cleanQuestionSetNames = hashMapOf(
             "QS1Name" to "Question Set 1",

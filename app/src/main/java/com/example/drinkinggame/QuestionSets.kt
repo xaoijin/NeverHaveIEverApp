@@ -5,19 +5,13 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.drinkinggame.databinding.ActivityQuestionSetsBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.SetOptions
-import com.google.firebase.firestore.auth.User
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.tasks.await
 
 
 var questionsetselected = 0
@@ -27,9 +21,6 @@ var questionsetrename = 0
 class QuestionSets : AppCompatActivity() {
     private lateinit var binding: ActivityQuestionSetsBinding
     private lateinit var auth: FirebaseAuth
-    private lateinit var qsn1: String
-    private lateinit var qsn2: String
-    private lateinit var qsn3: String
     val db = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,17 +53,17 @@ class QuestionSets : AppCompatActivity() {
         //Buttons for Edit,Rename,Select
         binding.e1.setOnClickListener {
             questionsetedit = 1
-            val intent = Intent(this, EditQuestionSet::class.java)
+            val intent = Intent(this, QuestionList::class.java)
             startActivity(intent)
         }
         binding.e2.setOnClickListener {
             questionsetedit = 2
-            val intent = Intent(this, EditQuestionSet::class.java)
+            val intent = Intent(this, QuestionList::class.java)
             startActivity(intent)
         }
         binding.e3.setOnClickListener {
             questionsetedit = 3
-            val intent = Intent(this, EditQuestionSet::class.java)
+            val intent = Intent(this, QuestionList::class.java)
             startActivity(intent)
         }
         binding.r1.setOnClickListener {
@@ -106,11 +97,9 @@ class QuestionSets : AppCompatActivity() {
             binding.s3.text = "Selected"
             binding.s3.backgroundTintList= ContextCompat.getColorStateList(applicationContext, R.color.DarkViolet)
         }
-        //End of Buttons for Edit,Rename,Select
     }
-    // Sends the rename to the database
-    private fun updateDatabase(){
-        var qSetNamesref = db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
+    private fun updateSetName(){
+        val qSetNamesref = db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
                 "Question Set Name Edit"
         ).document("Names")
         qSetNamesref.update("QS1Name", binding.Qs1.text.toString())
@@ -118,7 +107,6 @@ class QuestionSets : AppCompatActivity() {
         qSetNamesref.update("QS3Name", binding.Qs3.text.toString())
         Log.d("Main", "updateUI worked")
     }
-
     private fun clearSelect(){
         binding.s1.text = buildString {
         append("Select")
@@ -146,12 +134,11 @@ class QuestionSets : AppCompatActivity() {
                     // positive button text and action
                     .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
                         binding.Qs1.text = input.text.toString()
-                        updateDatabase()
+                        updateSetName()
                     })
                     // negative button text and action
                     .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
                         dialog.cancel()
-
                     })
             }
             2 -> {
@@ -161,12 +148,11 @@ class QuestionSets : AppCompatActivity() {
                     // positive button text and action
                     .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
                         binding.Qs2.text = input.text.toString()
-                        updateDatabase()
+                        updateSetName()
                     })
                     // negative button text and action
                     .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
                         dialog.cancel()
-
                     })
             }
             3 -> {
@@ -176,12 +162,11 @@ class QuestionSets : AppCompatActivity() {
                     // positive button text and action
                     .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
                         binding.Qs3.text = input.text.toString()
-                        updateDatabase()
+                        updateSetName()
                     })
                     // negative button text and action
                     .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
                         dialog.cancel()
-
                     })
             }
         }
