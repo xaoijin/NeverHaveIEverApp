@@ -100,19 +100,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.866" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="156dp"
-        android:layout_height="81dp"
-        android:text="Question set name"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.456" />
 
     <EditText
         android:id="@+id/roomcode"
@@ -122,6 +109,7 @@
         android:ems="10"
         android:hint="Room Code"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -129,6 +117,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.607" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="192dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="215dp"
+        android:layout_marginTop="368dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="468dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
