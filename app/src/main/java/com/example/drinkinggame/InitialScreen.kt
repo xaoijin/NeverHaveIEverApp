@@ -11,11 +11,11 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class InitialScreen : AppCompatActivity() {
-    private lateinit var fGame: Button
+    private lateinit var jGame: Button
     private lateinit var cQuestions: Button
     private lateinit var auth: FirebaseAuth
     private lateinit var bLogout: Button
-    lateinit var userUID: TextView
+    private lateinit var userUID: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_initialscreen)
@@ -23,12 +23,12 @@ class InitialScreen : AppCompatActivity() {
             supportActionBar!!.hide()
         }
         auth = FirebaseAuth.getInstance()
-        fGame = findViewById(R.id.cFindGame)
+        jGame = findViewById(R.id.joinGame)
         cQuestions = findViewById(R.id.cQuestionSet)
         bLogout = findViewById(R.id.log_out)
         userUID = findViewById(R.id.userUID)
-        fGame.setOnClickListener {
-            val intent = Intent(this, CreateGame::class.java)
+        jGame.setOnClickListener {
+            val intent = Intent(this, ActiveGame::class.java)
             startActivity(intent)
         }
 
