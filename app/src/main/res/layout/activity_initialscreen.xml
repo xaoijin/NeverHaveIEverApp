@@ -62,7 +62,8 @@
             android:background="@color/RosyBrown"
             android:ems="10"
             android:inputType="text"
-            android:text="Enter Code Here"
+            android:maxLength="6"
+            android:text="Code"
             android:textAlignment="center" />
 
         <Button
