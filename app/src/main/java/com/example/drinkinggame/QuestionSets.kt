@@ -14,7 +14,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 
-var questionsetselected = 0
+var questionsetselected = 1
 var questionsetedit = 0
 var questionsetrename = 0
 
