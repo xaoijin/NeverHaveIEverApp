@@ -9,6 +9,7 @@
     <color name="LightSkyBlue">#87CEFA</color>
     <color name="Maroon">#800000</color>
     <color name="CornflowerBlue">#6495ED</color>
+    <color name="opacity">#99000000</color>
 
 
     <color name="ForestGreen">#228B22</color>
