@@ -60,10 +60,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@color/RosyBrown"
-            android:ems="10"
+            android:ems="7"
             android:inputType="text"
             android:maxLength="6"
-            android:text="Code"
+            android:hint="Enter Code Here"
             android:textAlignment="center" />
 
         <Button

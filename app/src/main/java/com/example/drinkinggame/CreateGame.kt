@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Toast
 import com.example.drinkinggame.databinding.ActivityCreateGameBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.MetadataChanges
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -71,20 +72,21 @@ class CreateGame : AppCompatActivity() {
 
     }
     private fun doesRoomCodeExists(){
-        val makeRoom = db.collection("Rooms").document(roomCode)
         val checkRoom = db.collection("Rooms").document(roomCode)
-        checkRoom.addSnapshotListener { snapshot, e ->
+        checkRoom.addSnapshotListener(MetadataChanges.INCLUDE){ snapshot, e ->
             if (e != null) {
                 Log.w("Main", "Listen failed.", e)
                 return@addSnapshotListener
             }
 
-            if (snapshot != null && snapshot.exists()) {
-                Log.d("Main", "Current data: ${snapshot.data}")
+            if (snapshot != null && snapshot.exists() || roomCode == checkRoom.toString())
+            {
+                Log.d("Main", "Current data: ${snapshot?.data}")
                 Toast.makeText(applicationContext, "Room exists,Try Again!", Toast.LENGTH_SHORT).show()
 
             } else {
                 Log.d("Main", "Current data: null")
+                val makeRoom = db.collection("Rooms").document(roomCode)
                 val roomSettings = hashMapOf(
                     "Host" to host,
                     "Number of Players" to maxPlayer,
