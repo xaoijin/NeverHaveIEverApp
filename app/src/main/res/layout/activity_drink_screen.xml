@@ -8,8 +8,9 @@
     tools:context=".DrinkScreen">
 
     <pl.droidsonroids.gif.GifImageView
-        android:layout_width="476dp"
-        android:layout_height="911dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
         android:layout_alignParentBottom="true"
         android:src="@drawable/drink"
         app:layout_constraintBottom_toBottomOf="parent"
