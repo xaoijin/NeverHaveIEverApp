@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,100 +12,206 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/mygif3" />
+        android:src="@drawable/beercheer"
+        android:translationZ="-90dp" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
         android:theme="@style/ThemeOverlay.Material3">
 
         <TextView
             android:id="@+id/uidDisplay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+
             android:text="Player UID: "
-            android:textColor="@color/GhostWhite"
-            android:translationZ="90dp" />
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:translationZ="90dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.026"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.004" />
 
         <TextView
             android:id="@+id/userUID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:text="####"
-            android:textColor="@color/GhostWhite"
-            android:translationZ="90dp"
 
-            />
+            android:layout_marginBottom="690dp"
+            android:text="asfasfasfsafasf"
+            android:textAlignment="viewStart"
+            android:textColor="@color/GhostWhite"
+            android:textStyle="bold"
+            android:translationZ="90dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.107" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:text="Welcome To AA"
-            android:textColor="@color/GhostWhite"
+            android:textColor="@color/WhiteSmoke"
             android:textSize="32sp"
             android:textStyle="bold"
-            android:translationZ="90dp" />
+            android:translationZ="90dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.451"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.05" />
 
-        <Space
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="101dp"
+            android:layout_height="wrap_content"
+
+            android:text="Change Name"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.948"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="152dp"
+            android:layout_marginBottom="559dp"
+            android:background="@color/navy"
+            android:text="Something"
+            android:textAlignment="center"
+            android:textColor="@color/WhiteSmoke"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.893"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="291dp"
+            android:layout_marginTop="102dp"
+            android:layout_marginEnd="27dp"
+            android:layout_marginBottom="609dp"
+            android:text="Display Name"
+            android:textColor="@color/WhiteSmoke"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.048"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.171"
+            tools:srcCompat="@tools:sample/avatars[11]" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="101dp"
+            android:layout_height="wrap_content"
+            android:text="Change Icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.029"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.301" />
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="73dp" />
+            android:layout_height="260dp"
+            android:orientation="vertical"
+            android:background="@drawable/handwithdrinks"
+            android:translationZ="120dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.997">
 
-        <EditText
-            android:id="@+id/gameCode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/RosyBrown"
-            android:ems="7"
-            android:inputType="text"
-            android:maxLength="6"
-            android:hint="Enter Code Here"
-            android:textAlignment="center" />
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Room Code"
+                android:background="@color/LavenderBlush"
+                android:textColor="@color/Black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/joinGame"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:baselineAligned="false"
+            <EditText
+                android:id="@+id/gameCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/RosyBrown"
+                android:ems="7"
+                android:hint="Enter Code Here"
+                android:inputType="text"
+                android:maxLength="6"
+                android:minHeight="48dp"
+                android:textAlignment="center" />
 
-            android:text="Join Game"
-            android:translationZ="90dp" />
+            <Button
+                android:id="@+id/joinGame"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Join Game" />
 
-        <Button
-            android:id="@+id/createGame"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Create Game" />
+            <Button
+                android:id="@+id/createGame"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Create Game" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="30dp" />
+            <Button
+                android:id="@+id/cQuestionSet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Question Sets"
+                android:translationZ="90dp" />
 
-        <Button
-            android:id="@+id/cQuestionSet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Question Sets"
-            android:translationZ="90dp" />
+            <Button
+                android:id="@+id/log_out"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Logout"
+                android:translationZ="90dp" />
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/log_out"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-
-            android:text="Logout"
-            android:translationZ="90dp" />
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </FrameLayout>
