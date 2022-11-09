@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Welcome To AA"
-            android:textColor="@color/WhiteSmoke"
+            android:textColor="@color/SandyBrown"
             android:textSize="32sp"
             android:textStyle="bold"
             android:translationZ="90dp"
@@ -78,10 +78,10 @@
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.948"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.3" />
+            app:layout_constraintVertical_bias="0.227" />
 
         <TextView
             android:id="@+id/textView9"
@@ -106,30 +106,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="291dp"
-            android:layout_marginTop="102dp"
-            android:layout_marginEnd="27dp"
-            android:layout_marginBottom="609dp"
             android:text="Display Name"
             android:textColor="@color/WhiteSmoke"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.175" />
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="84dp"
             android:layout_height="84dp"
-
+            android:src="@drawable/beermug"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.048"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.171"
-            tools:srcCompat="@tools:sample/avatars[11]" />
+            android:background="@drawable/borderimage"/>
 
         <Button
             android:id="@+id/button3"
@@ -138,10 +137,10 @@
             android:text="Change Icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.029"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.301" />
+            app:layout_constraintVertical_bias="0.146" />
 
         <LinearLayout
             android:layout_width="310dp"
@@ -163,9 +162,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-
+                android:background="@color/opacity"
                 android:text="Room Code"
-                android:textColor="@color/Black"
+                android:textColor="@color/AntiqueWhite"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
