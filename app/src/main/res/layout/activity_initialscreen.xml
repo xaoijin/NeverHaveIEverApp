@@ -34,7 +34,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.005" />
+            app:layout_constraintVertical_bias="0.018" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/changeNameB"
@@ -56,16 +56,16 @@
 
         <ImageView
             android:id="@+id/iconimginitial"
-            android:layout_width="84dp"
-            android:layout_height="84dp"
+            android:layout_width="79dp"
+            android:layout_height="75dp"
             android:background="@drawable/borderimage"
             android:src="@drawable/beermug"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintHorizontal_bias="0.105"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.075" />
+            app:layout_constraintVertical_bias="0.094" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/changeIconB"
@@ -172,10 +172,10 @@
             android:layout_height="60dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.899"
+            app:layout_constraintHorizontal_bias="0.896"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.102">
+            app:layout_constraintVertical_bias="0.092">
 
             <TextView
                 android:id="@+id/displaytext"
