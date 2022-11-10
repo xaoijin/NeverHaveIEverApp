@@ -163,7 +163,7 @@
                 android:background="@drawable/logoutdesign"
                 android:minHeight="48dp"
                 android:text="Logout"
-
+                android:layout_margin="2dp"
                 />
         </LinearLayout>
 

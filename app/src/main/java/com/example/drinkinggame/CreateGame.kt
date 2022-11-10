@@ -67,7 +67,6 @@ class CreateGame : AppCompatActivity() {
         binding.roomcodeError.visibility = View.INVISIBLE
         binding.create.setOnClickListener {
             validSettings()
-            doesRoomCodeExists()
         }
 
     }
@@ -79,7 +78,7 @@ class CreateGame : AppCompatActivity() {
                 return@addSnapshotListener
             }
 
-            if (snapshot != null && snapshot.exists() || roomCode == checkRoom.toString())
+            if (snapshot != null && snapshot.exists() && roomCode == checkRoom.toString())
             {
                 Log.d("Main", "Current data: ${snapshot?.data}")
                 Toast.makeText(applicationContext, "Room exists,Try Again!", Toast.LENGTH_SHORT).show()
@@ -101,11 +100,15 @@ class CreateGame : AppCompatActivity() {
     private fun validSettings(){
         timer = binding.timer.text.toString().toInt()
         maxPlayer = binding.players.text.toString().toInt()
+        var maxPlayerValid = false
+        var timerValid = false
+        var roomcodeValid = false
         if (maxPlayer < 2 || maxPlayer > 6 || binding.players.text.toString().isEmpty()){
             binding.playerError.visibility = View.VISIBLE
         }else{
             binding.playerError.visibility = View.INVISIBLE
             maxPlayer = binding.players.text.toString().toInt()
+            maxPlayerValid = true
         }
 
         if(timer < 10 || timer > 99 || binding.timer.text.toString().isEmpty()){
@@ -113,12 +116,17 @@ class CreateGame : AppCompatActivity() {
         }else{
             binding.timerError.visibility = View.INVISIBLE
             timer = binding.timer.text.toString().toInt()
+            timerValid = true
         }
         if (binding.roomcode.text.toString().isEmpty()){
             binding.roomcodeError.visibility = View.VISIBLE
         }else{
             binding.roomcodeError.visibility = View.INVISIBLE
             roomCode = binding.roomcode.text.toString()
+            roomcodeValid = true
+        }
+        if (maxPlayerValid && timerValid && roomcodeValid){
+            doesRoomCodeExists()
         }
 
     }
