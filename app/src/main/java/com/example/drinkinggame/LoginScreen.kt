@@ -6,8 +6,12 @@ import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.github.javafaker.Faker
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -72,7 +76,10 @@ class LoginScreen : AppCompatActivity() {
                 Log.d("Main", "Failed to Login User: ${it.message}")
             }
     }
+
     private fun registerAccount(){
+        val faker = Faker()
+        val name = faker.app().name() // Miss Samanta Schmidt
         val email = lEmail.text.toString().trim()
         val psw = lPassword.text.toString().trim()
         if (email.isEmpty() || psw.isEmpty()){
@@ -81,7 +88,8 @@ class LoginScreen : AppCompatActivity() {
         }
         val emailPsw = hashMapOf(
             "Email" to email,
-            "Password" to psw
+            "Password" to psw,
+            "Display Name" to name
         )
         val cleanQuestionSetNames = hashMapOf(
             "QS1Name" to "Question Set 1",

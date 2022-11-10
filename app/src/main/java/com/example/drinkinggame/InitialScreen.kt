@@ -3,6 +3,7 @@ package com.example.drinkinggame
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -10,14 +11,15 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.content.ContextCompat.startActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import org.w3c.dom.Text
 var selectedIcon = ""
 class InitialScreen : AppCompatActivity() {
+    private var db = Firebase.firestore
     private lateinit var jGame: Button
     private lateinit var cQuestions: Button
     private lateinit var auth: FirebaseAuth
@@ -45,6 +47,8 @@ class InitialScreen : AppCompatActivity() {
         displayName = findViewById(R.id.displayname)
         userIcon = findViewById(R.id.iconimginitial)
 
+        updateUI()
+
         cIcon.setOnClickListener {
             val intent = Intent(this,AvatarIcons::class.java)
             startActivity(intent)
@@ -67,6 +71,28 @@ class InitialScreen : AppCompatActivity() {
         bLogout.setOnClickListener { logout() }
 
     }
+    private fun updateUI(){
+        auth = FirebaseAuth.getInstance()
+        val setDisplayName = db.collection("Account Data").document(auth.currentUser?.uid.toString())
+        setDisplayName.addSnapshotListener { snapshot, e ->
+            if (e != null) {
+                Log.w("Main", "Listen failed.", e)
+                return@addSnapshotListener
+            }
+
+            if (snapshot != null && snapshot.exists()) {
+                Log.d("Main", "Current data: ${snapshot.data}")
+                displayName.text = snapshot.getString("Display Name").toString()
+            }else {
+                Log.d("Main", "Current data: null")
+            }
+        }
+    }
+    private fun updateDisplayName(){
+        auth = FirebaseAuth.getInstance()
+        val setDisplayName = db.collection("Account Data").document(auth.currentUser?.uid.toString())
+        setDisplayName.update("Display Name", displayName.text.toString())
+    }
     private fun changeName(){
         val input = EditText(this)
         input.hint = "Type Here"
@@ -76,6 +102,7 @@ class InitialScreen : AppCompatActivity() {
             .setCancelable(true)
             .setPositiveButton("Confirm",DialogInterface.OnClickListener{dialog, id ->
                 displayName.text = input.text.toString()
+                updateDisplayName()
             }).setNegativeButton("Cancel", DialogInterface.OnClickListener{dialog, id ->
                 dialog.cancel()
             })
