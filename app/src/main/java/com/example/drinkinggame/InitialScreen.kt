@@ -23,7 +23,6 @@ class InitialScreen : AppCompatActivity() {
     private lateinit var cQuestions: Button
     private lateinit var auth: FirebaseAuth
     private lateinit var bLogout: Button
-    private lateinit var userUID: TextView
     private lateinit var cGame: AppCompatButton
     private lateinit var cName: AppCompatButton
     private lateinit var cIcon: AppCompatButton
@@ -39,7 +38,6 @@ class InitialScreen : AppCompatActivity() {
         jGame = findViewById(R.id.joinGame)
         cQuestions = findViewById(R.id.cQuestionSet)
         bLogout = findViewById(R.id.log_out)
-        userUID = findViewById(R.id.userUID)
         cGame = findViewById(R.id.createGame)
         cName = findViewById(R.id.changeNameB)
         cIcon = findViewById(R.id.changeIconB)
@@ -113,15 +111,6 @@ class InitialScreen : AppCompatActivity() {
         alert.show()
     }
 
-    override fun onStart() {
-        super.onStart()
-        val currentUser = auth.currentUser
-        updateUI(currentUser)
-    }
-    private fun updateUI(user: FirebaseUser?){
-        val currentUserUid = auth.currentUser?.uid.toString()
-        userUID.text = currentUserUid
-    }
     private fun logout(){
         Firebase.auth.signOut()
         val intent = Intent(this, LoginScreen::class.java)
