@@ -11,13 +11,12 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
-import androidx.core.content.ContextCompat.startActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-var selectedIcon = ""
+
 class InitialScreen : AppCompatActivity() {
     private var db = Firebase.firestore
     private lateinit var jGame: Button
@@ -73,8 +72,9 @@ class InitialScreen : AppCompatActivity() {
     }
     private fun updateUI(){
         auth = FirebaseAuth.getInstance()
-        val setDisplayName = db.collection("Account Data").document(auth.currentUser?.uid.toString())
-        setDisplayName.addSnapshotListener { snapshot, e ->
+        var savedIcon = ""
+        val userProfile = db.collection("Account Data").document(auth.currentUser?.uid.toString())
+        userProfile.addSnapshotListener { snapshot, e ->
             if (e != null) {
                 Log.w("Main", "Listen failed.", e)
                 return@addSnapshotListener
@@ -83,6 +83,8 @@ class InitialScreen : AppCompatActivity() {
             if (snapshot != null && snapshot.exists()) {
                 Log.d("Main", "Current data: ${snapshot.data}")
                 displayName.text = snapshot.getString("Display Name").toString()
+                savedIcon = snapshot.getString("Icon").toString()
+                userIcon.setImageResource(resources.getIdentifier(savedIcon, "drawable", packageName))
             }else {
                 Log.d("Main", "Current data: null")
             }

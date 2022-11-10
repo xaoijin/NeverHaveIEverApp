@@ -82,6 +82,7 @@ class LoginScreen : AppCompatActivity() {
         val name = faker.app().name() // Miss Samanta Schmidt
         val email = lEmail.text.toString().trim()
         val psw = lPassword.text.toString().trim()
+        val icon = "brandy"
         if (email.isEmpty() || psw.isEmpty()){
             Toast.makeText(this, "Please Enter Email or Password", Toast.LENGTH_SHORT).show()
             return
@@ -89,7 +90,8 @@ class LoginScreen : AppCompatActivity() {
         val emailPsw = hashMapOf(
             "Email" to email,
             "Password" to psw,
-            "Display Name" to name
+            "Display Name" to name,
+            "Icon" to icon
         )
         val cleanQuestionSetNames = hashMapOf(
             "QS1Name" to "Question Set 1",
