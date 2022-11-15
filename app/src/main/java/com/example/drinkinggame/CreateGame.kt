@@ -118,14 +118,12 @@ class CreateGame : AppCompatActivity() {
                     "Timer" to timer
                 )
                 makeRoom.set(roomSettings)
-                makeRoom.collection("Players").document("Player Display Names").set(playersInRoom)
+                makeRoom.collection("Players").document("Player UIDs").set(playersInRoom)
                 makeRoom.collection("Questions").document("Questions to be Used").set(questionSetInUse)
                 val intent = Intent(this, ActiveGame::class.java)
                 startActivity(intent)
             }else if (snapshot != null && snapshot.exists()){
                 binding.roomcodeError2.visibility = View.VISIBLE
-            }else{
-                binding.roomcodeError2.visibility = View.INVISIBLE
             }
         }
     }
