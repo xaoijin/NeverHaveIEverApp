@@ -24,7 +24,6 @@ class CreateGame : AppCompatActivity() {
     private lateinit var binding: ActivityCreateGameBinding
     private lateinit var auth: FirebaseAuth
     val db = Firebase.firestore
-    private var settingValid = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateGameBinding.inflate(layoutInflater)
@@ -65,6 +64,7 @@ class CreateGame : AppCompatActivity() {
         binding.playerError.visibility = View.INVISIBLE
         binding.timerError.visibility = View.INVISIBLE
         binding.roomcodeError.visibility = View.INVISIBLE
+        binding.roomcodeError2.visibility = View.INVISIBLE
         binding.create.setOnClickListener {
             validSettings()
         }
@@ -78,22 +78,54 @@ class CreateGame : AppCompatActivity() {
                 return@addSnapshotListener
             }
 
-            if (snapshot != null && snapshot.exists() && roomCode == checkRoom.toString())
-            {
-                Log.d("Main", "Current data: ${snapshot?.data}")
-                Toast.makeText(applicationContext, "Room exists,Try Again!", Toast.LENGTH_SHORT).show()
-
-            } else {
-                Log.d("Main", "Current data: null")
+            if (snapshot != null && !snapshot.exists()) {
+                Log.d("Main", "in else statement of does room code exist")
                 val makeRoom = db.collection("Rooms").document(roomCode)
+                val playersInRoom = hashMapOf(
+                    "Player 1" to "",
+                    "Player 2" to "",
+                    "Player 3" to "",
+                    "Player 4" to "",
+                    "Player 5" to "",
+                    "Player 6" to "",
+
+                )
+                val questionSetInUse = hashMapOf(
+                    "Q1" to "",
+                    "Q2" to "",
+                    "Q3" to "",
+                    "Q4" to "",
+                    "Q5" to "",
+                    "Q6" to "",
+                    "Q7" to "",
+                    "Q8" to "",
+                    "Q9" to "",
+                    "Q10" to "",
+                    "Q11" to "",
+                    "Q12" to "",
+                    "Q13" to "",
+                    "Q14" to "",
+                    "Q15" to "",
+                    "Q16" to "",
+                    "Q17" to "",
+                    "Q18" to "",
+                    "Q19" to "",
+                    "Q20" to ""
+                )
                 val roomSettings = hashMapOf(
                     "Host" to host,
                     "Number of Players" to maxPlayer,
                     "Timer" to timer
                 )
                 makeRoom.set(roomSettings)
+                makeRoom.collection("Players").document("Player Display Names").set(playersInRoom)
+                makeRoom.collection("Questions").document("Questions to be Used").set(questionSetInUse)
                 val intent = Intent(this, ActiveGame::class.java)
                 startActivity(intent)
+            }else if (snapshot != null && snapshot.exists()){
+                binding.roomcodeError2.visibility = View.VISIBLE
+            }else{
+                binding.roomcodeError2.visibility = View.INVISIBLE
             }
         }
     }
@@ -127,6 +159,8 @@ class CreateGame : AppCompatActivity() {
         }
         if (maxPlayerValid && timerValid && roomcodeValid){
             doesRoomCodeExists()
+        }else{
+            binding.roomcodeError2.visibility = View.INVISIBLE
         }
 
     }
