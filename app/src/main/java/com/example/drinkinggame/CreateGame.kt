@@ -120,6 +120,7 @@ class CreateGame : AppCompatActivity() {
                 makeRoom.set(roomSettings)
                 makeRoom.collection("Players").document("Player UIDs").set(playersInRoom)
                 makeRoom.collection("Questions").document("Questions to be Used").set(questionSetInUse)
+                binding.roomcodeError2.visibility = View.INVISIBLE
                 val intent = Intent(this, ActiveGame::class.java)
                 startActivity(intent)
             }else if (snapshot != null && snapshot.exists()){
