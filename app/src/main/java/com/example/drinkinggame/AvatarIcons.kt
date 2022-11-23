@@ -29,54 +29,54 @@ class AvatarIcons : AppCompatActivity() {
         val coffee = findViewById<ImageView>(R.id.coffee)
         val vodka = findViewById<ImageView>(R.id.vodka)
         val weizen = findViewById<ImageView>(R.id.weizen)
-        val empty = findViewById<ImageView>(R.id.empty)
         val select = findViewById<Button>(R.id.select)
         auth = FirebaseAuth.getInstance()
         val userIcon = db.collection("Account Data")
             .document(auth.currentUser?.uid.toString())
 
         wineglass.setOnClickListener{
-            empty.setImageResource(R.drawable.wineglass)
+            wineglass.setImageResource(R.drawable.checkmark)
             selectedIcon = "wineglass"
             userIcon.update("Icon", selectedIcon)
         }
         shotglass.setOnClickListener{
-            empty.setImageResource(R.drawable.shotglass)
+            shotglass.setImageResource(R.drawable.checkmark)
+
             selectedIcon = "shotglass"
             userIcon.update("Icon", selectedIcon)
         }
         martini.setOnClickListener{
-            empty.setImageResource(R.drawable.martini)
+            martini.setImageResource(R.drawable.checkmark)
             selectedIcon = "martini"
             userIcon.update("Icon", selectedIcon)
         }
         brandy.setOnClickListener{
-            empty.setImageResource(R.drawable.brandy)
+            brandy.setImageResource(R.drawable.checkmark)
             selectedIcon = "brandy"
             userIcon.update("Icon", selectedIcon)
         }
         hurricane.setOnClickListener{
-            empty.setImageResource(R.drawable.hurricane)
+            hurricane.setImageResource(R.drawable.checkmark)
             selectedIcon = "hurricane"
             userIcon.update("Icon", selectedIcon)
         }
         beermug.setOnClickListener{
-            empty.setImageResource(R.drawable.beermug)
+            beermug.setImageResource(R.drawable.checkmark)
             selectedIcon = "beermug"
             userIcon.update("Icon", selectedIcon)
         }
         coffee.setOnClickListener{
-            empty.setImageResource(R.drawable.coffee)
+            coffee.setImageResource(R.drawable.checkmark)
             selectedIcon = "coffee"
             userIcon.update("Icon", selectedIcon)
         }
         vodka.setOnClickListener{
-            empty.setImageResource(R.drawable.vodka)
+            vodka.setImageResource(R.drawable.checkmark)
             selectedIcon = "vodka"
             userIcon.update("Icon", selectedIcon)
         }
         weizen.setOnClickListener{
-            empty.setImageResource(R.drawable.weizen)
+            weizen.setImageResource(R.drawable.checkmark)
             selectedIcon = "weizen"
             userIcon.update("Icon", selectedIcon)
         }
