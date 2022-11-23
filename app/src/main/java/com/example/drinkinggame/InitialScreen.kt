@@ -4,16 +4,15 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.MetadataChanges
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -28,6 +27,8 @@ class InitialScreen : AppCompatActivity() {
     private lateinit var cIcon: AppCompatButton
     private lateinit var displayName: TextView
     private lateinit var userIcon: ImageView
+    private lateinit var codeError: TextView
+    private lateinit var gameCodeET: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_initialscreen)
@@ -43,7 +44,10 @@ class InitialScreen : AppCompatActivity() {
         cIcon = findViewById(R.id.changeIconB)
         displayName = findViewById(R.id.displayname)
         userIcon = findViewById(R.id.iconimginitial)
+        codeError = findViewById(R.id.codeError)
+        gameCodeET = findViewById(R.id.gameCode)
 
+        codeError.visibility = View.INVISIBLE
         updateUI()
 
         cIcon.setOnClickListener {
@@ -52,8 +56,7 @@ class InitialScreen : AppCompatActivity() {
         }
         cName.setOnClickListener { changeName() }
         jGame.setOnClickListener {
-            val intent = Intent(this, ActiveGame::class.java)
-            startActivity(intent)
+            joinGame()
         }
 
         cQuestions.setOnClickListener {
@@ -67,6 +70,26 @@ class InitialScreen : AppCompatActivity() {
         }
         bLogout.setOnClickListener { logout() }
 
+    }
+    private fun joinGame(){
+        if (gameCodeET.text.isEmpty()){
+            Toast.makeText(applicationContext, "Please Enter a Code!", Toast.LENGTH_SHORT).show()
+        }else{
+            val checkRoom = db.collection("Rooms").document(gameCodeET.text.toString())
+            checkRoom.addSnapshotListener(MetadataChanges.INCLUDE){ snapshot, e ->
+                if (e != null) {
+                    Log.w("Main", "Listen failed.", e)
+                    return@addSnapshotListener
+                }
+
+                if (snapshot != null && snapshot.exists() ) {
+                    val intent = Intent(this,ActiveGame::class.java)
+                    startActivity(intent)
+                }else{
+                    codeError.visibility = View.VISIBLE
+                }
+            }
+        }
     }
     private fun updateUI(){
         auth = FirebaseAuth.getInstance()
