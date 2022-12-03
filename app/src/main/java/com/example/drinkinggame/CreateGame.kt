@@ -2,18 +2,20 @@ package com.example.drinkinggame
 
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Spannable
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.View
-import android.widget.Toast
+import android.widget.TextView.BufferType
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.toSpannable
 import com.example.drinkinggame.databinding.ActivityCreateGameBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.MetadataChanges
-import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlin.math.max
+
 
 var timer = 20
 var maxPlayer = 2
@@ -61,6 +63,9 @@ class CreateGame : AppCompatActivity() {
                 Log.d("Main", "Current data: null")
             }
         }
+
+
+
         binding.playerError.visibility = View.INVISIBLE
         binding.timerError.visibility = View.INVISIBLE
         binding.roomcodeError.visibility = View.INVISIBLE
@@ -82,13 +87,12 @@ class CreateGame : AppCompatActivity() {
                 Log.d("Main", "in else statement of does room code exist")
                 val makeRoom = db.collection("Rooms").document(roomCode)
                 val playersInRoom = hashMapOf(
-                    "Player 1" to "",
+                    "Player 1" to auth.currentUser!!.uid,
                     "Player 2" to "",
                     "Player 3" to "",
                     "Player 4" to "",
                     "Player 5" to "",
-                    "Player 6" to "",
-                    "Current Players" to 0
+                    "Player 6" to ""
                 )
                 val questionSetInUse = hashMapOf(
                     "Q1" to "",
@@ -115,7 +119,10 @@ class CreateGame : AppCompatActivity() {
                 val roomSettings = hashMapOf(
                     "Host" to host,
                     "Number of Players" to maxPlayer,
-                    "Timer" to timer
+                    "Timer" to timer,
+                    "Current Players" to 1,
+                    "Current Question" to 1,
+                    "Question Set in Use" to binding.setSelected.text
                 )
                 makeRoom.set(roomSettings)
                 makeRoom.collection("Players").document("Player UIDs").set(playersInRoom)
