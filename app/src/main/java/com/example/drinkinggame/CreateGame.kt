@@ -1,3 +1,5 @@
+
+
 package com.example.drinkinggame
 
 
@@ -89,7 +91,7 @@ class CreateGame : AppCompatActivity() {
                     "Player 5" to "",
                     "Player 6" to "",
 
-                )
+                    )
                 val questionSetInUse = hashMapOf(
                     "Q1" to "",
                     "Q2" to "",
@@ -154,7 +156,7 @@ class CreateGame : AppCompatActivity() {
         }else{
             binding.roomcodeError.visibility = View.INVISIBLE
             roomCode = binding.roomcode.text.toString()
-            roomcodeValid = true
+           roomcodeValid = true
         }
         if (maxPlayerValid && timerValid && roomcodeValid){
             doesRoomCodeExists()
