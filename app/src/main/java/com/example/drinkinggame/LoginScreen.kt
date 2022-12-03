@@ -33,8 +33,8 @@ class LoginScreen : AppCompatActivity() {
         }
         val linearLayout = findViewById<LinearLayout>(R.id.loginlayout)
         val animationDrawable = linearLayout.background as AnimationDrawable
-        animationDrawable.setEnterFadeDuration(500)
-        animationDrawable.setExitFadeDuration(4500)
+        animationDrawable.setEnterFadeDuration(10)
+        animationDrawable.setExitFadeDuration(2000)
         animationDrawable.start()
 
         auth = FirebaseAuth.getInstance()
