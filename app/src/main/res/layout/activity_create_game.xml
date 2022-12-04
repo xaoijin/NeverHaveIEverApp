@@ -107,28 +107,28 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/roomcode"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="213dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="588dp"
-        android:layout_marginEnd="153dp"
-        android:layout_marginBottom="241dp"
+        android:layout_width="192dp"
+        android:layout_height="68dp"
         android:background="@color/Peru"
         android:hint="Room Code"
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.586"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.72">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/roomcodeInput"
-            android:layout_width="212dp"
-            android:layout_height="70dp"
-            tools:layout_editor_absoluteX="145dp"
-            tools:layout_editor_absoluteY="596dp" />
+            android:layout_width="182dp"
+            android:layout_height="59dp"
+            android:textColor="@color/white"
+            tools:layout_editor_absoluteX="57dp"
+            tools:layout_editor_absoluteY="361dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <TextView
         android:id="@+id/setSelected"
@@ -191,7 +191,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/red"
-        android:text="Room Code Exists, Try Again!"
+        android:text="Room Code Doesn't Exist, Try Again!"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -199,6 +199,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.622" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

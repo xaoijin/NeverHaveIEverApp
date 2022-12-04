@@ -151,11 +151,11 @@ class CreateGame : AppCompatActivity() {
             timer = binding.timer.text.toString().toInt()
             timerValid = true
         }
-        if (binding.roomcode.text.toString().isEmpty()){
+        if (binding.roomcodeInput.text.toString().isEmpty()){
             binding.roomcodeError.visibility = View.VISIBLE
         }else{
             binding.roomcodeError.visibility = View.INVISIBLE
-            roomCode = binding.roomcode.text.toString()
+            roomCode = binding.roomcodeInput.text.toString()
            roomcodeValid = true
         }
         if (maxPlayerValid && timerValid && roomcodeValid){
