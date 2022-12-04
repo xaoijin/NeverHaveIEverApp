@@ -11,7 +11,7 @@ import com.google.firebase.ktx.Firebase
 
 var JoinRoomCode = ""
 var isHost = false
-
+var CurrentRoom = ""
 class ActiveGame : AppCompatActivity() {
     private lateinit var binding: ActivityActiveGameBinding
     private lateinit var auth: FirebaseAuth
@@ -26,7 +26,7 @@ class ActiveGame : AppCompatActivity() {
         }
 
         updateUI()
-        playersJoin()
+        userJoin()
     }
 
     private fun updateUI() {
@@ -36,13 +36,20 @@ class ActiveGame : AppCompatActivity() {
             val timerSetting = db.collection("Rooms").document(JoinRoomCode)
         }
     }
+    private fun playersJoin(){
+        auth = FirebaseAuth.getInstance()
+        val roomPlayers = db.collection("Rooms").document(CurrentRoom).collection("Players").document("Player UIDs")
+    }
+    private fun getQuestion(){
 
-    private fun playersJoin() {
+    }
+    private fun userJoin() {
         auth = FirebaseAuth.getInstance()
         val playerInfo = db.collection("Account Data").document(auth.currentUser!!.uid)
         if (isHost) {
             binding.roomcode.append(hostRoomCode)
             val roomSettings = db.collection("Rooms").document(hostRoomCode)
+            CurrentRoom = hostRoomCode
             roomSettings.addSnapshotListener(MetadataChanges.INCLUDE) { snapshot, e ->
                 if (e != null) {
                     Log.w("Main", "Listen failed.", e)
@@ -165,7 +172,7 @@ class ActiveGame : AppCompatActivity() {
                     return@addSnapshotListener
                 }
                 if (snapshot != null && snapshot.exists()) {
-                    val playersinroom = snapshot.getString("Current Players")!!.toInt()
+                    val playersinroom = snapshot.get("Current Players")
                     if (isHost) {
                         playerInfo.get().addOnSuccessListener { document ->
                             val playerIcon = document.getString("Icon")

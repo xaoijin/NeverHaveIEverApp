@@ -9,6 +9,7 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.content.ContextCompat.startActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.MetadataChanges
@@ -76,20 +77,17 @@ class InitialScreen : AppCompatActivity() {
             Toast.makeText(applicationContext, "Please Enter a Code!", Toast.LENGTH_SHORT).show()
         } else {
             val checkRoom = db.collection("Rooms").document(gameCodeET.text.toString())
-            checkRoom.addSnapshotListener(MetadataChanges.INCLUDE) { snapshot, e ->
-                if (e != null) {
-                    Log.w("Main", "Listen failed.", e)
-                    return@addSnapshotListener
-                }
-
-                if (snapshot != null && snapshot.exists()) {
+            checkRoom.addSnapshotListener { snapshot, error ->
+                if (snapshot != null && snapshot.exists()){
                     JoinRoomCode = gameCodeET.text.toString()
                     val intent = Intent(this, ActiveGame::class.java)
                     startActivity(intent)
-                } else {
-                    codeError.visibility = View.VISIBLE
+                }
+                else{
+                    Toast.makeText(applicationContext, "Room Does Not Exist", Toast.LENGTH_SHORT).show()
                 }
             }
+
         }
     }
 

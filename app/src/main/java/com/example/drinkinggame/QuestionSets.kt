@@ -34,20 +34,11 @@ class QuestionSets : AppCompatActivity() {
         val qSetNamesref =
             db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
                 "Question Set Name Edit"
-            ).document("Names").addSnapshotListener { snapshot, e ->
-                if (e != null) {
-                    Log.w("Main", "Listen failed.", e)
-                    return@addSnapshotListener
-                }
+            ).document("Names").get().addOnSuccessListener { document->
+                    binding.Qs1.text = document.getString("QS1Name").toString()
+                    binding.Qs2.text = document.getString("QS2Name").toString()
+                    binding.Qs3.text = document.getString("QS3Name").toString()
 
-                if (snapshot != null && snapshot.exists()) {
-                    Log.d("Main", "Current data: ${snapshot.data}")
-                    binding.Qs1.text = snapshot.getString("QS1Name").toString()
-                    binding.Qs2.text = snapshot.getString("QS2Name").toString()
-                    binding.Qs3.text = snapshot.getString("QS3Name").toString()
-                } else {
-                    Log.d("Main", "Current data: null")
-                }
             }
         ///End of Setting Default/Saved Question Set Names
 
