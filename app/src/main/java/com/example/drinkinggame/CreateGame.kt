@@ -3,13 +3,9 @@ package com.example.drinkinggame
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Spannable
-import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.View
-import android.widget.TextView.BufferType
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.text.toSpannable
 import com.example.drinkinggame.databinding.ActivityCreateGameBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.MetadataChanges
@@ -39,7 +35,7 @@ class CreateGame : AppCompatActivity() {
             .document(auth.currentUser?.uid.toString())
             .collection("Question Set Name Edit")
 
-        qSetNamesref.document("Names").addSnapshotListener{ snapshot, e ->
+        qSetNamesref.document("Names").addSnapshotListener { snapshot, e ->
             if (e != null) {
                 Log.w("Main", "Listen failed.", e)
                 return@addSnapshotListener
@@ -75,9 +71,10 @@ class CreateGame : AppCompatActivity() {
         }
 
     }
-    private fun doesRoomCodeExists(){
+
+    private fun doesRoomCodeExists() {
         val checkRoom = db.collection("Rooms").document(roomCode)
-        checkRoom.addSnapshotListener(MetadataChanges.INCLUDE){ snapshot, e ->
+        checkRoom.addSnapshotListener(MetadataChanges.INCLUDE) { snapshot, e ->
             if (e != null) {
                 Log.w("Main", "Listen failed.", e)
                 return@addSnapshotListener
@@ -129,46 +126,48 @@ class CreateGame : AppCompatActivity() {
                 isHost = true
                 makeRoom.set(roomSettings)
                 makeRoom.collection("Players").document("Player UIDs").set(playersInRoom)
-                makeRoom.collection("Questions").document("Questions to be Used").set(questionSetInUse)
+                makeRoom.collection("Questions").document("Questions to be Used")
+                    .set(questionSetInUse)
                 binding.roomcodeError2.visibility = View.INVISIBLE
                 val intent = Intent(this, ActiveGame::class.java)
                 startActivity(intent)
-            }else if (snapshot != null && snapshot.exists()){
+            } else if (snapshot != null && snapshot.exists()) {
                 binding.roomcodeError2.visibility = View.VISIBLE
             }
         }
     }
-    private fun validSettings(){
+
+    private fun validSettings() {
         timer = binding.timer.text.toString().toInt()
         maxPlayer = binding.players.text.toString().toInt()
         var maxPlayerValid = false
         var timerValid = false
         var roomcodeValid = false
-        if (maxPlayer < 2 || maxPlayer > 6 || binding.players.text.toString().isEmpty()){
+        if (maxPlayer < 2 || maxPlayer > 6 || binding.players.text.toString().isEmpty()) {
             binding.playerError.visibility = View.VISIBLE
-        }else{
+        } else {
             binding.playerError.visibility = View.INVISIBLE
             maxPlayer = binding.players.text.toString().toInt()
             maxPlayerValid = true
         }
 
-        if(timer < 10 || timer > 99 || binding.timer.text.toString().isEmpty()){
+        if (timer < 10 || timer > 99 || binding.timer.text.toString().isEmpty()) {
             binding.timerError.visibility = View.VISIBLE
-        }else{
+        } else {
             binding.timerError.visibility = View.INVISIBLE
             timer = binding.timer.text.toString().toInt()
             timerValid = true
         }
-        if (binding.roomcodeInput.text.toString().isEmpty()){
+        if (binding.roomcodeInput.text.toString().isEmpty()) {
             binding.roomcodeError.visibility = View.VISIBLE
-        }else{
+        } else {
             binding.roomcodeError.visibility = View.INVISIBLE
             roomCode = binding.roomcodeInput.text.toString()
             roomcodeValid = true
         }
-        if (maxPlayerValid && timerValid && roomcodeValid){
+        if (maxPlayerValid && timerValid && roomcodeValid) {
             doesRoomCodeExists()
-        }else{
+        } else {
             binding.roomcodeError2.visibility = View.INVISIBLE
         }
 
