@@ -210,9 +210,10 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.419"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.781" />
+        app:layout_constraintVertical_bias="0.709" />
 
     <Button
         android:id="@+id/yesBtn"
@@ -224,10 +225,10 @@
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.77"
+        app:layout_constraintHorizontal_bias="0.746"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.904" />
+        app:layout_constraintVertical_bias="0.814" />
 
     <Button
         android:id="@+id/noBtn"
@@ -239,13 +240,14 @@
         app:cornerRadius="10dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/yesBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.232"
+        app:layout_constraintHorizontal_bias="0.244"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:id="@+id/roomcode"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
+        android:layout_height="wrap_content"
         android:background="@color/BlanchedAlmond"
         android:text="Room Code: "
         app:layout_constraintBottom_toBottomOf="parent"
@@ -254,5 +256,59 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.005" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/startBtn"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/activegamebuttons"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="8"
+        android:shadowDy="0"
+        android:shadowRadius="4"
+        android:text="Start"
+        android:textColor="@color/Black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.906" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pauseBtn"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/activegamebuttons"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="8"
+        android:shadowDy="0"
+        android:shadowRadius="4"
+        android:text="Pause"
+        android:textColor="@color/Black"
+        app:layout_constraintBaseline_toBaselineOf="@+id/startBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/endBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/activegamebuttons"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="8"
+        android:shadowDy="0"
+        android:shadowRadius="4"
+        android:text="End"
+        android:textColor="@color/Black"
+        app:layout_constraintBaseline_toBaselineOf="@+id/pauseBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.876"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

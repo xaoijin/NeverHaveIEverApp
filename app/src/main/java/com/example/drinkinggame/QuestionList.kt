@@ -2,10 +2,10 @@ package com.example.drinkinggame
 
 import android.app.AlertDialog
 import android.content.DialogInterface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import com.example.drinkinggame.databinding.ActivityQuestionListBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -13,6 +13,7 @@ import com.google.firebase.ktx.Firebase
 
 var questionToEdit = 0
 var questionToClear = 0
+
 class QuestionList : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private var db = Firebase.firestore
@@ -193,11 +194,13 @@ class QuestionList : AppCompatActivity() {
         }
 
     }
-    private fun clearQuestion(){
+
+    private fun clearQuestion() {
         auth = FirebaseAuth.getInstance()
-        val qSetNamesref = db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
-            "Question Sets"
-        )
+        val qSetNamesref =
+            db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
+                "Question Sets"
+            )
         when (questionsetedit) {
             1 -> {
                 val editSet1 = qSetNamesref.document("Set1")
@@ -397,14 +400,16 @@ class QuestionList : AppCompatActivity() {
         }
 
     }
-    private fun updateSaved(){
+
+    private fun updateSaved() {
         auth = FirebaseAuth.getInstance()
-        val qSetNamesref = db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
+        val qSetNamesref =
+            db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
                 "Question Sets"
-        )
+            )
         when (questionsetedit) {
             1 -> {
-                qSetNamesref.document("Set1").addSnapshotListener{ snapshot, e ->
+                qSetNamesref.document("Set1").addSnapshotListener { snapshot, e ->
                     if (e != null) {
                         Log.w("Main", "Listen failed.", e)
                         return@addSnapshotListener
@@ -439,7 +444,7 @@ class QuestionList : AppCompatActivity() {
                 }
             }
             2 -> {
-                qSetNamesref.document("Set2").addSnapshotListener{ snapshot, e ->
+                qSetNamesref.document("Set2").addSnapshotListener { snapshot, e ->
                     if (e != null) {
                         Log.w("Main", "Listen failed.", e)
                         return@addSnapshotListener
@@ -474,7 +479,7 @@ class QuestionList : AppCompatActivity() {
                 }
             }
             3 -> {
-                qSetNamesref.document("Set3").addSnapshotListener{ snapshot, e ->
+                qSetNamesref.document("Set3").addSnapshotListener { snapshot, e ->
                     if (e != null) {
                         Log.w("Main", "Listen failed.", e)
                         return@addSnapshotListener
@@ -510,11 +515,13 @@ class QuestionList : AppCompatActivity() {
             }
         }
     }
-    private fun updateQuestion(){
+
+    private fun updateQuestion() {
         auth = FirebaseAuth.getInstance()
-        val qSetNamesref = db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
+        val qSetNamesref =
+            db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
                 "Question Sets"
-        )
+            )
         when (questionsetedit) {
             1 -> {
                 val qRef = qSetNamesref.document("Set1")
@@ -589,292 +596,293 @@ class QuestionList : AppCompatActivity() {
 
         Log.d("Main", "updateUI worked")
     }
-    private fun editQuestion(){
+
+    private fun editQuestion() {
         auth = FirebaseAuth.getInstance()
         val input = EditText(this)
         input.setText(getString(R.string.dialogpretext))
 
         val dialogBuilder = AlertDialog.Builder(this)
-        when (questionToEdit){
+        when (questionToEdit) {
             1 -> {
                 dialogBuilder.setMessage("Enter your Question....")
-                        .setView(input)
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
-                            binding.tv1.text = input.text.toString()
-                            updateQuestion()
-                        })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.tv1.text = input.text.toString()
+                        updateQuestion()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             }
             2 -> {
                 dialogBuilder.setMessage("Enter your Question....")
-                        .setView(input)
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
-                            binding.tv2.text = input.text.toString()
-                            updateQuestion()
-                        })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.tv2.text = input.text.toString()
+                        updateQuestion()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             }
             3 -> {
                 dialogBuilder.setMessage("Enter your Question....")
-                        .setView(input)
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
-                            binding.tv3.text = input.text.toString()
-                            updateQuestion()
-                        })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.tv3.text = input.text.toString()
+                        updateQuestion()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             }
             4 -> {
                 dialogBuilder.setMessage("Enter your Question....")
-                        .setView(input)
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
-                            binding.tv4.text = input.text.toString()
-                            updateQuestion()
-                        })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.tv4.text = input.text.toString()
+                        updateQuestion()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             }
             5 -> {
                 dialogBuilder.setMessage("Enter your Question....")
-                        .setView(input)
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
-                            binding.tv5.text = input.text.toString()
-                            updateQuestion()
-                        })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.tv5.text = input.text.toString()
+                        updateQuestion()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             }
             6 -> {
                 dialogBuilder.setMessage("Enter your Question....")
-                        .setView(input)
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
-                            binding.tv6.text = input.text.toString()
-                            updateQuestion()
-                        })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.tv6.text = input.text.toString()
+                        updateQuestion()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             }
             7 -> {
                 dialogBuilder.setMessage("Enter your Question....")
-                        .setView(input)
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
-                            binding.tv7.text = input.text.toString()
-                            updateQuestion()
-                        })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.tv7.text = input.text.toString()
+                        updateQuestion()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             }
             8 -> {
                 dialogBuilder.setMessage("Enter your Question....")
-                        .setView(input)
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
-                            binding.tv8.text = input.text.toString()
-                            updateQuestion()
-                        })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.tv8.text = input.text.toString()
+                        updateQuestion()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             }
             9 -> {
                 dialogBuilder.setMessage("Enter your Question....")
-                        .setView(input)
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
-                            binding.tv9.text = input.text.toString()
-                            updateQuestion()
-                        })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.tv9.text = input.text.toString()
+                        updateQuestion()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             }
             10 -> {
                 dialogBuilder.setMessage("Enter your Question....")
-                        .setView(input)
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
-                            binding.tv10.text = input.text.toString()
-                            updateQuestion()
-                        })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.tv10.text = input.text.toString()
+                        updateQuestion()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             }
             11 -> {
                 dialogBuilder.setMessage("Enter your Question....")
-                        .setView(input)
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
-                            binding.tv11.text = input.text.toString()
-                            updateQuestion()
-                        })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.tv11.text = input.text.toString()
+                        updateQuestion()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             }
             12 -> {
                 dialogBuilder.setMessage("Enter your Question....")
-                        .setView(input)
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
-                            binding.tv12.text = input.text.toString()
-                            updateQuestion()
-                        })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.tv12.text = input.text.toString()
+                        updateQuestion()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             }
             13 -> {
                 dialogBuilder.setMessage("Enter your Question....")
-                        .setView(input)
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
-                            binding.tv13.text = input.text.toString()
-                            updateQuestion()
-                        })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.tv13.text = input.text.toString()
+                        updateQuestion()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             }
             14 -> {
                 dialogBuilder.setMessage("Enter your Question....")
-                        .setView(input)
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
-                            binding.tv14.text = input.text.toString()
-                            updateQuestion()
-                        })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.tv14.text = input.text.toString()
+                        updateQuestion()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             }
             15 -> {
                 dialogBuilder.setMessage("Enter your Question....")
-                        .setView(input)
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
-                            binding.tv15.text = input.text.toString()
-                            updateQuestion()
-                        })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.tv15.text = input.text.toString()
+                        updateQuestion()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             }
             16 -> {
                 dialogBuilder.setMessage("Enter your Question....")
-                        .setView(input)
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
-                            binding.tv16.text = input.text.toString()
-                            updateQuestion()
-                        })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.tv16.text = input.text.toString()
+                        updateQuestion()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             }
             17 -> {
                 dialogBuilder.setMessage("Enter your Question....")
-                        .setView(input)
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
-                            binding.tv17.text = input.text.toString()
-                            updateQuestion()
-                        })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.tv17.text = input.text.toString()
+                        updateQuestion()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             }
             18 -> {
                 dialogBuilder.setMessage("Enter your Question....")
-                        .setView(input)
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
-                            binding.tv18.text = input.text.toString()
-                            updateQuestion()
-                        })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.tv18.text = input.text.toString()
+                        updateQuestion()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             }
             19 -> {
                 dialogBuilder.setMessage("Enter your Question....")
-                        .setView(input)
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
-                            binding.tv19.text = input.text.toString()
-                            updateQuestion()
-                        })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.tv19.text = input.text.toString()
+                        updateQuestion()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             }
             20 -> {
                 dialogBuilder.setMessage("Enter your Question....")
-                        .setView(input)
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
-                            binding.tv20.text = input.text.toString()
-                            updateQuestion()
-                        })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+                    .setView(input)
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                        binding.tv20.text = input.text.toString()
+                        updateQuestion()
+                    })
+                    // negative button text and action
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
             }
 
 

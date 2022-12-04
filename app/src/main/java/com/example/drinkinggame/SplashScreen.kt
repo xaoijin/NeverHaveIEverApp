@@ -17,13 +17,13 @@ class SplashScreen : AppCompatActivity() {
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
-        val someDelay = Thread{
+        val someDelay = Thread {
             Thread.sleep(2300)
-            if(auth.currentUser == null){
+            if (auth.currentUser == null) {
                 val intent = Intent(this, LoginScreen::class.java)
                 startActivity(intent)
                 finish()
-            }else{
+            } else {
                 val intent = Intent(this, InitialScreen::class.java)
                 startActivity(intent)
                 finish()

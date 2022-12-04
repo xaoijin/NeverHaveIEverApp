@@ -46,10 +46,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Set Timer \n(max 99 seconds)"
+        android:textAlignment="center"
         android:textColor="@color/Black"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.521"
@@ -83,8 +83,8 @@
         android:layout_height="wrap_content"
         android:text="Selected Question Set:"
         android:textColor="@color/Black"
-        android:textStyle="bold"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -113,25 +113,26 @@
         android:layout_width="192dp"
         android:layout_height="68dp"
         android:background="@color/Peru"
-        android:hint="Room Code"
+        android:gravity="center"
+        android:hint="Enter Room Code"
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.586"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.72">
+        app:layout_constraintVertical_bias="0.718">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/roomcodeInput"
             android:layout_width="182dp"
             android:layout_height="59dp"
+            android:singleLine="true"
             android:textColor="@color/white"
             tools:layout_editor_absoluteX="57dp"
             tools:layout_editor_absoluteY="361dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
 
     <TextView
         android:id="@+id/setSelected"
@@ -204,8 +205,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.622" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

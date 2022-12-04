@@ -1,25 +1,20 @@
-
-
 package com.example.drinkinggame
 
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.drinkinggame.databinding.ActivityCreateGameBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.MetadataChanges
-import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlin.math.max
 
 var timer = 20
 var maxPlayer = 2
-var roomCode = ""
+var hostRoomCode = ""
 var host = ""
 
 class CreateGame : AppCompatActivity() {
@@ -39,7 +34,7 @@ class CreateGame : AppCompatActivity() {
             .document(auth.currentUser?.uid.toString())
             .collection("Question Set Name Edit")
 
-        qSetNamesref.document("Names").addSnapshotListener{ snapshot, e ->
+        qSetNamesref.document("Names").addSnapshotListener { snapshot, e ->
             if (e != null) {
                 Log.w("Main", "Listen failed.", e)
                 return@addSnapshotListener
@@ -72,17 +67,19 @@ class CreateGame : AppCompatActivity() {
         }
 
     }
-    private fun doesRoomCodeExists(){
-        val checkRoom = db.collection("Rooms").document(roomCode)
-        checkRoom.addSnapshotListener(MetadataChanges.INCLUDE){ snapshot, e ->
+
+    private fun doesRoomCodeExists() {
+        val checkRoom = db.collection("Rooms").document()
+        checkRoom.addSnapshotListener(MetadataChanges.INCLUDE) { snapshot, e ->
             if (e != null) {
                 Log.w("Main", "Listen failed.", e)
                 return@addSnapshotListener
             }
 
             if (snapshot != null && !snapshot.exists()) {
-                Log.d("Main", "in else statement of does room code exist")
-                val makeRoom = db.collection("Rooms").document(roomCode)
+                Log.d("Main", "making room")
+                val makeRoom =
+                    db.collection("Rooms").document(binding.roomcodeInput.text.toString())
                 val playersInRoom = hashMapOf(
                     "Player 1" to "",
                     "Player 2" to "",
@@ -116,54 +113,61 @@ class CreateGame : AppCompatActivity() {
                 )
                 val roomSettings = hashMapOf(
                     "Host" to host,
-                    "Number of Players" to maxPlayer,
-                    "Timer" to timer
+                    "Max Players" to maxPlayer,
+                    "Timer" to timer,
+                    "Current Players" to 1,
+                    "Room Status" to "Pause"
                 )
                 makeRoom.set(roomSettings)
                 makeRoom.collection("Players").document("Player UIDs").set(playersInRoom)
-                makeRoom.collection("Questions").document("Questions to be Used").set(questionSetInUse)
+                makeRoom.collection("Questions").document("Questions to be Used")
+                    .set(questionSetInUse)
                 binding.roomcodeError2.visibility = View.INVISIBLE
+                isHost = true
+                hostRoomCode = binding.roomcodeInput.text.toString()
                 val intent = Intent(this, ActiveGame::class.java)
                 startActivity(intent)
-            }else if (snapshot != null && snapshot.exists()){
+            } else if (snapshot != null && snapshot.exists()) {
                 binding.roomcodeError2.visibility = View.VISIBLE
             }
         }
     }
-    private fun validSettings(){
+
+    private fun validSettings() {
         timer = binding.timer.text.toString().toInt()
         maxPlayer = binding.players.text.toString().toInt()
         var maxPlayerValid = false
         var timerValid = false
         var roomcodeValid = false
-        if (maxPlayer < 2 || maxPlayer > 6 || binding.players.text.toString().isEmpty()){
+        if (maxPlayer < 2 || maxPlayer > 6 || binding.players.text.toString().isEmpty()) {
             binding.playerError.visibility = View.VISIBLE
-        }else{
+        } else {
             binding.playerError.visibility = View.INVISIBLE
             maxPlayer = binding.players.text.toString().toInt()
             maxPlayerValid = true
         }
 
-        if(timer < 10 || timer > 99 || binding.timer.text.toString().isEmpty()){
+        if (timer < 10 || timer > 99 || binding.timer.text.toString().isEmpty()) {
             binding.timerError.visibility = View.VISIBLE
-        }else{
+        } else {
             binding.timerError.visibility = View.INVISIBLE
             timer = binding.timer.text.toString().toInt()
             timerValid = true
         }
-        if (binding.roomcodeInput.text.toString().isEmpty()){
+        if (binding.roomcodeInput.text.toString().isEmpty()) {
             binding.roomcodeError.visibility = View.VISIBLE
-        }else{
+        } else {
             binding.roomcodeError.visibility = View.INVISIBLE
-            roomCode = binding.roomcodeInput.text.toString()
-           roomcodeValid = true
+            hostRoomCode = binding.roomcodeInput.text.toString()
+            roomcodeValid = true
         }
-        if (maxPlayerValid && timerValid && roomcodeValid){
+        if (maxPlayerValid && timerValid && roomcodeValid) {
             doesRoomCodeExists()
-        }else{
+        } else {
             binding.roomcodeError2.visibility = View.INVISIBLE
         }
 
     }
+
 
 }
