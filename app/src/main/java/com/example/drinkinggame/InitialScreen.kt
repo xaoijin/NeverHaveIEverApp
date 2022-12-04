@@ -83,6 +83,7 @@ class InitialScreen : AppCompatActivity() {
                 }
 
                 if (snapshot != null && snapshot.exists() ) {
+                    JoinRoomCode = gameCodeET.text.toString()
                     val intent = Intent(this,ActiveGame::class.java)
                     startActivity(intent)
                 }else{
