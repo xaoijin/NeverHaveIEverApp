@@ -118,12 +118,15 @@ class CreateGame : AppCompatActivity() {
                 )
                 val roomSettings = hashMapOf(
                     "Host" to host,
-                    "Number of Players" to maxPlayer,
+                    "Max Players" to maxPlayer,
                     "Timer" to timer,
                     "Current Players" to 1,
                     "Current Question" to 1,
-                    "Question Set in Use" to binding.setSelected.text
+                    "Question Set in Use" to binding.setSelected.text,
+                    "Room Code" to binding.roomcodeInput.text
                 )
+                JoinRoomCode = binding.roomcodeInput.text.toString()
+                isHost = true
                 makeRoom.set(roomSettings)
                 makeRoom.collection("Players").document("Player UIDs").set(playersInRoom)
                 makeRoom.collection("Questions").document("Questions to be Used").set(questionSetInUse)
