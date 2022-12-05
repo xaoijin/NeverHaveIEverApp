@@ -51,6 +51,7 @@ class ActiveGame : AppCompatActivity() {
             updateUIPlayer()
         } else {
             hostJoin()
+            updateUIPlayer()
         }
 
 
