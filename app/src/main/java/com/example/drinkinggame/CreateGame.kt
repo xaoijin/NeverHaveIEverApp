@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.drinkinggame.databinding.ActivityCreateGameBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.MetadataChanges
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
@@ -25,6 +26,7 @@ class CreateGame : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     val db = Firebase.firestore
     private var playerIcon = ""
+    private var playerName = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateGameBinding.inflate(layoutInflater)
@@ -62,6 +64,11 @@ class CreateGame : AppCompatActivity() {
                 Log.d("Main", "Current data: null")
             }
         }
+        val playerInfo = db.collection("Account Data").document(auth.currentUser!!.uid)
+        playerInfo.get().addOnSuccessListener { document ->
+            playerName = document.getString("Display Name").toString()
+            playerIcon = document.getString("Icon").toString()
+        }
         binding.playerError.visibility = View.INVISIBLE
         binding.timerError.visibility = View.INVISIBLE
         binding.roomcodeError.visibility = View.INVISIBLE
@@ -75,13 +82,16 @@ class CreateGame : AppCompatActivity() {
     private fun doesRoomCodeExists() {
         auth = FirebaseAuth.getInstance()
         val checkRoom = db.collection("Rooms").document()
-
-        if(questionsetselected == 3){
-            hostQuestions = db.collection("Account Data").document(auth.currentUser!!.uid).collection("Question Sets").document("Set3")
-        }else if(questionsetselected == 2){
-            hostQuestions = db.collection("Account Data").document(auth.currentUser!!.uid).collection("Question Sets").document("Set2")
-        }else{
-            hostQuestions = db.collection("Account Data").document(auth.currentUser!!.uid).collection("Question Sets").document("Set1")
+        hostQuestions = when (questionsetselected) {
+            3 -> {
+                db.collection("Account Data").document(auth.currentUser!!.uid).collection("Question Sets").document("Set3")
+            }
+            2 -> {
+                db.collection("Account Data").document(auth.currentUser!!.uid).collection("Question Sets").document("Set2")
+            }
+            else -> {
+                db.collection("Account Data").document(auth.currentUser!!.uid).collection("Question Sets").document("Set1")
+            }
         }
         var q1 = ""
         var q2 = ""
@@ -112,25 +122,21 @@ class CreateGame : AppCompatActivity() {
 
             if (snapshot != null && !snapshot.exists()) {
                 Log.d("Main", "making room")
-                val playerInfo = db.collection("Account Data").document(auth.currentUser!!.uid)
-                playerInfo.get().addOnSuccessListener { document ->
-                     playerIcon = document.getString("Icon").toString()
-                }
                 val makeRoom =
                     db.collection("Rooms").document(binding.roomcodeInput.text.toString())
                 val playersInRoom = hashMapOf(
-                    "Player 1" to auth.currentUser!!.uid,
+                    "Player 1" to playerName,
                     "Player 2" to "",
                     "Player 3" to "",
                     "Player 4" to "",
                     "Player 5" to "",
                     "Player 6" to "",
-                    "Icon 1" to playerIcon,
-                    "Icon 2" to "",
-                    "Icon 3" to "",
-                    "Icon 4" to "",
-                    "Icon 5" to "",
-                    "Icon 6" to ""
+                    "Player 1 Icon" to playerIcon,
+                    "Player 2 Icon" to "",
+                    "Player 3 Icon" to "",
+                    "Player 4 Icon" to "",
+                    "Player 5 Icon" to "",
+                    "Player 6 Icon" to "",
                     )
 
                 hostQuestions.get().addOnSuccessListener { document->
@@ -192,7 +198,7 @@ class CreateGame : AppCompatActivity() {
                     "Player Turn" to host
                 )
                 makeRoom.set(roomSettings)
-                makeRoom.collection("Players").document("Player UIDs").set(playersInRoom)
+                makeRoom.collection("Players").document("PlayersData").set(playersInRoom)
                 makeRoom.collection("Questions").document("Questions to be Used")
 
 
