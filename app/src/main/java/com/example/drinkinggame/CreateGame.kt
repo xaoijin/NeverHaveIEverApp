@@ -93,26 +93,26 @@ class CreateGame : AppCompatActivity() {
                 db.collection("Account Data").document(auth.currentUser!!.uid).collection("Question Sets").document("Set1")
             }
         }
-        var q1 = ""
-        var q2 = ""
-        var q3 = ""
-        var q4 = ""
-        var q5 = ""
-        var q6 = ""
-        var q7 = ""
-        var q8 = ""
-        var q9 = ""
-        var q10 = ""
-        var q11 = ""
-        var q12 = ""
-        var q13 = ""
-        var q14 = ""
-        var q15 = ""
-        var q16 = ""
-        var q17 = ""
-        var q18 = ""
-        var q19 = ""
-        var q20 = ""
+        var q1: String
+        var q2: String
+        var q3: String
+        var q4: String
+        var q5: String
+        var q6: String
+        var q7: String
+        var q8: String
+        var q9: String
+        var q10: String
+        var q11: String
+        var q12: String
+        var q13: String
+        var q14: String
+        var q15: String
+        var q16: String
+        var q17: String
+        var q18: String
+        var q19: String
+        var q20: String
 
         checkRoom.addSnapshotListener(MetadataChanges.INCLUDE) { snapshot, e ->
             if (e != null) {
@@ -192,7 +192,6 @@ class CreateGame : AppCompatActivity() {
                     "Host" to host,
                     "Max Players" to maxPlayer,
                     "Timer" to timer,
-                    "Current Players" to 1,
                     "Room Status" to "Pause",
                     "Question Turn" to 1,
                     "Player Turn" to host

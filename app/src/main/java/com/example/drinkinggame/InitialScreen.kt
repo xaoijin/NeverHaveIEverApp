@@ -29,6 +29,7 @@ class InitialScreen : AppCompatActivity() {
     private lateinit var userIcon: ImageView
     private lateinit var codeError: TextView
     private lateinit var gameCodeET: EditText
+    private var isFull = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_initialscreen)
