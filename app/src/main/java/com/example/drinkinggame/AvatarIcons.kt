@@ -36,47 +36,125 @@ class AvatarIcons : AppCompatActivity() {
 
         wineglass.setOnClickListener{
             wineglass.setImageResource(R.drawable.checkmark)
+            shotglass.setImageResource(R.drawable.shotglass)
+            martini.setImageResource(R.drawable.martini)
+            brandy.setImageResource(R.drawable.brandy)
+            hurricane.setImageResource(R.drawable.hurricane)
+            beermug.setImageResource(R.drawable.beermug)
+            coffee.setImageResource(R.drawable.coffee)
+            vodka.setImageResource(R.drawable.vodka)
+            weizen.setImageResource(R.drawable.weizen)
             selectedIcon = "wineglass"
             userIcon.update("Icon", selectedIcon)
         }
         shotglass.setOnClickListener{
+            wineglass.setImageResource(R.drawable.wineglass)
             shotglass.setImageResource(R.drawable.checkmark)
-
+            martini.setImageResource(R.drawable.martini)
+            brandy.setImageResource(R.drawable.brandy)
+            hurricane.setImageResource(R.drawable.hurricane)
+            beermug.setImageResource(R.drawable.beermug)
+            coffee.setImageResource(R.drawable.coffee)
+            vodka.setImageResource(R.drawable.vodka)
+            weizen.setImageResource(R.drawable.weizen)
             selectedIcon = "shotglass"
             userIcon.update("Icon", selectedIcon)
         }
         martini.setOnClickListener{
+            wineglass.setImageResource(R.drawable.wineglass)
+            shotglass.setImageResource(R.drawable.shotglass)
             martini.setImageResource(R.drawable.checkmark)
+            brandy.setImageResource(R.drawable.brandy)
+            hurricane.setImageResource(R.drawable.hurricane)
+            beermug.setImageResource(R.drawable.beermug)
+            coffee.setImageResource(R.drawable.coffee)
+            vodka.setImageResource(R.drawable.vodka)
+            weizen.setImageResource(R.drawable.weizen)
+
             selectedIcon = "martini"
             userIcon.update("Icon", selectedIcon)
         }
         brandy.setOnClickListener{
+            wineglass.setImageResource(R.drawable.wineglass)
+            shotglass.setImageResource(R.drawable.shotglass)
+            martini.setImageResource(R.drawable.martini)
             brandy.setImageResource(R.drawable.checkmark)
+            hurricane.setImageResource(R.drawable.hurricane)
+            beermug.setImageResource(R.drawable.beermug)
+            coffee.setImageResource(R.drawable.coffee)
+            vodka.setImageResource(R.drawable.vodka)
+            weizen.setImageResource(R.drawable.weizen)
+
             selectedIcon = "brandy"
             userIcon.update("Icon", selectedIcon)
         }
         hurricane.setOnClickListener{
+            wineglass.setImageResource(R.drawable.wineglass)
+            shotglass.setImageResource(R.drawable.shotglass)
+            martini.setImageResource(R.drawable.martini)
+            brandy.setImageResource(R.drawable.brandy)
             hurricane.setImageResource(R.drawable.checkmark)
+            beermug.setImageResource(R.drawable.beermug)
+            coffee.setImageResource(R.drawable.coffee)
+            vodka.setImageResource(R.drawable.vodka)
+            weizen.setImageResource(R.drawable.weizen)
+
             selectedIcon = "hurricane"
             userIcon.update("Icon", selectedIcon)
         }
         beermug.setOnClickListener{
+            wineglass.setImageResource(R.drawable.wineglass)
+            shotglass.setImageResource(R.drawable.shotglass)
+            martini.setImageResource(R.drawable.martini)
+            brandy.setImageResource(R.drawable.brandy)
+            hurricane.setImageResource(R.drawable.hurricane)
             beermug.setImageResource(R.drawable.checkmark)
+            coffee.setImageResource(R.drawable.coffee)
+            vodka.setImageResource(R.drawable.vodka)
+            weizen.setImageResource(R.drawable.weizen)
+
             selectedIcon = "beermug"
             userIcon.update("Icon", selectedIcon)
         }
         coffee.setOnClickListener{
+            wineglass.setImageResource(R.drawable.wineglass)
+            shotglass.setImageResource(R.drawable.shotglass)
+            martini.setImageResource(R.drawable.martini)
+            brandy.setImageResource(R.drawable.brandy)
+            hurricane.setImageResource(R.drawable.hurricane)
+            beermug.setImageResource(R.drawable.beermug)
             coffee.setImageResource(R.drawable.checkmark)
+            vodka.setImageResource(R.drawable.vodka)
+            weizen.setImageResource(R.drawable.weizen)
+
             selectedIcon = "coffee"
             userIcon.update("Icon", selectedIcon)
         }
         vodka.setOnClickListener{
+            wineglass.setImageResource(R.drawable.wineglass)
+            shotglass.setImageResource(R.drawable.shotglass)
+            martini.setImageResource(R.drawable.martini)
+            brandy.setImageResource(R.drawable.brandy)
+            hurricane.setImageResource(R.drawable.hurricane)
+            beermug.setImageResource(R.drawable.beermug)
+            coffee.setImageResource(R.drawable.coffee)
             vodka.setImageResource(R.drawable.checkmark)
+            weizen.setImageResource(R.drawable.weizen)
+
             selectedIcon = "vodka"
             userIcon.update("Icon", selectedIcon)
         }
         weizen.setOnClickListener{
+            wineglass.setImageResource(R.drawable.wineglass)
+            shotglass.setImageResource(R.drawable.shotglass)
+            martini.setImageResource(R.drawable.martini)
+            brandy.setImageResource(R.drawable.brandy)
+            hurricane.setImageResource(R.drawable.hurricane)
+            beermug.setImageResource(R.drawable.beermug)
+            coffee.setImageResource(R.drawable.coffee)
+            vodka.setImageResource(R.drawable.vodka)
             weizen.setImageResource(R.drawable.checkmark)
+
             selectedIcon = "weizen"
             userIcon.update("Icon", selectedIcon)
         }
