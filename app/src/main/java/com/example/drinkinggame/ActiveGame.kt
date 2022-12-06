@@ -20,7 +20,7 @@ class ActiveGame : AppCompatActivity() {
     val db = Firebase.firestore
     private var playerName = ""
     private var playerIcon = ""
-    private var questionCounter = 0
+    private var questionCounter = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityActiveGameBinding.inflate(layoutInflater)
@@ -192,7 +192,74 @@ class ActiveGame : AppCompatActivity() {
     }
 
     private fun gameLogic() {
-
+        questionCounter++
+        val changeQuestions = db.collection("Rooms").document(currentRoom).collection("Questions")
+            .document("Questions to be Used")
+        changeQuestions.get().addOnSuccessListener { document ->
+            if (questionCounter == 1) {
+                binding.Question.text = document.getString("Q1")
+                questionCounter++
+            } else if (questionCounter == 2) {
+                binding.Question.text = document.getString("Q2")
+                questionCounter++
+            } else if (questionCounter == 3) {
+                binding.Question.text = document.getString("Q3")
+                questionCounter++
+            } else if (questionCounter == 4) {
+                binding.Question.text = document.getString("Q4")
+                questionCounter++
+            } else if (questionCounter == 5) {
+                binding.Question.text = document.getString("Q5")
+                questionCounter++
+            } else if (questionCounter == 6) {
+                binding.Question.text = document.getString("Q6")
+                questionCounter++
+            } else if (questionCounter == 7) {
+                binding.Question.text = document.getString("Q7")
+                questionCounter++
+            } else if (questionCounter == 8) {
+                binding.Question.text = document.getString("Q8")
+                questionCounter++
+            } else if (questionCounter == 9) {
+                binding.Question.text = document.getString("Q9")
+                questionCounter++
+            } else if (questionCounter == 10) {
+                binding.Question.text = document.getString("Q10")
+                questionCounter++
+            }else if (questionCounter == 11) {
+                binding.Question.text = document.getString("Q11")
+                questionCounter++
+            }else if (questionCounter == 12) {
+                binding.Question.text = document.getString("Q12")
+                questionCounter++
+            }else if (questionCounter == 13) {
+                binding.Question.text = document.getString("Q13")
+                questionCounter++
+            }else if (questionCounter == 14) {
+                binding.Question.text = document.getString("Q14")
+                questionCounter++
+            }else if (questionCounter == 15) {
+                binding.Question.text = document.getString("Q15")
+                questionCounter++
+            }else if (questionCounter == 16) {
+                binding.Question.text = document.getString("Q16")
+                questionCounter++
+            }else if (questionCounter == 17) {
+                binding.Question.text = document.getString("Q17")
+                questionCounter++
+            }else if (questionCounter == 18) {
+                binding.Question.text = document.getString("Q18")
+                questionCounter++
+            }else if (questionCounter == 19) {
+                binding.Question.text = document.getString("Q19")
+                questionCounter++
+            }else if (questionCounter == 20) {
+                binding.Question.text = document.getString("Q20")
+                questionCounter++
+            }else{
+                binding.Question.text = "No More Questions!"
+            }
+        }
     }
 
     private fun invisible() {
