@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.drinkinggame.databinding.ActivityActiveGameBinding
+import com.google.common.base.CharMatcher.invisible
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -63,7 +64,7 @@ class ActiveGame : AppCompatActivity() {
             }
         }
         playerChoice()
-
+        checkDrunk()
     }
 
     private fun updateUIPlayer() {
@@ -185,6 +186,52 @@ class ActiveGame : AppCompatActivity() {
                     timerStart()
                 }
             }.start()
+        }
+    }
+
+    private fun checkDrunk() {
+        var pCounter = 0
+        val checkPCounter = db.collection("Rooms").document(currentRoom).collection("Players")
+            .document("PlayersData")
+        checkPCounter.addSnapshotListener { snapshot, error ->
+            if (snapshot != null) {
+                if (playerNumber == 1) {
+                    pCounter = snapshot.get("Player 1 Counter").toString().toInt()
+                    if (pCounter == 3){
+
+                    }
+
+                } else if (playerNumber == 2) {
+                    pCounter = snapshot.get("Player 2 Counter").toString().toInt()
+                    if (pCounter == 3){
+
+                    }
+
+                } else if (playerNumber == 3) {
+                    pCounter = snapshot.get("Player 3 Counter").toString().toInt()
+                    if (pCounter == 3){
+
+                    }
+
+                } else if (playerNumber == 4) {
+                    pCounter = snapshot.get("Player 4 Counter").toString().toInt()
+                    if (pCounter == 3){
+
+                    }
+
+                } else if (playerNumber == 5) {
+                    pCounter = snapshot.get("Player 5 Counter").toString().toInt()
+                    if (pCounter == 3){
+
+                    }
+
+                } else if (playerNumber == 6) {
+                    pCounter = snapshot.get("Player 6 Counter").toString().toInt()
+
+
+                }
+
+            }
         }
     }
 
