@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.drinkinggame.databinding.ActivityActiveGameBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -64,6 +65,17 @@ class ActiveGame : AppCompatActivity() {
         }
         playerChoice()
         checkDrunk()
+        val checkRoomStillOpen = db.collection("Rooms").document(currentRoom)
+        checkRoomStillOpen.addSnapshotListener { snapshot, error ->
+            if (snapshot != null){
+                Log.d("Main", "onCreate: Room is open")
+            }else{
+                Log.d("Main", "onCreate: Room Closed")
+                Toast.makeText(applicationContext, "Host has Ended the Room.", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, InitialScreen::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     private fun updateUIPlayer() {
@@ -250,7 +262,8 @@ class ActiveGame : AppCompatActivity() {
         db.collection("Rooms").document(currentRoom).delete()
             .addOnSuccessListener { Log.d("Main", "DocumentSnapshot successfully deleted!") }
             .addOnFailureListener { e -> Log.w("Main", "Error deleting document", e) }
-        finish()
+        val intent = Intent(this, InitialScreen::class.java)
+        startActivity(intent)
     }
 
     private fun playerChoice() {
