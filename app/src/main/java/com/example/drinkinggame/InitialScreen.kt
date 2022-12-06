@@ -93,7 +93,7 @@ class InitialScreen : AppCompatActivity() {
                     checkMax.get().addOnSuccessListener { document ->
                         maxPlayer = document.get("Max Players").toString()
                     }
-
+                    var isFull = true
                     val checkFull = db.collection("Rooms").document(JoinRoomCode).collection("Players").document("PlayersData")
                     checkFull.get().addOnSuccessListener { document ->
                         val p1name = document.getString("Player 1")
@@ -123,8 +123,12 @@ class InitialScreen : AppCompatActivity() {
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
                         }else{
-                            Toast.makeText(applicationContext, "Room is Full!", Toast.LENGTH_SHORT).show()
+                            isFull = true
                         }
+
+                    }
+                    if (isFull){
+                        Toast.makeText(applicationContext, "Room is Full!", Toast.LENGTH_SHORT).show()
                     }
 
                 }
