@@ -17,7 +17,6 @@ import com.google.firebase.ktx.Firebase
 
 var timer = 20
 var maxPlayer = 2
-var hostRoomCode = ""
 var host = ""
 
 class CreateGame : AppCompatActivity() {
@@ -203,7 +202,7 @@ class CreateGame : AppCompatActivity() {
 
                 binding.roomcodeError2.visibility = View.INVISIBLE
                 isHost = true
-                hostRoomCode = binding.roomcodeInput.text.toString()
+                currentRoom = binding.roomcodeInput.text.toString()
                 val intent = Intent(this, ActiveGame::class.java)
                 startActivity(intent)
             } else if (snapshot != null && snapshot.exists()) {
@@ -237,7 +236,7 @@ class CreateGame : AppCompatActivity() {
             binding.roomcodeError.visibility = View.VISIBLE
         } else {
             binding.roomcodeError.visibility = View.INVISIBLE
-            hostRoomCode = binding.roomcodeInput.text.toString()
+            currentRoom = binding.roomcodeInput.text.toString()
             roomcodeValid = true
         }
         if (maxPlayerValid && timerValid && roomcodeValid) {
