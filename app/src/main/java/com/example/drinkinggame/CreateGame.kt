@@ -136,6 +136,12 @@ class CreateGame : AppCompatActivity() {
                     "Player 4 Icon" to "",
                     "Player 5 Icon" to "",
                     "Player 6 Icon" to "",
+                    "Player 1 Counter" to 0,
+                    "Player 2 Counter" to 0,
+                    "Player 3 Counter" to 0,
+                    "Player 4 Counter" to 0,
+                    "Player 5 Counter" to 0,
+                    "Player 6 Counter" to 0,
                     )
 
                 hostQuestions.get().addOnSuccessListener { document->

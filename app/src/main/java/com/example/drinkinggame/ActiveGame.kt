@@ -21,6 +21,7 @@ class ActiveGame : AppCompatActivity() {
     private var playerName = ""
     private var playerIcon = ""
     private var questionCounter = 1
+    private var playerNumber = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityActiveGameBinding.inflate(layoutInflater)
@@ -49,8 +50,6 @@ class ActiveGame : AppCompatActivity() {
         binding.startBtn.setOnClickListener {
             val timerSetting = db.collection("Rooms").document(currentRoom)
             timerSetting.update("Timer Status", "Started")
-            binding.startBtn.visibility = View.INVISIBLE
-
         }
         binding.endBtn.setOnClickListener {
             deleteRoom()
@@ -63,6 +62,7 @@ class ActiveGame : AppCompatActivity() {
                 }
             }
         }
+        playerChoice()
 
     }
 
@@ -169,7 +169,6 @@ class ActiveGame : AppCompatActivity() {
     }
 
     private fun timerStart() {
-
         val timerSetting = db.collection("Rooms").document(currentRoom)
         timerSetting.addSnapshotListener { snapshot, error ->
             var timerSet = snapshot?.get("Timer").toString().toInt()
@@ -181,6 +180,8 @@ class ActiveGame : AppCompatActivity() {
 
                 override fun onFinish() {
                     gameLogic()
+                    binding.iHaveBtn.visibility = View.VISIBLE
+                    binding.haveNotBtn.visibility = View.VISIBLE
                     timerStart()
                 }
             }.start()
@@ -188,76 +189,210 @@ class ActiveGame : AppCompatActivity() {
     }
 
     private fun deleteRoom() {
+        db.collection("Rooms").document(currentRoom).delete()
+            .addOnSuccessListener { Log.d("Main", "DocumentSnapshot successfully deleted!") }
+            .addOnFailureListener { e -> Log.w("Main", "Error deleting document", e) }
+        finish()
+    }
 
+    private fun playerChoice() {
+        var pCounter = 0
+        val checkPCounter = db.collection("Rooms").document(currentRoom).collection("Players")
+            .document("PlayersData")
+        checkPCounter.addSnapshotListener { snapshot, error ->
+            if (snapshot != null) {
+                when (playerNumber) {
+                    1 -> {
+                        binding.iHaveBtn.setOnClickListener {
+                            pCounter = snapshot.get("Player 1 Counter").toString().toInt()
+                            pCounter++
+                            checkPCounter.update("Player 1 Counter", pCounter)
+                            binding.iHaveBtn.visibility = View.INVISIBLE
+                            binding.haveNotBtn.visibility = View.INVISIBLE
+
+
+                        }
+                        binding.haveNotBtn.setOnClickListener {
+                            binding.iHaveBtn.visibility = View.INVISIBLE
+                            binding.haveNotBtn.visibility = View.INVISIBLE
+
+                        }
+                    }
+                    2 -> {
+                        binding.iHaveBtn.setOnClickListener {
+                            pCounter = snapshot.get("Player 2 Counter").toString().toInt()
+                            pCounter++
+                            checkPCounter.update("Player 2 Counter", pCounter)
+                            binding.iHaveBtn.visibility = View.INVISIBLE
+                            binding.haveNotBtn.visibility = View.INVISIBLE
+
+
+                        }
+                        binding.haveNotBtn.setOnClickListener {
+                            binding.iHaveBtn.visibility = View.INVISIBLE
+                            binding.haveNotBtn.visibility = View.INVISIBLE
+
+                        }
+                    }
+                    3 -> {
+                        binding.iHaveBtn.setOnClickListener {
+                            pCounter = snapshot.get("Player 3 Counter").toString().toInt()
+                            pCounter++
+                            checkPCounter.update("Player 3 Counter", pCounter)
+                            binding.iHaveBtn.visibility = View.INVISIBLE
+                            binding.haveNotBtn.visibility = View.INVISIBLE
+
+
+                        }
+                        binding.haveNotBtn.setOnClickListener {
+                            binding.iHaveBtn.visibility = View.INVISIBLE
+                            binding.haveNotBtn.visibility = View.INVISIBLE
+
+                        }
+                    }
+                    4 -> {
+                        binding.iHaveBtn.setOnClickListener {
+                            pCounter = snapshot.get("Player 4 Counter").toString().toInt()
+                            pCounter++
+                            checkPCounter.update("Player 4 Counter", pCounter)
+                            binding.iHaveBtn.visibility = View.INVISIBLE
+                            binding.haveNotBtn.visibility = View.INVISIBLE
+
+
+                        }
+                        binding.haveNotBtn.setOnClickListener {
+                            binding.iHaveBtn.visibility = View.INVISIBLE
+                            binding.haveNotBtn.visibility = View.INVISIBLE
+
+                        }
+                    }
+                    5 -> {
+                        binding.iHaveBtn.setOnClickListener {
+                            pCounter = snapshot.get("Player 5 Counter").toString().toInt()
+                            pCounter++
+                            checkPCounter.update("Player 5 Counter", pCounter)
+                            binding.iHaveBtn.visibility = View.INVISIBLE
+                            binding.haveNotBtn.visibility = View.INVISIBLE
+
+
+                        }
+                        binding.haveNotBtn.setOnClickListener {
+                            binding.iHaveBtn.visibility = View.INVISIBLE
+                            binding.haveNotBtn.visibility = View.INVISIBLE
+
+                        }
+                    }
+                    6 -> {
+                        binding.iHaveBtn.setOnClickListener {
+                            pCounter = snapshot.get("Player 6 Counter").toString().toInt()
+                            pCounter++
+                            checkPCounter.update("Player 6 Counter", pCounter)
+                            binding.iHaveBtn.visibility = View.INVISIBLE
+                            binding.haveNotBtn.visibility = View.INVISIBLE
+
+
+                        }
+                        binding.haveNotBtn.setOnClickListener {
+                            binding.iHaveBtn.visibility = View.INVISIBLE
+                            binding.haveNotBtn.visibility = View.INVISIBLE
+
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private fun gameLogic() {
         questionCounter++
+
         val changeQuestions = db.collection("Rooms").document(currentRoom).collection("Questions")
             .document("Questions to be Used")
         changeQuestions.get().addOnSuccessListener { document ->
-            if (questionCounter == 1) {
-                binding.Question.text = document.getString("Q1")
-                questionCounter++
-            } else if (questionCounter == 2) {
-                binding.Question.text = document.getString("Q2")
-                questionCounter++
-            } else if (questionCounter == 3) {
-                binding.Question.text = document.getString("Q3")
-                questionCounter++
-            } else if (questionCounter == 4) {
-                binding.Question.text = document.getString("Q4")
-                questionCounter++
-            } else if (questionCounter == 5) {
-                binding.Question.text = document.getString("Q5")
-                questionCounter++
-            } else if (questionCounter == 6) {
-                binding.Question.text = document.getString("Q6")
-                questionCounter++
-            } else if (questionCounter == 7) {
-                binding.Question.text = document.getString("Q7")
-                questionCounter++
-            } else if (questionCounter == 8) {
-                binding.Question.text = document.getString("Q8")
-                questionCounter++
-            } else if (questionCounter == 9) {
-                binding.Question.text = document.getString("Q9")
-                questionCounter++
-            } else if (questionCounter == 10) {
-                binding.Question.text = document.getString("Q10")
-                questionCounter++
-            }else if (questionCounter == 11) {
-                binding.Question.text = document.getString("Q11")
-                questionCounter++
-            }else if (questionCounter == 12) {
-                binding.Question.text = document.getString("Q12")
-                questionCounter++
-            }else if (questionCounter == 13) {
-                binding.Question.text = document.getString("Q13")
-                questionCounter++
-            }else if (questionCounter == 14) {
-                binding.Question.text = document.getString("Q14")
-                questionCounter++
-            }else if (questionCounter == 15) {
-                binding.Question.text = document.getString("Q15")
-                questionCounter++
-            }else if (questionCounter == 16) {
-                binding.Question.text = document.getString("Q16")
-                questionCounter++
-            }else if (questionCounter == 17) {
-                binding.Question.text = document.getString("Q17")
-                questionCounter++
-            }else if (questionCounter == 18) {
-                binding.Question.text = document.getString("Q18")
-                questionCounter++
-            }else if (questionCounter == 19) {
-                binding.Question.text = document.getString("Q19")
-                questionCounter++
-            }else if (questionCounter == 20) {
-                binding.Question.text = document.getString("Q20")
-                questionCounter++
-            }else{
-                binding.Question.text = "No More Questions!"
+            when (questionCounter) {
+                1 -> {
+                    binding.Question.text = document.getString("Q1")
+                    questionCounter++
+                }
+                2 -> {
+                    binding.Question.text = document.getString("Q2")
+                    questionCounter++
+                }
+                3 -> {
+                    binding.Question.text = document.getString("Q3")
+                    questionCounter++
+                }
+                4 -> {
+                    binding.Question.text = document.getString("Q4")
+                    questionCounter++
+                }
+                5 -> {
+                    binding.Question.text = document.getString("Q5")
+                    questionCounter++
+                }
+                6 -> {
+                    binding.Question.text = document.getString("Q6")
+                    questionCounter++
+                }
+                7 -> {
+                    binding.Question.text = document.getString("Q7")
+                    questionCounter++
+                }
+                8 -> {
+                    binding.Question.text = document.getString("Q8")
+                    questionCounter++
+                }
+                9 -> {
+                    binding.Question.text = document.getString("Q9")
+                    questionCounter++
+                }
+                10 -> {
+                    binding.Question.text = document.getString("Q10")
+                    questionCounter++
+                }
+                11 -> {
+                    binding.Question.text = document.getString("Q11")
+                    questionCounter++
+                }
+                12 -> {
+                    binding.Question.text = document.getString("Q12")
+                    questionCounter++
+                }
+                13 -> {
+                    binding.Question.text = document.getString("Q13")
+                    questionCounter++
+                }
+                14 -> {
+                    binding.Question.text = document.getString("Q14")
+                    questionCounter++
+                }
+                15 -> {
+                    binding.Question.text = document.getString("Q15")
+                    questionCounter++
+                }
+                16 -> {
+                    binding.Question.text = document.getString("Q16")
+                    questionCounter++
+                }
+                17 -> {
+                    binding.Question.text = document.getString("Q17")
+                    questionCounter++
+                }
+                18 -> {
+                    binding.Question.text = document.getString("Q18")
+                    questionCounter++
+                }
+                19 -> {
+                    binding.Question.text = document.getString("Q19")
+                    questionCounter++
+                }
+                20 -> {
+                    binding.Question.text = document.getString("Q20")
+                    questionCounter++
+                }
+                else -> {
+                    binding.Question.text = "No More Questions!"
+                }
             }
         }
     }
@@ -365,6 +500,7 @@ class ActiveGame : AppCompatActivity() {
 
         }
         isHost = true
+        playerNumber = 1
     }
 
     private fun playerJoin() {
@@ -395,6 +531,7 @@ class ActiveGame : AppCompatActivity() {
                     "Player 1 Icon" to playerIcon
                 )
                 isHost = true
+                playerNumber = 1
                 playerJoin.update(playerData as Map<String, String>)
             } else if (p2name == "" || p2name == playerName) {
                 binding.P2name.text = playerName
@@ -410,6 +547,7 @@ class ActiveGame : AppCompatActivity() {
                     "Player 2" to playerName,
                     "Player 2 Icon" to playerIcon
                 )
+                playerNumber = 2
                 playerJoin.update(playerData as Map<String, String>)
             } else if (p3name == "" || p3name == playerName) {
                 binding.P3name.text = playerName
@@ -425,6 +563,7 @@ class ActiveGame : AppCompatActivity() {
                     "Player 3" to playerName,
                     "Player 3 Icon" to playerIcon
                 )
+                playerNumber = 3
                 playerJoin.update(playerData as Map<String, String>)
             } else if (p4name == "" || p4name == playerName) {
                 binding.P4name.text = playerName
@@ -440,6 +579,7 @@ class ActiveGame : AppCompatActivity() {
                     "Player 4" to playerName,
                     "Player 4 Icon" to playerIcon
                 )
+                playerNumber = 4
                 playerJoin.update(playerData as Map<String, String>)
             } else if (p5name == "" || p5name == playerName) {
                 binding.P5name.text = playerName
@@ -455,6 +595,7 @@ class ActiveGame : AppCompatActivity() {
                     "Player 5" to playerName,
                     "Player 5 Icon" to playerIcon
                 )
+                playerNumber = 5
                 playerJoin.update(playerData as Map<String, String>)
             } else if (p6name == "" || p6name == playerName) {
                 binding.P6name.text = playerName
@@ -470,6 +611,7 @@ class ActiveGame : AppCompatActivity() {
                     "Player 2" to playerName,
                     "Player 2 Icon" to playerIcon
                 )
+                playerNumber = 6
                 playerJoin.update(playerData as Map<String, String>)
             }
         }
