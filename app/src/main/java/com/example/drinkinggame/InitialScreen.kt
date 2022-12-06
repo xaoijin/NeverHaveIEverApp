@@ -16,9 +16,12 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import android.media.MediaPlayer
+
 
 class InitialScreen : AppCompatActivity() {
     private var db = Firebase.firestore
+    private var mMediaPlayer:MediaPlayer? = null
     private lateinit var jGame: Button
     private lateinit var cQuestions: Button
     private lateinit var auth: FirebaseAuth
@@ -45,28 +48,49 @@ class InitialScreen : AppCompatActivity() {
         userIcon = findViewById(R.id.iconimginitial)
 
         updateUI()
+        //activates sound
+        playSound()
 
         cIcon.setOnClickListener {
+            stopSound()
             val intent = Intent(this,AvatarIcons::class.java)
             startActivity(intent)
         }
         cName.setOnClickListener { changeName() }
         jGame.setOnClickListener {
+            stopSound()
             val intent = Intent(this, ActiveGame::class.java)
             startActivity(intent)
         }
 
         cQuestions.setOnClickListener {
-
+            stopSound()
             val intent = Intent(this, QuestionSets::class.java)
             startActivity(intent)
         }
         cGame.setOnClickListener {
+            stopSound()
             val intent = Intent(this, CreateGame::class.java)
             startActivity(intent)
         }
         bLogout.setOnClickListener { logout() }
 
+    }
+    //plays sound
+    private fun playSound() {
+        if (mMediaPlayer == null) {
+            mMediaPlayer = MediaPlayer.create(this, R.raw.lobbymusic)
+            mMediaPlayer!!.isLooping = true
+            mMediaPlayer!!.start()
+        } else mMediaPlayer!!.start()
+    }
+    //stops sound
+    private fun stopSound() {
+        if (mMediaPlayer != null) {
+            mMediaPlayer!!.stop()
+            mMediaPlayer!!.release()
+            mMediaPlayer = null
+        }
     }
     private fun updateUI(){
         auth = FirebaseAuth.getInstance()
@@ -113,6 +137,7 @@ class InitialScreen : AppCompatActivity() {
 
     private fun logout(){
         Firebase.auth.signOut()
+        stopSound()
         val intent = Intent(this, LoginScreen::class.java)
         startActivity(intent)
     }
