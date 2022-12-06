@@ -1,12 +1,12 @@
 package com.example.drinkinggame
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.drinkinggame.databinding.ActivityActiveGameBinding
-import com.google.common.base.CharMatcher.invisible
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -195,40 +195,52 @@ class ActiveGame : AppCompatActivity() {
             .document("PlayersData")
         checkPCounter.addSnapshotListener { snapshot, error ->
             if (snapshot != null) {
-                if (playerNumber == 1) {
-                    pCounter = snapshot.get("Player 1 Counter").toString().toInt()
-                    if (pCounter == 3){
+                when (playerNumber) {
+                    1 -> {
+                        pCounter = snapshot.get("Player 1 Counter").toString().toInt()
+                        if (pCounter == 3) {
+                            val intent = Intent(this, CameraMiniGame::class.java)
+                            startActivity(intent)
+                        }
 
                     }
-
-                } else if (playerNumber == 2) {
-                    pCounter = snapshot.get("Player 2 Counter").toString().toInt()
-                    if (pCounter == 3){
-
-                    }
-
-                } else if (playerNumber == 3) {
-                    pCounter = snapshot.get("Player 3 Counter").toString().toInt()
-                    if (pCounter == 3){
+                    2 -> {
+                        pCounter = snapshot.get("Player 2 Counter").toString().toInt()
+                        if (pCounter == 3) {
+                            val intent = Intent(this, CameraMiniGame::class.java)
+                            startActivity(intent)
+                        }
 
                     }
-
-                } else if (playerNumber == 4) {
-                    pCounter = snapshot.get("Player 4 Counter").toString().toInt()
-                    if (pCounter == 3){
-
-                    }
-
-                } else if (playerNumber == 5) {
-                    pCounter = snapshot.get("Player 5 Counter").toString().toInt()
-                    if (pCounter == 3){
+                    3 -> {
+                        pCounter = snapshot.get("Player 3 Counter").toString().toInt()
+                        if (pCounter == 3) {
+                            val intent = Intent(this, CameraMiniGame::class.java)
+                            startActivity(intent)
+                        }
 
                     }
+                    4 -> {
+                        pCounter = snapshot.get("Player 4 Counter").toString().toInt()
+                        if (pCounter == 3) {
+                            val intent = Intent(this, CameraMiniGame::class.java)
+                            startActivity(intent)
+                        }
 
-                } else if (playerNumber == 6) {
-                    pCounter = snapshot.get("Player 6 Counter").toString().toInt()
+                    }
+                    5 -> {
+                        pCounter = snapshot.get("Player 5 Counter").toString().toInt()
+                        if (pCounter == 3) {
+                            val intent = Intent(this, CameraMiniGame::class.java)
+                            startActivity(intent)
+                        }
 
-
+                    }
+                    6 -> {
+                        pCounter = snapshot.get("Player 6 Counter").toString().toInt()
+                        val intent = Intent(this, CameraMiniGame::class.java)
+                        startActivity(intent)
+                    }
                 }
 
             }

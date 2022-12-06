@@ -1,6 +1,8 @@
 package com.example.drinkinggame
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 
 class FailScreen : AppCompatActivity() {
@@ -10,5 +12,11 @@ class FailScreen : AppCompatActivity() {
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
+        isHost = false
+        Handler().postDelayed(Runnable {
+            val i = Intent(this, InitialScreen::class.java)
+            startActivity(i)
+        }, 5000)
+
     }
 }
