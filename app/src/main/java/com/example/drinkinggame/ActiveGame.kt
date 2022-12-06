@@ -1,14 +1,17 @@
 package com.example.drinkinggame
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.drinkinggame.databinding.ActivityActiveGameBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.util.Timer
 
 var JoinRoomCode = ""
 var isHost = false
@@ -42,18 +45,22 @@ class ActiveGame : AppCompatActivity() {
             hostJoin()
             updateUIPlayer()
         }
+
         binding.startBtn.setOnClickListener {
             timerStart()
         }
-        binding.pauseBtn.setOnClickListener {
-            timerPause()
+        binding.endBtn.setOnClickListener {
+            deleteRoom()
         }
-        binding.endBtn.setOnClickListener { deleteRoom() }
-
 
     }
 
     private fun updateUIPlayer() {
+        val playerInfo = db.collection("Account Data").document(auth.currentUser!!.uid)
+        playerInfo.get().addOnSuccessListener { document ->
+            playerName = document.getString("Display Name").toString()
+            playerIcon = document.getString("Icon").toString()
+        }
         val playersInRoom = db.collection("Rooms").document(currentRoom).collection("Players").document("PlayersData")
         playersInRoom.addSnapshotListener { snapshot, error ->
             if (snapshot != null) {
@@ -130,30 +137,42 @@ class ActiveGame : AppCompatActivity() {
                 initQuestion.get().addOnSuccessListener { document ->
                     binding.Question.text = document.getString("Q1")
                 }
-
+                if (isHost || p1name == playerName){
+                    binding.startBtn.visibility = View.VISIBLE
+                    binding.endBtn.visibility = View.VISIBLE
+                    isHost = true
+                }
+                Log.d("Main", "updateUIPlayer: making buttons visible to host")
             }
         }
-        if (!isHost){
-            binding.startBtn.visibility = View.INVISIBLE
-            binding.pauseBtn.visibility = View.INVISIBLE
-            binding.endBtn.visibility = View.INVISIBLE
-        }else{
-            binding.startBtn.visibility = View.VISIBLE
-            binding.pauseBtn.visibility = View.VISIBLE
-            binding.endBtn.visibility = View.VISIBLE
+        val timerSet = db.collection("Rooms").document(currentRoom)
+        timerSet.addSnapshotListener { snapshot, error ->
+            if (snapshot != null ){
+                binding.timer.text = snapshot.get("Timer").toString()
+            }
         }
         Log.d("Main", "updateUIPlayer: done running")
 
     }
     private fun timerStart(){
-        if (isHost) {
-            val timerSetting = db.collection("Rooms").document(hostRoomCode)
-        } else {
-            val timerSetting = db.collection("Rooms").document(JoinRoomCode)
-        }
-    }
-    private fun timerPause(){
 
+        if (isHost) {
+            val timerSetting = db.collection("Rooms").document(currentRoom)
+            timerSetting.addSnapshotListener { snapshot, error ->
+                var timerSet = snapshot?.get("Timer").toString().toInt()
+                object : CountDownTimer(timerSet.toLong()*1000, 1000) {
+                    override fun onTick(millisUntilFinished: Long) {
+                        binding.timer.text = timerSet.toString()
+                        timerSet--
+                        timerSetting.update("Timer Status", "Play")
+                    }
+                    override fun onFinish() {
+                        gameLogic()
+                        timerStart()
+                    }
+                }.start()
+            }
+        }
     }
     private fun deleteRoom(){
 
@@ -181,15 +200,15 @@ class ActiveGame : AppCompatActivity() {
             1 -> {
                 binding.P1name.visibility = View.VISIBLE
                 binding.P1icon.visibility = View.VISIBLE
+                binding.startBtn.visibility = View.VISIBLE
+                binding.endBtn.visibility = View.VISIBLE
             }
             2 -> {
                 binding.P1name.visibility = View.VISIBLE
                 binding.P1icon.visibility = View.VISIBLE
                 binding.P2name.visibility = View.VISIBLE
                 binding.P2icon.visibility = View.VISIBLE
-                binding.startBtn.visibility = View.INVISIBLE
-                binding.pauseBtn.visibility = View.INVISIBLE
-                binding.endBtn.visibility = View.INVISIBLE
+
             }
             3 -> {
                 binding.P1name.visibility = View.VISIBLE
@@ -198,9 +217,7 @@ class ActiveGame : AppCompatActivity() {
                 binding.P2icon.visibility = View.VISIBLE
                 binding.P3name.visibility = View.VISIBLE
                 binding.P3icon.visibility = View.VISIBLE
-                binding.startBtn.visibility = View.INVISIBLE
-                binding.pauseBtn.visibility = View.INVISIBLE
-                binding.endBtn.visibility = View.INVISIBLE
+
             }
             4 -> {
                 binding.P1name.visibility = View.VISIBLE
@@ -211,9 +228,7 @@ class ActiveGame : AppCompatActivity() {
                 binding.P3icon.visibility = View.VISIBLE
                 binding.P4name.visibility = View.VISIBLE
                 binding.P4icon.visibility = View.VISIBLE
-                binding.startBtn.visibility = View.INVISIBLE
-                binding.pauseBtn.visibility = View.INVISIBLE
-                binding.endBtn.visibility = View.INVISIBLE
+
             }
             5 -> {
                 binding.P1name.visibility = View.VISIBLE
@@ -226,9 +241,7 @@ class ActiveGame : AppCompatActivity() {
                 binding.P4icon.visibility = View.VISIBLE
                 binding.P5name.visibility = View.VISIBLE
                 binding.P5icon.visibility = View.VISIBLE
-                binding.startBtn.visibility = View.INVISIBLE
-                binding.pauseBtn.visibility = View.INVISIBLE
-                binding.endBtn.visibility = View.INVISIBLE
+
             }
             6 -> {
                 binding.P1name.visibility = View.VISIBLE
@@ -243,14 +256,13 @@ class ActiveGame : AppCompatActivity() {
                 binding.P5icon.visibility = View.VISIBLE
                 binding.P6name.visibility = View.VISIBLE
                 binding.P6icon.visibility = View.VISIBLE
-                binding.startBtn.visibility = View.INVISIBLE
-                binding.pauseBtn.visibility = View.INVISIBLE
-                binding.endBtn.visibility = View.INVISIBLE
+
             }
         }
 
     }
     private fun hostJoin() {
+        
             val addHostToRoom = db.collection("Rooms").document(hostRoomCode).collection("Players")
                 .document("PlayersData")
             binding.roomcode.append(hostRoomCode)

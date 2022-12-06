@@ -192,7 +192,7 @@ class CreateGame : AppCompatActivity() {
                     "Host" to host,
                     "Max Players" to maxPlayer,
                     "Timer" to timer,
-                    "Room Status" to "Pause",
+                    "Timer Status" to "Pause",
                     "Question Turn" to 1,
                     "Player Turn" to host
                 )
