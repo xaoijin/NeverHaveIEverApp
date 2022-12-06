@@ -161,7 +161,7 @@ class ActiveGame : AppCompatActivity() {
                     db.collection("Rooms").document(currentRoom).collection("Questions")
                         .document("Questions to be Used")
                 initQuestion.get().addOnSuccessListener { document ->
-                    binding.Question.text = document.getString("Q1")
+                    gameLogic()
                 }
                 if (isHost || p1name == playerName) {
                     binding.startBtn.visibility = View.VISIBLE
