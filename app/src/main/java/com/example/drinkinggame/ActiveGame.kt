@@ -1,17 +1,18 @@
 package com.example.drinkinggame
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.drinkinggame.databinding.ActivityActiveGameBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 var JoinRoomCode = ""
 var isHost = false
+var currentRoom = ""
 
 class ActiveGame : AppCompatActivity() {
     private lateinit var binding: ActivityActiveGameBinding
@@ -19,7 +20,7 @@ class ActiveGame : AppCompatActivity() {
     val db = Firebase.firestore
     private var playerName = ""
     private var playerIcon = ""
-    private var currentRoom = ""
+    private var questionCounter = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityActiveGameBinding.inflate(layoutInflater)
@@ -38,23 +39,41 @@ class ActiveGame : AppCompatActivity() {
         if (!isHost) {
             playerJoin()
             updateUIPlayer()
+            binding.startBtn.visibility = View.INVISIBLE
+            binding.endBtn.visibility = View.INVISIBLE
         } else {
             hostJoin()
             updateUIPlayer()
         }
-        binding.startBtn.setOnClickListener {
-            timerStart()
-        }
-        binding.pauseBtn.setOnClickListener {
-            timerPause()
-        }
-        binding.endBtn.setOnClickListener { deleteRoom() }
 
+        binding.startBtn.setOnClickListener {
+            val timerSetting = db.collection("Rooms").document(currentRoom)
+            timerSetting.update("Timer Status", "Started")
+            binding.startBtn.visibility = View.INVISIBLE
+
+        }
+        binding.endBtn.setOnClickListener {
+            deleteRoom()
+        }
+        val checkTimer = db.collection("Rooms").document(currentRoom)
+        checkTimer.addSnapshotListener { snapshot, error ->
+            if (snapshot != null) {
+                if (snapshot.getString("Timer Status") == "Started") {
+                    timerStart()
+                }
+            }
+        }
 
     }
 
     private fun updateUIPlayer() {
-        val playersInRoom = db.collection("Rooms").document(currentRoom).collection("Players").document("PlayersData")
+        val playerInfo = db.collection("Account Data").document(auth.currentUser!!.uid)
+        playerInfo.get().addOnSuccessListener { document ->
+            playerName = document.getString("Display Name").toString()
+            playerIcon = document.getString("Icon").toString()
+        }
+        val playersInRoom = db.collection("Rooms").document(currentRoom).collection("Players")
+            .document("PlayersData")
         playersInRoom.addSnapshotListener { snapshot, error ->
             if (snapshot != null) {
                 val p1name = snapshot.getString("Player 1")
@@ -117,51 +136,66 @@ class ActiveGame : AppCompatActivity() {
                         packageName
                     )
                 )
-                if (p6name == "" ){
+                if (p6name == "") {
                     visible(5)
-                }else if(p5name === ""){
+                } else if (p5name === "") {
                     visible(4)
-                }else if (p4name == ""){
+                } else if (p4name == "") {
                     visible(3)
-                }else if (p3name == ""){
+                } else if (p3name == "") {
                     visible(2)
                 }
-                val initQuestion = db.collection("Rooms").document(currentRoom).collection("Questions").document("Questions to be Used")
+                val initQuestion =
+                    db.collection("Rooms").document(currentRoom).collection("Questions")
+                        .document("Questions to be Used")
                 initQuestion.get().addOnSuccessListener { document ->
                     binding.Question.text = document.getString("Q1")
                 }
-
+                if (isHost || p1name == playerName) {
+                    binding.startBtn.visibility = View.VISIBLE
+                    binding.endBtn.visibility = View.VISIBLE
+                }
+                Log.d("Main", "updateUIPlayer: making buttons visible to host")
             }
         }
-        if (!isHost){
-            binding.startBtn.visibility = View.INVISIBLE
-            binding.pauseBtn.visibility = View.INVISIBLE
-            binding.endBtn.visibility = View.INVISIBLE
-        }else{
-            binding.startBtn.visibility = View.VISIBLE
-            binding.pauseBtn.visibility = View.VISIBLE
-            binding.endBtn.visibility = View.VISIBLE
+        val timerSet = db.collection("Rooms").document(currentRoom)
+        timerSet.addSnapshotListener { snapshot, error ->
+            if (snapshot != null) {
+                binding.timer.text = snapshot.get("Timer").toString()
+            }
         }
         Log.d("Main", "updateUIPlayer: done running")
 
     }
-    private fun timerStart(){
-        if (isHost) {
-            val timerSetting = db.collection("Rooms").document(hostRoomCode)
-        } else {
-            val timerSetting = db.collection("Rooms").document(JoinRoomCode)
+
+    private fun timerStart() {
+
+        val timerSetting = db.collection("Rooms").document(currentRoom)
+        timerSetting.addSnapshotListener { snapshot, error ->
+            var timerSet = snapshot?.get("Timer").toString().toInt()
+            object : CountDownTimer(timerSet.toLong() * 1000, 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    binding.timer.text = timerSet.toString()
+                    timerSet--
+                }
+
+                override fun onFinish() {
+                    gameLogic()
+                    timerStart()
+                }
+            }.start()
         }
     }
-    private fun timerPause(){
+
+    private fun deleteRoom() {
 
     }
-    private fun deleteRoom(){
 
-    }
     private fun gameLogic() {
 
     }
-    private fun invisible(){
+
+    private fun invisible() {
         binding.P1name.visibility = View.INVISIBLE
         binding.P2name.visibility = View.INVISIBLE
         binding.P3name.visibility = View.INVISIBLE
@@ -175,21 +209,22 @@ class ActiveGame : AppCompatActivity() {
         binding.P5icon.visibility = View.INVISIBLE
         binding.P6icon.visibility = View.INVISIBLE
     }
+
     private fun visible(x: Int) {
         Log.d("Main", "visible: is working")
         when (x) {
             1 -> {
                 binding.P1name.visibility = View.VISIBLE
                 binding.P1icon.visibility = View.VISIBLE
+                binding.startBtn.visibility = View.VISIBLE
+                binding.endBtn.visibility = View.VISIBLE
             }
             2 -> {
                 binding.P1name.visibility = View.VISIBLE
                 binding.P1icon.visibility = View.VISIBLE
                 binding.P2name.visibility = View.VISIBLE
                 binding.P2icon.visibility = View.VISIBLE
-                binding.startBtn.visibility = View.INVISIBLE
-                binding.pauseBtn.visibility = View.INVISIBLE
-                binding.endBtn.visibility = View.INVISIBLE
+
             }
             3 -> {
                 binding.P1name.visibility = View.VISIBLE
@@ -198,9 +233,7 @@ class ActiveGame : AppCompatActivity() {
                 binding.P2icon.visibility = View.VISIBLE
                 binding.P3name.visibility = View.VISIBLE
                 binding.P3icon.visibility = View.VISIBLE
-                binding.startBtn.visibility = View.INVISIBLE
-                binding.pauseBtn.visibility = View.INVISIBLE
-                binding.endBtn.visibility = View.INVISIBLE
+
             }
             4 -> {
                 binding.P1name.visibility = View.VISIBLE
@@ -211,9 +244,7 @@ class ActiveGame : AppCompatActivity() {
                 binding.P3icon.visibility = View.VISIBLE
                 binding.P4name.visibility = View.VISIBLE
                 binding.P4icon.visibility = View.VISIBLE
-                binding.startBtn.visibility = View.INVISIBLE
-                binding.pauseBtn.visibility = View.INVISIBLE
-                binding.endBtn.visibility = View.INVISIBLE
+
             }
             5 -> {
                 binding.P1name.visibility = View.VISIBLE
@@ -226,9 +257,7 @@ class ActiveGame : AppCompatActivity() {
                 binding.P4icon.visibility = View.VISIBLE
                 binding.P5name.visibility = View.VISIBLE
                 binding.P5icon.visibility = View.VISIBLE
-                binding.startBtn.visibility = View.INVISIBLE
-                binding.pauseBtn.visibility = View.INVISIBLE
-                binding.endBtn.visibility = View.INVISIBLE
+
             }
             6 -> {
                 binding.P1name.visibility = View.VISIBLE
@@ -243,39 +272,40 @@ class ActiveGame : AppCompatActivity() {
                 binding.P5icon.visibility = View.VISIBLE
                 binding.P6name.visibility = View.VISIBLE
                 binding.P6icon.visibility = View.VISIBLE
-                binding.startBtn.visibility = View.INVISIBLE
-                binding.pauseBtn.visibility = View.INVISIBLE
-                binding.endBtn.visibility = View.INVISIBLE
+
             }
         }
 
     }
+
     private fun hostJoin() {
-            val addHostToRoom = db.collection("Rooms").document(hostRoomCode).collection("Players")
-                .document("PlayersData")
-            binding.roomcode.append(hostRoomCode)
-            currentRoom = hostRoomCode
-            addHostToRoom.get().addOnSuccessListener { document ->
 
-                binding.P1name.text = document.getString("Player 1")
-                val p1Icon = document.getString("Player 1 Icon")
-                binding.P1icon.setImageResource(
-                    resources.getIdentifier(
-                        p1Icon,
-                        "drawable",
-                        packageName
-                    )
+        val addHostToRoom = db.collection("Rooms").document(currentRoom).collection("Players")
+            .document("PlayersData")
+        binding.roomcode.append(currentRoom)
+        addHostToRoom.get().addOnSuccessListener { document ->
+
+            binding.P1name.text = document.getString("Player 1")
+            val p1Icon = document.getString("Player 1 Icon")
+            binding.P1icon.setImageResource(
+                resources.getIdentifier(
+                    p1Icon,
+                    "drawable",
+                    packageName
                 )
-                visible(1)
+            )
+            visible(1)
 
-            }
-
+        }
+        isHost = true
     }
-    private fun playerJoin(){
-        val playerJoin = db.collection("Rooms").document(JoinRoomCode).collection("Players").document("PlayersData")
+
+    private fun playerJoin() {
+        val playerJoin = db.collection("Rooms").document(JoinRoomCode).collection("Players")
+            .document("PlayersData")
         binding.roomcode.append(JoinRoomCode)
         currentRoom = JoinRoomCode
-        playerJoin.get().addOnSuccessListener { document->
+        playerJoin.get().addOnSuccessListener { document ->
             val p1name = document.getString("Player 1")
             val p2name = document.getString("Player 2")
             val p3name = document.getString("Player 3")
@@ -283,7 +313,7 @@ class ActiveGame : AppCompatActivity() {
             val p5name = document.getString("Player 5")
             val p6name = document.getString("Player 6")
 
-            if (p1name == "" || p1name == playerName ){
+            if (p1name == "" || p1name == playerName) {
                 binding.P1name.text = playerName
                 binding.P1icon.setImageResource(
                     resources.getIdentifier(
@@ -297,8 +327,9 @@ class ActiveGame : AppCompatActivity() {
                     "Player 1" to playerName,
                     "Player 1 Icon" to playerIcon
                 )
+                isHost = true
                 playerJoin.update(playerData as Map<String, String>)
-            }else if (p2name == "" || p2name == playerName){
+            } else if (p2name == "" || p2name == playerName) {
                 binding.P2name.text = playerName
                 binding.P2icon.setImageResource(
                     resources.getIdentifier(
@@ -313,7 +344,7 @@ class ActiveGame : AppCompatActivity() {
                     "Player 2 Icon" to playerIcon
                 )
                 playerJoin.update(playerData as Map<String, String>)
-            }else if (p3name == "" || p3name == playerName){
+            } else if (p3name == "" || p3name == playerName) {
                 binding.P3name.text = playerName
                 binding.P3icon.setImageResource(
                     resources.getIdentifier(
@@ -328,7 +359,7 @@ class ActiveGame : AppCompatActivity() {
                     "Player 3 Icon" to playerIcon
                 )
                 playerJoin.update(playerData as Map<String, String>)
-            }else if (p4name == "" || p4name == playerName){
+            } else if (p4name == "" || p4name == playerName) {
                 binding.P4name.text = playerName
                 binding.P4icon.setImageResource(
                     resources.getIdentifier(
@@ -343,7 +374,7 @@ class ActiveGame : AppCompatActivity() {
                     "Player 4 Icon" to playerIcon
                 )
                 playerJoin.update(playerData as Map<String, String>)
-            }else if (p5name == "" || p5name == playerName){
+            } else if (p5name == "" || p5name == playerName) {
                 binding.P5name.text = playerName
                 binding.P5icon.setImageResource(
                     resources.getIdentifier(
@@ -358,7 +389,7 @@ class ActiveGame : AppCompatActivity() {
                     "Player 5 Icon" to playerIcon
                 )
                 playerJoin.update(playerData as Map<String, String>)
-            }else if (p6name == "" || p6name == playerName){
+            } else if (p6name == "" || p6name == playerName) {
                 binding.P6name.text = playerName
                 binding.P6icon.setImageResource(
                     resources.getIdentifier(

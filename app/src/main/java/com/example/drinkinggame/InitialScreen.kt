@@ -29,7 +29,6 @@ class InitialScreen : AppCompatActivity() {
     private lateinit var userIcon: ImageView
     private lateinit var codeError: TextView
     private lateinit var gameCodeET: EditText
-    private var isFull = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_initialscreen)
@@ -107,10 +106,12 @@ class InitialScreen : AppCompatActivity() {
                         }else if ((p3name == "" || p3name == displayName.text)&& maxPlayer == "3"){
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
-                        }else if ((p2name == "" || p4name == displayName.text)&& maxPlayer == "2"){
+                        }else if ((p2name == "" || p2name == displayName.text)&& maxPlayer == "2"){
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
                         }else if (p1name == displayName.text){
+                            isHost = true
+                            currentRoom = JoinRoomCode
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
                         }else{
