@@ -22,6 +22,24 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
         <TextView
+            android:id="@+id/rules"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Walk around and dont fall!"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+        <TextView
+            android:id="@+id/rules2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Keep the phone steady to win!"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <TextView
             android:id="@+id/textX"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
