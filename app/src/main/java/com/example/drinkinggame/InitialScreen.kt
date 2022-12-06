@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.MetadataChanges
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.snapshots
 import com.google.firebase.ktx.Firebase
 
 class InitialScreen : AppCompatActivity() {
@@ -69,7 +70,14 @@ class InitialScreen : AppCompatActivity() {
             startActivity(intent)
         }
         bLogout.setOnClickListener { logout() }
-
+        if (currentRoom.isNotEmpty()){
+            val deletePrevRoom = db.collection("Rooms").document(currentRoom)
+            deletePrevRoom.addSnapshotListener { snapshot, error ->
+                if (snapshot != null){
+                    deletePrevRoom.delete()
+                }
+            }
+        }
     }
 
     private fun joinGame() {

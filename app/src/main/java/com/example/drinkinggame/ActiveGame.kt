@@ -16,6 +16,7 @@ var JoinRoomCode = ""
 var isHost = false
 var currentRoom = ""
 var playerNumber = 1
+
 class ActiveGame : AppCompatActivity() {
     private lateinit var binding: ActivityActiveGameBinding
     private lateinit var auth: FirebaseAuth
@@ -50,7 +51,7 @@ class ActiveGame : AppCompatActivity() {
 
         binding.startBtn.setOnClickListener {
             val timerSetting = db.collection("Rooms").document(currentRoom)
-            timerSetting.update("Timer Status", "Started")
+            timerSetting.update("Game Status", "Started")
         }
         binding.endBtn.setOnClickListener {
             deleteRoom()
@@ -58,22 +59,21 @@ class ActiveGame : AppCompatActivity() {
         val checkTimer = db.collection("Rooms").document(currentRoom)
         checkTimer.addSnapshotListener { snapshot, error ->
             if (snapshot != null) {
-                if (snapshot.getString("Timer Status") == "Started") {
+                if (snapshot.getString("Game Status") == "Started") {
                     timerStart()
                 }
             }
         }
         playerChoice()
         checkDrunk()
-        val checkRoomStillOpen = db.collection("Rooms").document(currentRoom)
-        checkRoomStillOpen.addSnapshotListener { snapshot, error ->
+        val checkGameEnded =  db.collection("Rooms").document(currentRoom)
+        checkGameEnded.addSnapshotListener { snapshot, error ->
             if (snapshot != null){
-                Log.d("Main", "onCreate: Room is open")
-            }else{
-                Log.d("Main", "onCreate: Room Closed")
-                Toast.makeText(applicationContext, "Host has Ended the Room.", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, InitialScreen::class.java)
-                startActivity(intent)
+                if (snapshot.getString("Game Status") == "Ended"){
+                    Toast.makeText(applicationContext, "Host has Closed The Room", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, InitialScreen::class.java)
+                    startActivity(intent)
+                }
             }
         }
     }
@@ -183,20 +183,26 @@ class ActiveGame : AppCompatActivity() {
     private fun timerStart() {
         val timerSetting = db.collection("Rooms").document(currentRoom)
         timerSetting.addSnapshotListener { snapshot, error ->
-            var timerSet = snapshot?.get("Timer").toString().toInt()
-            object : CountDownTimer(timerSet.toLong() * 1000, 1000) {
-                override fun onTick(millisUntilFinished: Long) {
-                    binding.timer.text = timerSet.toString()
-                    timerSet--
-                }
+            if (snapshot != null) {
+                var timerSet = snapshot.get("Timer").toString().toInt()
+                object : CountDownTimer(timerSet.toLong() * 1000, 1000) {
+                    override fun onTick(millisUntilFinished: Long) {
+                        binding.timer.text = timerSet.toString()
+                        timerSet--
+                    }
 
-                override fun onFinish() {
-                    gameLogic()
-                    binding.iHaveBtn.visibility = View.VISIBLE
-                    binding.haveNotBtn.visibility = View.VISIBLE
-                    timerStart()
-                }
-            }.start()
+                    override fun onFinish() {
+                        gameLogic()
+                        binding.iHaveBtn.visibility = View.VISIBLE
+                        binding.haveNotBtn.visibility = View.VISIBLE
+                        timerStart()
+                    }
+                }.start()
+            }else{
+                Toast.makeText(applicationContext, "Host Closed The Room!", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, InitialScreen::class.java)
+                startActivity(intent)
+            }
         }
     }
 
@@ -259,9 +265,8 @@ class ActiveGame : AppCompatActivity() {
     }
 
     private fun deleteRoom() {
-        db.collection("Rooms").document(currentRoom).delete()
-            .addOnSuccessListener { Log.d("Main", "DocumentSnapshot successfully deleted!") }
-            .addOnFailureListener { e -> Log.w("Main", "Error deleting document", e) }
+       val gameEnd =  db.collection("Rooms").document(currentRoom)
+        gameEnd.update("Game Status", "Ended")
         val intent = Intent(this, InitialScreen::class.java)
         startActivity(intent)
     }
@@ -465,6 +470,9 @@ class ActiveGame : AppCompatActivity() {
                     binding.Question.text = "No More Questions!"
                 }
             }
+        }.addOnFailureListener {
+            val intent = Intent(this, InitialScreen::class.java)
+            startActivity(intent)
         }
     }
 

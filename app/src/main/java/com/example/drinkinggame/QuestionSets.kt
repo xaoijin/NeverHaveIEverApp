@@ -76,21 +76,21 @@ class QuestionSets : AppCompatActivity() {
             questionsetselected = 1
             binding.s1.text = "Selected"
             binding.s1.backgroundTintList =
-                ContextCompat.getColorStateList(applicationContext, R.color.DarkViolet)
+                ContextCompat.getColorStateList(applicationContext, R.color.maroon)
         }
         binding.s2.setOnClickListener {
             clearSelect()
             questionsetselected = 2
             binding.s2.text = "Selected"
             binding.s2.backgroundTintList =
-                ContextCompat.getColorStateList(applicationContext, R.color.DarkViolet)
+                ContextCompat.getColorStateList(applicationContext, R.color.maroon)
         }
         binding.s3.setOnClickListener {
             clearSelect()
             questionsetselected = 3
             binding.s3.text = "Selected"
             binding.s3.backgroundTintList =
-                ContextCompat.getColorStateList(applicationContext, R.color.DarkViolet)
+                ContextCompat.getColorStateList(applicationContext, R.color.maroon)
         }
     }
 
@@ -116,11 +116,11 @@ class QuestionSets : AppCompatActivity() {
             append("Select")
         }
         binding.s1.backgroundTintList =
-            ContextCompat.getColorStateList(applicationContext, R.color.MediumPurple)
+            ContextCompat.getColorStateList(applicationContext, R.color.IndianRed)
         binding.s2.backgroundTintList =
-            ContextCompat.getColorStateList(applicationContext, R.color.MediumPurple)
+            ContextCompat.getColorStateList(applicationContext, R.color.IndianRed)
         binding.s3.backgroundTintList =
-            ContextCompat.getColorStateList(applicationContext, R.color.MediumPurple)
+            ContextCompat.getColorStateList(applicationContext, R.color.IndianRed)
     }
 
     private fun rename() {
