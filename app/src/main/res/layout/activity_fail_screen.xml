@@ -10,8 +10,8 @@
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
         android:layout_alignParentBottom="true"
+        android:scaleType="fitXY"
         android:src="@drawable/failure"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

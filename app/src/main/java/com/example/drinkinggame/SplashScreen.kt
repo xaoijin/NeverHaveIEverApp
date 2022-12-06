@@ -1,10 +1,12 @@
 package com.example.drinkinggame
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 
+@SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,13 +17,13 @@ class SplashScreen : AppCompatActivity() {
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
-        val someDelay = Thread{
+        val someDelay = Thread {
             Thread.sleep(2300)
-            if(auth.currentUser == null){
+            if (auth.currentUser == null) {
                 val intent = Intent(this, LoginScreen::class.java)
                 startActivity(intent)
                 finish()
-            }else{
+            } else {
                 val intent = Intent(this, InitialScreen::class.java)
                 startActivity(intent)
                 finish()

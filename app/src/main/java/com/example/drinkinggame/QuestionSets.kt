@@ -31,23 +31,15 @@ class QuestionSets : AppCompatActivity() {
         }
         //Setting Default/Saved Values
         auth = FirebaseAuth.getInstance()
-        val qSetNamesref = db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
+        val qSetNamesref =
+            db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
                 "Question Set Name Edit"
-        ).document("Names").addSnapshotListener{ snapshot, e ->
-            if (e != null) {
-                Log.w("Main", "Listen failed.", e)
-                return@addSnapshotListener
-            }
+            ).document("Names").get().addOnSuccessListener { document->
+                    binding.Qs1.text = document.getString("QS1Name").toString()
+                    binding.Qs2.text = document.getString("QS2Name").toString()
+                    binding.Qs3.text = document.getString("QS3Name").toString()
 
-            if (snapshot != null && snapshot.exists()) {
-                Log.d("Main", "Current data: ${snapshot.data}")
-                binding.Qs1.text = snapshot.getString("QS1Name").toString()
-                binding.Qs2.text = snapshot.getString("QS2Name").toString()
-                binding.Qs3.text = snapshot.getString("QS3Name").toString()
-            } else {
-                Log.d("Main", "Current data: null")
             }
-        }
         ///End of Setting Default/Saved Question Set Names
 
         //Buttons for Edit,Rename,Select
@@ -83,50 +75,59 @@ class QuestionSets : AppCompatActivity() {
             clearSelect()
             questionsetselected = 1
             binding.s1.text = "Selected"
-            binding.s1.backgroundTintList= ContextCompat.getColorStateList(applicationContext, R.color.DarkViolet)
+            binding.s1.backgroundTintList =
+                ContextCompat.getColorStateList(applicationContext, R.color.DarkViolet)
         }
         binding.s2.setOnClickListener {
             clearSelect()
             questionsetselected = 2
             binding.s2.text = "Selected"
-            binding.s2.backgroundTintList= ContextCompat.getColorStateList(applicationContext, R.color.DarkViolet)
+            binding.s2.backgroundTintList =
+                ContextCompat.getColorStateList(applicationContext, R.color.DarkViolet)
         }
         binding.s3.setOnClickListener {
             clearSelect()
             questionsetselected = 3
             binding.s3.text = "Selected"
-            binding.s3.backgroundTintList= ContextCompat.getColorStateList(applicationContext, R.color.DarkViolet)
+            binding.s3.backgroundTintList =
+                ContextCompat.getColorStateList(applicationContext, R.color.DarkViolet)
         }
     }
-    private fun updateSetName(){
-        val qSetNamesref = db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
+
+    private fun updateSetName() {
+        val qSetNamesref =
+            db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
                 "Question Set Name Edit"
-        ).document("Names")
+            ).document("Names")
         qSetNamesref.update("QS1Name", binding.Qs1.text.toString())
         qSetNamesref.update("QS2Name", binding.Qs2.text.toString())
         qSetNamesref.update("QS3Name", binding.Qs3.text.toString())
         Log.d("Main", "updateUI worked")
     }
-    private fun clearSelect(){
+
+    private fun clearSelect() {
         binding.s1.text = buildString {
-        append("Select")
-    }
+            append("Select")
+        }
         binding.s2.text = buildString {
-        append("Select")
-    }
+            append("Select")
+        }
         binding.s3.text = buildString {
-        append("Select")
-    }
-        binding.s1.backgroundTintList = ContextCompat.getColorStateList(applicationContext, R.color.MediumPurple)
-        binding.s2.backgroundTintList = ContextCompat.getColorStateList(applicationContext, R.color.MediumPurple)
-        binding.s3.backgroundTintList = ContextCompat.getColorStateList(applicationContext, R.color.MediumPurple)
+            append("Select")
+        }
+        binding.s1.backgroundTintList =
+            ContextCompat.getColorStateList(applicationContext, R.color.MediumPurple)
+        binding.s2.backgroundTintList =
+            ContextCompat.getColorStateList(applicationContext, R.color.MediumPurple)
+        binding.s3.backgroundTintList =
+            ContextCompat.getColorStateList(applicationContext, R.color.MediumPurple)
     }
 
-    private fun rename(){
+    private fun rename() {
         val input = EditText(this)
         input.hint = "Enter Here"
         val dialogBuilder = AlertDialog.Builder(this)
-        when (questionsetrename){
+        when (questionsetrename) {
             1 -> {
                 dialogBuilder.setMessage("What would you like to name this Question Set?")
                     .setView(input)

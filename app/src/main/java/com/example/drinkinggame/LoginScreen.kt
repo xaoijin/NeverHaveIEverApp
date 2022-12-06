@@ -33,8 +33,8 @@ class LoginScreen : AppCompatActivity() {
         }
         val linearLayout = findViewById<LinearLayout>(R.id.loginlayout)
         val animationDrawable = linearLayout.background as AnimationDrawable
-        animationDrawable.setEnterFadeDuration(500)
-        animationDrawable.setExitFadeDuration(4500)
+        animationDrawable.setEnterFadeDuration(10)
+        animationDrawable.setExitFadeDuration(2000)
         animationDrawable.start()
 
         auth = FirebaseAuth.getInstance()
@@ -50,21 +50,22 @@ class LoginScreen : AppCompatActivity() {
         bLogin.setOnClickListener {
             loginAccount()
         }
-        bRegister.setOnClickListener{
+        bRegister.setOnClickListener {
             registerAccount()
         }
     }
-    private fun loginAccount(){
+
+    private fun loginAccount() {
         val email = lEmail.text.toString().trim()
         val psw = lPassword.text.toString().trim()
 
-        if (email.isEmpty() || psw.isEmpty()){
+        if (email.isEmpty() || psw.isEmpty()) {
             Toast.makeText(this, "Please Enter Email or Password", Toast.LENGTH_SHORT).show()
             return
         }
         Log.d("Main", "Email:$email")
-        Log.d("Main", "Password: $psw" )
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(email,psw)
+        Log.d("Main", "Password: $psw")
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, psw)
             .addOnCompleteListener {
                 if (!it.isSuccessful) return@addOnCompleteListener
                 Log.d("Main", "Successfully Login: ${it.result?.user?.uid}")
@@ -77,13 +78,13 @@ class LoginScreen : AppCompatActivity() {
             }
     }
 
-    private fun registerAccount(){
+    private fun registerAccount() {
         val faker = Faker()
         val name = faker.app().name() // Miss Samanta Schmidt
         val email = lEmail.text.toString().trim()
         val psw = lPassword.text.toString().trim()
         val icon = "brandy"
-        if (email.isEmpty() || psw.isEmpty()){
+        if (email.isEmpty() || psw.isEmpty()) {
             Toast.makeText(this, "Please Enter Email or Password", Toast.LENGTH_SHORT).show()
             return
         }
@@ -143,8 +144,8 @@ class LoginScreen : AppCompatActivity() {
             "Q20" to "Never have I ever "
         )
         Log.d("Main", "Email:$email")
-        Log.d("Main", "Password: $psw" )
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,psw)
+        Log.d("Main", "Password: $psw")
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, psw)
             .addOnCompleteListener {
 
                 db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
@@ -159,7 +160,8 @@ class LoginScreen : AppCompatActivity() {
                 db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
                     "Question Set Name Edit"
                 ).document("Names").set(cleanQuestionSetNames)
-                db.collection("Account Data").document(auth.currentUser?.uid.toString()).set(emailPsw)
+                db.collection("Account Data").document(auth.currentUser?.uid.toString())
+                    .set(emailPsw)
                 val intent = Intent(this, InitialScreen::class.java)
                 startActivity(intent)
                 Log.d("Main", "Successfully created user with uid: ${it.result?.user?.uid}")

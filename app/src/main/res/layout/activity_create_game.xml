@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#6B5298"
+    android:background="@drawable/barrels"
     tools:context=".CreateGame">
 
     <TextView
@@ -12,75 +12,79 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="# of players \n (max 6 &amp; min 2)"
-        android:textColor="#FFFFFF"
+        android:textAlignment="center"
+        android:textColor="@color/Black"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.056" />
+        app:layout_constraintVertical_bias="0.034" />
 
     <EditText
         android:id="@+id/players"
         android:layout_width="wrap_content"
-        android:layout_height="52dp"
-        android:backgroundTint="@color/white"
+        android:layout_height="wrap_content"
+        android:background="@color/Peru"
         android:inputType="number"
         android:maxLength="1"
-        android:text="2"
+        android:minHeight="48dp"
         android:minEms="2"
+        android:text="2"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.136" />
+        app:layout_constraintVertical_bias="0.098" />
 
     <TextView
         android:id="@+id/tv2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Set Timer \n(max 99 seconds)"
-        android:textColor="#FFFFFF"
+        android:textAlignment="center"
+        android:textColor="@color/Black"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.262" />
+        app:layout_constraintVertical_bias="0.306" />
 
     <EditText
         android:id="@+id/timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-
+        android:background="@color/Peru"
         android:inputType="number"
         android:maxLength="2"
-        android:text="20"
+        android:minHeight="48dp"
         android:minEms="2"
+        android:text="20"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35" />
+        app:layout_constraintVertical_bias="0.37" />
 
     <TextView
         android:id="@+id/Qs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Selected Question Set:"
-        android:textColor="@color/Navy"
+        android:textColor="@color/Black"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -92,7 +96,7 @@
         android:id="@+id/create"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/MediumPurple"
+        android:backgroundTint="@color/Tan"
         android:text="Create Game"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -103,30 +107,43 @@
         app:layout_constraintVertical_bias="0.866" />
 
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/roomcode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="192dp"
+        android:layout_height="68dp"
+        android:background="@color/Peru"
+        android:gravity="center"
         android:hint="Enter Room Code"
-        android:inputType="text"
-        android:maxLength="6"
-        android:minHeight="48dp"
-        android:textColor="#FFFFFF"
-        android:textAlignment="center"
+        android:textColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.677" />
+        app:layout_constraintVertical_bias="0.718">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/roomcodeInput"
+            android:layout_width="182dp"
+            android:layout_height="59dp"
+            android:singleLine="true"
+            android:maxLength="6"
+            android:textColor="@color/white"
+            tools:layout_editor_absoluteX="57dp"
+            tools:layout_editor_absoluteY="361dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/setSelected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/Peru"
         android:text="Question set name"
-        android:textColor="@color/GhostWhite"
+        android:textColor="#5D4037"
         android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -143,10 +160,10 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.906"
+        app:layout_constraintHorizontal_bias="0.939"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15" />
+        app:layout_constraintVertical_bias="0.115" />
 
     <TextView
         android:id="@+id/timerError"
@@ -157,10 +174,10 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.939"
+        app:layout_constraintHorizontal_bias="0.938"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.356" />
+        app:layout_constraintVertical_bias="0.373" />
 
     <TextView
         android:id="@+id/roomcodeError"
@@ -175,6 +192,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.623" />
+
+    <TextView
+        android:id="@+id/roomcodeError2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/red"
+        android:text="Room Code Doesn't Exist, Try Again!"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.622" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

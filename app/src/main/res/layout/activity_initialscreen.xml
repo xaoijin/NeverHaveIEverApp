@@ -100,17 +100,25 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.966">
 
+            <TextView
+                android:id="@+id/codeError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/Red"
+                android:text="Room does not Exist!"
+                android:visibility="visible" />
+
             <EditText
                 android:id="@+id/gameCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_margin="1dp"
                 android:background="@color/RosyBrown"
                 android:ems="7"
                 android:hint="Room Code Here"
                 android:inputType="text"
                 android:maxLength="6"
-                android:layout_margin="1dp"
                 android:minHeight="48dp"
                 android:textAlignment="center" />
 
@@ -119,28 +127,28 @@
                 android:layout_width="132dp"
                 android:layout_height="41dp"
                 android:layout_gravity="center"
+                android:layout_margin="1dp"
                 android:background="@drawable/cjgamebuttondesign"
                 android:shadowColor="#190FA8"
                 android:shadowDx="0"
                 android:shadowDy="0"
                 android:shadowRadius="12"
-                android:textColor="@color/AntiqueWhite"
-                android:layout_margin="1dp"
-                android:text="Join Game" />
+                android:text="Join Game"
+                android:textColor="@color/AntiqueWhite" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/createGame"
                 android:layout_width="131dp"
                 android:layout_height="43dp"
                 android:layout_gravity="center"
+                android:layout_margin="1dp"
                 android:background="@drawable/cjgamebuttondesign"
                 android:shadowColor="#190FA8"
                 android:shadowDx="0"
                 android:shadowDy="0"
                 android:shadowRadius="12"
-                android:layout_margin="1dp"
-                android:textColor="@color/AntiqueWhite"
-                android:text="Create Game" />
+                android:text="Create Game"
+                android:textColor="@color/AntiqueWhite" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/cQuestionSet"
@@ -150,21 +158,20 @@
                 android:background="@drawable/questionsetbuttondesign"
                 android:shadowColor="#190FA8"
                 android:shadowDx="0"
-                android:textColor="@color/AntiqueWhite"
                 android:shadowDy="0"
                 android:shadowRadius="12"
-                android:text="Question Sets" />
+                android:text="Question Sets"
+                android:textColor="@color/AntiqueWhite" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/log_out"
                 android:layout_width="135dp"
                 android:layout_height="44dp"
                 android:layout_gravity="center"
+                android:layout_margin="2dp"
                 android:background="@drawable/logoutdesign"
                 android:minHeight="48dp"
-                android:text="Logout"
-
-                />
+                android:text="Logout" />
         </LinearLayout>
 
         <RelativeLayout

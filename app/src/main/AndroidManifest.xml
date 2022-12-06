@@ -41,9 +41,9 @@
         </activity>
         <activity
             android:name=".SafeScreen"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
             <meta-data
                 android:name="android.app.lib_name"
@@ -52,8 +52,8 @@
         <activity
             android:name=".FailScreen"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
             <meta-data
                 android:name="android.app.lib_name"
@@ -62,8 +62,8 @@
         <activity
             android:name=".DrinkScreen"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
             <meta-data
                 android:name="android.app.lib_name"
@@ -89,9 +89,8 @@
         </activity>
         <activity
             android:name=".CreateGame"
-            android:exported="false"
+            android:exported="true"
             android:screenOrientation="portrait">
-
 
             <meta-data
                 android:name="android.app.lib_name"
@@ -99,8 +98,9 @@
         </activity>
         <activity
             android:name=".QuestionList"
-            android:exported="false"
+            android:exported="true"
             android:screenOrientation="portrait">
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

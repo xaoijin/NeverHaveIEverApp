@@ -14,8 +14,7 @@
     <drawable name="center">#E0D0AB</drawable>
     <drawable name="start">#C4DE95</drawable>
     <drawable name="end">#C5F2EC</drawable>
-    <drawable name ="stroke">#878787</drawable>
-
+    <drawable name="stroke">#878787</drawable>
 
 
     //end
@@ -27,7 +26,6 @@
     <color name="green">#4dff00</color>
     <color name="AliceBlue">#F0F8FF</color>
     <color name="AntiqueWhite">#FAEBD7</color>
-    <color name="aqua">#00FFFF</color>
     <color name="Aqua">#00FFFF</color>
     <color name="Aquamarine">#7FFFD4</color>
     <color name="Azure">#F0FFFF</color>
