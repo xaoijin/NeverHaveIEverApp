@@ -33,18 +33,7 @@ class ActiveGame : AppCompatActivity() {
             playerName = document.getString("Display Name").toString()
             playerIcon = document.getString("Icon").toString()
         }
-        binding.P1name.visibility = View.INVISIBLE
-        binding.P2name.visibility = View.INVISIBLE
-        binding.P3name.visibility = View.INVISIBLE
-        binding.P4name.visibility = View.INVISIBLE
-        binding.P5name.visibility = View.INVISIBLE
-        binding.P6name.visibility = View.INVISIBLE
-        binding.P1icon.visibility = View.INVISIBLE
-        binding.P2icon.visibility = View.INVISIBLE
-        binding.P3icon.visibility = View.INVISIBLE
-        binding.P4icon.visibility = View.INVISIBLE
-        binding.P5icon.visibility = View.INVISIBLE
-        binding.P6icon.visibility = View.INVISIBLE
+        invisible()
 
         if (!isHost) {
             playerJoin()
@@ -53,6 +42,13 @@ class ActiveGame : AppCompatActivity() {
             hostJoin()
             updateUIPlayer()
         }
+        binding.startBtn.setOnClickListener {
+            timerStart()
+        }
+        binding.pauseBtn.setOnClickListener {
+            timerPause()
+        }
+        binding.endBtn.setOnClickListener { deleteRoom() }
 
 
     }
@@ -130,6 +126,11 @@ class ActiveGame : AppCompatActivity() {
                 }else if (p3name == ""){
                     visible(2)
                 }
+                val initQuestion = db.collection("Rooms").document(currentRoom).collection("Questions").document("Questions to be Used")
+                initQuestion.get().addOnSuccessListener { document ->
+                    binding.Question.text = document.getString("Q1")
+                }
+
             }
         }
         if (!isHost){
@@ -141,17 +142,39 @@ class ActiveGame : AppCompatActivity() {
             binding.pauseBtn.visibility = View.VISIBLE
             binding.endBtn.visibility = View.VISIBLE
         }
+        Log.d("Main", "updateUIPlayer: done running")
 
     }
-
-    private fun gameStart() {
+    private fun timerStart(){
         if (isHost) {
             val timerSetting = db.collection("Rooms").document(hostRoomCode)
         } else {
             val timerSetting = db.collection("Rooms").document(JoinRoomCode)
         }
     }
+    private fun timerPause(){
 
+    }
+    private fun deleteRoom(){
+
+    }
+    private fun gameLogic() {
+
+    }
+    private fun invisible(){
+        binding.P1name.visibility = View.INVISIBLE
+        binding.P2name.visibility = View.INVISIBLE
+        binding.P3name.visibility = View.INVISIBLE
+        binding.P4name.visibility = View.INVISIBLE
+        binding.P5name.visibility = View.INVISIBLE
+        binding.P6name.visibility = View.INVISIBLE
+        binding.P1icon.visibility = View.INVISIBLE
+        binding.P2icon.visibility = View.INVISIBLE
+        binding.P3icon.visibility = View.INVISIBLE
+        binding.P4icon.visibility = View.INVISIBLE
+        binding.P5icon.visibility = View.INVISIBLE
+        binding.P6icon.visibility = View.INVISIBLE
+    }
     private fun visible(x: Int) {
         Log.d("Main", "visible: is working")
         when (x) {
@@ -227,7 +250,6 @@ class ActiveGame : AppCompatActivity() {
         }
 
     }
-
     private fun hostJoin() {
             val addHostToRoom = db.collection("Rooms").document(hostRoomCode).collection("Players")
                 .document("PlayersData")
@@ -254,13 +276,29 @@ class ActiveGame : AppCompatActivity() {
         binding.roomcode.append(JoinRoomCode)
         currentRoom = JoinRoomCode
         playerJoin.get().addOnSuccessListener { document->
+            val p1name = document.getString("Player 1")
             val p2name = document.getString("Player 2")
             val p3name = document.getString("Player 3")
             val p4name = document.getString("Player 4")
             val p5name = document.getString("Player 5")
             val p6name = document.getString("Player 6")
 
-            if (p2name == "" || p2name == playerName ){
+            if (p1name == "" || p1name == playerName ){
+                binding.P1name.text = playerName
+                binding.P1icon.setImageResource(
+                    resources.getIdentifier(
+                        playerIcon,
+                        "drawable",
+                        packageName
+                    )
+                )
+                visible(1)
+                val playerData = hashMapOf(
+                    "Player 1" to playerName,
+                    "Player 1 Icon" to playerIcon
+                )
+                playerJoin.update(playerData as Map<String, String>)
+            }else if (p2name == "" || p2name == playerName){
                 binding.P2name.text = playerName
                 binding.P2icon.setImageResource(
                     resources.getIdentifier(

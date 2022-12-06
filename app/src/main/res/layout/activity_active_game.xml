@@ -27,6 +27,7 @@
         android:layout_width="86dp"
         android:layout_height="87dp"
         android:visibility="visible"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.091"
@@ -55,6 +56,7 @@
         android:layout_width="86dp"
         android:layout_height="87dp"
         android:visibility="visible"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,6 +84,7 @@
         android:layout_width="86dp"
         android:layout_height="87dp"
         android:visibility="visible"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.901"
@@ -110,6 +113,7 @@
         android:layout_width="86dp"
         android:layout_height="87dp"
         android:visibility="visible"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.091"
@@ -142,6 +146,7 @@
         android:layout_marginEnd="137dp"
         android:layout_marginBottom="315dp"
         android:visibility="visible"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
@@ -176,6 +181,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.43"
+        android:scaleType="fitXY"
         app:srcCompat="@drawable/empty" />
 
     <TextView
@@ -195,7 +201,7 @@
     <TextView
         android:id="@+id/timer"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:background="@color/BurlyWood"
         android:minEms="2"
         android:text="74"

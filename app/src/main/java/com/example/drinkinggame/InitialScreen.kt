@@ -81,8 +81,43 @@ class InitialScreen : AppCompatActivity() {
             checkRoom.addSnapshotListener { snapshot, error ->
                 if (snapshot != null && snapshot.exists()){
                     JoinRoomCode = gameCodeET.text.toString()
-                    val intent = Intent(this, ActiveGame::class.java)
-                    startActivity(intent)
+                    var maxPlayer = " "
+                    val checkMax = db.collection("Rooms").document(JoinRoomCode)
+                    checkMax.get().addOnSuccessListener { document ->
+                        maxPlayer = document.get("Max Players").toString()
+                    }
+
+                    val checkFull = db.collection("Rooms").document(JoinRoomCode).collection("Players").document("PlayersData")
+                    checkFull.get().addOnSuccessListener { document ->
+                        val p1name = document.getString("Player 1")
+                        val p2name = document.getString("Player 2")
+                        val p3name = document.getString("Player 3")
+                        val p4name = document.getString("Player 4")
+                        val p5name = document.getString("Player 5")
+                        val p6name = document.getString("Player 6")
+                        if ((p6name == "" || p6name == displayName.text) && maxPlayer == "6"){
+                            val intent = Intent(this, ActiveGame::class.java)
+                            startActivity(intent)
+                        }else if ((p5name == "" || p5name == displayName.text) && maxPlayer == "5"){
+                            val intent = Intent(this, ActiveGame::class.java)
+                            startActivity(intent)
+                        }else if ((p4name == "" || p4name == displayName.text)&& maxPlayer == "4"){
+                            val intent = Intent(this, ActiveGame::class.java)
+                            startActivity(intent)
+                        }else if ((p3name == "" || p3name == displayName.text)&& maxPlayer == "3"){
+                            val intent = Intent(this, ActiveGame::class.java)
+                            startActivity(intent)
+                        }else if ((p2name == "" || p4name == displayName.text)&& maxPlayer == "2"){
+                            val intent = Intent(this, ActiveGame::class.java)
+                            startActivity(intent)
+                        }else if (p1name == displayName.text){
+                            val intent = Intent(this, ActiveGame::class.java)
+                            startActivity(intent)
+                        }else{
+                            Toast.makeText(applicationContext, "Room is Full!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
                 }
                 else{
                     Toast.makeText(applicationContext, "Room Does Not Exist", Toast.LENGTH_SHORT).show()
