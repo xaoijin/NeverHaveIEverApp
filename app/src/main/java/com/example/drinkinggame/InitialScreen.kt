@@ -2,6 +2,7 @@ package com.example.drinkinggame
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -29,6 +30,7 @@ class InitialScreen : AppCompatActivity() {
     private lateinit var userIcon: ImageView
     private lateinit var codeError: TextView
     private lateinit var gameCodeET: EditText
+    private var mMediaPlayer: MediaPlayer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_initialscreen)
@@ -49,7 +51,7 @@ class InitialScreen : AppCompatActivity() {
 
         codeError.visibility = View.INVISIBLE
         updateUI()
-
+        playSound()
         cIcon.setOnClickListener {
             val intent = Intent(this, AvatarIcons::class.java)
             startActivity(intent)
@@ -71,7 +73,22 @@ class InitialScreen : AppCompatActivity() {
         bLogout.setOnClickListener { logout() }
 
     }
-
+    //plays sound
+    private fun playSound() {
+        if (mMediaPlayer == null) {
+            mMediaPlayer = MediaPlayer.create(this, R.raw.ticking)
+            mMediaPlayer!!.isLooping = true
+            mMediaPlayer!!.start()
+        } else mMediaPlayer!!.start()
+    }
+    //stops sound
+    private fun stopSound() {
+        if (mMediaPlayer != null) {
+            mMediaPlayer!!.stop()
+            mMediaPlayer!!.release()
+            mMediaPlayer = null
+        }
+    }
     private fun joinGame() {
         if (gameCodeET.text.isEmpty()) {
             Toast.makeText(applicationContext, "Please Enter a Code!", Toast.LENGTH_SHORT).show()
@@ -95,21 +112,27 @@ class InitialScreen : AppCompatActivity() {
                         val p5name = document.getString("Player 5")
                         val p6name = document.getString("Player 6")
                         if ((p6name == "" || p6name == displayName.text) && maxPlayer == "6"){
+                            stopSound()
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
                         }else if ((p5name == "" || p5name == displayName.text) && maxPlayer == "5"){
+                            stopSound()
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
                         }else if ((p4name == "" || p4name == displayName.text)&& maxPlayer == "4"){
+                            stopSound()
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
                         }else if ((p3name == "" || p3name == displayName.text)&& maxPlayer == "3"){
+                            stopSound()
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
                         }else if ((p2name == "" || p2name == displayName.text)&& maxPlayer == "2"){
+                            stopSound()
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
                         }else if (p1name == displayName.text){
+                            stopSound()
                             isHost = true
                             currentRoom = JoinRoomCode
                             val intent = Intent(this, ActiveGame::class.java)
@@ -182,6 +205,7 @@ class InitialScreen : AppCompatActivity() {
 
     private fun logout() {
         Firebase.auth.signOut()
+        stopSound()
         val intent = Intent(this, LoginScreen::class.java)
         startActivity(intent)
     }
