@@ -14,7 +14,7 @@ import com.google.firebase.ktx.Firebase
 var JoinRoomCode = ""
 var isHost = false
 var currentRoom = ""
-
+var playerNumber = 1
 class ActiveGame : AppCompatActivity() {
     private lateinit var binding: ActivityActiveGameBinding
     private lateinit var auth: FirebaseAuth
@@ -22,7 +22,6 @@ class ActiveGame : AppCompatActivity() {
     private var playerName = ""
     private var playerIcon = ""
     private var questionCounter = 1
-    private var playerNumber = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityActiveGameBinding.inflate(layoutInflater)
