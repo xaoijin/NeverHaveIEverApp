@@ -1,6 +1,7 @@
 package com.example.drinkinggame
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
@@ -24,6 +25,7 @@ class ActiveGame : AppCompatActivity() {
     private var playerName = ""
     private var playerIcon = ""
     private var questionCounter = 1
+    private var mediaPlayer: MediaPlayer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityActiveGameBinding.inflate(layoutInflater)
@@ -31,6 +33,7 @@ class ActiveGame : AppCompatActivity() {
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
+
         auth = FirebaseAuth.getInstance()
         val playerInfo = db.collection("Account Data").document(auth.currentUser!!.uid)
         playerInfo.get().addOnSuccessListener { document ->

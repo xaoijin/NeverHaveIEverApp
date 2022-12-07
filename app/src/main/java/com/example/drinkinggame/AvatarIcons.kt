@@ -1,6 +1,7 @@
 package com.example.drinkinggame
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
@@ -14,6 +15,7 @@ var selectedIcon = ""
 class AvatarIcons : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private var db = Firebase.firestore
+    private var mediaPlayer: MediaPlayer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_avatar_icons)

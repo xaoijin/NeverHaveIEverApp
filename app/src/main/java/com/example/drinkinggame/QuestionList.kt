@@ -2,6 +2,7 @@ package com.example.drinkinggame
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
@@ -18,6 +19,7 @@ class QuestionList : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private var db = Firebase.firestore
     private lateinit var binding: ActivityQuestionListBinding
+    private var mediaPlayer: MediaPlayer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuestionListBinding.inflate(layoutInflater)
@@ -25,6 +27,7 @@ class QuestionList : AppCompatActivity() {
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
+
         Log.d("Main", "in Question list")
         //Change Questions to saved questions
         updateSaved()

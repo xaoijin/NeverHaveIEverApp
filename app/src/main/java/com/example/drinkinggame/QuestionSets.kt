@@ -3,6 +3,7 @@ package com.example.drinkinggame
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
@@ -22,6 +23,7 @@ class QuestionSets : AppCompatActivity() {
     private lateinit var binding: ActivityQuestionSetsBinding
     private lateinit var auth: FirebaseAuth
     val db = Firebase.firestore
+    private var mediaPlayer: MediaPlayer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuestionSetsBinding.inflate(layoutInflater)
@@ -91,6 +93,7 @@ class QuestionSets : AppCompatActivity() {
             binding.s3.backgroundTintList =
                 ContextCompat.getColorStateList(applicationContext, R.color.maroon)
         }
+
     }
 
     private fun updateSetName() {

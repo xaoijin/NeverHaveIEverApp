@@ -210,6 +210,36 @@
                 android:textStyle="bold" />
         </RelativeLayout>
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/mute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="@color/BlanchedAlmond"
+            android:text="Sound Off"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.596"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.09" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/playS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="@color/BlanchedAlmond"
+            android:text="Sound On"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.401"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/mute"
+            app:layout_constraintVertical_bias="0.0" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

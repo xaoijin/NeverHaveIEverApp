@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-
+var playOnce = 0
 class InitialScreen : AppCompatActivity() {
     private var db = Firebase.firestore
     private lateinit var jGame: Button
@@ -28,6 +28,9 @@ class InitialScreen : AppCompatActivity() {
     private lateinit var userIcon: ImageView
     private lateinit var codeError: TextView
     private lateinit var gameCodeET: EditText
+    private lateinit var muteSound: AppCompatButton
+    private lateinit var playSound: AppCompatButton
+
     private var mMediaPlayer: MediaPlayer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,33 +49,37 @@ class InitialScreen : AppCompatActivity() {
         userIcon = findViewById(R.id.iconimginitial)
         codeError = findViewById(R.id.codeError)
         gameCodeET = findViewById(R.id.gameCode)
-
+        muteSound = findViewById(R.id.mute)
+        playSound = findViewById(R.id.playS)
         codeError.visibility = View.INVISIBLE
+
+
+
         updateUI()
-        playSound()
         cIcon.setOnClickListener {
-            stopSound()
+
             val intent = Intent(this, AvatarIcons::class.java)
             startActivity(intent)
         }
         cName.setOnClickListener { changeName() }
         jGame.setOnClickListener {
+
             joinGame()
         }
 
         cQuestions.setOnClickListener {
-            stopSound()
+            playOnce++
             val intent = Intent(this, QuestionSets::class.java)
             startActivity(intent)
         }
         cGame.setOnClickListener {
-            stopSound()
+            playOnce++
             val intent = Intent(this, CreateGame::class.java)
             startActivity(intent)
         }
         bLogout.setOnClickListener {
             logout()
-            stopSound()
+            playOnce++
         }
         if (currentRoom.isNotEmpty()) {
             val deletePrevRoom = db.collection("Rooms").document(currentRoom)
@@ -82,25 +89,27 @@ class InitialScreen : AppCompatActivity() {
                 }
             }
         }
-
+        playSound()
+        muteSound.setOnClickListener {
+            if(mMediaPlayer!=null && mMediaPlayer!!.isPlaying())
+            {
+                mMediaPlayer!!.stop();
+                mMediaPlayer!!.release();
+                mMediaPlayer = null;
+            }
+        }
+        playSound.setOnClickListener { playSound() }
     }
 
     private fun playSound() {
-        if (mMediaPlayer == null) {
-            mMediaPlayer = MediaPlayer.create(this, R.raw.lobbymusic)
-            mMediaPlayer!!.isLooping = true
-            mMediaPlayer!!.start()
-        } else mMediaPlayer!!.start()
+        mMediaPlayer = MediaPlayer.create(this, R.raw.lobbymusic)
+        mMediaPlayer!!.isLooping = true
+        mMediaPlayer!!.start()
+
     }
 
     //stops sound
-    private fun stopSound() {
-        if (mMediaPlayer != null) {
-            mMediaPlayer!!.stop()
-            mMediaPlayer!!.release()
-            mMediaPlayer = null
-        }
-    }
+
 
     private fun joinGame() {
         if (gameCodeET.text.isEmpty()) {
@@ -127,27 +136,27 @@ class InitialScreen : AppCompatActivity() {
                         val p5name = document.getString("Player 5")
                         val p6name = document.getString("Player 6")
                         if ((p6name == "" || p6name == displayName.text) && maxPlayer == "6") {
-                            stopSound()
+
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
                         } else if ((p5name == "" || p5name == displayName.text) && maxPlayer == "5") {
-                            stopSound()
+
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
                         } else if ((p4name == "" || p4name == displayName.text) && maxPlayer == "4") {
-                            stopSound()
+
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
                         } else if ((p3name == "" || p3name == displayName.text) && maxPlayer == "3") {
-                            stopSound()
+
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
                         } else if ((p2name == "" || p2name == displayName.text) && maxPlayer == "2") {
-                            stopSound()
+
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
                         } else if (p1name == displayName.text) {
-                            stopSound()
+
                             isHost = true
                             currentRoom = JoinRoomCode
                             val intent = Intent(this, ActiveGame::class.java)
@@ -155,7 +164,7 @@ class InitialScreen : AppCompatActivity() {
                         } else {
                             isFull = true
                         }
-
+                        playOnce++
                     }
                     if (isFull) {
                         Toast.makeText(applicationContext, "Room is Full!", Toast.LENGTH_SHORT)

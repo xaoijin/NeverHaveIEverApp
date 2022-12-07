@@ -2,6 +2,7 @@ package com.example.drinkinggame
 
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -24,6 +25,7 @@ class CreateGame : AppCompatActivity() {
     val db = Firebase.firestore
     private var playerIcon = ""
     private var playerName = ""
+    private var mediaPlayer: MediaPlayer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateGameBinding.inflate(layoutInflater)

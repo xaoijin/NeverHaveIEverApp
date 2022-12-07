@@ -3,6 +3,7 @@ package com.example.drinkinggame
 
 import android.content.Intent
 import android.graphics.drawable.AnimationDrawable
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -25,12 +26,14 @@ class LoginScreen : AppCompatActivity() {
     private lateinit var bRegister: Button
     private lateinit var auth: FirebaseAuth
     private var db = Firebase.firestore
+    private var mediaPlayer: MediaPlayer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_screen)
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
+
         val linearLayout = findViewById<LinearLayout>(R.id.loginlayout)
         val animationDrawable = linearLayout.background as AnimationDrawable
         animationDrawable.setEnterFadeDuration(10)
