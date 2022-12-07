@@ -78,6 +78,10 @@ class CreateGame : AppCompatActivity() {
 
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
     private fun doesRoomCodeExists() {
         auth = FirebaseAuth.getInstance()
         val checkRoom = db.collection("Rooms").document()

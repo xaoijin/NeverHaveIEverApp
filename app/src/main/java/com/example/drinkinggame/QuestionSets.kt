@@ -95,7 +95,10 @@ class QuestionSets : AppCompatActivity() {
         }
 
     }
-
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
     private fun updateSetName() {
         val qSetNamesref =
             db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(

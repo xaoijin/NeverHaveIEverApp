@@ -89,6 +89,12 @@ class InitialScreen : AppCompatActivity() {
                 }
             }
         }
+        if(mMediaPlayer!=null && mMediaPlayer!!.isPlaying())
+        {
+            mMediaPlayer!!.stop();
+            mMediaPlayer!!.release();
+            mMediaPlayer = null;
+        }
         playSound()
         muteSound.setOnClickListener {
             if(mMediaPlayer!=null && mMediaPlayer!!.isPlaying())

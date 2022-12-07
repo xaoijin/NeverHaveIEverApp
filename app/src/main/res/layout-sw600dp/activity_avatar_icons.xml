@@ -10,7 +10,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="163dp"
+        android:layout_height="206dp"
         android:layout_weight="1" />
 
     <LinearLayout
@@ -25,10 +25,10 @@
 
         <ImageView
             android:id="@+id/wineglass"
-            android:layout_width="178dp"
-            android:layout_height="203dp"
+            android:layout_width="162dp"
+            android:layout_height="194dp"
+            android:layout_gravity="center"
             android:layout_weight="0"
-
             app:srcCompat="@drawable/wineglass" />
 
         <ImageView
@@ -36,21 +36,18 @@
             android:layout_width="177dp"
             android:layout_height="230dp"
             android:layout_weight="0"
+            android:layout_gravity="bottom"
             app:srcCompat="@drawable/shotglass" />
 
         <ImageView
             android:id="@+id/martini"
-            android:layout_width="138dp"
-            android:layout_height="222dp"
+            android:layout_width="122dp"
+            android:layout_height="149dp"
+            android:layout_gravity="center"
             android:layout_weight="0"
             app:srcCompat="@drawable/martini" />
 
     </LinearLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="81dp"
-        android:layout_weight="0" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,14 +56,14 @@
         android:orientation="horizontal">
 
         <Space
-            android:layout_width="144dp"
+            android:layout_width="118dp"
             android:layout_height="87dp"
             android:layout_weight="0" />
 
         <ImageView
             android:id="@+id/brandy"
-            android:layout_width="168dp"
-            android:layout_height="181dp"
+            android:layout_width="159dp"
+            android:layout_height="165dp"
             android:layout_gravity="bottom"
             android:layout_weight="0"
             android:adjustViewBounds="false"
@@ -76,15 +73,15 @@
         <ImageView
             android:id="@+id/hurricane"
             android:layout_width="158dp"
-            android:layout_height="191dp"
+            android:layout_height="168dp"
             android:layout_gravity="bottom"
             android:layout_weight="0"
             app:srcCompat="@drawable/hurricane" />
 
         <ImageView
             android:id="@+id/beermug"
-            android:layout_width="157dp"
-            android:layout_height="205dp"
+            android:layout_width="147dp"
+            android:layout_height="183dp"
             android:layout_gravity="bottom"
             android:layout_weight="0"
             app:srcCompat="@drawable/beermug" />
@@ -92,7 +89,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="66dp"
+        android:layout_height="90dp"
         android:layout_weight="0" />
 
     <LinearLayout
@@ -102,43 +99,42 @@
         android:orientation="horizontal">
 
         <Space
-            android:layout_width="90dp"
+            android:layout_width="117dp"
             android:layout_height="87dp"
             android:layout_weight="0" />
 
         <ImageView
             android:id="@+id/coffee"
             android:layout_width="166dp"
-            android:layout_height="164dp"
+            android:layout_height="131dp"
             android:layout_weight="0"
             app:srcCompat="@drawable/coffee" />
 
         <Space
-            android:layout_width="51dp"
+            android:layout_width="32dp"
             android:layout_height="92dp"
             android:layout_weight="0" />
 
         <ImageView
             android:id="@+id/vodka"
-            android:layout_width="136dp"
-            android:layout_height="164dp"
+            android:layout_width="134dp"
+            android:layout_height="132dp"
             android:layout_weight="0"
             app:srcCompat="@drawable/vodka" />
-
-        <Space
-            android:layout_width="51dp"
-            android:layout_height="92dp"
-            android:layout_weight="0" />
 
         <ImageView
             android:id="@+id/weizen"
             android:layout_width="183dp"
-            android:layout_height="172dp"
+            android:layout_height="154dp"
             android:layout_weight="0"
-            android:scaleType="center"
             app:srcCompat="@drawable/weizen" />
 
     </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        android:layout_weight="1" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/select"

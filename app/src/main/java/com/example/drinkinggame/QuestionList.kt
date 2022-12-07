@@ -197,7 +197,10 @@ class QuestionList : AppCompatActivity() {
         }
 
     }
-
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
     private fun clearQuestion() {
         auth = FirebaseAuth.getInstance()
         val qSetNamesref =
