@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.drinkinggame.databinding.ActivityActiveGameBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -14,6 +15,7 @@ import com.google.firebase.ktx.Firebase
 var JoinRoomCode = ""
 var isHost = false
 var currentRoom = ""
+var playerNumber = 1
 
 class ActiveGame : AppCompatActivity() {
     private lateinit var binding: ActivityActiveGameBinding
@@ -22,7 +24,6 @@ class ActiveGame : AppCompatActivity() {
     private var playerName = ""
     private var playerIcon = ""
     private var questionCounter = 1
-    private var playerNumber = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityActiveGameBinding.inflate(layoutInflater)
@@ -50,7 +51,7 @@ class ActiveGame : AppCompatActivity() {
 
         binding.startBtn.setOnClickListener {
             val timerSetting = db.collection("Rooms").document(currentRoom)
-            timerSetting.update("Timer Status", "Started")
+            timerSetting.update("Game Status", "Started")
         }
         binding.endBtn.setOnClickListener {
             deleteRoom()
@@ -58,13 +59,23 @@ class ActiveGame : AppCompatActivity() {
         val checkTimer = db.collection("Rooms").document(currentRoom)
         checkTimer.addSnapshotListener { snapshot, error ->
             if (snapshot != null) {
-                if (snapshot.getString("Timer Status") == "Started") {
+                if (snapshot.getString("Game Status") == "Started") {
                     timerStart()
                 }
             }
         }
         playerChoice()
         checkDrunk()
+        val checkGameEnded =  db.collection("Rooms").document(currentRoom)
+        checkGameEnded.addSnapshotListener { snapshot, error ->
+            if (snapshot != null){
+                if (snapshot.getString("Game Status") == "Ended"){
+                    Toast.makeText(applicationContext, "Host has Closed The Room", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, InitialScreen::class.java)
+                    startActivity(intent)
+                }
+            }
+        }
     }
 
     private fun updateUIPlayer() {
@@ -150,7 +161,7 @@ class ActiveGame : AppCompatActivity() {
                     db.collection("Rooms").document(currentRoom).collection("Questions")
                         .document("Questions to be Used")
                 initQuestion.get().addOnSuccessListener { document ->
-                    binding.Question.text = document.getString("Q1")
+                    gameLogic()
                 }
                 if (isHost || p1name == playerName) {
                     binding.startBtn.visibility = View.VISIBLE
@@ -172,20 +183,26 @@ class ActiveGame : AppCompatActivity() {
     private fun timerStart() {
         val timerSetting = db.collection("Rooms").document(currentRoom)
         timerSetting.addSnapshotListener { snapshot, error ->
-            var timerSet = snapshot?.get("Timer").toString().toInt()
-            object : CountDownTimer(timerSet.toLong() * 1000, 1000) {
-                override fun onTick(millisUntilFinished: Long) {
-                    binding.timer.text = timerSet.toString()
-                    timerSet--
-                }
+            if (snapshot != null) {
+                var timerSet = snapshot.get("Timer").toString().toInt()
+                object : CountDownTimer(timerSet.toLong() * 1000, 1000) {
+                    override fun onTick(millisUntilFinished: Long) {
+                        binding.timer.text = timerSet.toString()
+                        timerSet--
+                    }
 
-                override fun onFinish() {
-                    gameLogic()
-                    binding.iHaveBtn.visibility = View.VISIBLE
-                    binding.haveNotBtn.visibility = View.VISIBLE
-                    timerStart()
-                }
-            }.start()
+                    override fun onFinish() {
+                        gameLogic()
+                        binding.iHaveBtn.visibility = View.VISIBLE
+                        binding.haveNotBtn.visibility = View.VISIBLE
+                        timerStart()
+                    }
+                }.start()
+            }else{
+                Toast.makeText(applicationContext, "Host Closed The Room!", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, InitialScreen::class.java)
+                startActivity(intent)
+            }
         }
     }
 
@@ -248,10 +265,10 @@ class ActiveGame : AppCompatActivity() {
     }
 
     private fun deleteRoom() {
-        db.collection("Rooms").document(currentRoom).delete()
-            .addOnSuccessListener { Log.d("Main", "DocumentSnapshot successfully deleted!") }
-            .addOnFailureListener { e -> Log.w("Main", "Error deleting document", e) }
-        finish()
+       val gameEnd =  db.collection("Rooms").document(currentRoom)
+        gameEnd.update("Game Status", "Ended")
+        val intent = Intent(this, InitialScreen::class.java)
+        startActivity(intent)
     }
 
     private fun playerChoice() {
@@ -453,6 +470,9 @@ class ActiveGame : AppCompatActivity() {
                     binding.Question.text = "No More Questions!"
                 }
             }
+        }.addOnFailureListener {
+            val intent = Intent(this, InitialScreen::class.java)
+            startActivity(intent)
         }
     }
 

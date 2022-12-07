@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.MetadataChanges
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.snapshots
 import com.google.firebase.ktx.Firebase
 
 class InitialScreen : AppCompatActivity() {
@@ -69,7 +70,14 @@ class InitialScreen : AppCompatActivity() {
             startActivity(intent)
         }
         bLogout.setOnClickListener { logout() }
-
+        if (currentRoom.isNotEmpty()){
+            val deletePrevRoom = db.collection("Rooms").document(currentRoom)
+            deletePrevRoom.addSnapshotListener { snapshot, error ->
+                if (snapshot != null){
+                    deletePrevRoom.delete()
+                }
+            }
+        }
     }
 
     private fun joinGame() {
@@ -85,7 +93,7 @@ class InitialScreen : AppCompatActivity() {
                     checkMax.get().addOnSuccessListener { document ->
                         maxPlayer = document.get("Max Players").toString()
                     }
-
+                    var isFull = true
                     val checkFull = db.collection("Rooms").document(JoinRoomCode).collection("Players").document("PlayersData")
                     checkFull.get().addOnSuccessListener { document ->
                         val p1name = document.getString("Player 1")
@@ -115,8 +123,12 @@ class InitialScreen : AppCompatActivity() {
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
                         }else{
-                            Toast.makeText(applicationContext, "Room is Full!", Toast.LENGTH_SHORT).show()
+                            isFull = true
                         }
+
+                    }
+                    if (isFull){
+                        Toast.makeText(applicationContext, "Room is Full!", Toast.LENGTH_SHORT).show()
                     }
 
                 }
