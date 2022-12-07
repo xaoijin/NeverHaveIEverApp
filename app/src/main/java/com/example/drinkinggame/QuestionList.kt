@@ -609,12 +609,12 @@ class QuestionList : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.tv1.text = input.text.toString()
                         updateQuestion()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -623,12 +623,12 @@ class QuestionList : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.tv2.text = input.text.toString()
                         updateQuestion()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -637,12 +637,12 @@ class QuestionList : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.tv3.text = input.text.toString()
                         updateQuestion()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -651,12 +651,12 @@ class QuestionList : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.tv4.text = input.text.toString()
                         updateQuestion()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -665,12 +665,12 @@ class QuestionList : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.tv5.text = input.text.toString()
                         updateQuestion()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -679,12 +679,12 @@ class QuestionList : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.tv6.text = input.text.toString()
                         updateQuestion()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -693,12 +693,12 @@ class QuestionList : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.tv7.text = input.text.toString()
                         updateQuestion()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -707,12 +707,12 @@ class QuestionList : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.tv8.text = input.text.toString()
                         updateQuestion()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -721,12 +721,12 @@ class QuestionList : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.tv9.text = input.text.toString()
                         updateQuestion()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -735,12 +735,12 @@ class QuestionList : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.tv10.text = input.text.toString()
                         updateQuestion()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -749,12 +749,12 @@ class QuestionList : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.tv11.text = input.text.toString()
                         updateQuestion()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -763,12 +763,12 @@ class QuestionList : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.tv12.text = input.text.toString()
                         updateQuestion()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -777,12 +777,12 @@ class QuestionList : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.tv13.text = input.text.toString()
                         updateQuestion()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -791,12 +791,12 @@ class QuestionList : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.tv14.text = input.text.toString()
                         updateQuestion()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -805,12 +805,12 @@ class QuestionList : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.tv15.text = input.text.toString()
                         updateQuestion()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -819,12 +819,12 @@ class QuestionList : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.tv16.text = input.text.toString()
                         updateQuestion()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -833,12 +833,12 @@ class QuestionList : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.tv17.text = input.text.toString()
                         updateQuestion()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -847,12 +847,12 @@ class QuestionList : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.tv18.text = input.text.toString()
                         updateQuestion()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -861,12 +861,12 @@ class QuestionList : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.tv19.text = input.text.toString()
                         updateQuestion()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -875,12 +875,12 @@ class QuestionList : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.tv20.text = input.text.toString()
                         updateQuestion()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }

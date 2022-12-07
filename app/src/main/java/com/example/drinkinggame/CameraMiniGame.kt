@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.media.MediaPlayer
 
 
+
 class CameraMiniGame : AppCompatActivity() {
     //initialize variables
     lateinit var textX: TextView
@@ -28,7 +29,7 @@ class CameraMiniGame : AppCompatActivity() {
             supportActionBar!!.hide()
         }
         sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
-        sensor = sensorManager!!.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
         textX = findViewById(R.id.textX)
         textY = findViewById(R.id.textY)
         timertext=findViewById(R.id.timer)
@@ -72,12 +73,12 @@ class CameraMiniGame : AppCompatActivity() {
     //starts sensor reading
     override fun onResume() {
         super.onResume()
-        sensorManager!!.registerListener(gyroListener, sensor, SensorManager.SENSOR_DELAY_NORMAL)
+        sensorManager.registerListener(gyroListener, sensor, SensorManager.SENSOR_DELAY_NORMAL)
     }
 
     override fun onStop() {
         super.onStop()
-        sensorManager!!.unregisterListener(gyroListener)
+        sensorManager.unregisterListener(gyroListener)
     }
 
     //listens to sensors
@@ -107,8 +108,8 @@ class CameraMiniGame : AppCompatActivity() {
                 finish()
             }
             //displays axis rotation
-            textX!!.setText("X : " + x.toInt() + " rad/s")
-            textY!!.setText("Y : " + y.toInt() + " rad/s")
+            textX.setText("X : " + x.toInt() + " rad/s")
+            textY.setText("Y : " + y.toInt() + " rad/s")
         }
     }
 }

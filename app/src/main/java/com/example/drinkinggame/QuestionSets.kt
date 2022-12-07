@@ -31,15 +31,14 @@ class QuestionSets : AppCompatActivity() {
         }
         //Setting Default/Saved Values
         auth = FirebaseAuth.getInstance()
-        val qSetNamesref =
-            db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
-                "Question Set Name Edit"
-            ).document("Names").get().addOnSuccessListener { document->
-                    binding.Qs1.text = document.getString("QS1Name").toString()
-                    binding.Qs2.text = document.getString("QS2Name").toString()
-                    binding.Qs3.text = document.getString("QS3Name").toString()
+        db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
+            "Question Set Name Edit"
+        ).document("Names").get().addOnSuccessListener { document->
+                binding.Qs1.text = document.getString("QS1Name").toString()
+                binding.Qs2.text = document.getString("QS2Name").toString()
+                binding.Qs3.text = document.getString("QS3Name").toString()
 
-            }
+        }
         ///End of Setting Default/Saved Question Set Names
 
         //Buttons for Edit,Rename,Select
@@ -133,12 +132,12 @@ class QuestionSets : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.Qs1.text = input.text.toString()
                         updateSetName()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -147,12 +146,12 @@ class QuestionSets : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.Qs2.text = input.text.toString()
                         updateSetName()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }
@@ -161,12 +160,12 @@ class QuestionSets : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                         binding.Qs3.text = input.text.toString()
                         updateSetName()
                     })
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     })
             }

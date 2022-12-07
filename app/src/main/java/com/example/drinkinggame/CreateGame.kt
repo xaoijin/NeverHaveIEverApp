@@ -9,9 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.drinkinggame.databinding.ActivityCreateGameBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.MetadataChanges
-import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -83,13 +81,16 @@ class CreateGame : AppCompatActivity() {
         val checkRoom = db.collection("Rooms").document()
         hostQuestions = when (questionsetselected) {
             3 -> {
-                db.collection("Account Data").document(auth.currentUser!!.uid).collection("Question Sets").document("Set3")
+                db.collection("Account Data").document(auth.currentUser!!.uid)
+                    .collection("Question Sets").document("Set3")
             }
             2 -> {
-                db.collection("Account Data").document(auth.currentUser!!.uid).collection("Question Sets").document("Set2")
+                db.collection("Account Data").document(auth.currentUser!!.uid)
+                    .collection("Question Sets").document("Set2")
             }
             else -> {
-                db.collection("Account Data").document(auth.currentUser!!.uid).collection("Question Sets").document("Set1")
+                db.collection("Account Data").document(auth.currentUser!!.uid)
+                    .collection("Question Sets").document("Set1")
             }
         }
         var q1: String
@@ -142,54 +143,55 @@ class CreateGame : AppCompatActivity() {
                     "Player 4 Counter" to 0,
                     "Player 5 Counter" to 0,
                     "Player 6 Counter" to 0,
+                )
+
+                hostQuestions.get().addOnSuccessListener { document ->
+                    q1 = document.getString("Q1").toString()
+                    q2 = document.getString("Q2").toString()
+                    q3 = document.getString("Q3").toString()
+                    q4 = document.getString("Q4").toString()
+                    q5 = document.getString("Q5").toString()
+                    q6 = document.getString("Q6").toString()
+                    q7 = document.getString("Q7").toString()
+                    q8 = document.getString("Q8").toString()
+                    q9 = document.getString("Q9").toString()
+                    q10 = document.getString("Q10").toString()
+                    q11 = document.getString("Q11").toString()
+                    q12 = document.getString("Q12").toString()
+                    q13 = document.getString("Q13").toString()
+                    q14 = document.getString("Q14").toString()
+                    q15 = document.getString("Q15").toString()
+                    q16 = document.getString("Q16").toString()
+                    q17 = document.getString("Q17").toString()
+                    q18 = document.getString("Q18").toString()
+                    q19 = document.getString("Q19").toString()
+                    q20 = document.getString("Q20").toString()
+                    val questionSetInUse = hashMapOf(
+                        "Q1" to q1,
+                        "Q2" to q2,
+                        "Q3" to q3,
+                        "Q4" to q4,
+                        "Q5" to q5,
+                        "Q6" to q6,
+                        "Q7" to q7,
+                        "Q8" to q8,
+                        "Q9" to q9,
+                        "Q10" to q10,
+                        "Q11" to q11,
+                        "Q12" to q12,
+                        "Q13" to q13,
+                        "Q14" to q14,
+                        "Q15" to q15,
+                        "Q16" to q16,
+                        "Q17" to q17,
+                        "Q18" to q18,
+                        "Q19" to q19,
+                        "Q20" to q20
+
                     )
-
-                hostQuestions.get().addOnSuccessListener { document->
-                        q1 = document.getString("Q1").toString()
-                        q2 = document.getString("Q2").toString()
-                        q3 = document.getString("Q3").toString()
-                        q4 = document.getString("Q4").toString()
-                        q5 = document.getString("Q5").toString()
-                        q6 = document.getString("Q6").toString()
-                        q7 = document.getString("Q7").toString()
-                        q8 = document.getString("Q8").toString()
-                        q9 = document.getString("Q9").toString()
-                        q10 = document.getString("Q10").toString()
-                        q11 = document.getString("Q11").toString()
-                        q12 = document.getString("Q12").toString()
-                        q13 = document.getString("Q13").toString()
-                        q14 = document.getString("Q14").toString()
-                        q15 = document.getString("Q15").toString()
-                        q16 = document.getString("Q16").toString()
-                        q17 = document.getString("Q17").toString()
-                        q18 = document.getString("Q18").toString()
-                        q19 = document.getString("Q19").toString()
-                        q20 = document.getString("Q20").toString()
-                        val questionSetInUse = hashMapOf(
-                            "Q1" to q1,
-                            "Q2" to q2,
-                            "Q3" to q3,
-                            "Q4" to q4,
-                            "Q5" to q5,
-                            "Q6" to q6,
-                            "Q7" to q7,
-                            "Q8" to q8,
-                            "Q9" to q9,
-                            "Q10" to q10,
-                            "Q11" to q11,
-                            "Q12" to q12,
-                            "Q13" to q13,
-                            "Q14" to q14,
-                            "Q15" to q15,
-                            "Q16" to q16,
-                            "Q17" to q17,
-                            "Q18" to q18,
-                            "Q19" to q19,
-                            "Q20" to q20
-
-                        )
-                        Log.d("Main", q1)
-                        makeRoom.collection("Questions").document("Questions to be Used").set(questionSetInUse)
+                    Log.d("Main", q1)
+                    makeRoom.collection("Questions").document("Questions to be Used")
+                        .set(questionSetInUse)
 
                 }
 

@@ -2,6 +2,7 @@ package com.example.drinkinggame
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -9,12 +10,9 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
-import androidx.core.content.ContextCompat.startActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.MetadataChanges
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.snapshots
 import com.google.firebase.ktx.Firebase
 
 class InitialScreen : AppCompatActivity() {
@@ -30,6 +28,7 @@ class InitialScreen : AppCompatActivity() {
     private lateinit var userIcon: ImageView
     private lateinit var codeError: TextView
     private lateinit var gameCodeET: EditText
+    private var mMediaPlayer: MediaPlayer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_initialscreen)
@@ -50,8 +49,9 @@ class InitialScreen : AppCompatActivity() {
 
         codeError.visibility = View.INVISIBLE
         updateUI()
-
+        playSound()
         cIcon.setOnClickListener {
+            stopSound()
             val intent = Intent(this, AvatarIcons::class.java)
             startActivity(intent)
         }
@@ -61,22 +61,44 @@ class InitialScreen : AppCompatActivity() {
         }
 
         cQuestions.setOnClickListener {
-
+            stopSound()
             val intent = Intent(this, QuestionSets::class.java)
             startActivity(intent)
         }
         cGame.setOnClickListener {
+            stopSound()
             val intent = Intent(this, CreateGame::class.java)
             startActivity(intent)
         }
-        bLogout.setOnClickListener { logout() }
-        if (currentRoom.isNotEmpty()){
+        bLogout.setOnClickListener {
+            logout()
+            stopSound()
+        }
+        if (currentRoom.isNotEmpty()) {
             val deletePrevRoom = db.collection("Rooms").document(currentRoom)
-            deletePrevRoom.addSnapshotListener { snapshot, error ->
-                if (snapshot != null){
+            deletePrevRoom.addSnapshotListener { snapshot, _ ->
+                if (snapshot != null) {
                     deletePrevRoom.delete()
                 }
             }
+        }
+
+    }
+
+    private fun playSound() {
+        if (mMediaPlayer == null) {
+            mMediaPlayer = MediaPlayer.create(this, R.raw.lobbymusic)
+            mMediaPlayer!!.isLooping = true
+            mMediaPlayer!!.start()
+        } else mMediaPlayer!!.start()
+    }
+
+    //stops sound
+    private fun stopSound() {
+        if (mMediaPlayer != null) {
+            mMediaPlayer!!.stop()
+            mMediaPlayer!!.release()
+            mMediaPlayer = null
         }
     }
 
@@ -85,8 +107,8 @@ class InitialScreen : AppCompatActivity() {
             Toast.makeText(applicationContext, "Please Enter a Code!", Toast.LENGTH_SHORT).show()
         } else {
             val checkRoom = db.collection("Rooms").document(gameCodeET.text.toString())
-            checkRoom.addSnapshotListener { snapshot, error ->
-                if (snapshot != null && snapshot.exists()){
+            checkRoom.addSnapshotListener { snapshot, _ ->
+                if (snapshot != null && snapshot.exists()) {
                     JoinRoomCode = gameCodeET.text.toString()
                     var maxPlayer = " "
                     val checkMax = db.collection("Rooms").document(JoinRoomCode)
@@ -94,7 +116,9 @@ class InitialScreen : AppCompatActivity() {
                         maxPlayer = document.get("Max Players").toString()
                     }
                     var isFull = true
-                    val checkFull = db.collection("Rooms").document(JoinRoomCode).collection("Players").document("PlayersData")
+                    val checkFull =
+                        db.collection("Rooms").document(JoinRoomCode).collection("Players")
+                            .document("PlayersData")
                     checkFull.get().addOnSuccessListener { document ->
                         val p1name = document.getString("Player 1")
                         val p2name = document.getString("Player 2")
@@ -102,38 +126,45 @@ class InitialScreen : AppCompatActivity() {
                         val p4name = document.getString("Player 4")
                         val p5name = document.getString("Player 5")
                         val p6name = document.getString("Player 6")
-                        if ((p6name == "" || p6name == displayName.text) && maxPlayer == "6"){
+                        if ((p6name == "" || p6name == displayName.text) && maxPlayer == "6") {
+                            stopSound()
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
-                        }else if ((p5name == "" || p5name == displayName.text) && maxPlayer == "5"){
+                        } else if ((p5name == "" || p5name == displayName.text) && maxPlayer == "5") {
+                            stopSound()
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
-                        }else if ((p4name == "" || p4name == displayName.text)&& maxPlayer == "4"){
+                        } else if ((p4name == "" || p4name == displayName.text) && maxPlayer == "4") {
+                            stopSound()
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
-                        }else if ((p3name == "" || p3name == displayName.text)&& maxPlayer == "3"){
+                        } else if ((p3name == "" || p3name == displayName.text) && maxPlayer == "3") {
+                            stopSound()
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
-                        }else if ((p2name == "" || p2name == displayName.text)&& maxPlayer == "2"){
+                        } else if ((p2name == "" || p2name == displayName.text) && maxPlayer == "2") {
+                            stopSound()
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
-                        }else if (p1name == displayName.text){
+                        } else if (p1name == displayName.text) {
+                            stopSound()
                             isHost = true
                             currentRoom = JoinRoomCode
                             val intent = Intent(this, ActiveGame::class.java)
                             startActivity(intent)
-                        }else{
+                        } else {
                             isFull = true
                         }
 
                     }
-                    if (isFull){
-                        Toast.makeText(applicationContext, "Room is Full!", Toast.LENGTH_SHORT).show()
+                    if (isFull) {
+                        Toast.makeText(applicationContext, "Room is Full!", Toast.LENGTH_SHORT)
+                            .show()
                     }
 
-                }
-                else{
-                    Toast.makeText(applicationContext, "Room Does Not Exist", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(applicationContext, "Room Does Not Exist", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
 
@@ -181,10 +212,10 @@ class InitialScreen : AppCompatActivity() {
         dialogBuilder.setMessage("Change Your Display Name")
             .setView(input)
             .setCancelable(true)
-            .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, id ->
+            .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
                 displayName.text = input.text.toString()
                 updateDisplayName()
-            }).setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+            }).setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                 dialog.cancel()
             })
         val alert = dialogBuilder.create()

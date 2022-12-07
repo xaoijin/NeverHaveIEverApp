@@ -18,7 +18,7 @@ class SafeScreen : AppCompatActivity() {
         }
         val checkPCounter = db.collection("Rooms").document(currentRoom).collection("Players")
             .document("PlayersData")
-        checkPCounter.addSnapshotListener { snapshot, error ->
+        checkPCounter.addSnapshotListener { snapshot, _ ->
             if (snapshot != null) {
                 when (playerNumber) {
                     1 -> {

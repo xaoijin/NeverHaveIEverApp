@@ -57,7 +57,7 @@ class ActiveGame : AppCompatActivity() {
             deleteRoom()
         }
         val checkTimer = db.collection("Rooms").document(currentRoom)
-        checkTimer.addSnapshotListener { snapshot, error ->
+        checkTimer.addSnapshotListener { snapshot, _ ->
             if (snapshot != null) {
                 if (snapshot.getString("Game Status") == "Started") {
                     timerStart()
@@ -67,7 +67,7 @@ class ActiveGame : AppCompatActivity() {
         playerChoice()
         checkDrunk()
         val checkGameEnded =  db.collection("Rooms").document(currentRoom)
-        checkGameEnded.addSnapshotListener { snapshot, error ->
+        checkGameEnded.addSnapshotListener { snapshot, _ ->
             if (snapshot != null){
                 if (snapshot.getString("Game Status") == "Ended"){
                     Toast.makeText(applicationContext, "Host has Closed The Room", Toast.LENGTH_SHORT).show()
@@ -86,7 +86,7 @@ class ActiveGame : AppCompatActivity() {
         }
         val playersInRoom = db.collection("Rooms").document(currentRoom).collection("Players")
             .document("PlayersData")
-        playersInRoom.addSnapshotListener { snapshot, error ->
+        playersInRoom.addSnapshotListener { snapshot, _ ->
             if (snapshot != null) {
                 val p1name = snapshot.getString("Player 1")
                 val p2name = snapshot.getString("Player 2")
@@ -160,7 +160,7 @@ class ActiveGame : AppCompatActivity() {
                 val initQuestion =
                     db.collection("Rooms").document(currentRoom).collection("Questions")
                         .document("Questions to be Used")
-                initQuestion.get().addOnSuccessListener { document ->
+                initQuestion.get().addOnSuccessListener { _ ->
                     gameLogic()
                 }
                 if (isHost || p1name == playerName) {
@@ -171,7 +171,7 @@ class ActiveGame : AppCompatActivity() {
             }
         }
         val timerSet = db.collection("Rooms").document(currentRoom)
-        timerSet.addSnapshotListener { snapshot, error ->
+        timerSet.addSnapshotListener { snapshot, _ ->
             if (snapshot != null) {
                 binding.timer.text = snapshot.get("Timer").toString()
             }
@@ -182,7 +182,7 @@ class ActiveGame : AppCompatActivity() {
 
     private fun timerStart() {
         val timerSetting = db.collection("Rooms").document(currentRoom)
-        timerSetting.addSnapshotListener { snapshot, error ->
+        timerSetting.addSnapshotListener { snapshot, _ ->
             if (snapshot != null) {
                 var timerSet = snapshot.get("Timer").toString().toInt()
                 object : CountDownTimer(timerSet.toLong() * 1000, 1000) {
@@ -210,7 +210,7 @@ class ActiveGame : AppCompatActivity() {
         var pCounter = 0
         val checkPCounter = db.collection("Rooms").document(currentRoom).collection("Players")
             .document("PlayersData")
-        checkPCounter.addSnapshotListener { snapshot, error ->
+        checkPCounter.addSnapshotListener { snapshot, _ ->
             if (snapshot != null) {
                 when (playerNumber) {
                     1 -> {
@@ -275,7 +275,7 @@ class ActiveGame : AppCompatActivity() {
         var pCounter = 0
         val checkPCounter = db.collection("Rooms").document(currentRoom).collection("Players")
             .document("PlayersData")
-        checkPCounter.addSnapshotListener { snapshot, error ->
+        checkPCounter.addSnapshotListener { snapshot, _ ->
             if (snapshot != null) {
                 when (playerNumber) {
                     1 -> {
