@@ -34,7 +34,7 @@ class AvatarIcons : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         val userIcon = db.collection("Account Data")
             .document(auth.currentUser?.uid.toString())
-        //Selects the Icon and Deselects the previous one
+        //Selects the Icon and Deselects the previous one.
         wineglass.setOnClickListener{
             wineglass.setImageResource(R.drawable.checkmark)
             shotglass.setImageResource(R.drawable.shotglass)
