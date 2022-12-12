@@ -5,3 +5,4 @@ Code Contributors: Johnson Li - FullStack Developer | Jason Chan - FrontEnd Deve
 
 
 
+![logingif](https://user-images.githubusercontent.com/17182149/206955248-c0951aa3-72f7-481e-a6d4-5e9f96dbc44f.gif)
