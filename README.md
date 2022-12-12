@@ -23,3 +23,5 @@ This is where the game begins each player's name and icon will be shown. A quest
 
 ![activegame](https://user-images.githubusercontent.com/17182149/206955992-3c5482ef-7c78-4166-a5a7-8890d3607ede.gif) </br>
 
+After a couple of rounds have gone by a mini-game will pop up. Here players will have to be stable and walk in a straight line. This is to test how drunk the players are. If they tilt the phone too much the screen will turn red and the player will then be removed from the game.</br>
+![gyro](https://user-images.githubusercontent.com/17182149/206956155-a4915a0f-303c-4988-ba45-6ef5494d4d45.gif)</br>
