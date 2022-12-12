@@ -14,3 +14,12 @@ This is the question set page here you can choose the one you want to use and al
 
 After you click that edit button on the question set it will take you to this page here is where you type any question you want to use during the game. Question Set 1 will have default questions ready to use and is the default selected question set.</br>
 ![questionlist](https://user-images.githubusercontent.com/17182149/206955676-b1e51a6b-32ba-4df9-9d3d-e438d522f803.gif)</br>
+
+This is the avatar icon page here you can select the one that you want to use during the game. It will show up when the game is live and on the welcome screen.</br>
+![avatarIcon](https://user-images.githubusercontent.com/17182149/206955773-d6248410-6017-4bd5-93a4-f24fb7f7df6a.gif)</br>
+If you are the host of the game and you need to create one this is the screen that you will be seeing. Here you set the number of players and the time you want them to have to answer the question. You will also see the question set you choose, you will also have to create a room code for the others to join you. Once you are done you create the game and just wait till everyone you want joins.</br>
+![creategame](https://user-images.githubusercontent.com/17182149/206955885-e229a5c3-1542-40a2-9a87-894e047e6766.gif)</br>
+This is where the game begins each player's name and icon will be shown. A question will pop up and they will have to click I have or I have not. The host of the game has the option to start and end the game at any time. </br>
+
+![activegame](https://user-images.githubusercontent.com/17182149/206955992-3c5482ef-7c78-4166-a5a7-8890d3607ede.gif) </br>
+
