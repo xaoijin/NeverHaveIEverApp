@@ -7,12 +7,10 @@
     android:background="@drawable/glasses"
     android:orientation="vertical"
     tools:context="com.jldevelops.neverhaveiever.QuestionSets">
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
-
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="248dp"
@@ -21,83 +19,67 @@
             app:cardCornerRadius="20dp"
             app:cardElevation="11dp"
             app:cardUseCompatPadding="true">
-
-            <RelativeLayout
-                android:id="@+id/Rl1"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
                 android:background="@drawable/question_set_card"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
+                <TextView
+                    android:id="@+id/Qs1"
+                    android:layout_width="195dp"
+                    android:layout_height="63dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="80dp"
+                    android:ems="10"
+                    android:fontFamily="@font/bevan"
+
+                    android:text="@string/question_set_1"
+                    android:textColor="#1A1A1A"
+                    android:textSize="16sp" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/Qs1"
-                        android:layout_width="143dp"
-                        android:layout_height="63dp"
-                        android:layout_marginHorizontal="20dp"
-                        android:layout_marginVertical="80dp"
-                        android:ems="10"
-                        android:inputType="textMultiLine"
-                        android:text="Question set 1"
+                    android:orientation="vertical">
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/e1"
+                        android:layout_width="130dp"
+                        android:layout_height="48dp"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/question_set_btn"
+                        android:shadowDx="0"
+                        android:shadowDy="0"
+                        android:shadowRadius="5"
+                        android:text="@string/edit"
                         android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-
-                        />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/e1"
-                            android:layout_width="130dp"
-                            android:layout_height="45dp"
-                            android:layout_marginVertical="10dp"
-                            android:background="@drawable/question_set_btn"
-                            android:shadowDx="0"
-                            android:shadowDy="0"
-                            android:shadowRadius="5"
-                            android:text="Edit"
-                            android:textColor="#FFFFFF" />
-
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/r1"
-                            android:layout_width="130dp"
-                            android:layout_height="45dp"
-                            android:layout_marginVertical="10dp"
-                            android:background="@drawable/question_set_btn"
-                            android:shadowDx="0"
-                            android:shadowDy="0"
-                            android:shadowRadius="5"
-                            android:text="Rename"
-                            android:textColor="#FFFFFF" />
-
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/s1"
-                            android:layout_width="130dp"
-                            android:layout_height="45dp"
-                            android:layout_marginVertical="10dp"
-                            android:background="@drawable/question_set_btn"
-                            android:shadowDx="0"
-                            android:shadowDy="0"
-                            android:shadowRadius="5"
-                            android:text="Select"
-                            android:textColor="#FFFFFF" />
-                    </LinearLayout>
-
+                        tools:ignore="DuplicateSpeakableTextCheck" />
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/r1"
+                        android:layout_width="130dp"
+                        android:layout_height="48dp"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/question_set_btn"
+                        android:shadowDx="0"
+                        android:shadowDy="0"
+                        android:shadowRadius="5"
+                        android:text="@string/rename"
+                        android:textColor="#FFFFFF"
+                        tools:ignore="DuplicateSpeakableTextCheck" />
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/s1"
+                        android:layout_width="130dp"
+                        android:layout_height="48dp"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/question_set_btn"
+                        android:shadowDx="0"
+                        android:shadowDy="0"
+                        android:shadowRadius="5"
+                        android:text="@string/select"
+                        android:textColor="#FFFFFF"
+                        tools:ignore="DuplicateSpeakableTextCheck" />
                 </LinearLayout>
-
-            </RelativeLayout>
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
-
-
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="248dp"
@@ -106,82 +88,66 @@
             app:cardCornerRadius="20dp"
             app:cardElevation="11dp"
             app:cardUseCompatPadding="true">
-
-            <RelativeLayout
-                android:id="@+id/Rl2"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
                 android:background="@drawable/question_set_card"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
+                <TextView
+                    android:id="@+id/Qs2"
+                    android:layout_width="195dp"
+                    android:layout_height="63dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="80dp"
+                    android:ems="10"
+                    android:fontFamily="@font/bevan"
+                    android:text="@string/question_set_2"
+                    android:textColor="#1A1A1A"
+                    android:textSize="16sp" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/e2"
+                        android:layout_width="130dp"
+                        android:layout_height="48dp"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/question_set_btn"
+                        android:shadowDx="0"
+                        android:shadowDy="0"
+                        android:shadowRadius="5"
+                        android:text="@string/edit"
+                        android:textColor="#FFFFFF" />
 
-                    <TextView
-                        android:id="@+id/Qs2"
-                        android:layout_width="143dp"
-                        android:layout_height="63dp"
-                        android:layout_marginHorizontal="20dp"
-                        android:layout_marginVertical="80dp"
-                        android:ems="10"
-                        android:inputType="textMultiLine"
-                        android:text="Question set 2"
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/r2"
+                        android:layout_width="130dp"
+                        android:layout_height="48dp"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/question_set_btn"
+                        android:shadowDx="0"
+                        android:shadowDy="0"
+                        android:shadowRadius="5"
+                        android:text="@string/rename"
                         android:textColor="#FFFFFF"
-                        android:textSize="16sp"
+                        tools:ignore="DuplicateSpeakableTextCheck" />
 
-                        />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/e2"
-                            android:layout_width="130dp"
-                            android:layout_height="45dp"
-                            android:layout_marginVertical="10dp"
-                            android:background="@drawable/question_set_btn"
-                            android:shadowDx="0"
-                            android:shadowDy="0"
-                            android:shadowRadius="5"
-                            android:text="Edit"
-                            android:textColor="#FFFFFF" />
-
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/r2"
-                            android:layout_width="130dp"
-                            android:layout_height="45dp"
-                            android:layout_marginVertical="10dp"
-                            android:background="@drawable/question_set_btn"
-                            android:shadowDx="0"
-                            android:shadowDy="0"
-                            android:shadowRadius="5"
-                            android:text="Rename"
-                            android:textColor="#FFFFFF" />
-
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/s2"
-                            android:layout_width="130dp"
-                            android:layout_height="45dp"
-                            android:layout_marginVertical="10dp"
-                            android:background="@drawable/question_set_btn"
-                            android:shadowDx="0"
-                            android:shadowDy="0"
-                            android:shadowRadius="5"
-                            android:text="Select"
-                            android:textColor="#FFFFFF" />
-                    </LinearLayout>
-
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/s2"
+                        android:layout_width="130dp"
+                        android:layout_height="48dp"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/question_set_btn"
+                        android:shadowDx="0"
+                        android:shadowDy="0"
+                        android:shadowRadius="5"
+                        android:text="@string/select"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
-
-            </RelativeLayout>
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
-
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="248dp"
@@ -190,83 +156,63 @@
             app:cardCornerRadius="20dp"
             app:cardElevation="11dp"
             app:cardUseCompatPadding="true">
-
-            <RelativeLayout
-                android:id="@+id/Rl3"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
                 android:background="@drawable/question_set_card"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
+                <TextView
+                    android:id="@+id/Qs3"
+                    android:layout_width="195dp"
+                    android:layout_height="63dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="80dp"
+                    android:ems="10"
+                    android:fontFamily="@font/bevan"
+                    android:text="@string/question_set_3"
+                    android:textColor="#1A1A1A"
+                    android:textSize="16sp" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/Qs3"
-                        android:layout_width="143dp"
-                        android:layout_height="63dp"
-                        android:layout_marginHorizontal="20dp"
-                        android:layout_marginVertical="80dp"
-                        android:ems="10"
-                        android:inputType="textMultiLine"
-                        android:text="Question set 3"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-
-                        />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/e3"
-                            android:layout_width="130dp"
-                            android:layout_height="45dp"
-                            android:layout_marginVertical="10dp"
-                            android:background="@drawable/question_set_btn"
-                            android:shadowDx="0"
-                            android:shadowDy="0"
-                            android:shadowRadius="5"
-                            android:text="Edit"
-                            android:textColor="#FFFFFF" />
-
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/r3"
-                            android:layout_width="130dp"
-                            android:layout_height="45dp"
-                            android:layout_marginVertical="10dp"
-                            android:background="@drawable/question_set_btn"
-                            android:shadowDx="0"
-                            android:shadowDy="0"
-                            android:shadowRadius="5"
-                            android:text="Rename"
-                            android:textColor="#FFFFFF" />
-
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/s3"
-                            android:layout_width="130dp"
-                            android:layout_height="45dp"
-                            android:layout_marginVertical="10dp"
-                            android:background="@drawable/question_set_btn"
-                            android:shadowDx="0"
-                            android:shadowDy="0"
-                            android:shadowRadius="5"
-                            android:text="Select"
-                            android:textColor="#FFFFFF" />
-                    </LinearLayout>
-
+                    android:orientation="vertical">
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/e3"
+                        android:layout_width="130dp"
+                        android:layout_height="48dp"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/question_set_btn"
+                        android:shadowDx="0"
+                        android:shadowDy="0"
+                        android:shadowRadius="5"
+                        android:text="@string/edit"
+                        android:textColor="#FFFFFF" />
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/r3"
+                        android:layout_width="130dp"
+                        android:layout_height="48dp"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/question_set_btn"
+                        android:shadowDx="0"
+                        android:shadowDy="0"
+                        android:shadowRadius="5"
+                        android:text="@string/rename"
+                        android:textColor="#FFFFFF" />
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/s3"
+                        android:layout_width="130dp"
+                        android:layout_height="48dp"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/question_set_btn"
+                        android:shadowDx="0"
+                        android:shadowDy="0"
+                        android:shadowRadius="5"
+                        android:text="@string/select"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
-
-            </RelativeLayout>
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
-
     </LinearLayout>
-
 </ScrollView>
     

@@ -41,6 +41,11 @@
     <string name="clear">Clear</string>
     <string name="button_background">Button Background</string>
     <string name="buttonimage">buttonimage</string>
+    <string name="question_set_2">Question set 2</string>
+    <string name="question_set_3">Question set 3</string>
+    <string name="question_set_1">Question set 1</string>
+    <string name="rename">Rename</string>
+    <string name="select">Select</string>
     <!-- Strings related to login -->
     <!-- TODO: Remove or change this placeholder text -->
 </resources>
