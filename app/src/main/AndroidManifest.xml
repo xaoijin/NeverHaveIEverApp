@@ -4,7 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +21,7 @@
         <activity
             android:name=".LoginScreen"
             android:exported="false"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -28,7 +29,7 @@
         <activity
             android:name=".SplashScreen"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,7 +43,7 @@
         <activity
             android:name=".SafeScreen"
             android:exported="false"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
             <meta-data
@@ -52,7 +53,7 @@
         <activity
             android:name=".FailScreen"
             android:exported="false"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
             <meta-data
@@ -63,7 +64,7 @@
         <activity
             android:name=".CameraMiniGame"
             android:exported="false"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
 
             <meta-data
                 android:name="android.app.lib_name"
@@ -72,7 +73,7 @@
         <activity
             android:name=".ActiveGame"
             android:exported="false"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
 
             <meta-data
                 android:name="android.app.lib_name"
@@ -81,7 +82,7 @@
         <activity
             android:name=".CreateGame"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
 
             <meta-data
                 android:name="android.app.lib_name"
@@ -90,7 +91,7 @@
         <activity
             android:name=".QuestionList"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
 
             <meta-data
                 android:name="android.app.lib_name"
@@ -99,7 +100,7 @@
         <activity
             android:name=".QuestionSets"
             android:exported="false"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -107,7 +108,7 @@
         <activity
             android:name=".AvatarIcons"
             android:exported="false"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -115,7 +116,7 @@
         <activity
             android:name=".InitialScreen"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/BurlyWood"
-        android:text="Player 1"
+        android:text="@string/player_1"
         android:textColor="@color/black"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,14 +34,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.121"
-        app:srcCompat="@drawable/empty" />
+        app:srcCompat="@drawable/empty"
+        android:contentDescription="@string/player_icon" />
 
     <TextView
         android:id="@+id/P2name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/BurlyWood"
-        android:text="Player 2"
+        android:text="@string/player_2"
         android:textColor="@color/black"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -62,14 +63,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.121"
-        app:srcCompat="@drawable/empty" />
+        app:srcCompat="@drawable/empty"
+        android:contentDescription="@string/player_icon" />
 
     <TextView
         android:id="@+id/P3name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/BurlyWood"
-        android:text="Player 3"
+        android:text="@string/player_3"
         android:textColor="@color/black"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -91,14 +93,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.121"
-        app:srcCompat="@drawable/empty" />
+        app:srcCompat="@drawable/empty"
+        android:contentDescription="@string/player_icon" />
 
     <TextView
         android:id="@+id/P4name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/BurlyWood"
-        android:text="Player 4"
+        android:text="@string/player_4"
         android:textColor="@color/black"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -120,14 +123,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.43"
-        app:srcCompat="@drawable/empty" />
+        app:srcCompat="@drawable/empty"
+        android:contentDescription="@string/player_icon" />
 
     <TextView
         android:id="@+id/P5name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/BurlyWood"
-        android:text="Player 5"
+        android:text="@string/player_5"
         android:textColor="@color/black"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -153,14 +157,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.43"
-        app:srcCompat="@drawable/empty" />
+        app:srcCompat="@drawable/empty"
+        android:contentDescription="@string/player_icon" />
 
     <TextView
         android:id="@+id/P6name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/BurlyWood"
-        android:text="Player 6"
+        android:text="@string/player_6"
         android:textColor="@color/black"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -182,14 +187,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.43"
-        app:srcCompat="@drawable/empty" />
+        app:srcCompat="@drawable/empty"
+        android:contentDescription="@string/player_icon" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="71dp"
         android:layout_height="25dp"
         android:background="@color/BurlyWood"
-        android:text="Timer:"
+        android:text="@string/timer"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -204,7 +210,7 @@
         android:layout_height="25dp"
         android:background="@color/BurlyWood"
         android:minEms="2"
-        android:text="74"
+        android:text="@string/_74"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -222,7 +228,7 @@
         android:background="@color/opacity"
         android:gravity="center"
         android:minEms="15"
-        android:text="Question will be here"
+        android:text="@string/question_will_be_here"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16sp"
@@ -238,7 +244,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/BurlyWood"
-        android:text="I Have Not"
+        android:text="@string/i_have_not"
         android:textColor="@color/black"
         android:visibility="visible"
         app:cornerRadius="10dp"
@@ -254,7 +260,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/BurlyWood"
-        android:text="I Have"
+        android:text="@string/i_have"
         android:textColor="@color/black"
         android:visibility="visible"
         app:cornerRadius="10dp"
@@ -268,7 +274,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/BlanchedAlmond"
-        android:text="Room Code: "
+        android:text="@string/room_code"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.465"
@@ -285,7 +291,7 @@
         android:shadowDx="8"
         android:shadowDy="0"
         android:shadowRadius="4"
-        android:text="Start"
+        android:text="@string/start"
         android:textColor="@color/Black"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -305,7 +311,7 @@
         android:shadowDx="8"
         android:shadowDy="0"
         android:shadowRadius="4"
-        android:text="End"
+        android:text="@string/end"
         android:textColor="@color/Black"
         android:visibility="visible"
         app:layout_constraintBaseline_toBaselineOf="@+id/startBtn"

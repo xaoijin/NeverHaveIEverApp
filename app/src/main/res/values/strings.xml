@@ -1,6 +1,21 @@
 <resources>
     <string name="app_name">DrinkingGame</string>
     <string name="dialogpretext">\Never have I ever \</string>
+    <string name="room_code">Room Code:</string>
+    <string name="i_have">I Have</string>
+    <string name="start">Start</string>
+    <string name="end">End</string>
+    <string name="i_have_not">I Have Not</string>
+    <string name="question_will_be_here">Question will be here</string>
+    <string name="_74">74</string>
+    <string name="timer">Timer:</string>
+    <string name="player_icon">Player Icon</string>
+    <string name="player_6">Player 6</string>
+    <string name="player_5">Player 5</string>
+    <string name="player_4">Player 4</string>
+    <string name="player_3">Player 3</string>
+    <string name="player_2">Player 2</string>
+    <string name="player_1">Player 1</string>
     <!-- Strings related to login -->
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

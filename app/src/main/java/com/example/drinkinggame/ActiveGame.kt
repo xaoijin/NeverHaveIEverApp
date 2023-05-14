@@ -1,5 +1,6 @@
 package com.example.drinkinggame
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -163,7 +164,7 @@ class ActiveGame : AppCompatActivity() {
                 val initQuestion =
                     db.collection("Rooms").document(currentRoom).collection("Questions")
                         .document("Questions to be Used")
-                initQuestion.get().addOnSuccessListener { _ ->
+                initQuestion.get().addOnSuccessListener {
                     gameLogic()
                 }
                 if (isHost || p1name == playerName) {
@@ -382,6 +383,7 @@ class ActiveGame : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun gameLogic() {
         questionCounter++
 
