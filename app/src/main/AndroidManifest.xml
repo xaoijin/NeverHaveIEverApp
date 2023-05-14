@@ -19,7 +19,7 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".LoginScreen"
+            android:name="com.jldevelops.neverhaveiever.LoginScreen"
             android:exported="false"
             android:screenOrientation="fullSensor">
             <meta-data
@@ -27,7 +27,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".SplashScreen"
+            android:name="com.jldevelops.neverhaveiever.SplashScreen"
             android:exported="true"
             android:screenOrientation="fullSensor">
             <intent-filter>
@@ -41,7 +41,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".SafeScreen"
+            android:name="com.jldevelops.neverhaveiever.SafeScreen"
             android:exported="false"
             android:screenOrientation="fullSensor"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -51,7 +51,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".FailScreen"
+            android:name="com.jldevelops.neverhaveiever.FailScreen"
             android:exported="false"
             android:screenOrientation="fullSensor"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -62,7 +62,7 @@
         </activity>
 
         <activity
-            android:name=".CameraMiniGame"
+            android:name="com.jldevelops.neverhaveiever.CameraMiniGame"
             android:exported="false"
             android:screenOrientation="fullSensor">
 
@@ -71,7 +71,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ActiveGame"
+            android:name="com.jldevelops.neverhaveiever.ActiveGame"
             android:exported="false"
             android:screenOrientation="fullSensor">
 
@@ -80,7 +80,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".CreateGame"
+            android:name="com.jldevelops.neverhaveiever.CreateGame"
             android:exported="true"
             android:screenOrientation="fullSensor">
 
@@ -89,7 +89,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".QuestionList"
+            android:name="com.jldevelops.neverhaveiever.QuestionList"
             android:exported="true"
             android:screenOrientation="fullSensor">
 
@@ -98,7 +98,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".QuestionSets"
+            android:name="com.jldevelops.neverhaveiever.QuestionSets"
             android:exported="false"
             android:screenOrientation="fullSensor">
             <meta-data
@@ -106,7 +106,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".AvatarIcons"
+            android:name="com.jldevelops.neverhaveiever.AvatarIcons"
             android:exported="false"
             android:screenOrientation="fullSensor">
             <meta-data
@@ -114,7 +114,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".InitialScreen"
+            android:name="com.jldevelops.neverhaveiever.InitialScreen"
             android:exported="true"
             android:screenOrientation="fullSensor">
             <meta-data

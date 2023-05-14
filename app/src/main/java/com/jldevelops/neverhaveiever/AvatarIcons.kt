@@ -1,7 +1,6 @@
-package com.example.drinkinggame
+package com.jldevelops.neverhaveiever
 
 import android.content.Intent
-import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
@@ -10,12 +9,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-var selectedIcon = ""
+var selectedIcon: Int = 0
 
 class AvatarIcons : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private var db = Firebase.firestore
-    private var mediaPlayer: MediaPlayer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_avatar_icons)
@@ -47,7 +45,7 @@ class AvatarIcons : AppCompatActivity() {
             coffee.setImageResource(R.drawable.coffee)
             vodka.setImageResource(R.drawable.vodka)
             weizen.setImageResource(R.drawable.weizen)
-            selectedIcon = "wineglass"
+            selectedIcon = R.drawable.wineglass
             userIcon.update("Icon", selectedIcon)
         }
         shotglass.setOnClickListener{
@@ -61,7 +59,7 @@ class AvatarIcons : AppCompatActivity() {
             coffee.setImageResource(R.drawable.coffee)
             vodka.setImageResource(R.drawable.vodka)
             weizen.setImageResource(R.drawable.weizen)
-            selectedIcon = "shotglass"
+            selectedIcon = R.drawable.shotglass
             userIcon.update("Icon", selectedIcon)
         }
         martini.setOnClickListener{
@@ -75,7 +73,7 @@ class AvatarIcons : AppCompatActivity() {
             vodka.setImageResource(R.drawable.vodka)
             weizen.setImageResource(R.drawable.weizen)
 
-            selectedIcon = "martini"
+            selectedIcon = R.drawable.martini
             userIcon.update("Icon", selectedIcon)
         }
         brandy.setOnClickListener{
@@ -89,7 +87,7 @@ class AvatarIcons : AppCompatActivity() {
             vodka.setImageResource(R.drawable.vodka)
             weizen.setImageResource(R.drawable.weizen)
 
-            selectedIcon = "brandy"
+            selectedIcon = R.drawable.brandy
             userIcon.update("Icon", selectedIcon)
         }
         hurricane.setOnClickListener{
@@ -103,7 +101,7 @@ class AvatarIcons : AppCompatActivity() {
             vodka.setImageResource(R.drawable.vodka)
             weizen.setImageResource(R.drawable.weizen)
 
-            selectedIcon = "hurricane"
+            selectedIcon = R.drawable.hurricane
             userIcon.update("Icon", selectedIcon)
         }
         beermug.setOnClickListener{
@@ -117,7 +115,7 @@ class AvatarIcons : AppCompatActivity() {
             vodka.setImageResource(R.drawable.vodka)
             weizen.setImageResource(R.drawable.weizen)
 
-            selectedIcon = "beermug"
+            selectedIcon = R.drawable.beermug
             userIcon.update("Icon", selectedIcon)
         }
         coffee.setOnClickListener{
@@ -131,7 +129,7 @@ class AvatarIcons : AppCompatActivity() {
             vodka.setImageResource(R.drawable.vodka)
             weizen.setImageResource(R.drawable.weizen)
 
-            selectedIcon = "coffee"
+            selectedIcon = R.drawable.coffee
             userIcon.update("Icon", selectedIcon)
         }
         vodka.setOnClickListener{
@@ -145,7 +143,7 @@ class AvatarIcons : AppCompatActivity() {
             vodka.setImageResource(R.drawable.checkmark)
             weizen.setImageResource(R.drawable.weizen)
 
-            selectedIcon = "vodka"
+            selectedIcon = R.drawable.vodka
             userIcon.update("Icon", selectedIcon)
         }
         weizen.setOnClickListener{
@@ -159,7 +157,7 @@ class AvatarIcons : AppCompatActivity() {
             vodka.setImageResource(R.drawable.vodka)
             weizen.setImageResource(R.drawable.checkmark)
 
-            selectedIcon = "weizen"
+            selectedIcon = R.drawable.weizen
             userIcon.update("Icon", selectedIcon)
         }
         select.setOnClickListener {

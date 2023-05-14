@@ -16,6 +16,31 @@
     <string name="player_3">Player 3</string>
     <string name="player_2">Player 2</string>
     <string name="player_1">Player 1</string>
+    <string name="selected">Selected</string>
+    <string name="welcome_to_aa">Welcome To AA</string>
+    <string name="change_name">Change Name</string>
+    <string name="change_icon">Change Icon</string>
+    <string name="logout">Logout</string>
+    <string name="question_sets">Question Sets</string>
+    <string name="create_game">Create Game</string>
+    <string name="join_game">Join Game</string>
+    <string name="room_code_here">Room Code Here</string>
+    <string name="room_does_not_exist">Room does not Exist!</string>
+    <string name="display_name">Display Name</string>
+    <string name="something">Something</string>
+    <string name="sound_off">Sound Off</string>
+    <string name="sound_on">Sound On</string>
+    <string name="email_or_password_is_incorrect">Email or Password is Incorrect</string>
+    <string name="login_icon">Login Icon</string>
+    <string name="register">register</string>
+    <string name="log_in">log in</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="question_1">Question 1</string>
+    <string name="edit">Edit</string>
+    <string name="clear">Clear</string>
+    <string name="button_background">Button Background</string>
+    <string name="buttonimage">buttonimage</string>
     <!-- Strings related to login -->
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

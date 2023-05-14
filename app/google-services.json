@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "97057281195",
-    "project_id": "welcome-to-aa",
-    "storage_bucket": "welcome-to-aa.appspot.com"
+    "project_number": "821260698713",
+    "project_id": "neverhaveieverbyjldevelops",
+    "storage_bucket": "neverhaveieverbyjldevelops.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:97057281195:android:b2274bc7cee8697cd293ee",
+        "mobilesdk_app_id": "1:821260698713:android:168c969d8aac62c7eb1d48",
         "android_client_info": {
-          "package_name": "com.example.drinkinggame"
+          "package_name": "com.jldevelops.neverhaveiever"
         }
       },
       "oauth_client": [
         {
-          "client_id": "97057281195-cbub6hvn6a0hsmqunrpu1kvl6qcg96g2.apps.googleusercontent.com",
+          "client_id": "821260698713-g0m3224siv0gik2m6t73ds43viaeolfh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jldevelops.neverhaveiever",
+            "certificate_hash": "67b3439fbca89c8b0caeaddf85ba55c5d7d1546d"
+          }
+        },
+        {
+          "client_id": "821260698713-g6j2hl5jrdnn43nfu1r4fu193j2ocd93.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAdxwrH_ZFQVS5eKutZDYdRV6eOVQBGQwU"
+          "current_key": "AIzaSyA7CryrDiqOBXfPFYv0Mkr6ave81DX0GGE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "97057281195-cbub6hvn6a0hsmqunrpu1kvl6qcg96g2.apps.googleusercontent.com",
+              "client_id": "821260698713-g6j2hl5jrdnn43nfu1r4fu193j2ocd93.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -1,4 +1,4 @@
-package com.example.drinkinggame
+package com.jldevelops.neverhaveiever
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,10 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SafeScreen : AppCompatActivity() {
     val db = Firebase.firestore
@@ -47,9 +50,10 @@ class SafeScreen : AppCompatActivity() {
 
             }
         }
-        Handler().postDelayed(Runnable {
-            val i = Intent(this, ActiveGame::class.java)
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(5000)
+            val i = Intent(this@SafeScreen, ActiveGame::class.java)
             startActivity(i)
-        }, 5000)
+        }
     }
 }

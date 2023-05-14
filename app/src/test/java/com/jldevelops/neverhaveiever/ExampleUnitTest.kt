@@ -1,4 +1,4 @@
-package com.example.drinkinggame
+package com.jldevelops.neverhaveiever
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

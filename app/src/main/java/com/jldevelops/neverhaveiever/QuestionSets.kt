@@ -1,18 +1,16 @@
-package com.example.drinkinggame
+package com.jldevelops.neverhaveiever
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.content.Intent
-import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.example.drinkinggame.databinding.ActivityQuestionSetsBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.jldevelops.neverhaveiever.databinding.ActivityQuestionSetsBinding
 
 
 var questionsetselected = 1
@@ -23,7 +21,6 @@ class QuestionSets : AppCompatActivity() {
     private lateinit var binding: ActivityQuestionSetsBinding
     private lateinit var auth: FirebaseAuth
     val db = Firebase.firestore
-    private var mediaPlayer: MediaPlayer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuestionSetsBinding.inflate(layoutInflater)
@@ -47,18 +44,22 @@ class QuestionSets : AppCompatActivity() {
         binding.e1.setOnClickListener {
             questionsetedit = 1
             val intent = Intent(this, QuestionList::class.java)
+            intent.putExtra("questionsetedit", questionsetedit)
             startActivity(intent)
         }
         binding.e2.setOnClickListener {
             questionsetedit = 2
             val intent = Intent(this, QuestionList::class.java)
+            intent.putExtra("questionsetedit", questionsetedit)
             startActivity(intent)
         }
         binding.e3.setOnClickListener {
             questionsetedit = 3
             val intent = Intent(this, QuestionList::class.java)
+            intent.putExtra("questionsetedit", questionsetedit)
             startActivity(intent)
         }
+
         binding.r1.setOnClickListener {
             questionsetrename = 1
             rename()
@@ -75,29 +76,25 @@ class QuestionSets : AppCompatActivity() {
         binding.s1.setOnClickListener {
             clearSelect()
             questionsetselected = 1
-            binding.s1.text = "Selected"
+            binding.s1.text = getString(R.string.selected)
             binding.s1.backgroundTintList =
                 ContextCompat.getColorStateList(applicationContext, R.color.maroon)
         }
         binding.s2.setOnClickListener {
             clearSelect()
             questionsetselected = 2
-            binding.s2.text = "Selected"
+            binding.s2.text = getString(R.string.selected)
             binding.s2.backgroundTintList =
                 ContextCompat.getColorStateList(applicationContext, R.color.maroon)
         }
         binding.s3.setOnClickListener {
             clearSelect()
             questionsetselected = 3
-            binding.s3.text = "Selected"
+            binding.s3.text = getString(R.string.selected)
             binding.s3.backgroundTintList =
                 ContextCompat.getColorStateList(applicationContext, R.color.maroon)
         }
 
-    }
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
     }
     private fun updateSetName() {
         val qSetNamesref =
@@ -138,42 +135,42 @@ class QuestionSets : AppCompatActivity() {
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
+                    .setPositiveButton("Confirm") { _, _ ->
                         binding.Qs1.text = input.text.toString()
                         updateSetName()
-                    })
+                    }
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
+                    .setNegativeButton("Cancel") { dialog, _ ->
                         dialog.cancel()
-                    })
+                    }
             }
             2 -> {
                 dialogBuilder.setMessage("What would you like to name this Question Set?")
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
+                    .setPositiveButton("Confirm") { _, _ ->
                         binding.Qs2.text = input.text.toString()
                         updateSetName()
-                    })
+                    }
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
+                    .setNegativeButton("Cancel") { dialog, _ ->
                         dialog.cancel()
-                    })
+                    }
             }
             3 -> {
                 dialogBuilder.setMessage("What would you like to name this Question Set?")
                     .setView(input)
                     .setCancelable(false)
                     // positive button text and action
-                    .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
+                    .setPositiveButton("Confirm") { _, _ ->
                         binding.Qs3.text = input.text.toString()
                         updateSetName()
-                    })
+                    }
                     // negative button text and action
-                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
+                    .setNegativeButton("Cancel") { dialog, _ ->
                         dialog.cancel()
-                    })
+                    }
             }
         }
         val alert = dialogBuilder.create()

@@ -1,4 +1,4 @@
-package com.example.drinkinggame
+package com.jldevelops.neverhaveiever
 
 
 import android.content.Intent
@@ -7,12 +7,12 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.drinkinggame.databinding.ActivityCreateGameBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.MetadataChanges
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.jldevelops.neverhaveiever.databinding.ActivityCreateGameBinding
 
 var timer = 20
 var maxPlayer = 2
@@ -76,11 +76,6 @@ class CreateGame : AppCompatActivity() {
             validSettings()
         }
 
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
     }
     private fun doesRoomCodeExists() {
         auth = FirebaseAuth.getInstance()

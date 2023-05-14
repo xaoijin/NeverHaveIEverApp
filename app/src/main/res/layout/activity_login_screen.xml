@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_list"
     android:orientation="vertical"
-    tools:context=".LoginScreen">
+    tools:context="com.jldevelops.neverhaveiever.LoginScreen">
 
 
     <TextView
@@ -19,7 +19,7 @@
         android:layout_marginTop="110dp"
         android:layout_marginEnd="10dp"
         android:background="#E22323"
-        android:text="Email or Password is Incorrect"
+        android:text="@string/email_or_password_is_incorrect"
         android:textColor="#FFFFFF"
         android:visibility="visible" />
 
@@ -28,7 +28,8 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:scaleX="2"
-        app:srcCompat="@drawable/rusticlogo" />
+        app:srcCompat="@drawable/rusticlogo"
+        android:contentDescription="@string/login_icon" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,13 +44,15 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:hint="Email"
+            android:hint="@string/email"
             app:startIconDrawable="@drawable/ic_baseline_email_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_width="388dp"
+                android:layout_height="wrap_content"
+                android:textColorHint="#3E2723"
+                android:background="@color/LightBlue"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,18 +64,18 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:hint="Password"
+            android:hint="@string/password"
             app:endIconMode="password_toggle"
 
             app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordInput"
-                android:layout_width="match_parent"
+                android:layout_width="388dp"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-
-                />
+                android:background="@color/LightBlue"
+                android:textColorHint="#3E2723" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,7 +91,7 @@
                 style="@style/Widget.AppCompat.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="log in"
+                android:text="@string/log_in"
                 android:textAlignment="center" />
 
             <Button
@@ -97,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="register"
+                android:text="@string/register"
                 android:theme="@style/Platform.MaterialComponents" />
         </LinearLayout>
 

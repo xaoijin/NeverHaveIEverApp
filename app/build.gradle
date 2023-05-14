@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.drinkinggame'
+    namespace 'com.jldevelops.neverhaveiever'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.drinkinggame"
+        applicationId "com.jldevelops.neverhaveiever"
         minSdk 24
         targetSdk 33
         versionCode 1
@@ -57,5 +57,7 @@ dependencies {
     implementation "androidx.cardview:cardview:1.0.0"
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     implementation 'com.github.javafaker:javafaker:1.0.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
 
 }

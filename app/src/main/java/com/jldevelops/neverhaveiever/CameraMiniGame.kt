@@ -1,7 +1,6 @@
-package com.example.drinkinggame
+package com.jldevelops.neverhaveiever
 
 import android.content.Intent
-import android.graphics.Color.parseColor
 import android.hardware.*
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -9,7 +8,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import android.media.MediaPlayer
-
 
 
 class CameraMiniGame : AppCompatActivity() {

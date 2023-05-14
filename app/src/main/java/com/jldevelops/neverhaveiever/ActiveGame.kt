@@ -1,4 +1,4 @@
-package com.example.drinkinggame
+package com.jldevelops.neverhaveiever
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -9,10 +9,10 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.drinkinggame.databinding.ActivityActiveGameBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.jldevelops.neverhaveiever.databinding.ActivityActiveGameBinding
 
 var JoinRoomCode = ""
 var isHost = false

@@ -1,9 +1,8 @@
-package com.example.drinkinggame
+package com.jldevelops.neverhaveiever
 
 
 import android.content.Intent
 import android.graphics.drawable.AnimationDrawable
-import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -26,7 +25,6 @@ class LoginScreen : AppCompatActivity() {
     private lateinit var bRegister: Button
     private lateinit var auth: FirebaseAuth
     private var db = Firebase.firestore
-    private var mediaPlayer: MediaPlayer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_screen)
@@ -86,7 +84,7 @@ class LoginScreen : AppCompatActivity() {
         val name = faker.app().name() // Miss Samanta Schmidt
         val email = lEmail.text.toString().trim()
         val psw = lPassword.text.toString().trim()
-        val icon = "brandy"
+        val icon = R.drawable.brandy
         if (email.isEmpty() || psw.isEmpty()) {
             Toast.makeText(this, "Please Enter Email or Password", Toast.LENGTH_SHORT).show()
             return

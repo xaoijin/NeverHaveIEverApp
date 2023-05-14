@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/glasses"
     android:orientation="vertical"
-    tools:context=".QuestionSets">
+    tools:context="com.jldevelops.neverhaveiever.QuestionSets">
 
     <LinearLayout
         android:layout_width="match_parent"

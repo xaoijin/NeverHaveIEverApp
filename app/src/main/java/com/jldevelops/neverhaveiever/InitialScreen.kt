@@ -1,12 +1,15 @@
-package com.example.drinkinggame
+package com.jldevelops.neverhaveiever
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
@@ -14,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+
 var playOnce = 0
 class InitialScreen : AppCompatActivity() {
     private var db = Firebase.firestore
@@ -89,19 +93,19 @@ class InitialScreen : AppCompatActivity() {
                 }
             }
         }
-        if(mMediaPlayer!=null && mMediaPlayer!!.isPlaying())
+        if(mMediaPlayer!=null && mMediaPlayer!!.isPlaying)
         {
-            mMediaPlayer!!.stop();
-            mMediaPlayer!!.release();
-            mMediaPlayer = null;
+            mMediaPlayer!!.stop()
+            mMediaPlayer!!.release()
+            mMediaPlayer = null
         }
         playSound()
         muteSound.setOnClickListener {
-            if(mMediaPlayer!=null && mMediaPlayer!!.isPlaying())
+            if(mMediaPlayer!=null && mMediaPlayer!!.isPlaying)
             {
-                mMediaPlayer!!.stop();
-                mMediaPlayer!!.release();
-                mMediaPlayer = null;
+                mMediaPlayer!!.stop()
+                mMediaPlayer!!.release()
+                mMediaPlayer = null
             }
         }
         playSound.setOnClickListener { playSound() }
@@ -188,7 +192,7 @@ class InitialScreen : AppCompatActivity() {
 
     private fun updateUI() {
         auth = FirebaseAuth.getInstance()
-        var savedIcon = ""
+        var savedIcon: Int
         val userProfile = db.collection("Account Data").document(auth.currentUser?.uid.toString())
         userProfile.addSnapshotListener { snapshot, e ->
             if (e != null) {
@@ -199,14 +203,8 @@ class InitialScreen : AppCompatActivity() {
             if (snapshot != null && snapshot.exists()) {
                 Log.d("Main", "Current data: ${snapshot.data}")
                 displayName.text = snapshot.getString("Display Name").toString()
-                savedIcon = snapshot.getString("Icon").toString()
-                userIcon.setImageResource(
-                    resources.getIdentifier(
-                        savedIcon,
-                        "drawable",
-                        packageName
-                    )
-                )
+                savedIcon = snapshot.getLong("Icon")?.toInt()?: R.drawable.brandy
+                userIcon.setImageResource(savedIcon)
             } else {
                 Log.d("Main", "Current data: null")
             }
@@ -227,12 +225,12 @@ class InitialScreen : AppCompatActivity() {
         dialogBuilder.setMessage("Change Your Display Name")
             .setView(input)
             .setCancelable(true)
-            .setPositiveButton("Confirm", DialogInterface.OnClickListener { _, _ ->
+            .setPositiveButton("Confirm") { _, _ ->
                 displayName.text = input.text.toString()
                 updateDisplayName()
-            }).setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
+            }.setNegativeButton("Cancel") { dialog, _ ->
                 dialog.cancel()
-            })
+            }
         val alert = dialogBuilder.create()
         // show alert dialog
         alert.show()
