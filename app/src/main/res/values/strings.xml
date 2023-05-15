@@ -50,6 +50,7 @@
     <string name="empty_incorrect_values">Empty/Incorrect values</string>
     <string name="avatar_icon">avatar icon</string>
     <string name="back">back</string>
+    <string name="no_more_questions">No More Questions!</string>
     <!-- Strings related to login -->
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

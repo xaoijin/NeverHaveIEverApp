@@ -131,11 +131,11 @@ class CreateGame : AppCompatActivity() {
                     "Player 5" to "",
                     "Player 6" to "",
                     "Player 1 Icon" to playerIcon,
-                    "Player 2 Icon" to "",
-                    "Player 3 Icon" to "",
-                    "Player 4 Icon" to "",
-                    "Player 5 Icon" to "",
-                    "Player 6 Icon" to "",
+                    "Player 2 Icon" to 0,
+                    "Player 3 Icon" to 0,
+                    "Player 4 Icon" to 0,
+                    "Player 5 Icon" to 0,
+                    "Player 6 Icon" to 0,
                     "Player 1 Counter" to 0,
                     "Player 2 Counter" to 0,
                     "Player 3 Counter" to 0,
@@ -199,7 +199,7 @@ class CreateGame : AppCompatActivity() {
                     "Max Players" to maxPlayer,
                     "Timer" to timer,
                     "Game Status" to "Pause",
-                    "Question Turn" to 1,
+                    "Current Question" to 1,
                     "Player Turn" to host
                 )
                 makeRoom.set(roomSettings)

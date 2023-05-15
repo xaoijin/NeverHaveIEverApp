@@ -106,8 +106,16 @@ class CameraMiniGame : AppCompatActivity() {
                 finish()
             }
             //displays axis rotation
-            textX.text = "X : " + x.toInt() + " rad/s"
-            textY.text = "Y : " + y.toInt() + " rad/s"
+            textX.text = buildString {
+        append("X : ")
+        append(x.toInt())
+        append(" rad/s")
+    }
+            textY.text = buildString {
+        append("Y : ")
+        append(y.toInt())
+        append(" rad/s")
+    }
         }
     }
 }
