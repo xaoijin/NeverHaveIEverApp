@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -77,22 +76,20 @@ class QuestionSets : AppCompatActivity() {
             clearSelect()
             questionsetselected = 1
             binding.s1.text = getString(R.string.selected)
-            binding.s1.backgroundTintList =
-                ContextCompat.getColorStateList(applicationContext, R.color.maroon)
+            binding.s1.setBackgroundResource(R.drawable.question_button_selected_state)
+
         }
         binding.s2.setOnClickListener {
             clearSelect()
             questionsetselected = 2
             binding.s2.text = getString(R.string.selected)
-            binding.s2.backgroundTintList =
-                ContextCompat.getColorStateList(applicationContext, R.color.maroon)
+            binding.s2.setBackgroundResource(R.drawable.question_button_selected_state)
         }
         binding.s3.setOnClickListener {
             clearSelect()
             questionsetselected = 3
             binding.s3.text = getString(R.string.selected)
-            binding.s3.backgroundTintList =
-                ContextCompat.getColorStateList(applicationContext, R.color.maroon)
+            binding.s3.setBackgroundResource(R.drawable.question_button_selected_state)
         }
 
     }
@@ -110,19 +107,17 @@ class QuestionSets : AppCompatActivity() {
     private fun clearSelect() {
         binding.s1.text = buildString {
             append("Select")
+            binding.s1.setBackgroundResource(R.drawable.question_button_unselected_state)
         }
         binding.s2.text = buildString {
             append("Select")
+            binding.s2.setBackgroundResource(R.drawable.question_button_unselected_state)
         }
         binding.s3.text = buildString {
             append("Select")
+            binding.s3.setBackgroundResource(R.drawable.question_button_unselected_state)
         }
-        binding.s1.backgroundTintList =
-            ContextCompat.getColorStateList(applicationContext, R.color.IndianRed)
-        binding.s2.backgroundTintList =
-            ContextCompat.getColorStateList(applicationContext, R.color.IndianRed)
-        binding.s3.backgroundTintList =
-            ContextCompat.getColorStateList(applicationContext, R.color.IndianRed)
+
     }
 
     private fun rename() {

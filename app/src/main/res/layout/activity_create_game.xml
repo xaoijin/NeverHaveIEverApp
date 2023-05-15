@@ -11,9 +11,9 @@
         android:id="@+id/tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="# of players \n (max 6 &amp; min 2)"
+        android:text="@string/of_players_n_max_6_amp_min_2"
         android:textAlignment="center"
-        android:textColor="@color/Black"
+        android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -127,9 +127,10 @@
             android:id="@+id/roomcodeInput"
             android:layout_width="182dp"
             android:layout_height="59dp"
-            android:singleLine="true"
             android:maxLength="6"
-            android:textColor="@color/white"
+            android:singleLine="true"
+
+            android:textColorHint="#3E2723"
             tools:layout_editor_absoluteX="57dp"
             tools:layout_editor_absoluteY="361dp" />
 
@@ -156,7 +157,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/red"
-        android:text="Empty/Incorrect values"
+        android:text="@string/empty_incorrect_values"
+        android:textColor="#000000"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -170,7 +172,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/red"
-        android:text="Empty/Incorrect values"
+        android:text="@string/empty_incorrect_values"
+        android:textColor="#000000"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -186,26 +189,27 @@
         android:background="@color/red"
         android:text="Can not be empty!"
         android:visibility="visible"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.623" />
+        app:layout_constraintVertical_bias="0.629" />
 
     <TextView
         android:id="@+id/roomcodeError2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/red"
+        android:textColor="#000000"
         android:text="Room Code Doesn't Exist, Try Again!"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.622" />
+        app:layout_constraintVertical_bias="0.602" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

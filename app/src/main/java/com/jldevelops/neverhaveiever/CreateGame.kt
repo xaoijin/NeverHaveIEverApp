@@ -2,7 +2,6 @@ package com.jldevelops.neverhaveiever
 
 
 import android.content.Intent
-import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -23,9 +22,8 @@ class CreateGame : AppCompatActivity() {
     private lateinit var binding: ActivityCreateGameBinding
     private lateinit var auth: FirebaseAuth
     val db = Firebase.firestore
-    private var playerIcon = ""
+    private var playerIcon = 0
     private var playerName = ""
-    private var mediaPlayer: MediaPlayer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateGameBinding.inflate(layoutInflater)
@@ -66,7 +64,7 @@ class CreateGame : AppCompatActivity() {
         val playerInfo = db.collection("Account Data").document(auth.currentUser!!.uid)
         playerInfo.get().addOnSuccessListener { document ->
             playerName = document.getString("Display Name").toString()
-            playerIcon = document.getString("Icon").toString()
+            playerIcon = document.getLong("Icon")?.toInt() ?: 0
         }
         binding.playerError.visibility = View.INVISIBLE
         binding.timerError.visibility = View.INVISIBLE

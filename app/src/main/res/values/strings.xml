@@ -46,6 +46,8 @@
     <string name="question_set_1">Question set 1</string>
     <string name="rename">Rename</string>
     <string name="select">Select</string>
+    <string name="of_players_n_max_6_amp_min_2"><![CDATA[# of players \n (max 6 & min 2)]]></string>
+    <string name="empty_incorrect_values">Empty/Incorrect values</string>
     <!-- Strings related to login -->
     <!-- TODO: Remove or change this placeholder text -->
 </resources>
