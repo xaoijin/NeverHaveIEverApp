@@ -48,6 +48,8 @@
     <string name="select">Select</string>
     <string name="of_players_n_max_6_amp_min_2"><![CDATA[# of players \n (max 6 & min 2)]]></string>
     <string name="empty_incorrect_values">Empty/Incorrect values</string>
+    <string name="avatar_icon">avatar icon</string>
+    <string name="back">back</string>
     <!-- Strings related to login -->
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

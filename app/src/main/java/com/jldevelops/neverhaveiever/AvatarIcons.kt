@@ -1,8 +1,10 @@
 package com.jldevelops.neverhaveiever
 
 import android.content.Intent
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.widget.Button
+import android.widget.GridLayout
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -20,6 +22,11 @@ class AvatarIcons : AppCompatActivity() {
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
+        val gridLayout = findViewById<GridLayout>(R.id.gridLayout)
+        val animationDrawable = gridLayout.background as AnimationDrawable
+        animationDrawable.setEnterFadeDuration(10)
+        animationDrawable.setExitFadeDuration(2000)
+        animationDrawable.start()
 
         val wineglass = findViewById<ImageView>(R.id.wineglass)
         val shotglass = findViewById<ImageView>(R.id.shotglass)

@@ -1,143 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/winecellar"
-    android:orientation="vertical"
-    tools:context="com.jldevelops.neverhaveiever.AvatarIcons">
+    android:background="@drawable/gradient_list_avatar"
+    android:columnCount="3"
+    android:rowCount="3"
+    tools:context="com.jldevelops.neverhaveiever.AvatarIcons"
+    android:id="@+id/gridLayout">
+    <ImageView
+        android:id="@+id/wineglass"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        app:srcCompat="@drawable/wineglass" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="108dp"
-        android:layout_weight="1" />
+    <ImageView
+        android:id="@+id/shotglass"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        app:srcCompat="@drawable/shotglass" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="41dp"
-        android:layout_weight="1">
+    <ImageView
+        android:id="@+id/martini"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        app:srcCompat="@drawable/martini" />
 
-        <Space
-            android:layout_width="55dp"
-            android:layout_height="19dp"
-            android:layout_weight="0" />
+    <ImageView
+        android:id="@+id/brandy"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        app:srcCompat="@drawable/brandy" />
 
-        <ImageView
-            android:id="@+id/wineglass"
-            android:layout_width="97dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0"
+    <ImageView
+        android:id="@+id/hurricane"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        app:srcCompat="@drawable/hurricane" />
 
-            app:srcCompat="@drawable/wineglass" />
+    <ImageView
+        android:id="@+id/beermug"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        app:srcCompat="@drawable/beermug" />
 
-        <ImageView
-            android:id="@+id/shotglass"
-            android:layout_width="105dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0"
-            app:srcCompat="@drawable/shotglass" />
+    <ImageView
+        android:id="@+id/coffee"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        app:srcCompat="@drawable/coffee" />
 
-        <ImageView
-            android:id="@+id/martini"
-            android:layout_width="83dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0"
-            app:srcCompat="@drawable/martini" />
+    <ImageView
+        android:id="@+id/vodka"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        app:srcCompat="@drawable/vodka" />
 
-    </LinearLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="12dp"
-        android:layout_weight="1" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="18dp"
-        android:layout_weight="2"
-        android:orientation="horizontal">
-
-        <Space
-            android:layout_width="70dp"
-            android:layout_height="19dp"
-            android:layout_weight="0" />
-
-        <ImageView
-            android:id="@+id/brandy"
-            android:layout_width="87dp"
-            android:layout_height="100dp"
-            android:layout_weight="0"
-            app:srcCompat="@drawable/brandy" />
-
-        <ImageView
-            android:id="@+id/hurricane"
-            android:layout_width="93dp"
-            android:layout_height="100dp"
-            android:layout_weight="0"
-            app:srcCompat="@drawable/hurricane" />
-
-        <ImageView
-            android:id="@+id/beermug"
-            android:layout_width="95dp"
-            android:layout_height="100dp"
-            android:layout_weight="0"
-            app:srcCompat="@drawable/beermug" />
-    </LinearLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="18dp"
-        android:layout_weight="3"
-        android:orientation="horizontal">
-
-        <Space
-            android:layout_width="70dp"
-            android:layout_height="15dp"
-            android:layout_weight="0" />
-
-        <ImageView
-            android:id="@+id/coffee"
-            android:layout_width="97dp"
-            android:layout_height="100dp"
-            android:layout_weight="0"
-            app:srcCompat="@drawable/coffee" />
-
-        <ImageView
-            android:id="@+id/vodka"
-            android:layout_width="83dp"
-            android:layout_height="100dp"
-            android:layout_weight="0"
-            app:srcCompat="@drawable/vodka" />
-
-        <ImageView
-            android:id="@+id/weizen"
-            android:layout_width="93dp"
-            android:layout_height="100dp"
-            android:layout_weight="0"
-            app:srcCompat="@drawable/weizen" />
-
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/weizen"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        app:srcCompat="@drawable/weizen" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/select"
-
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:layout_marginHorizontal="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:background="@drawable/avatarbtn"
         android:shadowColor="#A8A8A8"
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
-        android:text="Select"
-        android:textColor="#FFFFFF"
-        android:textSize="20dp" />
+        android:text="@string/back"
+        android:textColor="#000000"
+        android:layout_columnSpan="3"
+        android:textSize="50sp" />
+</GridLayout>
 
-
-</LinearLayout>
