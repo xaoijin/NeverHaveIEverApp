@@ -192,8 +192,8 @@
 
     <TextView
         android:id="@+id/textView15"
-        android:layout_width="71dp"
-        android:layout_height="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@color/BurlyWood"
         android:text="@string/timer"
         android:textAlignment="center"
@@ -207,7 +207,7 @@
     <TextView
         android:id="@+id/timer"
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
+        android:layout_height="wrap_content"
         android:background="@color/BurlyWood"
         android:minEms="2"
         android:text="@string/_74"

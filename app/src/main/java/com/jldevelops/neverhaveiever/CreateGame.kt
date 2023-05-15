@@ -5,8 +5,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.MetadataChanges
 import com.google.firebase.firestore.ktx.firestore
@@ -49,9 +54,11 @@ class CreateGame : AppCompatActivity() {
                     1 -> {
                         binding.setSelected.text = snapshot.getString("QS1Name").toString()
                     }
+
                     2 -> {
                         binding.setSelected.text = snapshot.getString("QS2Name").toString()
                     }
+
                     3 -> {
                         binding.setSelected.text = snapshot.getString("QS3Name").toString()
                     }
@@ -75,18 +82,22 @@ class CreateGame : AppCompatActivity() {
         }
 
     }
-    private fun doesRoomCodeExists() {
+
+    private fun createRoom() {
         auth = FirebaseAuth.getInstance()
-        val checkRoom = db.collection("Rooms").document()
+        val database = FirebaseDatabase.getInstance()
+        val roomRef = database.getReference("Rooms")
         hostQuestions = when (questionsetselected) {
             3 -> {
                 db.collection("Account Data").document(auth.currentUser!!.uid)
                     .collection("Question Sets").document("Set3")
             }
+
             2 -> {
                 db.collection("Account Data").document(auth.currentUser!!.uid)
                     .collection("Question Sets").document("Set2")
             }
+
             else -> {
                 db.collection("Account Data").document(auth.currentUser!!.uid)
                     .collection("Question Sets").document("Set1")
@@ -112,110 +123,72 @@ class CreateGame : AppCompatActivity() {
         var q18: String
         var q19: String
         var q20: String
-
-        checkRoom.addSnapshotListener(MetadataChanges.INCLUDE) { snapshot, e ->
-            if (e != null) {
-                Log.w("Main", "Listen failed.", e)
-                return@addSnapshotListener
-            }
-
-            if (snapshot != null && !snapshot.exists()) {
-                Log.d("Main", "making room")
-                val makeRoom =
-                    db.collection("Rooms").document(binding.roomcodeInput.text.toString())
-                val playersInRoom = hashMapOf(
-                    "Player 1" to playerName,
-                    "Player 2" to "",
-                    "Player 3" to "",
-                    "Player 4" to "",
-                    "Player 5" to "",
-                    "Player 6" to "",
-                    "Player 1 Icon" to playerIcon,
-                    "Player 2 Icon" to 0,
-                    "Player 3 Icon" to 0,
-                    "Player 4 Icon" to 0,
-                    "Player 5 Icon" to 0,
-                    "Player 6 Icon" to 0,
-                    "Player 1 Counter" to 0,
-                    "Player 2 Counter" to 0,
-                    "Player 3 Counter" to 0,
-                    "Player 4 Counter" to 0,
-                    "Player 5 Counter" to 0,
-                    "Player 6 Counter" to 0,
-                )
-
-                hostQuestions.get().addOnSuccessListener { document ->
-                    q1 = document.getString("Q1").toString()
-                    q2 = document.getString("Q2").toString()
-                    q3 = document.getString("Q3").toString()
-                    q4 = document.getString("Q4").toString()
-                    q5 = document.getString("Q5").toString()
-                    q6 = document.getString("Q6").toString()
-                    q7 = document.getString("Q7").toString()
-                    q8 = document.getString("Q8").toString()
-                    q9 = document.getString("Q9").toString()
-                    q10 = document.getString("Q10").toString()
-                    q11 = document.getString("Q11").toString()
-                    q12 = document.getString("Q12").toString()
-                    q13 = document.getString("Q13").toString()
-                    q14 = document.getString("Q14").toString()
-                    q15 = document.getString("Q15").toString()
-                    q16 = document.getString("Q16").toString()
-                    q17 = document.getString("Q17").toString()
-                    q18 = document.getString("Q18").toString()
-                    q19 = document.getString("Q19").toString()
-                    q20 = document.getString("Q20").toString()
-                    val questionSetInUse = hashMapOf(
-                        "Q1" to q1,
-                        "Q2" to q2,
-                        "Q3" to q3,
-                        "Q4" to q4,
-                        "Q5" to q5,
-                        "Q6" to q6,
-                        "Q7" to q7,
-                        "Q8" to q8,
-                        "Q9" to q9,
-                        "Q10" to q10,
-                        "Q11" to q11,
-                        "Q12" to q12,
-                        "Q13" to q13,
-                        "Q14" to q14,
-                        "Q15" to q15,
-                        "Q16" to q16,
-                        "Q17" to q17,
-                        "Q18" to q18,
-                        "Q19" to q19,
-                        "Q20" to q20
-
-                    )
-                    Log.d("Main", q1)
-                    makeRoom.collection("Questions").document("Questions to be Used")
-                        .set(questionSetInUse)
-
+        val questionList = mutableListOf<String>()
+        hostQuestions.get().addOnSuccessListener { document ->
+            for (i in 1..20) {
+                val questionKey = "Q$i"
+                val questionValue = document.getString(questionKey)
+                questionValue?.let {
+                    questionList.add(it)
                 }
-
-                val roomSettings = hashMapOf(
-                    "Host" to host,
-                    "Max Players" to maxPlayer,
-                    "Timer" to timer,
-                    "Game Status" to "Pause",
-                    "Current Question" to 1,
-                    "Player Turn" to host
-                )
-                makeRoom.set(roomSettings)
-                makeRoom.collection("Players").document("PlayersData").set(playersInRoom)
-                makeRoom.collection("Questions").document("Questions to be Used")
-
-
-                binding.roomcodeError2.visibility = View.INVISIBLE
-                isHost = true
-                currentRoom = binding.roomcodeInput.text.toString()
-                val intent = Intent(this, ActiveGame::class.java)
-                startActivity(intent)
-            } else if (snapshot != null && snapshot.exists()) {
-                binding.roomcodeError2.visibility = View.VISIBLE
             }
         }
+        val questionData = hashMapOf<String, Any>()
+        for (i in 0 until questionList.size) {
+            val questionKey = "question${i + 1}"
+            val questionValue = questionList[i]
+            questionData[questionKey] = mapOf("text" to questionValue)
+        }
+        val playerData = HashMap<String, Any>()
+        for (i in 1..maxPlayer){
+            val playerPosition = "player$i"
+            val playerName = "Waiting"
+
+            val playerInfo = hashMapOf(//placeholders
+                "uid" to "blank", // where player uid will be
+                "name" to playerName, // where player display name will be
+                "IHave" to false, // checks for player answer
+                "icon" to 0, // player icon is int format
+                "IHaveCount" to 0,// player answering I have
+                "playerJoined" to false // checks for actual player
+            )
+            playerData[playerPosition] = playerInfo
+        }
+        val roomSettings = hashMapOf(
+            "Host" to host,
+            "Max Players" to maxPlayer,
+            "Players in Room" to 1,
+            "Timer" to timer,
+            "Game Status" to "Waiting For Players To Join",
+            "Current Question" to 1,
+            "Player Turn" to host,
+            "players" to playerData,
+            "questions" to questionData
+        )
+        binding.roomcodeError2.visibility = View.INVISIBLE
+        currentRoom = binding.roomcodeInput.text.toString()
+
+        roomRef.child(currentRoom).addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()){
+                    binding.roomcodeError2.visibility = View.VISIBLE
+                }else{
+                    isHost = true
+
+                    roomRef.child(currentRoom).setValue(roomSettings)
+                    val activeGame = Intent(applicationContext, ActiveGame::class.java)
+                    startActivity(activeGame)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext, "Failed to create the room.", Toast.LENGTH_SHORT).show()
+                // Navigate to a different screen (e.g., MainActivity)
+                val homeScreen = Intent(applicationContext, InitialScreen::class.java)
+                startActivity(homeScreen)
+                finish()
+            }
+        })
     }
 
     private fun validSettings() {
@@ -247,7 +220,7 @@ class CreateGame : AppCompatActivity() {
             roomcodeValid = true
         }
         if (maxPlayerValid && timerValid && roomcodeValid) {
-            doesRoomCodeExists()
+            createRoom()
         } else {
             binding.roomcodeError2.visibility = View.INVISIBLE
         }

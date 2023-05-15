@@ -15,6 +15,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -34,8 +38,9 @@ class InitialScreen : AppCompatActivity() {
     private lateinit var gameCodeET: EditText
     private lateinit var muteSound: AppCompatButton
     private lateinit var playSound: AppCompatButton
-
+    private val database = FirebaseDatabase.getInstance()
     private var mMediaPlayer: MediaPlayer? = null
+    var savedIcon: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_initialscreen)
@@ -125,74 +130,60 @@ class InitialScreen : AppCompatActivity() {
         if (gameCodeET.text.isEmpty()) {
             Toast.makeText(applicationContext, "Please Enter a Code!", Toast.LENGTH_SHORT).show()
         } else {
-            val checkRoom = db.collection("Rooms").document(gameCodeET.text.toString())
-            checkRoom.addSnapshotListener { snapshot, _ ->
-                if (snapshot != null && snapshot.exists()) {
-                    JoinRoomCode = gameCodeET.text.toString()
-                    var maxPlayer = " "
-                    val checkMax = db.collection("Rooms").document(JoinRoomCode)
-                    checkMax.get().addOnSuccessListener { document ->
-                        maxPlayer = document.get("Max Players").toString()
-                    }
-                    var isFull = true
-                    val checkFull =
-                        db.collection("Rooms").document(JoinRoomCode).collection("Players")
-                            .document("PlayersData")
-                    checkFull.get().addOnSuccessListener { document ->
-                        val p1name = document.getString("Player 1")
-                        val p2name = document.getString("Player 2")
-                        val p3name = document.getString("Player 3")
-                        val p4name = document.getString("Player 4")
-                        val p5name = document.getString("Player 5")
-                        val p6name = document.getString("Player 6")
-                        if ((p6name == "" || p6name == displayName.text) && maxPlayer == "6") {
+            val roomCode = gameCodeET.text.toString()
+            val roomRef = database.getReference("Rooms/$roomCode")
 
-                            val intent = Intent(this, ActiveGame::class.java)
-                            startActivity(intent)
-                        } else if ((p5name == "" || p5name == displayName.text) && maxPlayer == "5") {
+            roomRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        val maxPlayers = snapshot.child("Max Players").getValue(Int::class.java)
+                        val playersRef = snapshot.child("players")
+                        val playersData = playersRef.getValue(Map::class.java)
 
-                            val intent = Intent(this, ActiveGame::class.java)
-                            startActivity(intent)
-                        } else if ((p4name == "" || p4name == displayName.text) && maxPlayer == "4") {
+                        if (playersData != null) {
+                            val currentPlayerId = auth.uid.toString()
+                            val currentPlayerName = displayName.text.toString()
 
-                            val intent = Intent(this, ActiveGame::class.java)
-                            startActivity(intent)
-                        } else if ((p3name == "" || p3name == displayName.text) && maxPlayer == "3") {
+                            // Find an empty player slot based on the max number of players
+                            val emptyPlayerSlot = (1..maxPlayers!!).find {
+                                val playerInfo = playersData["player$it"] as? Map<*, *>
+                                playerInfo?.get("playerJoined") == false
+                            }
 
-                            val intent = Intent(this, ActiveGame::class.java)
-                            startActivity(intent)
-                        } else if ((p2name == "" || p2name == displayName.text) && maxPlayer == "2") {
-
-                            val intent = Intent(this, ActiveGame::class.java)
-                            startActivity(intent)
-                        } else if (p1name == displayName.text) {
-
-                            isHost = true
-                            currentRoom = JoinRoomCode
-                            val intent = Intent(this, ActiveGame::class.java)
-                            startActivity(intent)
-                        } else {
-                            isFull = true
+                            if (emptyPlayerSlot != null) {
+                                // Update the player's name, icon, and playerJoined status in the Realtime Database
+                                val playerRef = roomRef.child("players").child("player$emptyPlayerSlot")
+                                playerRef.child("uid").setValue(currentPlayerId)
+                                playerRef.child("name").setValue(currentPlayerName)
+                                playerRef.child("icon").setValue(savedIcon) // Set the initial icon value to 0 or any default value
+                                playerRef.child("playerJoined").setValue(true)
+                                //update playerNumber for active game activity usage
+                                playerNumber = emptyPlayerSlot
+                                // Navigate to the ActiveGame activity
+                                val intent = Intent(applicationContext, ActiveGame::class.java)
+                                startActivity(intent)
+                            } else {
+                                // Room is already full
+                                Toast.makeText(applicationContext, "Room is Full!", Toast.LENGTH_SHORT).show()
+                            }
                         }
-                        playOnce++
+                    } else {
+                        // Room does not exist
+                        Toast.makeText(applicationContext, "Room Does Not Exist", Toast.LENGTH_SHORT).show()
                     }
-                    if (isFull) {
-                        Toast.makeText(applicationContext, "Room is Full!", Toast.LENGTH_SHORT)
-                            .show()
-                    }
-
-                } else {
-                    Toast.makeText(applicationContext, "Room Does Not Exist", Toast.LENGTH_SHORT)
-                        .show()
                 }
-            }
 
+                override fun onCancelled(error: DatabaseError) {
+                    // Handle database error
+                    Toast.makeText(applicationContext, "Failed to join the room.", Toast.LENGTH_SHORT).show()
+                }
+            })
         }
     }
 
+
     private fun updateUI() {
         auth = FirebaseAuth.getInstance()
-        var savedIcon: Int
         val userProfile = db.collection("Account Data").document(auth.currentUser?.uid.toString())
         userProfile.addSnapshotListener { snapshot, e ->
             if (e != null) {
