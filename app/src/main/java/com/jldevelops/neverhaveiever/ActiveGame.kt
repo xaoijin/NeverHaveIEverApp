@@ -29,6 +29,7 @@ class ActiveGame : AppCompatActivity() {
     private var playerPosition = ""
     private val database = FirebaseDatabase.getInstance()
     private val roomRef = database.getReference("Rooms").child(currentRoom)
+    private var iHaveCounter = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityActiveGameBinding.inflate(layoutInflater)
@@ -74,6 +75,7 @@ class ActiveGame : AppCompatActivity() {
         startRoomListener()
 
         binding.iHaveBtn.setOnClickListener {
+            iHaveCounter++
             iHave()
         }
         binding.haveNotBtn.setOnClickListener {
@@ -228,6 +230,7 @@ class ActiveGame : AppCompatActivity() {
                                     when (((playerData as? Map<*, *>)?.get("player choice") as? String)) {
                                         "Have" -> {
                                             binding.P1icon.setBackgroundResource(R.drawable.ihaveimageborder)
+
                                         }
 
                                         "Have Not" -> {
@@ -546,6 +549,7 @@ class ActiveGame : AppCompatActivity() {
                     resetPlayerChoice()
                     startTimer()
                 }
+                checkDrunk()
             }
         }
         timer.start()
@@ -553,55 +557,16 @@ class ActiveGame : AppCompatActivity() {
 
 
     private fun checkDrunk() {
-        var pCounter: Int
-        val checkPCounter = db.collection("Rooms").document(currentRoom).collection("Players")
-            .document("PlayersData")
-        checkPCounter.addSnapshotListener { snapshot, _ ->
-            if (snapshot != null) {
-                when (playerNumber) {
-                    1 -> {
-                        pCounter = snapshot.get("Player 1 Counter").toString().toInt()
-                        if (pCounter == 3) {
-                            showCameraMiniGameDialog()
-                        }
-                    }
-
-                    2 -> {
-                        pCounter = snapshot.get("Player 2 Counter").toString().toInt()
-                        if (pCounter == 3) {
-                            showCameraMiniGameDialog()
-                        }
-                    }
-
-                    3 -> {
-                        pCounter = snapshot.get("Player 3 Counter").toString().toInt()
-                        if (pCounter == 3) {
-                            showCameraMiniGameDialog()
-                        }
-                    }
-                    // Add other player cases here
-                    4 -> {
-                        pCounter = snapshot.get("Player 4 Counter").toString().toInt()
-                        if (pCounter == 3) {
-                            showCameraMiniGameDialog()
-                        }
-                    }
-
-                    5 -> {
-                        pCounter = snapshot.get("Player 5 Counter").toString().toInt()
-                        if (pCounter == 5) {
-                            showCameraMiniGameDialog()
-                        }
-                    }
-
-                    6 -> {
-                        pCounter = snapshot.get("Player 6 Counter").toString().toInt()
-                        if (pCounter == 6) {
-                            showCameraMiniGameDialog()
-                        }
-                    }
-                }
-            }
+        val playerRef = database.getReference("Rooms/$currentRoom/players/$playerPosition/IHaveCount")
+        playerRef.setValue(iHaveCounter)
+            .addOnSuccessListener {
+            Log.d("Main", "Successfully added to I Have Counter")
+        }
+            .addOnFailureListener {
+            Log.d("Main", "Failed to add to I Have Counter")
+        }
+        if (iHaveCounter % 3 == 0){
+            showCameraMiniGameDialog()
         }
     }
 
