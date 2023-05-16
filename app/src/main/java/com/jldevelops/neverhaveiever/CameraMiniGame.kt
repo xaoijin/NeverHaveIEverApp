@@ -40,7 +40,11 @@ class CameraMiniGame : AppCompatActivity() {
         {
             override fun onTick(millisUntilFinished: Long)
             {
-                timertext.text = "Seconds Remaining: " + millisUntilFinished / 1000
+                timertext.text = buildString {
+        append("Seconds Remaining: ")
+        append(millisUntilFinished)
+        append(1000)
+    }
             }
 
             override fun onFinish()

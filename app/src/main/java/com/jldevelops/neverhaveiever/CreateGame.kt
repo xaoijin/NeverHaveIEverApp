@@ -103,27 +103,8 @@ class CreateGame : AppCompatActivity() {
                     .collection("Question Sets").document("Set1")
             }
         }
-        var q1: String
-        var q2: String
-        var q3: String
-        var q4: String
-        var q5: String
-        var q6: String
-        var q7: String
-        var q8: String
-        var q9: String
-        var q10: String
-        var q11: String
-        var q12: String
-        var q13: String
-        var q14: String
-        var q15: String
-        var q16: String
-        var q17: String
-        var q18: String
-        var q19: String
-        var q20: String
         val questionList = mutableListOf<String>()
+        val questionData = hashMapOf<String, Any>()
         hostQuestions.get().addOnSuccessListener { document ->
             for (i in 1..20) {
                 val questionKey = "Q$i"
@@ -132,13 +113,14 @@ class CreateGame : AppCompatActivity() {
                     questionList.add(it)
                 }
             }
+
+            for (i in 0 until questionList.size) {
+                val questionKey = "question${i + 1}"
+                val questionValue = questionList[i]
+                questionData[questionKey] = mapOf("text" to questionValue)
+            }
         }
-        val questionData = hashMapOf<String, Any>()
-        for (i in 0 until questionList.size) {
-            val questionKey = "question${i + 1}"
-            val questionValue = questionList[i]
-            questionData[questionKey] = mapOf("text" to questionValue)
-        }
+
         val playerData = HashMap<String, Any>()
         for (i in 1..maxPlayer){
             val playerPosition = "player$i"
@@ -147,7 +129,7 @@ class CreateGame : AppCompatActivity() {
             val playerInfo = hashMapOf(//placeholders
                 "uid" to "blank", // where player uid will be
                 "name" to playerName, // where player display name will be
-                "IHave" to false, // checks for player answer
+                "player choice" to "Undecided", // checks for player answer
                 "icon" to 0, // player icon is int format
                 "IHaveCount" to 0,// player answering I have
                 "playerJoined" to false // checks for actual player
@@ -160,7 +142,7 @@ class CreateGame : AppCompatActivity() {
             "Players in Room" to 1,
             "Timer" to timer,
             "Game Status" to "Waiting For Players To Join",
-            "Current Question" to 1,
+            "Current Question" to 0,
             "Player Turn" to host,
             "players" to playerData,
             "questions" to questionData

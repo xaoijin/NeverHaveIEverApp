@@ -34,7 +34,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.121"
-        app:srcCompat="@drawable/empty"
+        app:srcCompat="@drawable/missingperson"
+        android:background="@drawable/choosingimgborder"
         android:contentDescription="@string/player_icon" />
 
     <TextView
@@ -63,7 +64,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.121"
-        app:srcCompat="@drawable/empty"
+        app:srcCompat="@drawable/missingperson"
+        android:background="@drawable/choosingimgborder"
         android:contentDescription="@string/player_icon" />
 
     <TextView
@@ -93,7 +95,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.121"
-        app:srcCompat="@drawable/empty"
+        app:srcCompat="@drawable/missingperson"
+        android:background="@drawable/choosingimgborder"
         android:contentDescription="@string/player_icon" />
 
     <TextView
@@ -123,7 +126,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.43"
-        app:srcCompat="@drawable/empty"
+        app:srcCompat="@drawable/missingperson"
+        android:background="@drawable/choosingimgborder"
         android:contentDescription="@string/player_icon" />
 
     <TextView
@@ -157,7 +161,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.43"
-        app:srcCompat="@drawable/empty"
+        app:srcCompat="@drawable/missingperson"
+        android:background="@drawable/choosingimgborder"
         android:contentDescription="@string/player_icon" />
 
     <TextView
@@ -187,22 +192,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.43"
-        app:srcCompat="@drawable/empty"
+        app:srcCompat="@drawable/missingperson"
+        android:background="@drawable/choosingimgborder"
         android:contentDescription="@string/player_icon" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/BurlyWood"
-        android:text="@string/timer"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/timer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.361"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/timer"
@@ -210,13 +202,12 @@
         android:layout_height="wrap_content"
         android:background="@color/BurlyWood"
         android:minEms="2"
-        android:text="@string/_74"
+        android:text="@string/timer_waiting"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.574"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.58" />
@@ -275,6 +266,7 @@
         android:layout_height="wrap_content"
         android:background="@color/BlanchedAlmond"
         android:text="@string/room_code"
+        android:textColor="@color/Black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.465"

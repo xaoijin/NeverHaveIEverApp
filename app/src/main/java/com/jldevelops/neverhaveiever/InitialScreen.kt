@@ -70,26 +70,29 @@ class InitialScreen : AppCompatActivity() {
 
             val intent = Intent(this, AvatarIcons::class.java)
             startActivity(intent)
+            muteSound()
         }
-        cName.setOnClickListener { changeName() }
+        cName.setOnClickListener {
+            changeName()
+        }
         jGame.setOnClickListener {
-
             joinGame()
+            muteSound()
         }
 
         cQuestions.setOnClickListener {
-            playOnce++
+
             val intent = Intent(this, QuestionSets::class.java)
             startActivity(intent)
+            muteSound()
         }
         cGame.setOnClickListener {
-            playOnce++
             val intent = Intent(this, CreateGame::class.java)
             startActivity(intent)
+            muteSound()
         }
         bLogout.setOnClickListener {
             logout()
-            playOnce++
         }
         if (currentRoom.isNotEmpty()) {
             val deletePrevRoom = db.collection("Rooms").document(currentRoom)
@@ -98,12 +101,6 @@ class InitialScreen : AppCompatActivity() {
                     deletePrevRoom.delete()
                 }
             }
-        }
-        if(mMediaPlayer!=null && mMediaPlayer!!.isPlaying)
-        {
-            mMediaPlayer!!.stop()
-            mMediaPlayer!!.release()
-            mMediaPlayer = null
         }
         playSound()
         muteSound.setOnClickListener {
@@ -117,14 +114,28 @@ class InitialScreen : AppCompatActivity() {
         playSound.setOnClickListener { playSound() }
     }
 
+    override fun onResume() {
+        super.onResume()
+        playSound()
+    }
     private fun playSound() {
-        mMediaPlayer = MediaPlayer.create(this, R.raw.lobbymusic)
-        mMediaPlayer!!.isLooping = true
-        mMediaPlayer!!.start()
-
+        if(mMediaPlayer == null) {
+            mMediaPlayer = MediaPlayer.create(this, R.raw.lobbymusic)
+            mMediaPlayer!!.isLooping = true
+        }
+        if(!mMediaPlayer!!.isPlaying) {
+            mMediaPlayer!!.start()
+        }
     }
 
-    //stops sound
+    private fun muteSound(){
+        if(mMediaPlayer!=null && mMediaPlayer!!.isPlaying)
+        {
+            mMediaPlayer!!.stop()
+            mMediaPlayer!!.release()
+            mMediaPlayer = null
+        }
+    }
 
 
     private fun joinGame() {
@@ -165,6 +176,7 @@ class InitialScreen : AppCompatActivity() {
                                 currentRoom = roomCode
                                 val intent = Intent(applicationContext, ActiveGame::class.java)
                                 startActivity(intent)
+                                muteSound()
                             } else {
                                 // Room is already full
                                 Toast.makeText(applicationContext, "Room is Full!", Toast.LENGTH_SHORT).show()
@@ -234,5 +246,6 @@ class InitialScreen : AppCompatActivity() {
         Firebase.auth.signOut()
         val intent = Intent(this, LoginScreen::class.java)
         startActivity(intent)
+        muteSound()
     }
 }

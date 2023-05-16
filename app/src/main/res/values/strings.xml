@@ -51,6 +51,7 @@
     <string name="avatar_icon">avatar icon</string>
     <string name="back">back</string>
     <string name="no_more_questions">No More Questions!</string>
+    <string name="timer_waiting">Timer Waiting</string>
     <!-- Strings related to login -->
     <!-- TODO: Remove or change this placeholder text -->
 </resources>
