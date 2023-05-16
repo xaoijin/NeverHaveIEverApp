@@ -23,7 +23,6 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-var playOnce = 0
 class InitialScreen : AppCompatActivity() {
     private var db = Firebase.firestore
     private lateinit var jGame: Button
