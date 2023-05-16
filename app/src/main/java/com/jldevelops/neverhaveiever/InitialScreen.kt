@@ -18,6 +18,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.GenericTypeIndicator
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -138,7 +139,8 @@ class InitialScreen : AppCompatActivity() {
                     if (snapshot.exists()) {
                         val maxPlayers = snapshot.child("Max Players").getValue(Int::class.java)
                         val playersRef = snapshot.child("players")
-                        val playersData = playersRef.getValue(Map::class.java)
+                        val playersData = playersRef.getValue(object : GenericTypeIndicator<Map<String, Any>>() {})
+
 
                         if (playersData != null) {
                             val currentPlayerId = auth.uid.toString()
@@ -160,6 +162,7 @@ class InitialScreen : AppCompatActivity() {
                                 //update playerNumber for active game activity usage
                                 playerNumber = emptyPlayerSlot
                                 // Navigate to the ActiveGame activity
+                                currentRoom = roomCode
                                 val intent = Intent(applicationContext, ActiveGame::class.java)
                                 startActivity(intent)
                             } else {

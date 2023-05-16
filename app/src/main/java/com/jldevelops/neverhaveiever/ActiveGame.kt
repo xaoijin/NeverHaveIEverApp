@@ -26,8 +26,6 @@ class ActiveGame : AppCompatActivity() {
     private var playerIcon = 0
     private val database = FirebaseDatabase.getInstance()
     private val roomRef = database.getReference("Rooms").child(currentRoom)
-    private val playerRef = database.getReference("Rooms/$currentRoom/players/${auth.uid.toString()}")
-    private val playerInfoRef = db.collection("Account Data").document(auth.uid.toString())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityActiveGameBinding.inflate(layoutInflater)
@@ -36,7 +34,10 @@ class ActiveGame : AppCompatActivity() {
             supportActionBar!!.hide()
         }
         invisible()
-
+        binding.roomcode.text = buildString {
+        append("Room Code: ")
+        append(roomRef.key)
+    }
         if(isHost){
             startGameAsHost()
 
@@ -46,12 +47,12 @@ class ActiveGame : AppCompatActivity() {
             startGameAsPlayer()
 
         }
-        startRoomListener()
         binding.startBtn.setOnClickListener {
-            binding.startBtn.visibility = View.INVISIBLE
+            binding.startBtn.visibility = View.GONE
             gameStart()
 
         }
+        startRoomListener()
     }
 
     private fun startRoomListener() {
@@ -63,9 +64,9 @@ class ActiveGame : AppCompatActivity() {
                     playersData?.let { players ->
                         for ((playerPosition, playerData) in players) {
                             playerName = ((playerData as? Map<*, *>)?.get("name") as? String).toString()
-                            playerIcon = ((playerData as? Map<*, *>)?.get("icon") as? Int)!!
+                            playerIcon = (((playerData as? Map<*, *>)?.get("icon") as? Long) ?: 0).toInt()
 
-                            // Update the UI with the player's name and icon based on the player ID
+                            // Update the UI with the player's name and icon based on the player position
                             when (playerPosition) {
                                 "player1" -> {
                                     binding.P1name.text = playerName
@@ -111,7 +112,9 @@ class ActiveGame : AppCompatActivity() {
     }
 
     private fun startGameAsHost() {
-
+        auth = FirebaseAuth.getInstance()
+        val playerInfoRef = db.collection("Account Data").document(auth.uid.toString())
+        val playerRef = database.getReference("Rooms/$currentRoom/players/player1")
         playerInfoRef.get().addOnSuccessListener { document->
             if (document != null){
                 val currentPlayerId = auth.uid.toString()
@@ -125,6 +128,7 @@ class ActiveGame : AppCompatActivity() {
                 playerRef.child("playerJoined").setValue(true)
             }
         }
+
     }
 
     private fun startGameAsPlayer() {
