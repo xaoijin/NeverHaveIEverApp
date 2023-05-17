@@ -62,6 +62,4 @@
     <string name="_2_walk_around_while_keeping_the_device_flat">2. Walk around while keeping the device flat.</string>
     <string name="seconds_remaining">"Seconds Remaining: "</string>
     <string name="never_have_i_ever">Never Have I Ever</string>
-    <!-- Strings related to login -->
-    <!-- TODO: Remove or change this placeholder text -->
 </resources>
