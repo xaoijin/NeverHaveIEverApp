@@ -1,6 +1,8 @@
 package com.jldevelops.neverhaveiever
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
@@ -34,6 +36,11 @@ class ActiveGame : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityActiveGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val isTablet = resources.configuration.screenLayout and
+                Configuration.SCREENLAYOUT_SIZE_MASK >= Configuration.SCREENLAYOUT_SIZE_LARGE
+        if (isTablet) {
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        }
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
