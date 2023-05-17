@@ -565,7 +565,7 @@ class ActiveGame : AppCompatActivity() {
             .addOnFailureListener {
             Log.d("Main", "Failed to add to I Have Counter")
         }
-        if (iHaveCounter % 3 == 0){
+        if (iHaveCounter % 5 == 0){
             showCameraMiniGameDialog()
         }
     }

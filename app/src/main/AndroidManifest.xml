@@ -40,36 +40,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name="com.jldevelops.neverhaveiever.SafeScreen"
-            android:exported="false"
-            android:screenOrientation="fullSensor"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name="com.jldevelops.neverhaveiever.FailScreen"
-            android:exported="false"
-            android:screenOrientation="fullSensor"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-
-        <activity
-            android:name="com.jldevelops.neverhaveiever.CameraMiniGame"
-            android:exported="false"
-            android:screenOrientation="fullSensor">
-
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
         <activity
             android:name="com.jldevelops.neverhaveiever.ActiveGame"
             android:exported="false"

@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/barbackground"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal"
+    tools:context="com.jldevelops.neverhaveiever.ActiveGame">
+
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="1"
+        android:rowCount="3">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/P1name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="@color/BurlyWood"
+                android:text="@string/player_1"
+                android:textColor="@color/black"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/P1icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/choosingimgborder"
+                android:contentDescription="@string/player_icon"
+
+                android:scaleType="fitXY"
+                android:visibility="visible"
+                app:srcCompat="@drawable/missingperson" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/P2name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="@color/BurlyWood"
+                android:text="@string/player_2"
+                android:textColor="@color/black"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/P2icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/choosingimgborder"
+                android:contentDescription="@string/player_icon"
+                android:scaleType="fitXY"
+                android:visibility="visible"
+                app:srcCompat="@drawable/missingperson" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/P3name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="@color/BurlyWood"
+                android:text="@string/player_3"
+                android:textColor="@color/black"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/P3icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/choosingimgborder"
+                android:contentDescription="@string/player_icon"
+                android:scaleType="fitXY"
+                android:visibility="visible"
+                app:srcCompat="@drawable/missingperson" />
+        </LinearLayout>
+
+
+    </GridLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp">
+
+        <TextView
+            android:id="@+id/roomcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/BlanchedAlmond"
+            android:text="@string/room_code"
+            android:textColor="@color/Black" />
+
+        <TextView
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/BurlyWood"
+            android:minEms="2"
+            android:text="@string/timer_waiting"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/Question"
+            android:layout_width="318dp"
+            android:layout_height="123dp"
+            android:background="@color/opacity"
+            android:gravity="center"
+            android:minEms="15"
+            android:text="@string/question_will_be_here"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <Button
+                android:id="@+id/iHaveBtn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="100dp"
+                android:backgroundTint="@color/BurlyWood"
+                android:text="@string/i_have"
+                android:textColor="@color/black"
+                android:visibility="visible"
+                app:cornerRadius="10dp" />
+
+            <Button
+                android:id="@+id/haveNotBtn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/BurlyWood"
+                android:text="@string/i_have_not"
+                android:textColor="@color/black"
+                android:visibility="visible"
+                app:cornerRadius="10dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/startBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="100dp"
+                android:background="@drawable/activegamebuttons"
+                android:shadowColor="#A8A8A8"
+                android:shadowDx="8"
+                android:shadowDy="0"
+                android:shadowRadius="4"
+                android:text="@string/start"
+                android:textColor="@color/Black"
+                android:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/endBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:background="@drawable/activegamebuttons"
+                android:shadowColor="#A8A8A8"
+                android:shadowDx="8"
+                android:shadowDy="0"
+                android:shadowRadius="4"
+                android:text="@string/end"
+                android:textColor="@color/Black"
+                android:visibility="visible" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="1"
+        android:rowCount="3">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/P4name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="@color/BurlyWood"
+                android:text="@string/player_4"
+                android:textColor="@color/black"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/P4icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/choosingimgborder"
+                android:contentDescription="@string/player_icon"
+                android:scaleType="fitXY"
+                android:visibility="visible"
+                app:srcCompat="@drawable/missingperson" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/P5name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="@color/BurlyWood"
+                android:text="@string/player_5"
+                android:textColor="@color/black"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/P5icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/choosingimgborder"
+                android:contentDescription="@string/player_icon"
+                android:scaleType="fitXY"
+                android:visibility="visible"
+                app:srcCompat="@drawable/missingperson" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/P6name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="@color/BurlyWood"
+                android:text="@string/player_6"
+                android:textColor="@color/black"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/P6icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/choosingimgborder"
+                android:contentDescription="@string/player_icon"
+                android:scaleType="fitXY"
+                android:visibility="visible"
+                app:srcCompat="@drawable/missingperson" />
+        </LinearLayout>
+    </GridLayout>
+
+
+</LinearLayout>

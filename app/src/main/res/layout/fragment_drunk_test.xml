@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Green"
+    tools:context=".CameraMiniGameDialogFragment"
+    android:id="@+id/back"
+    android:orientation="vertical"
+    android:gravity="center"
+    >
+    <TextView
+        android:id="@+id/instructionsText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/drunk_test"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/Black"
+        android:padding="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/instructions"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/Black"
+        android:padding="8dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/_1_hold_the_device_flat_in_your_hand"
+        android:textSize="16sp"
+        android:textColor="@color/WhiteSmoke"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/_2_walk_around_while_keeping_the_device_flat"
+        android:textSize="16sp"
+        android:textColor="@color/WhiteSmoke"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"/>
+    <TextView
+        android:id="@+id/textX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="@color/Black"
+        android:text="@string/placeholder_x_coordinates" />
+    <TextView
+        android:layout_margin="35dp"
+        android:id="@+id/textY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="@color/Black"
+        android:text="@string/placeholder_y_coordinates" />
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="@color/Black"
+        android:text="@string/placeholder_timer" />
+
+</LinearLayout>

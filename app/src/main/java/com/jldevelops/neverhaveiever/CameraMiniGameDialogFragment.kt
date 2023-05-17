@@ -9,43 +9,42 @@ import android.hardware.SensorManager
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.view.LayoutInflater
-import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import com.jldevelops.neverhaveiever.R
 
 class CameraMiniGameDialogFragment : DialogFragment() {
     private lateinit var textX: TextView
     private lateinit var textY: TextView
     private lateinit var sensorManager: SensorManager
-    private lateinit var timertext: TextView
+    private lateinit var timerText: TextView
     private lateinit var sensor: Sensor
-    private lateinit var backColor: ImageView
+    private lateinit var backColor: LinearLayout
     private var mMediaPlayer: MediaPlayer? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(requireActivity())
         val inflater = requireActivity().layoutInflater
-        val view = inflater.inflate(R.layout.activity_camera_mini_game, null)
+        val view = inflater.inflate(R.layout.fragment_drunk_test, null)
 
         if (activity != null) {
-            sensorManager = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
+            sensorManager =
+                requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
             sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
             textX = view.findViewById(R.id.textX)
             textY = view.findViewById(R.id.textY)
-            timertext = view.findViewById(R.id.timer)
+            timerText = view.findViewById(R.id.timer)
             backColor = view.findViewById(R.id.back)
 
             playSound()
 
             object : CountDownTimer(10000, 1000) {
                 override fun onTick(millisUntilFinished: Long) {
-                    timertext.text = buildString {
-        append("Seconds Remaining: ")
-        append(millisUntilFinished)
-        append(1000)
+                    val secondsRemaining = millisUntilFinished / 1000
+                    timerText.text = buildString {
+        append(getString(R.string.seconds_remaining))
+        append(secondsRemaining)
     }
                 }
 
@@ -54,6 +53,7 @@ class CameraMiniGameDialogFragment : DialogFragment() {
                     dismiss()
                 }
             }.start()
+
         }
 
         builder.setView(view)
@@ -103,15 +103,15 @@ class CameraMiniGameDialogFragment : DialogFragment() {
                 dismiss()
             }
             textX.text = buildString {
-        append("X : ")
-        append(x.toInt())
-        append(" rad/s")
-    }
+                append("X : ")
+                append(x.toInt())
+                append(" rad/s")
+            }
             textY.text = buildString {
-        append("Y : ")
-        append(y.toInt())
-        append(" rad/s")
-    }
+                append("Y : ")
+                append(y.toInt())
+                append(" rad/s")
+            }
         }
     }
 }

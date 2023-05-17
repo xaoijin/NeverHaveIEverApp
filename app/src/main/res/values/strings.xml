@@ -52,6 +52,16 @@
     <string name="back">back</string>
     <string name="no_more_questions">No More Questions!</string>
     <string name="timer_waiting">Timer Waiting</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="placeholder_x_coordinates">Placeholder X Coordinates</string>
+    <string name="placeholder_y_coordinates">Placeholder Y Coordinates</string>
+    <string name="placeholder_timer">Placeholder Timer</string>
+    <string name="drunk_test">Drunk Test</string>
+    <string name="instructions">Instructions:</string>
+    <string name="_1_hold_the_device_flat_in_your_hand">1. Hold the device flat in your hand.</string>
+    <string name="_2_walk_around_while_keeping_the_device_flat">2. Walk around while keeping the device flat.</string>
+    <string name="seconds_remaining">"Seconds Remaining: "</string>
+    <string name="never_have_i_ever">Never Have I Ever</string>
     <!-- Strings related to login -->
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

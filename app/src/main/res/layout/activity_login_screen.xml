@@ -34,7 +34,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email"
@@ -45,6 +46,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:hint="@string/email"
+            android:gravity="center"
             app:startIconDrawable="@drawable/ic_baseline_email_24">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -66,7 +68,7 @@
             android:layout_marginEnd="10dp"
             android:hint="@string/password"
             app:endIconMode="password_toggle"
-
+            android:gravity="center"
             app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
             <com.google.android.material.textfield.TextInputEditText

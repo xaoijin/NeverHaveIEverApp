@@ -26,7 +26,7 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/welcome_to_aa"
+            android:text="@string/never_have_i_ever"
             android:textColor="#FFFFFF"
             android:textSize="32sp"
             android:textStyle="bold"
