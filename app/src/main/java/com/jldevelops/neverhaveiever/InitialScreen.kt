@@ -113,6 +113,10 @@ class InitialScreen : AppCompatActivity() {
         playSound.setOnClickListener { playSound() }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        muteSound()
+    }
     override fun onResume() {
         super.onResume()
         playSound()

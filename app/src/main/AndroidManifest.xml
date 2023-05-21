@@ -17,7 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DrinkingGame"
         tools:targetApi="31">
-
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3006253879403762~6863312621"/>
         <activity
             android:name="com.jldevelops.neverhaveiever.LoginScreen"
             android:exported="false"
