@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">DrinkingGame</string>
     <string name="dialogpretext">\Never have I ever \</string>
     <string name="room_code">Room Code:</string>
     <string name="i_have">I Have</string>

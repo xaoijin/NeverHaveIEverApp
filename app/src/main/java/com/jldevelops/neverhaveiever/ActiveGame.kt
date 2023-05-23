@@ -32,6 +32,8 @@ class ActiveGame : AppCompatActivity() {
     private val database = FirebaseDatabase.getInstance()
     private val roomRef = database.getReference("Rooms").child(currentRoom)
     private var iHaveCounter = 0
+    private lateinit var timer: CountDownTimer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityActiveGameBinding.inflate(layoutInflater)
@@ -403,10 +405,12 @@ class ActiveGame : AppCompatActivity() {
                 if(gameStatus == "Game Ended"){
                     roomRef.setValue(null)
                         .addOnSuccessListener {
+                            timer.cancel()
                             Log.d("Firebase", "Room successfully deleted.")
                             Toast.makeText(applicationContext, "Room has been closed by host.", Toast.LENGTH_LONG).show()
                             // Redirect to a different activity or handle the UI change here
                             val backHome = Intent(applicationContext, InitialScreen::class.java)
+                            backHome.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
                             startActivity(backHome)
                             finish()
                         }
@@ -535,7 +539,7 @@ class ActiveGame : AppCompatActivity() {
 
     private fun startTimer() {
         // Set a timer. After a certain amount of time, change the question.
-        val timer = object : CountDownTimer(20000, 1000) {
+        timer = object : CountDownTimer(20000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 // Update timer display on UI
                 val seconds = (millisUntilFinished / 1000).toInt()
