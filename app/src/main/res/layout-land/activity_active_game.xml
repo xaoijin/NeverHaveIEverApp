@@ -176,7 +176,12 @@
 
 
         </LinearLayout>
-
+        <ImageButton
+            android:id="@+id/chatBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:contentDescription="@string/chatbt"
+            app:srcCompat="@drawable/baseline_chat_24" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

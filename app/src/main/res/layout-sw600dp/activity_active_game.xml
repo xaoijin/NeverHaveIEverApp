@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/barbackground"
     android:gravity="center"
-    android:orientation="horizontal"
     tools:context="com.jldevelops.neverhaveiever.ActiveGame">
 
 
@@ -58,10 +57,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:textSize="25sp"
                 android:background="@color/BurlyWood"
                 android:text="@string/player_2"
                 android:textColor="@color/black"
+                android:textSize="25sp"
                 android:visibility="visible" />
 
             <ImageView
@@ -120,11 +119,11 @@
             android:id="@+id/roomcode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
             android:layout_marginTop="5dp"
             android:background="@color/BlanchedAlmond"
             android:text="@string/room_code"
-            android:textColor="@color/Black" />
+            android:textColor="@color/Black"
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/timer"
@@ -164,8 +163,8 @@
                 android:backgroundTint="@color/BurlyWood"
                 android:text="@string/i_have"
                 android:textColor="@color/black"
-                android:visibility="visible"
                 android:textSize="45sp"
+                android:visibility="visible"
                 app:cornerRadius="10dp" />
 
             <Button
@@ -176,13 +175,21 @@
                 android:backgroundTint="@color/BurlyWood"
                 android:text="@string/i_have_not"
                 android:textColor="@color/black"
-                android:visibility="visible"
                 android:textSize="45sp"
+                android:visibility="visible"
                 app:cornerRadius="10dp" />
 
 
         </LinearLayout>
-
+        <ImageButton
+            android:id="@+id/chatBtn"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:padding="20dp"
+            android:contentDescription="@string/chatbt"
+            app:srcCompat="@drawable/baseline_chat_24" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -201,8 +208,8 @@
                 android:shadowDy="0"
                 android:shadowRadius="4"
                 android:text="@string/start"
-                android:textSize="35sp"
                 android:textColor="@color/Black"
+                android:textSize="35sp"
                 android:visibility="visible" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -214,10 +221,10 @@
                 android:shadowColor="#A8A8A8"
                 android:shadowDx="8"
                 android:shadowDy="0"
-                android:textSize="35sp"
                 android:shadowRadius="4"
                 android:text="@string/end"
                 android:textColor="@color/Black"
+                android:textSize="35sp"
                 android:visibility="visible" />
         </LinearLayout>
     </LinearLayout>

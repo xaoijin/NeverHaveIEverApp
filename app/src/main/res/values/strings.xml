@@ -61,4 +61,6 @@
     <string name="_2_walk_around_while_keeping_the_device_flat">2. Walk around while keeping the device flat.</string>
     <string name="seconds_remaining">"Seconds Remaining: "</string>
     <string name="never_have_i_ever">Never Have I Ever</string>
+    <string name="chat_button">chat button</string>
+    <string name="chatbt">chatbt</string>
 </resources>
