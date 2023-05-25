@@ -90,8 +90,14 @@ class ActiveGame : AppCompatActivity() {
         binding.haveNotBtn.setOnClickListener {
             haveNot()
         }
+        binding.chatBtn.setOnClickListener {
+            chatBox()
+        }
     }
-
+    private fun chatBox(){
+        val chatDialogFragment = ChatDialogFragment()
+        chatDialogFragment.show(supportFragmentManager, "ChatDialog")
+    }
     private fun iHave() {
         binding.iHaveBtn.visibility = View.INVISIBLE
         binding.haveNotBtn.visibility = View.INVISIBLE
