@@ -7,14 +7,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="190dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/LightSalmon">
 
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true"
-            tools:ignore="UselessParent">
+            tools:ignore="UselessParent,SpeakableTextPresentCheck">
 
             <LinearLayout
                 android:id="@+id/chat_layout"
@@ -22,13 +23,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/chat_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="30sp"
-                    android:background="@color/LightSalmon"
-                    android:text="@string/loading_chat" />
 
                 <!-- Add your TextViews dynamically here -->
 
@@ -41,7 +35,7 @@
     <EditText
         android:id="@+id/chat_input"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="60dp"
         android:hint="@string/enter_your_message_here"
         android:autofillHints="Text Here"
         android:inputType="textShortMessage"
