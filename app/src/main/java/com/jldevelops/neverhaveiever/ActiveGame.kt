@@ -32,7 +32,7 @@ class ActiveGame : AppCompatActivity() {
     private val database = FirebaseDatabase.getInstance()
     private val roomRef = database.getReference("Rooms").child(currentRoom)
     private var iHaveCounter = 0
-    private lateinit var timer: CountDownTimer
+    private var timer: CountDownTimer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,6 +76,7 @@ class ActiveGame : AppCompatActivity() {
                 }
         }
         //Host ends the game and closes room
+
         binding.endBtn.setOnClickListener {
             deleteRoom()
         }
@@ -411,7 +412,7 @@ class ActiveGame : AppCompatActivity() {
                 if(gameStatus == "Game Ended"){
                     roomRef.setValue(null)
                         .addOnSuccessListener {
-                            timer.cancel()
+                            timer?.cancel()
                             Log.d("Firebase", "Room successfully deleted.")
                             Toast.makeText(applicationContext, "Room has been closed by host.", Toast.LENGTH_LONG).show()
                             // Redirect to a different activity or handle the UI change here
@@ -544,33 +545,48 @@ class ActiveGame : AppCompatActivity() {
     }
 
     private fun startTimer() {
-        // Set a timer. After a certain amount of time, change the question.
-        timer = object : CountDownTimer(20000, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                // Update timer display on UI
-                val seconds = (millisUntilFinished / 1000).toInt()
-                binding.timer.text = buildString {
-                    append("Time left: ")
-                    append(seconds)
-                    append(" seconds")
+        val timerRef = FirebaseDatabase.getInstance().getReference("Rooms/$currentRoom/Timer")
+
+        // Fetch the timer value from Firebase
+        timerRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val timerValue = snapshot.getValue(Long::class.java) // Assuming the timer value is stored as a Long
+                if (timerValue != null) {
+                    // Initialize and start the timer with the fetched value
+                    timer = object : CountDownTimer(timerValue * 1000, 1000) {
+                        override fun onTick(millisUntilFinished: Long) {
+                            // Update timer display on UI
+                            val seconds = (millisUntilFinished / 1000).toInt()
+                            binding.timer.text = buildString {
+                                append("Time left: ")
+                                append(seconds)
+                                append(" seconds")
+                            }
+                        }
+
+                        override fun onFinish() {
+                            // Change the question when timer ends
+                            changeQuestion()
+                            if (binding.Question.text == "No More Questions!") {
+                                // Code to end the game goes here
+                            } else {
+                                // If there are still questions, start the timer again
+                                resetPlayerChoice()
+                                startTimer()
+                            }
+                            checkDrunk()
+                        }
+                    }
+                    (timer as CountDownTimer).start()
                 }
             }
 
-            override fun onFinish() {
-                // Change the question when timer ends
-                changeQuestion()
-                if (binding.Question.text == "No More Questions!") {
-                    // Code to end the game goes here
-                } else {
-                    // If there are still questions, start the timer again
-                    resetPlayerChoice()
-                    startTimer()
-                }
-                checkDrunk()
+            override fun onCancelled(error: DatabaseError) {
+                // Handle error here
             }
-        }
-        timer.start()
+        })
     }
+
 
 
     private fun checkDrunk() {

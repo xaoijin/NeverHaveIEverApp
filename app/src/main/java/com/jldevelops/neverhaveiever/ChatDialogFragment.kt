@@ -4,31 +4,37 @@ package com.jldevelops.neverhaveiever
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 data class Message(
     val text: String = "",
     val userId: String? = null // or any other user identifying information you want
 )
+
 class ChatDialogFragment : DialogFragment() {
     private lateinit var chatLayout: LinearLayout
     private lateinit var chatInputEditText: EditText
     private lateinit var dialog: AlertDialog
     private lateinit var scrollView: ScrollView
     private lateinit var fragmentContext: Context
+    private val db = FirebaseFirestore.getInstance()
     override fun onAttach(context: Context) {
         super.onAttach(context)
         fragmentContext = context
@@ -68,6 +74,8 @@ class ChatDialogFragment : DialogFragment() {
             }
 
         dialog = builder.create()
+        dialog.window?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(fragmentContext, R.color.LightSalmon)))
+
         return dialog
     }
 
@@ -102,16 +110,30 @@ class ChatDialogFragment : DialogFragment() {
     }
 
     private fun addMessageToLayout(message: Message) {
-
-        // Create a new TextView for the message
-        val messageTextView = TextView(fragmentContext).apply {
-            text = message.text
-            // Add any styling you want here
-        }
-
-        // Add the TextView to the chat layout
-        chatLayout.addView(messageTextView)
-
+        // Get user's display name from Firestore
+        val docRef = db.collection("Account Data").document(message.userId!!)
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    val displayName = document.getString("Display Name")
+                    // Create a new TextView for the message
+                    val messageTextView = TextView(fragmentContext).apply {
+                        text = buildString {
+                            append(displayName)
+                            append(": ")
+                            append(message.text)
+                        }
+                        // Add any styling you want here
+                    }
+                    // Add the TextView to the chat layout
+                    chatLayout.addView(messageTextView)
+                } else {
+                    Log.d("addMessageToLayoutFunction", "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d("addMessageToLayoutFunction", "get failed with ", exception)
+            }
     }
 }
 
