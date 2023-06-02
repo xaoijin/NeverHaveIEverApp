@@ -40,7 +40,6 @@ class CreateGame : AppCompatActivity() {
         val qSetNamesref = db.collection("Account Data")
             .document(auth.currentUser?.uid.toString())
             .collection("Question Set Name Edit")
-
         qSetNamesref.document("Names").addSnapshotListener { snapshot, e ->
             if (e != null) {
                 Log.w("Main", "Listen failed.", e)
@@ -79,7 +78,6 @@ class CreateGame : AppCompatActivity() {
         binding.create.setOnClickListener {
             validSettings()
         }
-
     }
 
     private fun createRoom() {
@@ -112,64 +110,66 @@ class CreateGame : AppCompatActivity() {
                     questionList.add(it)
                 }
             }
-
             for (i in 0 until questionList.size) {
                 val questionKey = "question${i + 1}"
                 val questionValue = questionList[i]
                 questionData[questionKey] = mapOf("text" to questionValue)
             }
-        }
-
-        val playerData = HashMap<String, Any>()
-        for (i in 1..maxPlayer){
-            val playerPosition = "player$i"
-            val playerName = "Waiting"
-
-            val playerInfo = hashMapOf(//placeholders
-                "uid" to "blank", // where player uid will be
-                "name" to playerName, // where player display name will be
-                "player choice" to "Undecided", // checks for player answer
-                "icon" to 0, // player icon is int format
-                "IHaveCount" to 0,// player answering I have
-                "playerJoined" to false // checks for actual player
+            val playerData = HashMap<String, Any>()
+            for (i in 1..maxPlayer) {
+                val playerPosition = "player$i"
+                val playerName = "Waiting"
+                val playerInfo = hashMapOf(//placeholders
+                    "uid" to "blank", // where player uid will be
+                    "name" to playerName, // where player display name will be
+                    "player choice" to "Undecided", // checks for player answer
+                    "icon" to 0, // player icon is int format
+                    "IHaveCount" to 0,// player answering I have
+                    "playerJoined" to false // checks for actual player
+                )
+                playerData[playerPosition] = playerInfo
+            }
+            val roomSettings = hashMapOf(
+                "Host" to host,
+                "Max Players" to maxPlayer,
+                "Players in Room" to 1,
+                "Timer" to timer,
+                "chat" to arrayListOf<HashMap<String, String>>(),
+                "Game Status" to "Waiting For Players To Join",
+                "Current Question" to 0,
+                "Player Turn" to host,
+                "players" to playerData,
+                "questions" to questionData
             )
-            playerData[playerPosition] = playerInfo
-        }
-        val roomSettings = hashMapOf(
-            "Host" to host,
-            "Max Players" to maxPlayer,
-            "Players in Room" to 1,
-            "Timer" to timer,
-            "chat" to arrayListOf<HashMap<String, String>>(),
-            "Game Status" to "Waiting For Players To Join",
-            "Current Question" to 0,
-            "Player Turn" to host,
-            "players" to playerData,
-            "questions" to questionData
-        )
-        binding.roomcodeError2.visibility = View.INVISIBLE
-        currentRoom = binding.roomcodeInput.text.toString()
-
-        roomRef.child(currentRoom).addListenerForSingleValueEvent(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()){
-                    binding.roomcodeError2.visibility = View.VISIBLE
-                }else{
-                    isHost = true
-                    roomRef.child(currentRoom).setValue(roomSettings)
-                    val activeGame = Intent(applicationContext, ActiveGame::class.java)
-                    startActivity(activeGame)
+            binding.roomcodeError2.visibility = View.INVISIBLE
+            currentRoom = binding.roomcodeInput.text.toString()
+            roomRef.child(currentRoom).addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        binding.roomcodeError2.visibility = View.VISIBLE
+                    } else {
+                        isHost = true
+                        roomRef.child(currentRoom).setValue(roomSettings)
+                        Log.d("Create Room", roomSettings.toString())
+                        val activeGame = Intent(applicationContext, ActiveGame::class.java)
+                        startActivity(activeGame)
+                    }
                 }
-            }
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(applicationContext, "Failed to create the room.", Toast.LENGTH_SHORT).show()
-                // Navigate to a different screen (e.g., MainActivity)
-                val homeScreen = Intent(applicationContext, InitialScreen::class.java)
-                startActivity(homeScreen)
-                finish()
-            }
-        })
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(
+                        applicationContext,
+                        "Failed to create the room.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    // Navigate to a different screen (e.g., MainActivity)
+                    val homeScreen = Intent(applicationContext, InitialScreen::class.java)
+                    startActivity(homeScreen)
+                    finish()
+                }
+            })
+        }
     }
+
     private fun validSettings() {
         timer = binding.timer.text.toString().toInt()
         maxPlayer = binding.players.text.toString().toInt()
