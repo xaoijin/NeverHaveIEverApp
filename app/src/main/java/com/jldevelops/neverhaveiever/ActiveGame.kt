@@ -85,8 +85,9 @@ class ActiveGame : AppCompatActivity() {
         startRoomListener()
 
         binding.iHaveBtn.setOnClickListener {
-            iHaveCounter++
+            iHaveCounter += 1
             iHave()
+            checkDrunk()
         }
         binding.haveNotBtn.setOnClickListener {
             haveNot()
@@ -525,9 +526,8 @@ class ActiveGame : AppCompatActivity() {
                                             append("No More Questions!")
                                         }
                                     }
-
                                     // Update the current question index in Firebase
-                                    roomRef.child("Current Question").setValue(currentQuestionIndex)
+                                    roomRef.child("Current Question").setValue(currentQuestionIndex - 1)
                                 }
 
                                 override fun onCancelled(databaseError: DatabaseError) {
@@ -574,7 +574,6 @@ class ActiveGame : AppCompatActivity() {
                                 resetPlayerChoice()
                                 startTimer()
                             }
-                            checkDrunk()
                         }
                     }
                     (timer as CountDownTimer).start()
@@ -594,12 +593,12 @@ class ActiveGame : AppCompatActivity() {
         playerRef.setValue(iHaveCounter)
             .addOnSuccessListener {
             Log.d("Main", "Successfully added to I Have Counter")
+                if (iHaveCounter % 5 == 0){
+                    showCameraMiniGameDialog()
+                }
         }
             .addOnFailureListener {
             Log.d("Main", "Failed to add to I Have Counter")
-        }
-        if (iHaveCounter % 5 == 0){
-            showCameraMiniGameDialog()
         }
     }
 

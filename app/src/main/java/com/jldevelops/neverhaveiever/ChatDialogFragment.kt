@@ -25,7 +25,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 data class Message(
     val text: String = "",
-    val userId: String? = null // or any other user identifying information you want
+    val userId: String? = null, // or any other user identifying information you want
+    val timestamp: Long = System.currentTimeMillis()
 )
 
 class ChatDialogFragment : DialogFragment() {
@@ -35,6 +36,7 @@ class ChatDialogFragment : DialogFragment() {
     private lateinit var scrollView: ScrollView
     private lateinit var fragmentContext: Context
     private val db = FirebaseFirestore.getInstance()
+    private var lastDisplayedMessage: Message? = null
     override fun onAttach(context: Context) {
         super.onAttach(context)
         fragmentContext = context
@@ -52,15 +54,16 @@ class ChatDialogFragment : DialogFragment() {
         // Add a listener to get the chat messages
         chatRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                chatLayout.removeAllViews() // Clear the layout first
-                for (dataSnapshot in snapshot.children) {
-                    val message = dataSnapshot.getValue(Message::class.java)
-                    if (message != null) {
-                        addMessageToLayout(message)
-                    }
+                val messages = snapshot.children.mapNotNull { it.getValue(Message::class.java) }
+                val sortedMessages = messages.sortedBy { it.timestamp }
+
+                if (sortedMessages.isNotEmpty() && (lastDisplayedMessage == null || sortedMessages.last() != lastDisplayedMessage)) {
+                    lastDisplayedMessage = sortedMessages.last()
+                    addMessageToLayout(lastDisplayedMessage!!)
+                    scrollToBottom()
                 }
-                scrollToBottom()
             }
+
 
             override fun onCancelled(error: DatabaseError) {
                 // Handle error here
@@ -80,10 +83,11 @@ class ChatDialogFragment : DialogFragment() {
     }
 
     private fun scrollToBottom() {
-        scrollView.post {
-            scrollView.fullScroll(View.FOCUS_DOWN)
-        }
+        scrollView.postDelayed({
+            scrollView.fullScroll(ScrollView.FOCUS_DOWN)
+        }, 700)
     }
+
 
     override fun onStart() {
         super.onStart()
@@ -95,14 +99,11 @@ class ChatDialogFragment : DialogFragment() {
 
             if (userInput.isNotEmpty()) {
                 // Create a new message
-                val newMessage = Message(text = userInput, userId = userId)
-
+                val newMessage = Message(text = userInput, userId = userId, timestamp = System.currentTimeMillis())
                 // Get a reference to the chat in the database
                 val chatRef = FirebaseDatabase.getInstance().getReference("Rooms/$currentRoom/chat")
-
                 // Push the new message to the database
                 chatRef.push().setValue(newMessage)
-
                 // Clear the input field
                 chatInputEditText.text.clear()
             }

@@ -156,13 +156,11 @@ class CreateGame : AppCompatActivity() {
                     binding.roomcodeError2.visibility = View.VISIBLE
                 }else{
                     isHost = true
-
                     roomRef.child(currentRoom).setValue(roomSettings)
                     val activeGame = Intent(applicationContext, ActiveGame::class.java)
                     startActivity(activeGame)
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(applicationContext, "Failed to create the room.", Toast.LENGTH_SHORT).show()
                 // Navigate to a different screen (e.g., MainActivity)
@@ -172,7 +170,6 @@ class CreateGame : AppCompatActivity() {
             }
         })
     }
-
     private fun validSettings() {
         timer = binding.timer.text.toString().toInt()
         maxPlayer = binding.players.text.toString().toInt()
@@ -186,7 +183,6 @@ class CreateGame : AppCompatActivity() {
             maxPlayer = binding.players.text.toString().toInt()
             maxPlayerValid = true
         }
-
         if (timer < 10 || timer > 99 || binding.timer.text.toString().isEmpty()) {
             binding.timerError.visibility = View.VISIBLE
         } else {
@@ -206,8 +202,5 @@ class CreateGame : AppCompatActivity() {
         } else {
             binding.roomcodeError2.visibility = View.INVISIBLE
         }
-
     }
-
-
 }

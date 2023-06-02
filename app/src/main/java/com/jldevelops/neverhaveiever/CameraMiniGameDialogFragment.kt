@@ -42,10 +42,12 @@ class CameraMiniGameDialogFragment : DialogFragment() {
             object : CountDownTimer(10000, 1000) {
                 override fun onTick(millisUntilFinished: Long) {
                     val secondsRemaining = millisUntilFinished / 1000
-                    timerText.text = buildString {
-        append(getString(R.string.seconds_remaining))
-        append(secondsRemaining)
-    }
+                    if (isAdded) {
+                        timerText.text = buildString {
+                            append(getString(R.string.seconds_remaining))
+                            append(secondsRemaining)
+                        }
+                    }
                 }
 
                 override fun onFinish() {
@@ -53,6 +55,7 @@ class CameraMiniGameDialogFragment : DialogFragment() {
                     dismiss()
                 }
             }.start()
+
 
         }
 
@@ -92,13 +95,14 @@ class CameraMiniGameDialogFragment : DialogFragment() {
             val x = event.values[0]
             val y = event.values[1]
 
-            if (x.toInt() > 1 || y.toInt() > 1 || x.toInt() < -1 || y.toInt() < -1) {
+            // adjust these values to change sensitivity
+            if (x.toInt() > 0.5 || y.toInt() > 0.5 || x.toInt() < -0.5 || y.toInt() < -0.5) {
                 backColor.setBackgroundResource(R.color.Green)
             }
-            if (x.toInt() > 3 || y.toInt() > 3 || x.toInt() < -3 || y.toInt() < -3) {
+            if (x.toInt() > 1.5 || y.toInt() > 1.5 || x.toInt() < -1.5 || y.toInt() < -1.5) {
                 backColor.setBackgroundResource(R.color.Yellow)
             }
-            if (x.toInt() >= 5 || y.toInt() >= 5 || x.toInt() <= -5 || y.toInt() <= -5) {
+            if (x.toInt() >= 2.5 || y.toInt() >= 2.5 || x.toInt() <= -2.5 || y.toInt() <= -2.5) {
                 stopSound()
                 dismiss()
             }
@@ -114,4 +118,5 @@ class CameraMiniGameDialogFragment : DialogFragment() {
             }
         }
     }
+
 }
