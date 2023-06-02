@@ -78,99 +78,117 @@ class LoginScreen : AppCompatActivity() {
                 Log.d("Main", "Failed to Login User: ${it.message}")
             }
     }
-
     private fun registerAccount() {
         val faker = Faker()
-        val name = faker.app().name() // Miss Samanta Schmidt
+        val name = faker.app().name()
         val email = lEmail.text.toString().trim()
         val psw = lPassword.text.toString().trim()
         val icon = R.drawable.brandy
+
         if (email.isEmpty() || psw.isEmpty()) {
-            Toast.makeText(this, "Please Enter Email or Password", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Please enter an email and password", Toast.LENGTH_SHORT).show()
             return
         }
-        val emailPsw = hashMapOf(
-            "Email" to email,
-            "Password" to psw,
-            "Display Name" to name,
-            "Icon" to icon
-        )
-        val cleanQuestionSetNames = hashMapOf(
-            "QS1Name" to "Question Set 1",
-            "QS2Name" to "Question Set 2",
-            "QS3Name" to "Question Set 3"
-        )
-        val defaultQuestions = hashMapOf(
-            "Q1" to "Never have I ever urinated in public.....",
-            "Q2" to "Never have I ever stolen anything.....",
-            "Q3" to "Never have I ever lost a bet.....",
-            "Q4" to "Never have I ever broken a bone.....",
-            "Q5" to "Never have I ever used a fake ID....",
-            "Q6" to "Never have I ever broken up with someone.....",
-            "Q7" to "Never have I ever had a one-night stand......",
-            "Q8" to "Never have I ever tried psychedelics......",
-            "Q9" to "Never have I ever stood up a date......",
-            "Q10" to "Never have I ever ghosted someone......",
-            "Q11" to "Never have I ever had to take a walk of shame......",
-            "Q12" to "Never have I ever snooped through someone’s stuff.....",
-            "Q13" to "Never have I ever dined and dashed.......",
-            "Q14" to "Never have I ever fought in public......",
-            "Q15" to "Never have I ever lied about not doing something I was suppose to do....",
-            "Q16" to "Never have I ever pretended to speak a foreign language I didn't know",
-            "Q17" to "Never have I ever gone on a blind date.....",
-            "Q18" to "Never have I ever made a prank phone call....",
-            "Q19" to "Never have I ever lied to get something cheaper than it was.....",
-            "Q20" to "Never have I ever talked my way out of getting in trouble....."
-        )
-        val cleanQuestions = hashMapOf(
-            "Q1" to "Never have I ever ",
-            "Q2" to "Never have I ever ",
-            "Q3" to "Never have I ever ",
-            "Q4" to "Never have I ever ",
-            "Q5" to "Never have I ever ",
-            "Q6" to "Never have I ever ",
-            "Q7" to "Never have I ever ",
-            "Q8" to "Never have I ever ",
-            "Q9" to "Never have I ever ",
-            "Q10" to "Never have I ever ",
-            "Q11" to "Never have I ever ",
-            "Q12" to "Never have I ever ",
-            "Q13" to "Never have I ever ",
-            "Q14" to "Never have I ever ",
-            "Q15" to "Never have I ever ",
-            "Q16" to "Never have I ever ",
-            "Q17" to "Never have I ever ",
-            "Q18" to "Never have I ever ",
-            "Q19" to "Never have I ever ",
-            "Q20" to "Never have I ever "
-        )
-        Log.d("Main", "Email:$email")
-        Log.d("Main", "Password: $psw")
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, psw)
-            .addOnCompleteListener {
 
-                db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
-                    "Question Sets"
-                ).document("Set1").set(defaultQuestions)
-                db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
-                    "Question Sets"
-                ).document("Set2").set(cleanQuestions)
-                db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
-                    "Question Sets"
-                ).document("Set3").set(cleanQuestions)
-                db.collection("Account Data").document(auth.currentUser?.uid.toString()).collection(
-                    "Question Set Name Edit"
-                ).document("Names").set(cleanQuestionSetNames)
-                db.collection("Account Data").document(auth.currentUser?.uid.toString())
-                    .set(emailPsw)
-                val intent = Intent(this, InitialScreen::class.java)
-                startActivity(intent)
-                Log.d("Main", "Successfully created user with uid: ${it.result?.user?.uid}")
+        // Check if email is already in use
+        FirebaseAuth.getInstance().fetchSignInMethodsForEmail(email)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val signInMethods = task.result?.signInMethods
+                    if (!signInMethods.isNullOrEmpty()) {
+                        // Email is already registered
+                        Toast.makeText(this, "An account with this email already exists.", Toast.LENGTH_SHORT).show()
+                        return@addOnCompleteListener
+                    }
+
+                    // Email is not in use, proceed with account creation
+                    val emailPsw = hashMapOf(
+                        "Email" to email,
+                        "Password" to psw,
+                        "Display Name" to name,
+                        "Icon" to icon
+                    )
+                    val cleanQuestionSetNames = hashMapOf(
+                        "QS1Name" to "Question Set 1",
+                        "QS2Name" to "Question Set 2",
+                        "QS3Name" to "Question Set 3"
+                    )
+                    val defaultQuestions = hashMapOf(
+                        "Q1" to "Never have I ever urinated in public.....",
+                        "Q2" to "Never have I ever stolen anything.....",
+                        "Q3" to "Never have I ever lost a bet.....",
+                        "Q4" to "Never have I ever broken a bone.....",
+                        "Q5" to "Never have I ever used a fake ID....",
+                        "Q6" to "Never have I ever broken up with someone.....",
+                        "Q7" to "Never have I ever had a one-night stand......",
+                        "Q8" to "Never have I ever tried psychedelics......",
+                        "Q9" to "Never have I ever stood up a date......",
+                        "Q10" to "Never have I ever ghosted someone......",
+                        "Q11" to "Never have I ever had to take a walk of shame......",
+                        "Q12" to "Never have I ever snooped through someone’s stuff.....",
+                        "Q13" to "Never have I ever dined and dashed.......",
+                        "Q14" to "Never have I ever fought in public......",
+                        "Q15" to "Never have I ever lied about not doing something I was suppose to do....",
+                        "Q16" to "Never have I ever pretended to speak a foreign language I didn't know",
+                        "Q17" to "Never have I ever gone on a blind date.....",
+                        "Q18" to "Never have I ever made a prank phone call....",
+                        "Q19" to "Never have I ever lied to get something cheaper than it was.....",
+                        "Q20" to "Never have I ever talked my way out of getting in trouble....."
+                    )
+                    val cleanQuestions = hashMapOf(
+                        "Q1" to "Never have I ever ",
+                        "Q2" to "Never have I ever ",
+                        "Q3" to "Never have I ever ",
+                        "Q4" to "Never have I ever ",
+                        "Q5" to "Never have I ever ",
+                        "Q6" to "Never have I ever ",
+                        "Q7" to "Never have I ever ",
+                        "Q8" to "Never have I ever ",
+                        "Q9" to "Never have I ever ",
+                        "Q10" to "Never have I ever ",
+                        "Q11" to "Never have I ever ",
+                        "Q12" to "Never have I ever ",
+                        "Q13" to "Never have I ever ",
+                        "Q14" to "Never have I ever ",
+                        "Q15" to "Never have I ever ",
+                        "Q16" to "Never have I ever ",
+                        "Q17" to "Never have I ever ",
+                        "Q18" to "Never have I ever ",
+                        "Q19" to "Never have I ever ",
+                        "Q20" to "Never have I ever "
+                    )
+
+                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, psw)
+                        .addOnCompleteListener { createTask ->
+                            if (createTask.isSuccessful) {
+                                // Account created successfully
+                                val userId = createTask.result?.user?.uid
+                                if (userId != null) {
+                                    // Store additional user data in Firestore
+                                    val userData = db.collection("Account Data").document(userId)
+                                    userData.collection("Question Sets").document("Set1").set(defaultQuestions)
+                                    userData.collection("Question Sets").document("Set2").set(cleanQuestions)
+                                    userData.collection("Question Sets").document("Set3").set(cleanQuestions)
+                                    userData.collection("Question Set Name Edit").document("Names").set(cleanQuestionSetNames)
+                                    userData.set(emailPsw)
+
+                                    // Proceed to next screen
+                                    val intent = Intent(this, InitialScreen::class.java)
+                                    startActivity(intent)
+                                    Log.d("Main", "Successfully created user with uid: $userId")
+                                }
+                            } else {
+                                // Account creation failed
+                                Toast.makeText(this, "Failed to create user.", Toast.LENGTH_SHORT).show()
+                                Log.d("Main", "Failed to create user: ${createTask.exception?.message}")
+                            }
+                        }
+                } else {
+                    // Failed to check email status
+                    Toast.makeText(this, "Failed to check email status.", Toast.LENGTH_SHORT).show()
+                    Log.d("Main", "Failed to check email status: ${task.exception?.message}")
+                }
             }
-            .addOnFailureListener {
-                Log.d("Main", "Failed to create user: ${it.message}")
-
-            }
-
     }
+
 }
