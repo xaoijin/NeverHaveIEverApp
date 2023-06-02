@@ -134,7 +134,6 @@ class CreateGame : AppCompatActivity() {
                 "Max Players" to maxPlayer,
                 "Players in Room" to 1,
                 "Timer" to timer,
-                "chat" to arrayListOf<HashMap<String, String>>(),
                 "Game Status" to "Waiting For Players To Join",
                 "Current Question" to 0,
                 "Player Turn" to host,
